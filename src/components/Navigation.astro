@@ -1,0 +1,82 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<header class={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 ${className}`}>
+  <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center group">
+      <img src="/images/logo-flora-edu.webp" alt="Floralab Education" class="h-8 md:h-10 w-auto object-contain" />
+    </a>
+
+    <button id="mobile-menu-toggle" class="p-2 lg:hidden flex flex-col gap-[5px] items-end group" aria-label="Toggle Menu">
+      <span class="w-6 h-[2px] bg-[#003B1C] rounded-full transition-all"></span>
+      <span class="w-4 h-[2px] bg-[#003B1C] rounded-full transition-all"></span>
+      <span class="w-6 h-[2px] bg-[#003B1C] rounded-full transition-all"></span>
+    </button>
+
+    <nav class="hidden lg:flex items-center gap-8">
+      <a href="/" class="text-sm font-medium text-brand-dark hover:text-brand-lime transition-colors">Головна</a>
+      <a href="/stvorennya-florariumu" class="text-sm font-medium text-brand-dark hover:text-brand-lime transition-colors">Флораріуми</a>
+      <a href="/kartini-zi-stabilizovanih-roslin" class="text-sm font-medium text-brand-dark hover:text-brand-lime transition-colors">Картини</a>
+      <a href="#about" class="text-sm font-medium text-brand-dark hover:text-brand-lime transition-colors">Про мене</a>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] flex flex-col -translate-x-full transition-transform duration-300 lg:hidden overflow-y-auto">
+    <div class="h-16 flex justify-between items-center px-4">
+      <a href="/" class="flex items-center">
+        <img src="/images/logo-flora-edu.webp" alt="Floralab Education" class="h-8 w-auto object-contain" />
+      </a>
+      <button id="mobile-menu-close" class="p-2 text-brand-dark hover:text-brand-pink transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <div class="flex flex-col gap-6 text-left text-2xl font-heading text-brand-dark px-6 mt-8">
+      <a href="/" class="hover:text-brand-lime transition-colors py-2">Головна</a>
+      <a href="/stvorennya-florariumu" class="hover:text-brand-lime transition-colors py-2">Створення флораріуму</a>
+      <a href="/kartini-zi-stabilizovanih-roslin" class="hover:text-brand-lime transition-colors py-2">Створення картини</a>
+      <a href="#about" class="hover:text-brand-lime transition-colors py-2">Про мене</a>
+    </div>
+    
+    <div class="mt-12 px-6">
+      <button class="w-full py-4 bg-[#E63380] text-white rounded-full font-bold shadow-xl shadow-brand-pink/30 hover:scale-[1.02] transition-transform">
+        Придбати навчання
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const close = document.getElementById('mobile-menu-close');
+  const menu = document.getElementById('mobile-menu');
+
+  if (toggle && menu && close) {
+    toggle.addEventListener('click', () => {
+      menu.classList.remove('-translate-x-full');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    close.addEventListener('click', () => {
+      menu.classList.add('-translate-x-full');
+      document.body.style.overflow = '';
+    });
+
+    // Close on link click
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('-translate-x-full');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>

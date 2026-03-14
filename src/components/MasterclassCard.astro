@@ -1,0 +1,47 @@
+---
+import BotanicalElement from './BotanicalElement.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  link: string;
+  isNew?: boolean;
+  className?: string;
+}
+
+const { title, subtitle, link, isNew = false, className = "" } = Astro.props;
+---
+
+<div class={`relative group rounded-[40px] md:rounded-[48px] overflow-hidden bg-brand-cream/60 border border-brand-dark/5 p-4 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 ${className}`}>
+  {isNew && (
+    <div class="absolute top-0 right-0 z-20">
+      <div class="bg-brand-pink text-white px-10 py-2 font-bold text-[10px] uppercase tracking-[0.2em] rotate-45 translate-x-10 translate-y-3 shadow-lg">
+        НОВИНКА
+      </div>
+    </div>
+  )}
+
+  <div class="relative aspect-[4/5] rounded-[32px] md:rounded-[40px] overflow-hidden mb-8 bg-neutral-200 shadow-inner">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-40 z-10 transition-opacity group-hover:opacity-20"></div>
+    
+    <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8 z-20">
+      <h3 class="text-2xl sm:text-3xl font-heading text-brand-dark mb-6 drop-shadow-sm leading-[1.2]">
+        {title}
+      </h3>
+      <p class="text-[15px] font-sans text-brand-dark/80 mb-10 max-w-[220px]">
+        {subtitle}
+      </p>
+      
+      <a 
+        href={link} 
+        class="inline-block px-12 py-3.5 bg-brand-lime text-white rounded-full font-bold text-sm tracking-widest hover:scale-105 shadow-xl shadow-brand-lime/30 transition-all active:scale-95"
+      >
+        Деталі
+      </a>
+    </div>
+
+    {/* Botanical elements overlapping the card internally */}
+    <BotanicalElement type="moss" bottom="5%" left="5%" size="w-24 h-24" blur="blur-md" opacity="opacity-40" />
+    <BotanicalElement type="dot" bottom="15%" right="10%" size="w-16 h-16" blur="blur-sm" opacity="opacity-30" />
+  </div>
+</div>

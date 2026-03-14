@@ -1,0 +1,70 @@
+---
+import BotanicalElement from '../components/BotanicalElement.astro';
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Мастер-классы и обучение" } = Astro.props;
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Tenor+Sans&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-white text-slate-900 font-sans selection:bg-brand-lime selection:text-white antialiased overflow-x-hidden">
+		<slot />
+
+		<button 
+			id="scroll-to-top" 
+			class="fixed bottom-6 right-6 z-40 p-3 bg-white border border-brand-dark/10 rounded-full shadow-lg text-brand-dark/40 opacity-0 translate-y-4 transition-all duration-300 hover:text-brand-dark hover:scale-110"
+			aria-label="Scroll to top"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+			</svg>
+		</button>
+
+		<script>
+			const scrollBtn = document.getElementById('scroll-to-top');
+			if (scrollBtn) {
+				window.addEventListener('scroll', () => {
+					if (window.scrollY > 300) {
+						scrollBtn.classList.remove('opacity-0', 'translate-y-4');
+					} else {
+						scrollBtn.classList.add('opacity-0', 'translate-y-4');
+					}
+				});
+				scrollBtn.addEventListener('click', () => {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				});
+			}
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--brand-dark: #003B1C;
+		--brand-lime: #8EC641;
+		--brand-pink: #E63380;
+		--brand-cream: #FEFDF9;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	h1, h2, h3, h4, .font-heading {
+		font-family: 'Tenor Sans', serif !important;
+	}
+</style>

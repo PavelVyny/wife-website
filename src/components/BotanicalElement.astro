@@ -1,0 +1,68 @@
+---
+interface Props {
+  type: 'moss' | 'bark' | 'leaf' | 'dot';
+  top?: string;
+  bottom?: string;
+  left?: string;
+  right?: string;
+  size?: string;
+  blur?: string;
+  rotate?: string;
+  opacity?: string;
+  zIndex?: string;
+  className?: string;
+  animate?: boolean;
+}
+
+const {
+  type,
+  top,
+  bottom,
+  left,
+  right,
+  size = "w-24 h-24",
+  blur = "blur-none",
+  rotate = "rotate-0",
+  opacity = "opacity-100",
+  zIndex = "z-10",
+  className = "",
+  animate = true
+} = Astro.props;
+
+const positionStyles = {
+  top,
+  bottom,
+  left,
+  right
+};
+
+// Colors based on type for placeholders
+const typeColors = {
+  moss: "bg-brand-lime",
+  bark: "bg-amber-900",
+  leaf: "bg-brand-dark",
+  dot: "bg-brand-pink"
+};
+---
+
+<div 
+  class={`absolute ${size} ${blur} ${rotate} ${opacity} ${zIndex} ${animate ? 'animate-float' : ''} pointer-events-none ${className}`}
+  style={positionStyles}
+>
+  <div class={`w-full h-full rounded-full mix-blend-multiply ${typeColors[type] || 'bg-brand-lime'} group-hover:scale-110 transition-transform duration-500`}>
+    {/* 
+      In real version:
+      <Image src={assets[type]} alt="" class="w-full h-full object-contain" />
+    */}
+  </div>
+</div>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(var(--tw-rotate)); }
+    50% { transform: translateY(-10px) rotate(calc(var(--tw-rotate) + 2deg)); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+</style>
