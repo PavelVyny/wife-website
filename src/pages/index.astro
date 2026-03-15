@@ -6,6 +6,9 @@ import MasterclassCard from '../components/MasterclassCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import BotanicalElement from '../components/BotanicalElement.astro';
 import Footer from '../components/Footer.astro';
+import StatsSection from '../components/StatsSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import FaqSection from '../components/FaqSection.astro';
 ---
 
 <Layout title="Floralab Education — Онлайн-навчання флористиці">
@@ -91,18 +94,11 @@ import Footer from '../components/Footer.astro';
 			</div>
 		</section>
 
-		<section id="about" class="py-24 bg-brand-cream/20">
-			<div class="container mx-auto px-4 flex flex-col items-center text-center">
-				<SectionHeader mainTitle="ІНФОРМАЦІЯ" accentTitle="ПРО МЕНЕ" />
-				<div class="max-w-xl mx-auto mt-8 text-lg text-brand-dark/80 leading-relaxed font-sans">
-					<p class="font-heading text-2xl text-brand-dark mb-6">Привіт! Мене звати Даша.</p>
-					<p class="mb-6">Я — майстер-флорист, ботанік і викладач, засновниця майстерні декору <span class="text-brand-dark font-bold">Floralab</span>.</p>
-					<p class="text-base text-brand-dark/60 italic px-8 border-l-2 border-brand-lime">
-						Понад 5 років я створюю дивовижні речі з рослин і ділюся цим досвідом з тисячами учнів по всьому світу.
-					</p>
-				</div>
-			</div>
-		</section>
+		<AboutSection />
+
+		<StatsSection />
+
+		<FaqSection />
 	</main>
 	<Footer />
 </Layout>

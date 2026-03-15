@@ -1,47 +1,116 @@
 ---
-const year = new Date().getFullYear();
+// Footer — matches live floralabeducation.com.ua design
 ---
 
-<footer class="bg-brand-dark py-16 px-4">
-  <div class="container mx-auto max-w-5xl">
-    <div class="flex flex-col md:flex-row justify-between items-start gap-12">
-      <div class="flex flex-col gap-4">
-        <a href="/" class="flex items-center gap-2">
-          <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center overflow-hidden">
-            <span class="text-brand-dark text-xs font-bold font-heading">FL</span>
-          </div>
-          <div class="flex flex-col">
-            <span class="text-lg font-heading tracking-wider text-white leading-none">FLORALAB</span>
-            <span class="text-[11px] font-sans tracking-[0.2em] text-white/60 uppercase leading-none mt-1">Education</span>
-          </div>
-        </a>
-        <p class="text-white/40 text-sm max-w-xs mt-4">
-          Школа флористики та декору. Навчаємо створювати красу власноруч.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-2 gap-12 sm:gap-24">
-        <div class="flex flex-col gap-4">
-          <h4 class="text-white font-bold text-sm uppercase tracking-widest">Навчання</h4>
-          <a href="/stvorennya-florariumu" class="text-white/60 text-sm hover:text-brand-lime transition-colors">Флораріуми</a>
-          <a href="/kartini-zi-stabilizovanih-roslin" class="text-white/60 text-sm hover:text-brand-lime transition-colors">Картини з моху</a>
-        </div>
-        <div class="flex flex-col gap-4">
-          <h4 class="text-white font-bold text-sm uppercase tracking-widest">Контакти</h4>
-          <a href="https://instagram.com/floralab" class="text-white/60 text-sm hover:text-brand-lime transition-colors">Instagram</a>
-          <a href="https://t.me/floralab" class="text-white/60 text-sm hover:text-brand-lime transition-colors">Telegram</a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="h-px bg-white/10 w-full my-12"></div>
-    
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-white/20 text-[10px] uppercase tracking-widest font-bold">
-      <p>© {year} Floralab Education. All rights reserved.</p>
-      <div class="flex gap-8">
-        <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="/terms" class="hover:text-white transition-colors">Terms of Service</a>
-      </div>
-    </div>
+<footer class="bg-white pt-[50px] pb-[30px]">
+
+  {/* Logo — centered */}
+  <div class="flex justify-center mb-[22px]">
+    <a href="/" aria-label="Floralab Education — на головну">
+      <img
+        src="/images/logo-flora-edu.webp"
+        alt="Floralab Education"
+        class="h-[64px] w-auto"
+        loading="lazy"
+      />
+    </a>
   </div>
+
+  {/* Tagline */}
+  <p class="text-center px-[30px] font-heading text-[16px] leading-[24px] text-[#003B1C] mb-[28px]">
+    Створи унікальний декор з живих сукулентів та стабілізованих рослин з експертом-флористом!
+  </p>
+
+  {/* Social icons */}
+  <div class="flex justify-center items-center gap-[32px] mb-[30px]">
+    {/* Telegram */}
+    <a
+      href="https://t.me/kam4633"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Telegram"
+      class="text-[#003B1C] hover:text-[#7cab06] transition-colors"
+    >
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.7 8c-.12.56-.46.7-.93.44l-2.57-1.9-1.24 1.2c-.14.14-.25.25-.5.25l.18-2.6 4.7-4.24c.2-.18-.04-.28-.32-.1L7.46 14.55 4.93 13.8c-.56-.17-.57-.56.12-.83l8.95-3.45c.47-.17.88.11.64.28z"/>
+      </svg>
+    </a>
+
+    {/* Instagram */}
+    <a
+      href="https://www.instagram.com/floralab_ua"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      class="text-[#003B1C] hover:text-[#7cab06] transition-colors"
+    >
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4.5"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+
+    {/* Email */}
+    <a
+      href="mailto:floralab.ua.22@gmail.com"
+      aria-label="Email"
+      class="text-[#003B1C] hover:text-[#7cab06] transition-colors"
+    >
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="M2 7l10 7 10-7" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </div>
+
+  {/* Legal links */}
+  <div class="flex flex-col items-center gap-[12px] mb-[28px]">
+    <a
+      href="https://docs.google.com/document/d/1fSokEY-hCQs4vbwbCd7GScOrwMqMaho7p91Nfw0DzPw/edit?tab=t.0"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-heading text-[16px] text-[#003B1C] hover:text-[#7cab06] transition-colors"
+    >
+      Договір публічної оферти
+    </a>
+    <a
+      href="#"
+      class="font-heading text-[16px] text-[#003B1C] hover:text-[#7cab06] transition-colors"
+    >
+      Політика конфіденційності
+    </a>
+  </div>
+
+  {/* Divider */}
+  <div class="h-px bg-[#003B1C]/15 mx-[20px] mb-[24px]"></div>
+
+  {/* Contact info */}
+  <div class="flex flex-col items-center gap-[10px] mb-[24px]">
+    <a
+      href="mailto:floralab.ua.22@gmail.com"
+      class="flex items-center gap-[10px] text-[#003B1C] text-[15px] hover:text-[#7cab06] transition-colors"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="M2 7l10 7 10-7" stroke-linecap="round"/>
+      </svg>
+      floralab.ua.22@gmail.com
+    </a>
+    <a
+      href="tel:+380667006272"
+      class="flex items-center gap-[10px] text-[#003B1C] text-[15px] hover:text-[#7cab06] transition-colors"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-1z" stroke-linejoin="round"/>
+      </svg>
+      +38 (066) 700 62 72
+    </a>
+  </div>
+
+  {/* Copyright */}
+  <p class="text-center text-[13px] text-[#003B1C]/50 leading-[20px]">
+    © Floralab Education 2024.<br/>Усі права захищені.
+  </p>
+
 </footer>

@@ -1,0 +1,135 @@
+---
+const stats = [
+  {
+    target: 6,
+    suffix: '',
+    label: 'Років досвіду\nу флористиці',
+    decorLeft:  { src: '/images/stats/c1-left.webp',  w: 200, cls: 'left-[-70px] top-[-50px]' },
+    decorRight: { src: '/images/stats/c1-right.webp', w: 145, cls: 'right-[-40px] top-[5px] -rotate-[16deg]' },
+  },
+  {
+    target: 100,
+    suffix: '+',
+    label: 'Проведених\nконсультацій',
+    decorLeft:  { src: '/images/stats/c2-left-coral.webp', w: 120, cls: 'left-[-22px] top-[-10px]' },
+    decorRight: { src: '/images/stats/c2-right.webp',      w: 130, cls: 'right-[-25px] bottom-[-10px] -rotate-[10deg]' },
+  },
+  {
+    target: 60,
+    suffix: '+',
+    label: 'Успішних\nмайстер-класів',
+    decorLeft:  { src: '/images/stats/c3-left.webp',  w: 165, cls: 'left-[-45px] top-[0px]' },
+    decorRight: { src: '/images/stats/c3-right.webp', w: 180, cls: 'right-[-55px] top-[5px]' },
+  },
+  {
+    target: 1000,
+    suffix: '+',
+    label: 'Задоволених\nклієнтів',
+    decorLeft:  { src: '/images/stats/c2-left.webp',  w: 240, cls: 'left-[-80px] top-[-30px]' },
+    decorRight: { src: '/images/stats/c4-right.webp', w: 185, cls: 'right-[-55px] top-[-15px]' },
+  },
+];
+---
+
+<section id="stats" class="bg-white px-[9.75px] pt-[10px] pb-[30px]">
+  <div class="flex flex-col gap-[20px]">
+    {stats.map((stat, i) => (
+      <div class="relative overflow-hidden rounded-[40px]">
+
+        {/* Green card */}
+        <div
+          class="bg-[#7cab06] rounded-[40px] px-[20px] py-[30px] flex flex-col items-center justify-center gap-[9.1px] relative overflow-hidden"
+        >
+          {/* Gradient overlay 15% */}
+          <div
+            class="absolute inset-0 pointer-events-none"
+            style="background: linear-gradient(140deg, rgb(126,180,35) 0%, rgb(255,234,154) 100%); opacity: 0.15;"
+          />
+
+          {/* Decorative images — inside overflow:hidden card, peeking from edges */}
+          <img
+            src={stat.decorLeft.src}
+            alt=""
+            class={`absolute pointer-events-none ${stat.decorLeft.cls}`}
+            style={`width: ${stat.decorLeft.w}px;`}
+            loading="lazy"
+          />
+          <img
+            src={stat.decorRight.src}
+            alt=""
+            class={`absolute pointer-events-none ${stat.decorRight.cls}`}
+            style={`width: ${stat.decorRight.w}px;`}
+            loading="lazy"
+          />
+
+          {/* Number */}
+          <div class="relative z-10 text-center">
+            <span
+              class="font-heading text-[49px] text-white stat-counter"
+              data-target={stat.target}
+              data-suffix={stat.suffix}
+            >
+              0{stat.suffix}
+            </span>
+          </div>
+
+          {/* Label */}
+          <div class="relative z-10 text-center">
+            <p class="font-heading text-[23px] leading-[32.2px] tracking-[-0.345px] text-white whitespace-pre-line">
+              {stat.label}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  function easeOutCubic(t: number): number {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateCounter(el: HTMLElement, target: number, suffix: string, duration: number = 1800) {
+    const startTime = performance.now();
+    const step = (now: number) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.round(easeOutCubic(progress) * target);
+      // Format with comma for thousands (e.g. 1,000)
+      el.textContent = value.toLocaleString('en-US') + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  function initStats() {
+    const counters = document.querySelectorAll<HTMLElement>('.stat-counter');
+    if (counters.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = parseInt(el.dataset.target ?? '0', 10);
+            const suffix = el.dataset.suffix ?? '';
+            animateCounter(el, target, suffix);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0 }
+    );
+
+    counters.forEach((c) => observer.observe(c));
+  }
+
+  document.addEventListener('astro:page-load', initStats);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initStats);
+  } else {
+    initStats();
+  }
+</script>
