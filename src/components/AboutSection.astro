@@ -5,7 +5,7 @@
 <section id="about" class="bg-white">
 
   {/* ===== Header banner ===== */}
-  <div class="px-[19.25px] pt-[30px] pb-[10px]">
+  <div class="px-[19.25px] pt-[20px] pb-[6px] reveal">
     <img
       src="/images/about/header-banner.webp"
       alt="Інформація про мене"
@@ -15,22 +15,22 @@
   </div>
 
   {/* ===== Bio text ===== */}
-  <div class="px-[24px] pt-[30px] pb-[10px] relative overflow-hidden">
-    <p class="font-heading text-[22px] leading-[30px] text-black mb-[18px]">Привіт! Мене звати Даша.</p>
-    <p class="text-[16px] leading-[25px] text-black mb-[16px]">Я — майстер-флорист, ботанік і викладач, засновниця майстерні декору Floralab.</p>
-    <p class="text-[16px] leading-[25px] text-black mb-[16px]">Моя пристрасть — створення флораріумів і композицій із сукулентів. Уже багато років я поєдную творчість і науку, допомагаючи людям відчути красу живої природи у власному просторі.</p>
-    <p class="text-[16px] leading-[25px] text-black mb-[16px]">У Floralab я проводжу майстер-класи, ділюся знаннями, консультую з догляду за рослинами та створюю унікальні рослинні композиції.</p>
-    <p class="text-[16px] leading-[25px] text-black">Я постійно вчуся новому й із задоволенням передаю досвід іншим.</p>
+  <div class="px-[24px] pt-[20px] pb-[6px] relative overflow-hidden">
+    <p class="font-heading text-[22px] leading-[30px] text-black mb-[18px] reveal">Привіт! Мене звати Даша.</p>
+    <p class="text-[16px] leading-[25px] text-black mb-[16px] reveal">Я — майстер-флорист, ботанік і викладач, засновниця майстерні декору Floralab.</p>
+    <p class="text-[16px] leading-[25px] text-black mb-[16px] reveal">Моя пристрасть — створення флораріумів і композицій із сукулентів. Уже багато років я поєдную творчість і науку, допомагаючи людям відчути красу живої природи у власному просторі.</p>
+    <p class="text-[16px] leading-[25px] text-black mb-[16px] reveal">У Floralab я проводжу майстер-класи, ділюся знаннями, консультую з догляду за рослинами та створюю унікальні рослинні композиції.</p>
+    <p class="text-[16px] leading-[25px] text-black reveal">Я постійно вчуся новому й із задоволенням передаю досвід іншим.</p>
   </div>
 
   {/* ===== Photo (badges ФЛОРИСТ + ДАР'Я КОВАЛЬОВА are part of the image) ===== */}
-  <div class="relative mt-[20px] pb-[10px]">
+  <div class="relative mt-[14px] pb-[6px] reveal">
 
-    {/* Orange ball — floats left of photo */}
+    {/* Cookie ball — slides in from left edge */}
     <img
       src="/images/about/decor-ball.webp"
       alt=""
-      class="absolute left-[18px] top-[45px] w-[44px] z-10 pointer-events-none"
+      class="absolute left-[18px] top-[45px] w-[44px] z-10 pointer-events-none cookie-decor"
       loading="lazy"
     />
 
@@ -46,3 +46,40 @@
   </div>
 
 </section>
+
+<style>
+  .cookie-decor {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s ease-out;
+  }
+  .cookie-decor.cookie-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cookie-decor { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<script>
+  function initCookie() {
+    const cookie = document.querySelector<HTMLElement>('.cookie-decor');
+    if (!cookie) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          (e.target as HTMLElement).classList.add('cookie-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0 });
+    obs.observe(cookie);
+  }
+  document.addEventListener('astro:page-load', initCookie);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookie);
+  } else {
+    requestAnimationFrame(() => requestAnimationFrame(initCookie));
+  }
+</script>

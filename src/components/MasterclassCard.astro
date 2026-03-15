@@ -8,6 +8,7 @@ interface Props {
   isNew?: boolean;
   isComingSoon?: boolean;
   rotateImage?: boolean;
+  imageWidth?: string;
   className?: string;
 }
 
@@ -20,6 +21,7 @@ const {
   isNew = false,
   isComingSoon = false,
   rotateImage = false,
+  imageWidth,
   className = "",
 } = Astro.props;
 
@@ -35,7 +37,7 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
 
   {/* Ribbon badge — inside wrapper so it slides with the card */}
   {showRibbon && (
-    <div class="absolute top-0 right-0 z-40 w-[110px] h-[110px] overflow-hidden pointer-events-none">
+    <div class="absolute top-0 right-0 z-40 w-[110px] h-[110px] overflow-hidden pointer-events-none" style="scale: 1.18;">
       {/* Corner fold squares */}
       <div
         class="absolute bottom-0 right-0 w-[8px] h-[10px]"
@@ -78,8 +80,8 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
       >
       </div>
 
-      {/* Content layer */}
-      <div class="relative z-10 flex flex-col items-center pt-[53px]">
+      {/* Content layer — fills card height, image pushed to bottom */}
+      <div class="relative z-10 flex flex-col items-center pt-[53px] pb-[50px]">
         {/* Title */}
         <div class="text-center px-6">
           <h3
@@ -109,14 +111,14 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
         </div>
 
         {/* Product image — fades in + scales up when it enters viewport */}
-        <div class="flex items-center justify-center px-4 py-6 product-image-wrapper">
+        <div class="flex items-center justify-center px-4 mt-[20px] product-image-wrapper">
           <img
             src={image}
             alt={imageAlt}
             class={`h-auto object-contain product-image-scale ${rotateImage ? "product-rotated" : ""}`}
             style={rotateImage
-              ? "width: 260px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));"
-              : "width: 240px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));"}
+              ? `width: ${imageWidth ?? "250px"}; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));`
+              : `width: ${imageWidth ?? "240px"}; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));`}
             loading="lazy"
           />
         </div>
@@ -138,17 +140,19 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
   /* ===== Card slide-in — animation on the wrapper so ribbon travels with card ===== */
   .card-reveal-wrapper {
     transform: translateX(-50px);
-    transition: transform 0.8s ease-out;
+    opacity: 0;
+    transition: transform 0.5s ease-out, opacity 0.4s ease-out;
   }
   .card-reveal-wrapper.visible {
     transform: translateX(0);
+    opacity: 1;
   }
 
-  /* ===== Product image: fade-in + scale, triggered independently when image enters viewport ===== */
+  /* ===== Product image: fade-in (50%→100%) + scale, triggered when image enters viewport ===== */
   .product-image-scale {
     transform: scale(0.8);
-    opacity: 0;
-    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-out;
+    opacity: 0.5;
+    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   .product-image-scale.product-rotated {
     transform: scale(0.8) rotate(-23deg);
@@ -174,6 +178,7 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
   @media (prefers-reduced-motion: reduce) {
     .card-reveal-wrapper {
       transform: none;
+      opacity: 1;
       transition: none;
     }
     .product-image-scale {
@@ -194,7 +199,10 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
 <script>
   function initCardAnimations() {
     // === Card slide observer ===
-    // Triggers as soon as ANY edge of the wrapper enters the viewport (threshold: 0)
+    // Small delay ensures the browser has painted the initial (hidden) state
+    // before we start observing — fixes the first card not animating on page load
+    requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
     const wrappers = document.querySelectorAll<HTMLElement>('.card-reveal-wrapper:not(.visible)');
     if (wrappers.length > 0) {
       const cardObserver = new IntersectionObserver(
@@ -207,7 +215,7 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
 
               setTimeout(() => {
                 wrapper.classList.add('visible');
-              }, index * 150);
+              }, index * 120);
 
               cardObserver.unobserve(wrapper);
             }
@@ -217,6 +225,9 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
       );
       wrappers.forEach((w) => cardObserver.observe(w));
     }
+
+    }); // end double rAF
+    }); // end double rAF
 
     // === Product image observer ===
     // Triggers as soon as the image's own edge enters the viewport — fade + scale start together

@@ -4,41 +4,52 @@ const stats = [
     target: 6,
     suffix: '',
     label: 'Років досвіду\nу флористиці',
-    decorLeft:  { src: '/images/stats/c1-left.webp',  w: 200, cls: 'left-[-70px] top-[-50px]' },
-    decorRight: { src: '/images/stats/c1-right.webp', w: 145, cls: 'right-[-40px] top-[5px] -rotate-[16deg]' },
+    decor: [
+      { src: '/images/stats/c1-left.webp',  w: 200, cls: 'left-[-70px] top-[-90px]', side: 'left' },
+      { src: '/images/stats/c1-right.webp', w: 145, cls: 'right-[-60px] bottom-[-20px] -rotate-[16deg]', side: 'right' },
+    ],
   },
   {
     target: 100,
     suffix: '+',
     label: 'Проведених\nконсультацій',
-    decorLeft:  { src: '/images/stats/c2-left-coral.webp', w: 120, cls: 'left-[-22px] top-[-10px]' },
-    decorRight: { src: '/images/stats/c2-right.webp',      w: 130, cls: 'right-[-25px] bottom-[-10px] -rotate-[10deg]' },
+    decor: [
+      { src: '/images/stats/c2-left-coral.webp', w: 140, cls: '', side: 'left',  xstyle: 'left:-35px;top:30px;transform:translateX(-40px) rotate(95deg);', endXform: 'rotate(95deg)' },
+      { src: '/images/stats/c2-right.webp',      w: 130, cls: '', side: 'right', xstyle: 'right:-31px;bottom:-37px;transform:translateX(40px) rotate(-54deg);', endXform: 'rotate(-54deg)' },
+      { src: '/images/stats/c2-blur-green.webp',  w: 410, cls: '', side: 'left',  xstyle: 'left:100px;top:-294px;transform:translateX(-40px) rotate(260deg);', delay: '0.1s', blur: true, z: 0, endXform: 'rotate(260deg)' },
+      { src: '/images/about/decor-ball.webp',     w: 36,  cls: '', side: 'right', xstyle: 'right:68px;top:12px;transform:translateX(40px);', delay: '0.2s', z: 2 },
+    ],
   },
   {
     target: 60,
     suffix: '+',
     label: 'Успішних\nмайстер-класів',
-    decorLeft:  { src: '/images/stats/c3-left.webp',  w: 165, cls: 'left-[-45px] top-[0px]' },
-    decorRight: { src: '/images/stats/c3-right.webp', w: 180, cls: 'right-[-55px] top-[5px]' },
+    decor: [
+      { src: '/images/stats/c3-left.webp',  w: 165, cls: 'left-[-45px] top-[-5px]', side: 'left' },
+      { src: '/images/stats/c3-right.webp', w: 160, cls: 'right-[-45px] bottom-[-15px]', side: 'right' },
+      { src: '/images/stats/c4-left.webp', w: 410, cls: '', side: 'left', xstyle: 'left:100px;top:-294px;transform:translateX(-40px) rotate(260deg);', delay: '0.1s', z: 0, endXform: 'rotate(260deg)' },
+    ],
   },
   {
     target: 1000,
     suffix: '+',
     label: 'Задоволених\nклієнтів',
-    decorLeft:  { src: '/images/stats/c2-left.webp',  w: 240, cls: 'left-[-80px] top-[-30px]' },
-    decorRight: { src: '/images/stats/c4-right.webp', w: 185, cls: 'right-[-55px] top-[-15px]' },
+    decor: [
+      { src: '/images/stats/c2-left.webp',  w: 170, cls: 'left-[-60px] top-[-20px]', side: 'left', xstyle: 'transform:translateX(-40px) rotate(260deg);', endXform: 'translateX(0) rotate(260deg)' },
+      { src: '/images/stats/c4-right.webp', w: 185, cls: 'right-[-55px] bottom-[-80px]', side: 'right' },
+    ],
   },
 ];
 ---
 
-<section id="stats" class="bg-white px-[9.75px] pt-[10px] pb-[30px]">
-  <div class="flex flex-col gap-[20px]">
+<section id="stats" class="bg-white px-[9.75px] pt-[6px] pb-[20px]">
+  <div class="flex flex-col gap-[16px]">
     {stats.map((stat, i) => (
-      <div class="relative overflow-hidden rounded-[40px]">
+      <div class="relative overflow-hidden rounded-[40px] reveal">
 
         {/* Green card */}
         <div
-          class="bg-[#7cab06] rounded-[40px] px-[20px] py-[30px] flex flex-col items-center justify-center gap-[9.1px] relative overflow-hidden"
+          class="bg-[#7cab06] rounded-[40px] px-[20px] py-[30px] flex flex-col items-center justify-center gap-0 relative overflow-hidden"
         >
           {/* Gradient overlay 15% */}
           <div
@@ -46,28 +57,31 @@ const stats = [
             style="background: linear-gradient(140deg, rgb(126,180,35) 0%, rgb(255,234,154) 100%); opacity: 0.15;"
           />
 
-          {/* Decorative images — inside overflow:hidden card, peeking from edges */}
-          <img
-            src={stat.decorLeft.src}
-            alt=""
-            class={`absolute pointer-events-none ${stat.decorLeft.cls}`}
-            style={`width: ${stat.decorLeft.w}px;`}
-            loading="lazy"
-          />
-          <img
-            src={stat.decorRight.src}
-            alt=""
-            class={`absolute pointer-events-none ${stat.decorRight.cls}`}
-            style={`width: ${stat.decorRight.w}px;`}
-            loading="lazy"
-          />
+          {/* Decorative images — slide in from sides when card enters viewport */}
+          {stat.decor.map((d: any) => (
+            <img
+              src={d.src}
+              alt=""
+              class={`absolute pointer-events-none stat-decor stat-decor-${d.side} ${d.cls ?? ''}`}
+              data-end-xform={d.endXform ?? ''}
+              style={[
+                `width: ${d.w}px`,
+                d.xstyle ?? '',
+                d.delay ? `transition-delay: ${d.delay}` : '',
+                d.blur ? 'filter: blur(3.5px)' : '',
+                d.z !== undefined ? `z-index: ${d.z}` : '',
+              ].filter(Boolean).join(';')}
+              loading="lazy"
+            />
+          ))}
 
           {/* Number */}
           <div class="relative z-10 text-center">
             <span
-              class="font-heading text-[49px] text-white stat-counter"
+              class="font-heading font-bold text-[49px] text-white stat-counter"
               data-target={stat.target}
               data-suffix={stat.suffix}
+              data-duration={stat.target >= 1000 ? '1200' : '1800'}
             >
               0{stat.suffix}
             </span>
@@ -86,6 +100,30 @@ const stats = [
   </div>
 </section>
 
+<style>
+  /* Decorative images slide in from sides */
+  .stat-decor-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out;
+  }
+  .stat-decor-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease-out;
+    transition-delay: 0.15s;
+  }
+  /* visible state set via inline style by JS (preserves per-element rotations) */
+
+  @media (prefers-reduced-motion: reduce) {
+    .stat-decor-left, .stat-decor-right {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
 <script>
   function easeOutCubic(t: number): number {
     return 1 - Math.pow(1 - t, 3);
@@ -97,7 +135,6 @@ const stats = [
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const value = Math.round(easeOutCubic(progress) * target);
-      // Format with comma for thousands (e.g. 1,000)
       el.textContent = value.toLocaleString('en-US') + suffix;
       if (progress < 1) requestAnimationFrame(step);
     };
@@ -108,22 +145,44 @@ const stats = [
     const counters = document.querySelectorAll<HTMLElement>('.stat-counter');
     if (counters.length === 0) return;
 
-    const observer = new IntersectionObserver(
+    // Counter animation observer
+    const counterObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement;
             const target = parseInt(el.dataset.target ?? '0', 10);
             const suffix = el.dataset.suffix ?? '';
-            animateCounter(el, target, suffix);
-            observer.unobserve(el);
+            const duration = parseInt(el.dataset.duration ?? '1800', 10);
+            animateCounter(el, target, suffix, duration);
+            counterObserver.unobserve(el);
           }
         });
       },
       { threshold: 0 }
     );
+    counters.forEach((c) => counterObserver.observe(c));
 
-    counters.forEach((c) => observer.observe(c));
+    // Decorative image slide-in observer
+    // Sets inline style directly so rotation in xstyle is preserved (CSS class would overwrite it)
+    const decors = document.querySelectorAll<HTMLElement>('.stat-decor');
+    if (decors.length > 0) {
+      const decorObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              el.style.opacity = '1';
+              const endXform = el.dataset.endXform;
+              el.style.transform = endXform ? endXform : 'translateX(0)';
+              decorObserver.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0 }
+      );
+      decors.forEach((d) => decorObserver.observe(d));
+    }
   }
 
   document.addEventListener('astro:page-load', initStats);

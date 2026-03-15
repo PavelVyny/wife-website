@@ -60,10 +60,10 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="bg-white px-[9.75px] pt-[10px] pb-[40px]">
+<section id="faq" class="bg-white px-[9.75px] pt-[6px] pb-[24px]">
 
   {/* Header banner */}
-  <div class="mb-[20px] px-[9.75px]">
+  <div class="mb-[14px] px-[9.75px] reveal">
     <img
       src="/images/faq/header-banner.webp"
       alt="Питання та відповіді"
@@ -75,16 +75,17 @@ const faqs = [
   {/* Accordion items */}
   <div class="flex flex-col gap-[12px]">
     {faqs.map((faq, i) => (
-      <div class="faq-item rounded-[28px] overflow-hidden" data-index={i}>
+      <div class="faq-item rounded-[28px] overflow-hidden reveal" data-index={i}>
         {/* Question row — clickable */}
         <button
           class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#003B1C] text-left cursor-pointer"
           aria-expanded="false"
         >
           <span class="font-heading text-[18px] leading-[26px] text-white">{faq.q}</span>
-          <div class="faq-icon flex-shrink-0 w-[42px] h-[42px] rounded-full bg-[#7cab06] flex items-center justify-center transition-transform duration-300">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6.5 4L11.5 9L6.5 14" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <div class="faq-icon flex-shrink-0 w-[40px] h-[40px] rounded-full bg-[#7cab06] flex items-center justify-center transition-all duration-300">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8H12.5" stroke="#003B1C" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 4L13 8L9 12" stroke="#003B1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
         </button>
@@ -118,7 +119,6 @@ const faqs = [
   }
   .faq-item.open .faq-icon {
     transform: rotate(90deg);
-    background: #5a8a04;
   }
 </style>
 
