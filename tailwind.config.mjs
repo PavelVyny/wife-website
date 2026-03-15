@@ -13,7 +13,7 @@ export default {
       },
       fontFamily: {
         heading: ['Tenor Sans', 'serif'],
-        sans: ['Montserrat', 'Inter', 'sans-serif'],
+        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
       },
       keyframes: {
         float: {
