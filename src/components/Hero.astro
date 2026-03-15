@@ -110,7 +110,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
   </div>
 
   <div
-    class="container mx-auto px-4 relative z-20 flex flex-col items-center text-center mt-8 md:mt-14"
+    class="container mx-auto px-4 relative z-20 flex flex-col items-center text-center mt-12 md:mt-14"
   >
     <div
       class="inline-flex items-center gap-2 px-[12px] py-[6px] rounded-full bg-[#00401E] border-[0.8px] border-[#00401E] mb-3 md:mb-6 slide-down shadow-[0_8px_25px_rgba(0,64,30,0.25)]"
@@ -211,7 +211,9 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
   .slide-up {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .slide-up.active {
@@ -222,7 +224,9 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
   .slide-down {
     opacity: 0;
     transform: translateY(-20px);
-    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .slide-down.active {
