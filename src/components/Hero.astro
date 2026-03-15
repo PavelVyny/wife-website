@@ -13,16 +13,87 @@ interface Props {
 const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 ---
 
-<section class="relative h-[calc(100svh-25px)] flex flex-col justify-start overflow-hidden bg-brand-cream/30 pt-16 pb-0 md:pt-24 rounded-b-[25px]">
+<section class="relative h-[calc(100svh-25px)] flex flex-col justify-start bg-brand-cream/30 pt-16 pb-0 md:pt-24 rounded-b-[25px] slide-up">
   {/* Background Image - Starts below header */}
   <div class="absolute inset-x-0 top-16 bottom-0 z-0 text-brand-dark/30">
     <img src="/images/hero-bg-moss.webp" alt="" class="w-full h-full object-cover" />
   </div>
 
-  {/* Floating Botanical Elements */}
-  <BotanicalElement type="moss" top="15%" left="-5%" size="w-32 h-32" blur="blur-md" rotate="rotate-45" opacity="opacity-60" />
-  <BotanicalElement type="bark" top="20%" right="-2%" size="w-24 h-24" blur="blur-sm" rotate="-rotate-12" opacity="opacity-70" />
-  <BotanicalElement type="moss" bottom="30%" left="2%" size="w-40 h-40" blur="blur-xl" rotate="rotate-12" opacity="opacity-40" />
+  {/* Floating Decorative Elements */}
+  <div id="hero-deco-container" class="absolute inset-x-0 top-0 bottom-0 z-10 pointer-events-none">
+    {/* Top Left: Moss (blurred) - Slides from top-left edge */}
+    <BotanicalElement 
+      src="/images/moss-small-1.webp" 
+      top="15%" 
+      left="7%" 
+      size="w-[35px] h-auto" 
+      rotation="-131deg" 
+      opacity="opacity-80"
+      filter="brightness(103%) contrast(100%) saturate(71%) blur(4px) hue-rotate(0deg)"
+      animationType="slide-in"
+      delay="0s"
+      slideX="-120px"
+      slideY="-100px"
+    />
+    
+    {/* Top Right: Wood - Slides from top-right edge */}
+    <BotanicalElement 
+      src="/images/wood-1.webp" 
+      top="16%" 
+      right="2%" 
+      size="w-[67px] h-auto" 
+      rotation="0deg" 
+      opacity="opacity-95"
+      animationType="slide-in"
+      delay="0.05s"
+      slideX="100px"
+      slideY="-80px"
+    />
+    
+    {/* Bottom Left: Cookie - Slides from left edge */}
+    <BotanicalElement 
+      src="/images/cookie-1.webp" 
+      top="50%" 
+      left="10%" 
+      size="w-[41px] h-auto" 
+      rotation="15deg" 
+      opacity="opacity-100"
+      animationType="slide-in"
+      delay="0.05s"
+      slideX="-80px"
+      slideY="20px"
+    />
+    
+    {/* Bottom Left Large Moss: Slides from bottom-left corner */}
+    <BotanicalElement 
+      src="/images/moss-small-2.webp" 
+      bottom="-7%" 
+      left="8%" 
+      size="w-[127px] h-auto" 
+      rotation="-10deg" 
+      opacity="opacity-90"
+      filter="brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg)"
+      animationType="slide-in"
+      delay="0.1s"
+      slideX="-60px"
+      slideY="100px"
+    />
+    
+    {/* Bottom Right: Moss - Slides from bottom-right edge */}
+    <BotanicalElement 
+      src="/images/moss-small-1.webp" 
+      bottom="33%" 
+      right="9%" 
+      size="w-[49px] h-auto" 
+      blur="blur-none"
+      rotation="5deg" 
+      opacity="opacity-80"
+      animationType="slide-in"
+      delay="0.15s"
+      slideX="100px"
+      slideY="60px"
+    />
+  </div>
   
   <div class="container mx-auto px-4 relative z-20 flex flex-col items-center text-center mt-12">
     <div class="inline-flex items-center gap-2 px-[12px] py-[6px] rounded-full bg-[#00401E] border-[0.8px] border-[#00401E] mb-6 slide-up shadow-[0_8px_25px_rgba(0,64,30,0.25)]">
@@ -110,7 +181,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     stroke-dashoffset: 1200;
     opacity: 0;
     transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
-    transition-delay: 0.8s; /* Start after title slide up */
+    transition-delay: 0s; /* Start immediately with title */
   }
   
   .slide-up.active .zigzag-path {
@@ -151,6 +222,9 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          if (entry.target.tagName === 'SECTION') {
+            document.getElementById('hero-deco-container')?.classList.add('active');
+          }
         }
       });
     }, { threshold: 0.1 });

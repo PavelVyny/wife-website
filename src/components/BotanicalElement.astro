@@ -1,6 +1,7 @@
 ---
 interface Props {
-  type: 'moss' | 'bark' | 'leaf' | 'dot';
+  type?: 'moss' | 'bark' | 'leaf' | 'dot';
+  src?: string;
   top?: string;
   bottom?: string;
   left?: string;
@@ -12,10 +13,17 @@ interface Props {
   zIndex?: string;
   className?: string;
   animate?: boolean;
+  animationType?: 'float' | 'slide-in';
+  delay?: string;
+  filter?: string;
+  slideX?: string;
+  slideY?: string;
+  rotation?: string;
 }
 
 const {
   type,
+  src,
   top,
   bottom,
   left,
@@ -26,18 +34,29 @@ const {
   opacity = "opacity-100",
   zIndex = "z-10",
   className = "",
-  animate = true
+  animate = true,
+  animationType = 'float',
+  delay = "0s",
+  filter,
+  slideX = "0px",
+  slideY = "0px",
+  rotation = "0deg"
 } = Astro.props;
 
 const positionStyles = {
   top,
   bottom,
   left,
-  right
+  right,
+  animationDelay: delay,
+  filter,
+  '--slide-x': slideX,
+  '--slide-y': slideY,
+  '--initial-rotate': rotation
 };
 
 // Colors based on type for placeholders
-const typeColors = {
+const typeColors: Record<string, string> = {
   moss: "bg-brand-lime",
   bark: "bg-amber-900",
   leaf: "bg-brand-dark",
@@ -46,23 +65,35 @@ const typeColors = {
 ---
 
 <div 
-  class={`absolute ${size} ${blur} ${rotate} ${opacity} ${zIndex} ${animate ? 'animate-float' : ''} pointer-events-none ${className}`}
+  class={`absolute ${size} ${blur} ${rotate} ${opacity} ${zIndex} ${animate ? (animationType === 'float' ? 'animate-float' : 'slide-in-element') : ''} pointer-events-none ${className}`}
   style={positionStyles}
 >
-  <div class={`w-full h-full rounded-full mix-blend-multiply ${typeColors[type] || 'bg-brand-lime'} group-hover:scale-110 transition-transform duration-500`}>
-    {/* 
-      In real version:
-      <Image src={assets[type]} alt="" class="w-full h-full object-contain" />
-    */}
-  </div>
+  {src ? (
+    <img src={src} alt="" class="w-full h-full object-contain" />
+  ) : (
+    <div class={`w-full h-full rounded-full mix-blend-multiply ${typeColors[type || 'moss']} group-hover:scale-110 transition-transform duration-500`}>
+    </div>
+  )}
 </div>
 
 <style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(var(--tw-rotate)); }
-    50% { transform: translateY(-10px) rotate(calc(var(--tw-rotate) + 2deg)); }
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translate(var(--slide-x, 0), var(--slide-y, 0)) rotate(var(--initial-rotate, 0deg));
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0) rotate(var(--initial-rotate, 0deg));
+    }
   }
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+
+  .slide-in-element {
+    opacity: 0;
+    --initial-rotate: 0deg;
+  }
+
+  :global(.active) .slide-in-element {
+    animation: slide-in 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
 </style>
