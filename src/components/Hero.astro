@@ -14,7 +14,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 ---
 
 <section
-  class="relative z-[1] h-[calc(100svh-25px)] flex flex-col justify-start bg-brand-cream/30 pt-16 pb-0 md:pt-24 rounded-b-[25px]"
+  class="relative z-[1] h-[calc(100svh-25px)] flex flex-col justify-start bg-brand-cream/30 pt-16 pb-0 md:pt-24 rounded-b-[25px] overflow-hidden"
 >
   {/* Background Image - Clipped by rounded corners */}
   <div
@@ -110,10 +110,10 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
   </div>
 
   <div
-    class="container mx-auto px-4 relative z-20 flex flex-col items-center text-center mt-12"
+    class="container mx-auto px-4 relative z-20 flex flex-col items-center text-center mt-8 md:mt-14"
   >
     <div
-      class="inline-flex items-center gap-2 px-[12px] py-[6px] rounded-full bg-[#00401E] border-[0.8px] border-[#00401E] mb-6 slide-up shadow-[0_8px_25px_rgba(0,64,30,0.25)]"
+      class="inline-flex items-center gap-2 px-[12px] py-[6px] rounded-full bg-[#00401E] border-[0.8px] border-[#00401E] mb-3 md:mb-6 slide-down shadow-[0_8px_25px_rgba(0,64,30,0.25)]"
     >
       <img
         src="/images/star_2b50.webp"
@@ -127,7 +127,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     </div>
 
     <h1
-      class="text-[32px] md:text-5xl lg:text-7xl font-heading text-brand-dark mb-6 leading-[1.2] max-w-lg mx-auto slide-up"
+      class="text-[32px] md:text-5xl lg:text-7xl font-heading text-brand-dark mb-3 md:mb-6 leading-[1.2] max-w-lg mx-auto slide-up"
     >
       <span class="relative inline-block">
         КРЕАТИВНІ
@@ -190,13 +190,13 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     /* Founders photo - Aligned to bottom, Clipped by rounded corners, Shifted 10px left */
   }
   <div
-    class="relative w-full max-w-[340px] md:max-w-md mx-auto px-4 slide-up mt-auto left-[-10px] rounded-b-[25px] overflow-hidden"
+    class="hero-photo relative w-full max-w-[340px] md:max-w-md lg:max-w-lg mx-auto px-4 slide-up left-[-10px] flex-1 min-h-0 overflow-hidden"
   >
     <div class="relative flex justify-center items-end h-full">
       <img
         src="/images/Daria-with-flower.webp"
         alt="Даша - засновник Floralab"
-        class="w-full h-auto object-contain relative z-20 block translate-y-[10px]"
+        class="w-full h-auto max-h-full object-contain relative z-20 block translate-y-[10px]"
       />
       {/* Decorative Blur behind Daria */}
       <div
@@ -215,6 +215,17 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
   }
 
   .slide-up.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slide-down {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .slide-down.active {
     opacity: 1;
     transform: translateY(0);
   }
@@ -262,6 +273,13 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       transform: translateY(2px);
     }
   }
+
+  /* Hide Daria photo on very short viewports */
+  @media (max-height: 480px) {
+    .hero-photo {
+      display: none;
+    }
+  }
 </style>
 
 <script>
@@ -284,7 +302,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     );
 
     document
-      .querySelectorAll(".slide-up")
+      .querySelectorAll(".slide-up, .slide-down")
       .forEach((el) => observer.observe(el));
   });
 </script>

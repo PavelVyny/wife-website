@@ -33,37 +33,47 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
 ---
 
 {/* Outer wrapper: animation target — ribbon + card slide together */}
-<div class={`card-reveal-wrapper relative ${className}`}>
-
+<div class="card-reveal-wrapper relative">
   {/* Ribbon badge — inside wrapper so it slides with the card */}
-  {showRibbon && (
-    <div class="absolute top-0 right-0 z-40 w-[110px] h-[110px] overflow-hidden pointer-events-none" style="scale: 1.18;">
-      {/* Corner fold squares */}
+  {
+    showRibbon && (
       <div
-        class="absolute bottom-0 right-0 w-[8px] h-[10px]"
-        style={`background: ${ribbonShadowColor}; box-shadow: -101px -102px 0px 0px ${ribbonShadowColor};`}
+        class="absolute top-0 right-0 z-40 w-[110px] h-[110px] overflow-hidden pointer-events-none"
+        style="scale: 1.17;"
       >
-      </div>
-      {/* Diagonal ribbon band */}
-      <div class="absolute flex items-center justify-center" style="width: 136.5px; height: 136.5px; left: -2.63px; top: -23.84px;">
-        <div class="rotate-45">
-          <div class="flex items-center justify-center h-[28px] w-[165px]" style={`background: ${ribbonBg}; box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1);`}>
-            <span class="font-heading text-white text-[11px] text-center tracking-[1.1px] leading-[24px]">
-              {ribbonText}
-            </span>
+        {/* Corner fold squares */}
+        <div
+          class="absolute bottom-0 right-0 w-[8px] h-[10px]"
+          style={`background: ${ribbonShadowColor}; box-shadow: -101px -102px 0px 0px ${ribbonShadowColor};`}
+        />
+        {/* Diagonal ribbon band */}
+        <div
+          class="absolute flex items-center justify-center"
+          style="width: 136.5px; height: 136.5px; left: -2.63px; top: -23.84px;"
+        >
+          <div class="rotate-45">
+            <div
+              class="flex items-center justify-center h-[28px] w-[165px]"
+              style={`background: ${ribbonBg}; box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.1);`}
+            >
+              <span class="font-heading text-white text-[11px] text-center tracking-[1.1px] leading-[24px]">
+                {ribbonText}
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  )}
+    )
+  }
 
   {/* Card body — overflow-hidden for rounded bg */}
-  <div class="rounded-[40px] overflow-hidden">
+  <div class={`rounded-[40px] overflow-hidden ${className}`}>
     {/* Inner wrapper handles grayscale for coming soon */}
-    <div class={`masterclass-card relative ${comingSoonClass}`}>
-
+    <div class={`masterclass-card relative ${comingSoonClass}`} style="min-height: inherit;">
       {/* Background image (no blur — matching original site) */}
-      <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-[40px]">
+      <div
+        class="absolute inset-0 pointer-events-none overflow-hidden rounded-[40px]"
+      >
         <img
           src={bgImage}
           alt=""
@@ -92,26 +102,30 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
 
         {/* Details button */}
         <div class="mt-[21px] mb-[10px]">
-          {isComingSoon ? (
-            <span
-              class="inline-flex items-center justify-center px-[25px] py-[12px] bg-gray-400 text-white rounded-full font-heading text-[22px] leading-[24px] cursor-not-allowed"
-              style="box-shadow: 0 10px 25px rgba(0,0,0,0.1);"
-            >
-              Деталі
-            </span>
-          ) : (
-            <a
-              href={link}
-              class="inline-flex items-center justify-center px-[25px] py-[12px] bg-[#7cab06] text-white rounded-full font-heading text-[22px] leading-[24px] hover:bg-[#6d9a05] hover:scale-105 active:scale-95 transition-all"
-              style="box-shadow: 0 10px 25px rgba(124, 171, 6, 0.25);"
-            >
-              Деталі
-            </a>
-          )}
+          {
+            isComingSoon ? (
+              <span
+                class="inline-flex items-center justify-center px-[25px] py-[12px] bg-gray-400 text-white rounded-full font-heading text-[22px] leading-[24px] cursor-not-allowed"
+                style="box-shadow: 0 10px 25px rgba(0,0,0,0.1);"
+              >
+                Деталі
+              </span>
+            ) : (
+              <a
+                href={link}
+                class="inline-flex items-center justify-center px-[25px] py-[12px] bg-[#7cab06] text-white rounded-full font-heading text-[22px] leading-[24px] hover:bg-[#6d9a05] hover:scale-105 active:scale-95 transition-all"
+                style="box-shadow: 0 10px 25px rgba(124, 171, 6, 0.25);"
+              >
+                Деталі
+              </a>
+            )
+          }
         </div>
 
         {/* Product image — fades in + scales up when it enters viewport */}
-        <div class="flex items-center justify-center px-4 mt-[20px] product-image-wrapper">
+        <div
+          class="flex items-center justify-center px-4 mt-[20px] product-image-wrapper"
+        >
           <img
             src={image}
             alt={imageAlt}
@@ -161,7 +175,9 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
   .product-image-scale {
     transform: scale(0.8);
     opacity: 0.5;
-    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition:
+      transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   .product-image-scale.product-rotated {
     transform: scale(0.8) rotate(-23deg);
@@ -210,51 +226,60 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
     // === Card slide observer ===
     // Uses @keyframes animation (not CSS transition) so it always plays,
     // even for cards already in viewport on page load
-    const wrappers = document.querySelectorAll<HTMLElement>('.card-reveal-wrapper:not(.visible)');
+    const wrappers = document.querySelectorAll<HTMLElement>(
+      ".card-reveal-wrapper:not(.visible)",
+    );
     if (wrappers.length > 0) {
       const cardObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const wrapper = entry.target as HTMLElement;
-              const allWrappers = document.querySelectorAll('.card-reveal-wrapper');
+              const allWrappers = document.querySelectorAll(
+                ".card-reveal-wrapper",
+              );
               const index = Array.from(allWrappers).indexOf(wrapper);
 
-              setTimeout(() => {
-                wrapper.classList.add('visible');
-              }, 100 + index * 120);
+              setTimeout(
+                () => {
+                  wrapper.classList.add("visible");
+                },
+                100 + index * 120,
+              );
 
               cardObserver.unobserve(wrapper);
             }
           });
         },
-        { threshold: 0, rootMargin: '0px 0px -100px 0px' }
+        { threshold: 0, rootMargin: "0px 0px -100px 0px" },
       );
       wrappers.forEach((w) => cardObserver.observe(w));
     }
 
     // === Product image observer ===
     // Triggers as soon as the image's own edge enters the viewport — fade + scale start together
-    const images = document.querySelectorAll<HTMLElement>('.product-image-scale:not(.image-visible)');
+    const images = document.querySelectorAll<HTMLElement>(
+      ".product-image-scale:not(.image-visible)",
+    );
     if (images.length > 0) {
       const imageObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('image-visible');
+              entry.target.classList.add("image-visible");
               imageObserver.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0, rootMargin: '0px 0px -100px 0px' }
+        { threshold: 0, rootMargin: "0px 0px -100px 0px" },
       );
       images.forEach((img: HTMLElement) => imageObserver.observe(img));
     }
   }
 
-  document.addEventListener('astro:page-load', initCardAnimations);
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCardAnimations);
+  document.addEventListener("astro:page-load", initCardAnimations);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCardAnimations);
   } else {
     initCardAnimations();
   }
