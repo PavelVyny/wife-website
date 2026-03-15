@@ -4,37 +4,90 @@ import Navigation from '../components/Navigation.astro';
 import Hero from '../components/Hero.astro';
 import MasterclassCard from '../components/MasterclassCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import BotanicalElement from '../components/BotanicalElement.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Floralab Education — Онлайн-навчання флористиці">
 	<Navigation />
 	<main>
-		<Hero 
+		<Hero
 			title="КРЕАТИВНІ МАЙСТЕР-КЛАСИ ВІД FLORALAB"
 			subtitle="Практичні онлайн майстер-класи для кожного, хто хоче зануритися у світ природи та ручної роботи"
 			ctaText="Доступні навчання"
 			ctaLink="#courses"
 			imageAlt="Daria from Floralab"
 		/>
-		
-		<section id="courses" class="py-24 bg-white overflow-hidden">
-			<div class="container mx-auto px-4 flex flex-col items-center">
-				<SectionHeader mainTitle="ДОСТУПНІ" accentTitle="МАЙСТЕР-КЛАСИ" />
-				
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto mt-8">
-					<MasterclassCard 
-						title="Створення флораріуму в скляній вазі"
-						subtitle="Станьте частиною чарівного світу природи"
+
+		{/* ===== SECTION HEADER BANNER ===== */}
+		<section class="bg-white px-[19.25px] pt-[10px] pb-[30px]">
+			<img
+				src="/images/masterclass/section-header-banner.webp"
+				alt="Доступні Майстер-Класи"
+				class="w-full h-auto"
+				loading="lazy"
+			/>
+		</section>
+
+		{/* ===== COURSES / MASTERCLASSES SECTION ===== */}
+		<section id="courses" class="relative bg-white overflow-hidden">
+			<div class="relative z-10 px-0 flex flex-col items-center gap-[20px]">
+
+				{/* Card 1: Florarium — no badge */}
+				<div class="relative w-full px-[9.75px]">
+					<MasterclassCard
+						title="Створення флораріуму<br/>в скляній вазі"
 						link="/stvorennya-florariumu"
-					/>
-					<MasterclassCard 
-						title="Створення картини зі стабілізованих рослин"
-						subtitle="Створіть свій вічнозелений шедевр"
-						link="/kartini-zi-stabilizovanih-roslin"
-						isNew={true}
-					/>
+						image="/images/masterclass/florarium-product.webp"
+						imageAlt="Флораріум у скляній вазі з мохом та мініатюрними деревами"
+						bgImage="/images/masterclass/bg/florarium-bg.webp"
+						className="min-h-[515px]"
+					>
+						{/* Decorative elements for card 1 */}
+						<img src="/images/masterclass/decor-small-leaf.webp" alt="" class="decor-fade absolute left-[31px] bottom-[145px] w-[34px] h-[32px] z-20 pointer-events-none" loading="lazy" />
+						<img src="/images/masterclass/decor-leaf-2.webp" alt="" class="decor-fade absolute right-[12.5px] bottom-[121px] w-[29px] h-[29px] z-20 pointer-events-none" style="transition-delay: 0.2s;" loading="lazy" />
+						<img src="/images/masterclass/decor-pot-2.webp" alt="" class="decor-fade absolute right-[54.5px] bottom-[18px] w-[120px] h-[137px] z-20 pointer-events-none" style="transition-delay: 0.3s;" loading="lazy" />
+						<img src="/images/masterclass/decor-moss-blur.webp" alt="" class="decor-fade absolute right-[43.5px] bottom-[219px] w-[86px] h-[89px] z-20 pointer-events-none" style="filter: blur(3.95px); transition-delay: 0.15s;" loading="lazy" />
+					</MasterclassCard>
 				</div>
+
+				{/* Card 2: Stabilized plants picture — НОВИНКА */}
+				<div class="relative w-full px-[9.75px]">
+					<MasterclassCard
+						title="Створення картини<br/>зі стаблізованих рослин"
+						link="/kartini-zi-stabilizovanih-roslin"
+						image="/images/masterclass/stabilized-art-product-2.webp"
+						imageAlt="Картина зі стабілізованих рослин на дерев'яній основі"
+						bgImage="/images/masterclass/bg/stabilized-art-bg.webp"
+						isNew={true}
+						rotateImage={true}
+						className="min-h-[525px]"
+					>
+						{/* Decorative elements for card 2 */}
+						<img src="/images/masterclass/decor-fern-2.webp" alt="" class="decor-fade absolute right-[2.5px] bottom-[289px] w-[77px] h-[65px] z-20 pointer-events-none" loading="lazy" />
+						<img src="/images/masterclass/decor-small-moss.webp" alt="" class="decor-fade absolute left-[23px] bottom-[160px] w-[35px] h-[34px] z-20 pointer-events-none" style="transition-delay: 0.2s;" loading="lazy" />
+						<img src="/images/masterclass/decor-moss-ball.webp" alt="" class="decor-fade absolute right-[15.5px] bottom-[61px] w-[122px] h-[110px] z-20 pointer-events-none" style="filter: blur(4px); transition-delay: 0.3s;" loading="lazy" />
+					</MasterclassCard>
+				</div>
+
+				{/* Card 3: Wreath — СКОРО (coming soon, grayed out) */}
+				<div class="relative w-full px-[9.75px]">
+					<MasterclassCard
+						title="Створення вінку<br/>зі стаблізованих рослин"
+						link="/stvorennya-vinku"
+						image="/images/masterclass/wreath-product-2.webp"
+						imageAlt="Вінок зі стабілізованих рослин"
+						bgImage="/images/masterclass/bg/wreath-bg.webp"
+						isComingSoon={true}
+						rotateImage={true}
+						className="min-h-[571px]"
+					>
+						{/* Decorative elements for card 3 */}
+						<img src="/images/masterclass/decor-leaf-3.webp" alt="" class="decor-fade absolute left-[269px] bottom-[333px] w-[62px] h-[62px] z-20 pointer-events-none" loading="lazy" />
+						<img src="/images/masterclass/decor-branch-1.webp" alt="" class="decor-fade absolute right-[198.5px] bottom-[61px] w-[122px] h-[122px] z-20 pointer-events-none" style="transition-delay: 0.2s;" loading="lazy" />
+					</MasterclassCard>
+				</div>
+
 			</div>
 		</section>
 
