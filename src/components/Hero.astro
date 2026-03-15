@@ -1,6 +1,6 @@
 ---
-import Navigation from './Navigation.astro';
-import BotanicalElement from './BotanicalElement.astro';
+import Navigation from "./Navigation.astro";
+import BotanicalElement from "./BotanicalElement.astro";
 
 interface Props {
   title: string;
@@ -13,21 +13,32 @@ interface Props {
 const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 ---
 
-<section class="relative h-[calc(100svh-25px)] flex flex-col justify-start bg-brand-cream/30 pt-16 pb-0 md:pt-24 rounded-b-[25px] slide-up">
-  {/* Background Image - Starts below header */}
-  <div class="absolute inset-x-0 top-16 bottom-0 z-0 text-brand-dark/30">
-    <img src="/images/hero-bg-moss.webp" alt="" class="w-full h-full object-cover" />
+<section
+  class="relative h-[calc(100svh-25px)] flex flex-col justify-start bg-brand-cream/30 pt-16 pb-0 md:pt-24 rounded-b-[25px] slide-up"
+>
+  {/* Background Image - Clipped by rounded corners */}
+  <div
+    class="absolute inset-x-0 top-16 bottom-0 z-0 text-brand-dark/30 rounded-b-[25px] overflow-hidden"
+  >
+    <img
+      src="/images/hero-bg-moss.webp"
+      alt=""
+      class="w-full h-full object-cover"
+    />
   </div>
 
-  {/* Floating Decorative Elements */}
-  <div id="hero-deco-container" class="absolute inset-x-0 top-0 bottom-0 z-10 pointer-events-none">
+  {/* Floating Decorative Elements - Not clipped, allowing bleed */}
+  <div
+    id="hero-deco-container"
+    class="absolute inset-x-0 top-0 bottom-0 z-10 pointer-events-none"
+  >
     {/* Top Left: Moss (blurred) - Slides from top-left edge */}
-    <BotanicalElement 
-      src="/images/moss-small-1.webp" 
-      top="15%" 
-      left="7%" 
-      size="w-[35px] h-auto" 
-      rotation="-131deg" 
+    <BotanicalElement
+      src="/images/moss-small-1.webp"
+      top="15%"
+      left="7%"
+      size="w-[35px] h-auto"
+      rotation="-131deg"
       opacity="opacity-80"
       filter="brightness(103%) contrast(100%) saturate(71%) blur(4px) hue-rotate(0deg)"
       animationType="slide-in"
@@ -35,42 +46,45 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       slideX="-120px"
       slideY="-100px"
     />
-    
+
     {/* Top Right: Wood - Slides from top-right edge */}
-    <BotanicalElement 
-      src="/images/wood-1.webp" 
-      top="16%" 
-      right="2%" 
-      size="w-[67px] h-auto" 
-      rotation="0deg" 
+    <BotanicalElement
+      src="/images/wood-1.webp"
+      top="16%"
+      right="2%"
+      size="w-[67px] h-auto"
+      rotation="0deg"
       opacity="opacity-95"
       animationType="slide-in"
       delay="0.05s"
       slideX="100px"
       slideY="-80px"
     />
-    
+
     {/* Bottom Left: Cookie - Slides from left edge */}
-    <BotanicalElement 
-      src="/images/cookie-1.webp" 
-      top="50%" 
-      left="10%" 
-      size="w-[41px] h-auto" 
-      rotation="15deg" 
+    <BotanicalElement
+      src="/images/cookie-1.webp"
+      top="50%"
+      left="10%"
+      size="w-[41px] h-auto"
+      rotation="15deg"
       opacity="opacity-100"
       animationType="slide-in"
       delay="0.05s"
       slideX="-80px"
       slideY="20px"
+      filter="brightness(100%) contrast(100%) saturate(75%) blur(0) hue-rotate(0deg)"
     />
-    
-    {/* Bottom Left Large Moss: Slides from bottom-left corner */}
-    <BotanicalElement 
-      src="/images/moss-small-2.webp" 
-      bottom="-7%" 
-      left="8%" 
-      size="w-[127px] h-auto" 
-      rotation="-10deg" 
+
+    {
+      /* Bottom Left Large Moss: Slides from bottom-left corner - Allowed to bleed out */
+    }
+    <BotanicalElement
+      src="/images/moss-small-2.webp"
+      bottom="-7%"
+      left="8%"
+      size="w-[127px] h-auto"
+      rotation="-10deg"
       opacity="opacity-90"
       filter="brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg)"
       animationType="slide-in"
@@ -78,15 +92,15 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       slideX="-60px"
       slideY="100px"
     />
-    
+
     {/* Bottom Right: Moss - Slides from bottom-right edge */}
-    <BotanicalElement 
-      src="/images/moss-small-1.webp" 
-      bottom="33%" 
-      right="9%" 
-      size="w-[49px] h-auto" 
+    <BotanicalElement
+      src="/images/moss-small-1.webp"
+      bottom="33%"
+      right="9%"
+      size="w-[49px] h-auto"
       blur="blur-none"
-      rotation="5deg" 
+      rotation="5deg"
       opacity="opacity-80"
       animationType="slide-in"
       delay="0.15s"
@@ -94,71 +108,101 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       slideY="60px"
     />
   </div>
-  
-  <div class="container mx-auto px-4 relative z-20 flex flex-col items-center text-center mt-12">
-    <div class="inline-flex items-center gap-2 px-[12px] py-[6px] rounded-full bg-[#00401E] border-[0.8px] border-[#00401E] mb-6 slide-up shadow-[0_8px_25px_rgba(0,64,30,0.25)]">
-      <img src="/images/star_2b50.webp" alt="Star" class="w-[14px] h-[14px] object-contain" />
-      <span class="text-[14px] font-heading font-medium tracking-[0.4px] text-white leading-[1.4]">Онлайн навчання</span>
+
+  <div
+    class="container mx-auto px-4 relative z-20 flex flex-col items-center text-center mt-12"
+  >
+    <div
+      class="inline-flex items-center gap-2 px-[12px] py-[6px] rounded-full bg-[#00401E] border-[0.8px] border-[#00401E] mb-6 slide-up shadow-[0_8px_25px_rgba(0,64,30,0.25)]"
+    >
+      <img
+        src="/images/star_2b50.webp"
+        alt="Star"
+        class="w-[14px] h-[14px] object-contain"
+      />
+      <span
+        class="text-[14px] font-heading font-medium tracking-[0.4px] text-white leading-[1.4]"
+        >Онлайн навчання</span
+      >
     </div>
 
-    <h1 class="text-[32px] md:text-5xl lg:text-7xl font-heading text-brand-dark mb-6 leading-[1.2] max-w-lg mx-auto slide-up">
+    <h1
+      class="text-[32px] md:text-5xl lg:text-7xl font-heading text-brand-dark mb-6 leading-[1.2] max-w-lg mx-auto slide-up"
+    >
       <span class="relative inline-block">
         КРЕАТИВНІ
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-1 md:-bottom-2 left-0 w-full h-8 md:h-12 wpr-highlight-underline-zigzag overflow-visible" preserveAspectRatio="none">
-          <path 
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 500 150"
+          class="absolute -bottom-1 md:-bottom-2 left-0 w-full h-8 md:h-12 wpr-highlight-underline-zigzag overflow-visible"
+          preserveAspectRatio="none"
+        >
+          <path
             class="zigzag-path"
             d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"
-            fill="none" 
-            stroke="#7fac00" 
-            stroke-width="14" 
-            stroke-linecap="round"
-          ></path>
+            fill="none"
+            stroke="#7fac00"
+            stroke-width="18"
+            stroke-linecap="round"></path>
         </svg>
-      </span> 
+      </span>
       <br /> МАЙСТЕР-КЛАСИ ВІД FLORALAB
     </h1>
 
-    <p class="text-[16px] md:text-xl font-heading font-medium text-black leading-[1.4] tracking-[-0.027em] max-w-2xl mx-auto mb-4 slide-up px-4">
-      Практичні онлайн <br class="md:hidden" /> майстер-класи для кожного, хто <br class="md:hidden" /> хоче зануритися у світ природи <br class="md:hidden" /> та ручної роботи
+    <p
+      class="text-[16px] md:text-xl font-heading font-medium text-black leading-[1.4] tracking-[-0.027em] max-w-2xl mx-auto mb-2 slide-up px-4"
+    >
+      Практичні онлайн <br class="md:hidden" /> майстер-класи для кожного, хто <br
+        class="md:hidden"
+      /> хоче зануритися у світ природи <br class="md:hidden" /> та ручної роботи
     </p>
 
     <div class="flex flex-col items-center slide-up">
       <div class="relative w-11 h-10 flex flex-col items-center justify-center">
         {/* Animated Arrows */}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class="w-full h-full text-brand-dark/30">
-          <path 
-            class="arrow-1" 
-            d="M12 16L20 21L28 16" 
-            fill="none" 
-            stroke="currentColor" 
-            stroke-width="2.8" 
-            stroke-linecap="round" 
-            stroke-linejoin="round"
-          />
-          <path 
-            class="arrow-2" 
-            d="M12 25L20 30L28 25" 
-            fill="none" 
-            stroke="currentColor" 
-            stroke-width="2.8" 
-            stroke-linecap="round" 
-            stroke-linejoin="round"
-          />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 40 40"
+          class="w-full h-full text-brand-dark/30"
+        >
+          <path
+            class="arrow-1"
+            d="M12 16L20 21L28 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+          <path
+            class="arrow-2"
+            d="M12 25L20 30L28 25"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
         </svg>
       </div>
     </div>
   </div>
 
-  {/* Founders photo - Aligned to bottom */}
-  <div class="relative w-full max-w-[340px] md:max-w-md mx-auto px-4 slide-up mt-auto">
+  {
+    /* Founders photo - Aligned to bottom, Clipped by rounded corners, Shifted 10px left */
+  }
+  <div
+    class="relative w-full max-w-[340px] md:max-w-md mx-auto px-4 slide-up mt-auto left-[-10px] top-[10px] rounded-b-[25px] overflow-hidden"
+  >
     <div class="relative flex justify-center items-end h-full">
-      <img 
-        src="/images/Daria-with-flower.webp" 
-        alt="Даша - засновник Floralab" 
+      <img
+        src="/images/Daria-with-flower.webp"
+        alt="Даша - засновник Floralab"
         class="w-full h-auto object-contain relative z-20 block"
       />
       {/* Decorative Blur behind Daria */}
-      <div class="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-48 h-48 bg-brand-pink/15 blur-[60px] rounded-full z-10"></div>
+      <div
+        class="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-48 h-48 bg-brand-pink/15 blur-[60px] rounded-full z-10"
+      >
+      </div>
     </div>
   </div>
 </section>
@@ -169,7 +213,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     transform: translateY(20px);
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  
+
   .slide-up.active {
     opacity: 1;
     transform: translateY(0);
@@ -180,17 +224,20 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     stroke-dasharray: 1200;
     stroke-dashoffset: 1200;
     opacity: 0;
-    transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
-    transition-delay: 0s; /* Start immediately with title */
+    transition:
+      stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease-out;
+    transition-delay: 0.5s; /* Start half second after title */
   }
-  
+
   .slide-up.active .zigzag-path {
     stroke-dashoffset: 0;
     opacity: 1;
   }
 
   /* Double Arrow Animation */
-  .arrow-1, .arrow-2 {
+  .arrow-1,
+  .arrow-2 {
     opacity: 0;
     animation: arrow-blink 2.4s infinite;
   }
@@ -200,35 +247,46 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
   }
 
   @keyframes arrow-blink {
-    0% { 
-      opacity: 0; 
-      transform: translateY(-4px); 
+    0% {
+      opacity: 0;
+      transform: translateY(-4px);
     }
-    20%, 50% { 
-      opacity: 1; 
-      transform: translateY(0); 
+    20%,
+    50% {
+      opacity: 1;
+      transform: translateY(0);
     }
-    80%, 100% { 
-      opacity: 0; 
-      transform: translateY(2px); 
+    80%,
+    100% {
+      opacity: 0;
+      transform: translateY(2px);
     }
   }
 </style>
 
 <script>
   // Simple intersection observer for animations
-  document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          if (entry.target.tagName === 'SECTION') {
-            document.getElementById('hero-deco-container')?.classList.add('active');
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            if (entry.target.tagName === "SECTION") {
+              setTimeout(() => {
+                document
+                  .getElementById("hero-deco-container")
+                  ?.classList.add("active");
+              }, 100);
+            }
           }
-        }
-      });
-    }, { threshold: 0.1 });
+        });
+      },
+      { threshold: 0.1 },
+    );
 
-    document.querySelectorAll('.slide-up').forEach(el => observer.observe(el));
+    document
+      .querySelectorAll(".slide-up")
+      .forEach((el) => observer.observe(el));
   });
 </script>
