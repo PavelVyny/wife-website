@@ -14,7 +14,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 ---
 
 <section
-  class="relative z-[1] h-[calc(100svh-25px)] flex flex-col justify-start bg-brand-cream/30 pt-16 pb-0 md:pt-24 rounded-b-[25px] slide-up"
+  class="relative z-[1] h-[calc(100svh-25px)] flex flex-col justify-start bg-brand-cream/30 pt-16 pb-0 md:pt-24 rounded-b-[25px]"
 >
   {/* Background Image - Clipped by rounded corners */}
   <div
@@ -211,7 +211,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
   .slide-up {
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .slide-up.active {
@@ -267,18 +267,16 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 <script>
   // Simple intersection observer for animations
   document.addEventListener("DOMContentLoaded", () => {
+    // Trigger botanical elements immediately (section is always full-size now)
+    setTimeout(() => {
+      document.getElementById("hero-deco-container")?.classList.add("active");
+    }, 100);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("active");
-            if (entry.target.tagName === "SECTION") {
-              setTimeout(() => {
-                document
-                  .getElementById("hero-deco-container")
-                  ?.classList.add("active");
-              }, 100);
-            }
           }
         });
       },

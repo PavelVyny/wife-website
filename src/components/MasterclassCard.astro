@@ -138,14 +138,23 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
   }
 
   /* ===== Card slide-in — animation on the wrapper so ribbon travels with card ===== */
+  @keyframes card-slide-in {
+    from {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
   .card-reveal-wrapper {
-    transform: translateX(-50px);
     opacity: 0;
-    transition: transform 0.5s ease-out, opacity 0.4s ease-out;
+    transform: translateX(-50px);
   }
   .card-reveal-wrapper.visible {
-    transform: translateX(0);
-    opacity: 1;
+    animation: card-slide-in 0.5s ease-out forwards;
   }
 
   /* ===== Product image: fade-in (50%→100%) + scale, triggered when image enters viewport ===== */
@@ -179,7 +188,7 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
     .card-reveal-wrapper {
       transform: none;
       opacity: 1;
-      transition: none;
+      animation: none;
     }
     .product-image-scale {
       transform: none !important;
@@ -199,10 +208,8 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
 <script>
   function initCardAnimations() {
     // === Card slide observer ===
-    // Small delay ensures the browser has painted the initial (hidden) state
-    // before we start observing — fixes the first card not animating on page load
-    requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
+    // Uses @keyframes animation (not CSS transition) so it always plays,
+    // even for cards already in viewport on page load
     const wrappers = document.querySelectorAll<HTMLElement>('.card-reveal-wrapper:not(.visible)');
     if (wrappers.length > 0) {
       const cardObserver = new IntersectionObserver(
@@ -215,19 +222,16 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
 
               setTimeout(() => {
                 wrapper.classList.add('visible');
-              }, index * 120);
+              }, 100 + index * 120);
 
               cardObserver.unobserve(wrapper);
             }
           });
         },
-        { threshold: 0 }
+        { threshold: 0, rootMargin: '0px 0px -100px 0px' }
       );
       wrappers.forEach((w) => cardObserver.observe(w));
     }
-
-    }); // end double rAF
-    }); // end double rAF
 
     // === Product image observer ===
     // Triggers as soon as the image's own edge enters the viewport — fade + scale start together
@@ -242,9 +246,9 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
             }
           });
         },
-        { threshold: 0 }
+        { threshold: 0, rootMargin: '0px 0px -100px 0px' }
       );
-      images.forEach((img) => imageObserver.observe(img));
+      images.forEach((img: HTMLElement) => imageObserver.observe(img));
     }
   }
 
