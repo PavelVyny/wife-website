@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "project": "wife-website",
+  "executor_model": "sonnet",
+  "verifier_model": "sonnet",
+  "commit_docs": true,
+  "parallelization": true,
+  "branching_strategy": "none",
+  "milestone_version": "v1.0",
+  "milestone_name": "milestone",
+  "milestone_slug": "milestone"
+}
