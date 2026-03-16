@@ -36,7 +36,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       src="/images/moss-small-1.webp"
       top="15%"
       left="7%"
-      size="w-[35px] h-auto"
+      size="w-[35px] md:w-[55px] lg:w-[70px] h-auto"
       rotation="-131deg"
       opacity="opacity-80"
       filter="brightness(103%) contrast(100%) saturate(71%) blur(4px) hue-rotate(0deg)"
@@ -51,7 +51,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       src="/images/wood-1.webp"
       top="16%"
       right="2%"
-      size="w-[67px] h-auto"
+      size="w-[67px] md:w-[90px] lg:w-[110px] h-auto"
       rotation="0deg"
       opacity="opacity-95"
       animationType="slide-in"
@@ -65,7 +65,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       src="/images/cookie-1.webp"
       top="50%"
       left="10%"
-      size="w-[41px] h-auto"
+      size="w-[41px] md:w-[60px] lg:w-[75px] h-auto"
       rotation="15deg"
       opacity="opacity-100"
       animationType="slide-in"
@@ -82,7 +82,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       src="/images/moss-small-2.webp"
       bottom="-7%"
       left="8%"
-      size="w-[127px] h-auto"
+      size="w-[127px] md:w-[170px] lg:w-[210px] h-auto"
       rotation="-10deg"
       opacity="opacity-90"
       filter="brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg)"
@@ -97,7 +97,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       src="/images/moss-small-1.webp"
       bottom="33%"
       right="9%"
-      size="w-[49px] h-auto"
+      size="w-[49px] md:w-[70px] lg:w-[85px] h-auto"
       blur="blur-none"
       rotation="5deg"
       opacity="opacity-80"
@@ -159,6 +159,14 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
           class="md:hidden"
         /> хоче зануритися у світ природи <br class="md:hidden" /> та ручної роботи
       </p>
+
+      <a
+        href={ctaLink}
+        class="hidden md:inline-flex items-center justify-center px-[28px] py-[13px] bg-[#7cab06] text-white rounded-full font-heading text-[18px] leading-[24px] hover:bg-[#6d9a05] hover:scale-105 active:scale-95 transition-all slide-up mt-4 mb-2"
+        style="box-shadow: 0 10px 25px rgba(124, 171, 6, 0.25);"
+      >
+        {ctaText}
+      </a>
 
       {/* Arrows — mobile only */}
       <div class="flex flex-col items-center slide-up md:hidden">
