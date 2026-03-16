@@ -15,15 +15,15 @@
   </div>
 
   {/* ===== Content: text + photo — stacked on mobile, side-by-side on desktop ===== */}
-  <div class="md:flex md:items-start md:gap-8 lg:gap-12 max-w-[1280px] mx-auto md:px-8 px-[24px]">
+  <div class="md:flex md:items-start md:gap-8 lg:gap-16 max-w-[1280px] mx-auto px-[24px] md:px-8">
 
     {/* ===== Bio text ===== */}
-    <div class="px-[24px] pt-[20px] pb-[6px] relative overflow-hidden md:w-1/2 md:px-0 md:pt-[28px]">
-      <p class="font-heading text-[22px] leading-[30px] text-black mb-[18px] md:text-[26px] md:leading-[34px] reveal">Привіт! Мене звати Даша.</p>
-      <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify reveal">Я — майстер-флорист, ботанік і викладач, засновниця майстерні декору Floralab.</p>
-      <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify reveal">Моя пристрасть — створення флораріумів і композицій із сукулентів. Уже багато років я поєдную творчість і науку, допомагаючи людям відчути красу живої природи у власному просторі.</p>
-      <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify reveal">У Floralab я проводжу майстер-класи, ділюся знаннями, консультую з догляду за рослинами та створюю унікальні рослинні композиції.</p>
-      <p class="text-[16px] leading-[25px] text-black md:text-[17px] md:leading-[27px] md:text-justify reveal">Я постійно вчуся новому й із задоволенням передаю досвід іншим.</p>
+    <div class="pt-[20px] pb-[6px] relative overflow-hidden md:w-1/2 md:pt-[28px] lg:pt-[36px]">
+      <p class="font-heading text-[22px] leading-[30px] text-black mb-[18px] md:text-[26px] md:leading-[34px] lg:text-[28px] lg:leading-[36px] reveal">Привіт! Мене звати Даша.</p>
+      <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify lg:text-[18px] lg:leading-[28px] reveal">Я — майстер-флорист, ботанік і викладач, засновниця майстерні декору Floralab.</p>
+      <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify lg:text-[18px] lg:leading-[28px] reveal">Моя пристрасть — створення флораріумів і композицій із сукулентів. Уже багато років я поєдную творчість і науку, допомагаючи людям відчути красу живої природи у власному просторі.</p>
+      <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify lg:text-[18px] lg:leading-[28px] reveal">У Floralab я проводжу майстер-класи, ділюся знаннями, консультую з догляду за рослинами та створюю унікальні рослинні композиції.</p>
+      <p class="text-[16px] leading-[25px] text-black md:text-[17px] md:leading-[27px] md:text-justify lg:text-[18px] lg:leading-[28px] reveal">Я постійно вчуся новому й із задоволенням передаю досвід іншим.</p>
     </div>
 
     {/* ===== Photo (badges ФЛОРИСТ + ДАР'Я КОВАЛЬОВА are part of the image) ===== */}
@@ -62,7 +62,13 @@
   @media (min-width: 768px) {
     .about-section {
       background-position: 0 80px;
-      background-size: min(50%, 720px);
+      background-size: min(50%, 680px);
+    }
+  }
+  @media (min-width: 1024px) {
+    .about-section {
+      background-position: 0 60px;
+      background-size: min(45%, 720px);
     }
   }
 
