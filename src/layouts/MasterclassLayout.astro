@@ -1,0 +1,33 @@
+---
+import Layout from './Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPath: string;
+  purchaseUrl: string;
+  purchaseLabel?: string;
+}
+
+const {
+  title,
+  description,
+  currentPath,
+  purchaseUrl,
+  purchaseLabel = "Придбати навчання"
+} = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <Navigation
+    currentPath={currentPath}
+    purchaseUrl={purchaseUrl}
+    purchaseLabel={purchaseLabel}
+  />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</Layout>
