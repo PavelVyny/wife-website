@@ -33,7 +33,7 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
 ---
 
 {/* Outer wrapper: animation target — ribbon + card slide together */}
-<div class="card-reveal-wrapper relative">
+<div class="card-reveal-wrapper relative h-full">
   {/* Ribbon badge — inside wrapper so it slides with the card */}
   {
     showRibbon && (
@@ -67,9 +67,9 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
   }
 
   {/* Card body — overflow-hidden for rounded bg */}
-  <div class={`rounded-[40px] overflow-hidden ${className}`}>
+  <div class={`rounded-[40px] overflow-hidden h-full ${className}`}>
     {/* Inner wrapper handles grayscale for coming soon */}
-    <div class={`masterclass-card relative ${comingSoonClass}`} style="min-height: inherit;">
+    <div class={`masterclass-card relative h-full ${comingSoonClass}`}>
       {/* Background image (no blur — matching original site) */}
       <div
         class="absolute inset-0 pointer-events-none overflow-hidden rounded-[40px]"
@@ -91,11 +91,11 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
       </div>
 
       {/* Content layer — fills card height, image pushed to bottom */}
-      <div class="relative z-10 flex flex-col items-center pt-[53px] pb-[50px]">
+      <div class="relative z-10 flex flex-col items-center pt-[53px] pb-[50px] h-full">
         {/* Title */}
         <div class="text-center px-6">
           <h3
-            class="font-heading text-[25px] leading-[35px] tracking-[-0.375px] text-black"
+            class="font-heading text-[25px] leading-[35px] tracking-[-0.375px] text-black md:text-[28px] md:leading-[38px] lg:text-[25px] lg:leading-[35px] xl:text-[30px] xl:leading-[40px]"
             set:html={title}
           />
         </div>
@@ -124,15 +124,15 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
 
         {/* Product image — fades in + scales up when it enters viewport */}
         <div
-          class="flex items-center justify-center px-4 mt-[20px] product-image-wrapper"
+          class="flex items-center justify-center px-4 mt-auto pt-[20px] product-image-wrapper"
         >
           <img
             src={image}
             alt={imageAlt}
             class={`h-auto object-contain product-image-scale ${rotateImage ? "product-rotated" : ""}`}
             style={rotateImage
-              ? `width: ${imageWidth ?? "250px"}; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));`
-              : `width: ${imageWidth ?? "240px"}; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));`}
+              ? `width: ${imageWidth ?? "250px"}; max-width: 85%; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));`
+              : `width: ${imageWidth ?? "240px"}; max-width: 85%; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));`}
             loading="lazy"
           />
         </div>

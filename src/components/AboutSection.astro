@@ -5,7 +5,7 @@
 <section id="about" class="bg-white about-section">
 
   {/* ===== Header banner ===== */}
-  <div class="px-[19.25px] pt-[20px] pb-[6px] reveal">
+  <div class="px-[19.25px] pt-[20px] pb-[6px] max-w-[1440px] mx-auto md:px-8 reveal">
     <img
       src="/images/about/header-banner.webp"
       alt="Інформація про мене"
@@ -14,33 +14,38 @@
     />
   </div>
 
-  {/* ===== Bio text ===== */}
-  <div class="px-[24px] pt-[20px] pb-[6px] relative overflow-hidden">
-    <p class="font-heading text-[22px] leading-[30px] text-black mb-[18px] reveal">Привіт! Мене звати Даша.</p>
-    <p class="text-[16px] leading-[25px] text-black mb-[16px] reveal">Я — майстер-флорист, ботанік і викладач, засновниця майстерні декору Floralab.</p>
-    <p class="text-[16px] leading-[25px] text-black mb-[16px] reveal">Моя пристрасть — створення флораріумів і композицій із сукулентів. Уже багато років я поєдную творчість і науку, допомагаючи людям відчути красу живої природи у власному просторі.</p>
-    <p class="text-[16px] leading-[25px] text-black mb-[16px] reveal">У Floralab я проводжу майстер-класи, ділюся знаннями, консультую з догляду за рослинами та створюю унікальні рослинні композиції.</p>
-    <p class="text-[16px] leading-[25px] text-black reveal">Я постійно вчуся новому й із задоволенням передаю досвід іншим.</p>
-  </div>
+  {/* ===== Content: text + photo — stacked on mobile, side-by-side on desktop ===== */}
+  <div class="md:flex md:items-start md:gap-8 lg:gap-12 max-w-[1440px] mx-auto md:px-8 px-[24px]">
 
-  {/* ===== Photo (badges ФЛОРИСТ + ДАР'Я КОВАЛЬОВА are part of the image) ===== */}
-  <div class="relative mt-[14px] pb-[6px] reveal">
+    {/* ===== Bio text ===== */}
+    <div class="px-[24px] pt-[20px] pb-[6px] relative overflow-hidden md:w-1/2 md:px-0 md:pt-[28px]">
+      <p class="font-heading text-[22px] leading-[30px] text-black mb-[18px] md:text-[26px] md:leading-[34px] reveal">Привіт! Мене звати Даша.</p>
+      <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify reveal">Я — майстер-флорист, ботанік і викладач, засновниця майстерні декору Floralab.</p>
+      <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify reveal">Моя пристрасть — створення флораріумів і композицій із сукулентів. Уже багато років я поєдную творчість і науку, допомагаючи людям відчути красу живої природи у власному просторі.</p>
+      <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify reveal">У Floralab я проводжу майстер-класи, ділюся знаннями, консультую з догляду за рослинами та створюю унікальні рослинні композиції.</p>
+      <p class="text-[16px] leading-[25px] text-black md:text-[17px] md:leading-[27px] md:text-justify reveal">Я постійно вчуся новому й із задоволенням передаю досвід іншим.</p>
+    </div>
 
-    {/* Cookie ball — slides in from left edge */}
-    <img
-      src="/images/about/decor-ball.webp"
-      alt=""
-      class="absolute left-[18px] top-[45px] w-[44px] z-10 pointer-events-none cookie-decor"
-      loading="lazy"
-    />
+    {/* ===== Photo (badges ФЛОРИСТ + ДАР'Я КОВАЛЬОВА are part of the image) ===== */}
+    <div class="relative mt-[14px] pb-[6px] md:w-1/2 md:mt-[20px] reveal">
 
-    <div class="px-[9.75px]">
+      {/* Cookie ball — slides in from left edge */}
       <img
-        src="/images/about/daria-photo.webp"
-        alt="Дар'я Ковальова — флорист"
-        class="w-full h-auto"
+        src="/images/about/decor-ball.webp"
+        alt=""
+        class="absolute left-[18px] top-[45px] w-[44px] z-10 pointer-events-none cookie-decor md:left-[10px]"
         loading="lazy"
       />
+
+      <div class="px-[9.75px] md:px-0">
+        <img
+          src="/images/about/daria-photo.webp"
+          alt="Дар'я Ковальова — флорист"
+          class="w-full h-auto"
+          loading="lazy"
+        />
+      </div>
+
     </div>
 
   </div>
@@ -53,6 +58,12 @@
     background-position: 0 130px;
     background-size: contain;
     background-repeat: no-repeat;
+  }
+  @media (min-width: 768px) {
+    .about-section {
+      background-position: 0 80px;
+      background-size: min(50%, 720px);
+    }
   }
 
   .cookie-decor {

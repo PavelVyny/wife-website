@@ -2,10 +2,15 @@
 // Footer — matches live floralabeducation.com.ua design
 ---
 
-<footer class="bg-white pt-[36px] pb-[24px]">
+<footer class="bg-white pt-[36px] pb-[24px] md:pt-[48px] md:pb-[32px]">
 
-  {/* Logo — centered */}
-  <div class="flex justify-center mb-[22px] reveal">
+  {/* Desktop: Row 1 — logo+tagline+socials LEFT, legal links RIGHT */}
+  <div class="md:flex md:items-start md:justify-between max-w-[1440px] mx-auto px-4 md:px-8 md:mb-[36px]">
+
+  {/* Logo + Tagline + Socials — left column on desktop */}
+  <div class="md:flex md:flex-col md:items-start md:max-w-[420px]">
+  {/* Logo — centered on mobile, left on desktop */}
+  <div class="flex justify-center md:justify-start mb-[22px] reveal">
     <a href="/" aria-label="Floralab Education — на головну">
       <img
         src="/images/logo-flora-edu.webp"
@@ -17,12 +22,46 @@
   </div>
 
   {/* Tagline */}
-  <p class="text-center px-[30px] font-heading text-[16px] leading-[24px] text-[#003B1C] mb-[28px] reveal">
+  <p class="text-center md:text-left px-[30px] md:px-0 font-heading text-[16px] leading-[24px] text-[#003B1C] mb-[28px] md:mb-[20px] reveal">
     Створи унікальний декор з живих сукулентів та стабілізованих рослин з експертом-флористом!
   </p>
 
-  {/* Social icons */}
-  <div class="flex justify-center items-center gap-[32px] mb-[30px]">
+  {/* Social icons — desktop (below tagline, matching original) */}
+  <div class="hidden md:flex items-center gap-[16px]">
+    <a href="https://t.me/kam4633" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="text-[#003B1C] hover:text-[#7cab06] transition-colors">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.7 8c-.12.56-.46.7-.93.44l-2.57-1.9-1.24 1.2c-.14.14-.25.25-.5.25l.18-2.6 4.7-4.24c.2-.18-.04-.28-.32-.1L7.46 14.55 4.93 13.8c-.56-.17-.57-.56.12-.83l8.95-3.45c.47-.17.88.11.64.28z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/floralab_ua" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-[#003B1C] hover:text-[#7cab06] transition-colors">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="mailto:floralab.ua.22@gmail.com" aria-label="Email" class="text-[#003B1C] hover:text-[#7cab06] transition-colors">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7" stroke-linecap="round"/></svg>
+    </a>
+  </div>
+  </div>
+
+  {/* Legal links — right column on desktop */}
+  <div class="hidden md:flex md:flex-col md:items-end md:gap-[12px] md:pt-[10px]">
+    <a
+      href="https://docs.google.com/document/d/1fSokEY-hCQs4vbwbCd7GScOrwMqMaho7p91Nfw0DzPw/edit?tab=t.0"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-heading text-[16px] text-[#003B1C] hover:text-[#7cab06] transition-colors"
+    >
+      Договір публічної оферти
+    </a>
+    <a
+      href="#"
+      class="font-heading text-[16px] text-[#003B1C] hover:text-[#7cab06] transition-colors"
+    >
+      Політика конфіденційності
+    </a>
+  </div>
+
+  </div>
+
+  {/* Social icons — mobile only */}
+  <div class="flex justify-center items-center gap-[32px] mb-[30px] md:hidden">
     {/* Telegram */}
     <a
       href="https://t.me/kam4633"
@@ -64,8 +103,8 @@
     </a>
   </div>
 
-  {/* Legal links */}
-  <div class="flex flex-col items-center gap-[12px] mb-[28px]">
+  {/* Legal links — mobile only */}
+  <div class="flex flex-col items-center gap-[12px] mb-[28px] md:hidden">
     <a
       href="https://docs.google.com/document/d/1fSokEY-hCQs4vbwbCd7GScOrwMqMaho7p91Nfw0DzPw/edit?tab=t.0"
       target="_blank"
@@ -83,10 +122,10 @@
   </div>
 
   {/* Divider */}
-  <div class="h-px bg-[#003B1C]/15 mx-[20px] mb-[24px]"></div>
+  <div class="h-px bg-[#003B1C]/15 mx-[20px] mb-[24px] max-w-[1440px] md:mx-auto"></div>
 
-  {/* Contact info */}
-  <div class="flex flex-col items-center gap-[10px] mb-[24px]">
+  {/* Contact info — mobile only */}
+  <div class="flex flex-col items-center gap-[10px] mb-[24px] md:hidden">
     <a
       href="mailto:floralab.ua.22@gmail.com"
       class="flex items-center gap-[10px] text-[#003B1C] text-[15px] hover:text-[#7cab06] transition-colors"
@@ -108,9 +147,32 @@
     </a>
   </div>
 
-  {/* Copyright */}
-  <p class="text-center text-[13px] text-[#003B1C]/50 leading-[20px]">
-    © Floralab Education 2024.<br/>Усі права захищені.
-  </p>
+  {/* Bottom row: copyright LEFT, contacts RIGHT on desktop */}
+  <div class="max-w-[1440px] mx-auto px-4 md:px-8 md:flex md:items-center md:justify-between">
+    <p class="text-center md:text-left text-[13px] text-[#003B1C]/50 leading-[20px]">
+      © Floralab Education 2024.<br/>Усі права захищені.
+    </p>
+    <div class="hidden md:flex md:items-center md:gap-[24px]">
+      <a
+        href="mailto:floralab.ua.22@gmail.com"
+        class="flex items-center gap-[8px] text-[#003B1C] text-[14px] hover:text-[#7cab06] transition-colors"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M2 7l10 7 10-7" stroke-linecap="round"/>
+        </svg>
+        floralab.ua.22@gmail.com
+      </a>
+      <a
+        href="tel:+380667006272"
+        class="flex items-center gap-[8px] text-[#003B1C] text-[14px] hover:text-[#7cab06] transition-colors"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-1z" stroke-linejoin="round"/>
+        </svg>
+        +38 (066) 700 62 72
+      </a>
+    </div>
+  </div>
 
 </footer>

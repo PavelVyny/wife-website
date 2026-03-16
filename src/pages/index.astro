@@ -23,7 +23,7 @@ import FaqSection from '../components/FaqSection.astro';
 		/>
 
 		{/* ===== SECTION HEADER BANNER ===== */}
-		<section class="bg-white px-[19.25px] pt-[6px] pb-[20px] reveal">
+		<section class="bg-white px-[9.75px] pt-[6px] pb-[20px] md:px-8 max-w-[1440px] mx-auto reveal">
 			<img
 				src="/images/masterclass/section-header-banner.webp"
 				alt="Доступні Майстер-Класи"
@@ -34,17 +34,17 @@ import FaqSection from '../components/FaqSection.astro';
 
 		{/* ===== COURSES / MASTERCLASSES SECTION ===== */}
 		<section id="courses" class="relative bg-white overflow-hidden">
-			<div class="relative z-10 px-0 flex flex-col items-center gap-[20px]">
+			<div class="relative z-10 px-[9.75px] md:px-8 max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-[20px] md:gap-[30px]">
 
 				{/* Card 1: Florarium — no badge */}
-				<div class="relative w-full px-[9.75px]">
+				<div class="relative w-full">
 					<MasterclassCard
 						title="Створення флораріуму<br/>в скляній вазі"
 						link="/stvorennya-florariumu"
 						image="/images/masterclass/florarium-product.webp"
 						imageAlt="Флораріум у скляній вазі з мохом та мініатюрними деревами"
 						bgImage="/images/masterclass/bg/florarium-bg.webp"
-						className="min-h-[515px]"
+						className="min-h-[515px] lg:min-h-0"
 					>
 						{/* Decorative elements for card 1 */}
 						<img src="/images/masterclass/decor-small-leaf.webp" alt="" class="decor-fade absolute left-[31px] bottom-[145px] w-[34px] h-[32px] z-20 pointer-events-none" loading="lazy" />
@@ -55,7 +55,7 @@ import FaqSection from '../components/FaqSection.astro';
 				</div>
 
 				{/* Card 2: Stabilized plants picture — НОВИНКА */}
-				<div class="relative w-full px-[9.75px]">
+				<div class="relative w-full">
 					<MasterclassCard
 						title="Створення картини<br/>зі стаблізованих рослин"
 						link="/kartini-zi-stabilizovanih-roslin"
@@ -64,7 +64,7 @@ import FaqSection from '../components/FaqSection.astro';
 						bgImage="/images/masterclass/bg/stabilized-art-bg.webp"
 						isNew={true}
 						rotateImage={true}
-						className="min-h-[525px]"
+						className="min-h-[525px] lg:min-h-0"
 					>
 						{/* Decorative elements for card 2 */}
 						<img src="/images/masterclass/decor-fern-2.webp" alt="" class="decor-fade absolute right-[2.5px] bottom-[289px] w-[77px] h-[65px] z-20 pointer-events-none" loading="lazy" />
@@ -74,7 +74,7 @@ import FaqSection from '../components/FaqSection.astro';
 				</div>
 
 				{/* Card 3: Wreath — СКОРО (coming soon, grayed out) */}
-				<div class="relative w-full px-[9.75px]">
+				<div class="relative w-full">
 					<MasterclassCard
 						title="Створення вінку<br/>зі стаблізованих рослин"
 						link="/stvorennya-vinku"
@@ -84,11 +84,11 @@ import FaqSection from '../components/FaqSection.astro';
 						isComingSoon={true}
 						rotateImage={true}
 						imageWidth="270px"
-						className="min-h-[571px]"
+						className="min-h-[571px] lg:min-h-0"
 					>
 						{/* Decorative elements for card 3 */}
-						<img src="/images/masterclass/decor-leaf-3.webp" alt="" class="decor-fade absolute left-[269px] bottom-[333px] w-[62px] h-[62px] z-20 pointer-events-none" loading="lazy" />
-						<img src="/images/masterclass/decor-branch-1.webp" alt="" class="decor-fade absolute right-[198.5px] bottom-[61px] w-[122px] h-[122px] z-20 pointer-events-none" style="transition-delay: 0.2s;" loading="lazy" />
+						<img src="/images/masterclass/decor-leaf-3.webp" alt="" class="decor-fade absolute left-[70%] bottom-[333px] w-[62px] h-[62px] z-20 pointer-events-none" loading="lazy" />
+						<img src="/images/masterclass/decor-branch-1.webp" alt="" class="decor-fade absolute right-[40%] bottom-[61px] w-[122px] h-[122px] z-20 pointer-events-none" style="transition-delay: 0.2s;" loading="lazy" />
 					</MasterclassCard>
 				</div>
 

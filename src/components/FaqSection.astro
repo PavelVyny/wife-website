@@ -60,10 +60,10 @@ const faqs = [
 ];
 ---
 
-<section id="faq" class="bg-white px-[9.75px] pt-[6px] pb-[24px]">
+<section id="faq" class="bg-white px-[9.75px] pt-[6px] pb-[24px] md:px-8">
 
   {/* Header banner */}
-  <div class="mb-[14px] px-[9.75px] reveal">
+  <div class="mb-[14px] px-[9.75px] md:px-0 max-w-[1440px] mx-auto reveal">
     <img
       src="/images/faq/header-banner.webp"
       alt="Питання та відповіді"
@@ -73,7 +73,7 @@ const faqs = [
   </div>
 
   {/* Accordion items */}
-  <div class="flex flex-col gap-[12px]">
+  <div class="flex flex-col gap-[12px] max-w-[1440px] mx-auto">
     {faqs.map((faq, i) => (
       <div class="faq-item rounded-[28px] overflow-hidden reveal" data-index={i}>
         {/* Question row — clickable */}
@@ -81,7 +81,7 @@ const faqs = [
           class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#003B1C] text-left cursor-pointer"
           aria-expanded="false"
         >
-          <span class="font-heading text-[18px] leading-[26px] text-white">{faq.q}</span>
+          <span class="font-heading text-[18px] leading-[26px] md:text-[20px] md:leading-[28px] text-white">{faq.q}</span>
           <div class="faq-icon flex-shrink-0 w-[40px] h-[40px] rounded-full bg-[#7cab06] flex items-center justify-center transition-all duration-300">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 8H12.5" stroke="#003B1C" stroke-width="2" stroke-linecap="round"/>

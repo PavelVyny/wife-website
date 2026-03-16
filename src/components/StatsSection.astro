@@ -42,8 +42,8 @@ const stats = [
 ];
 ---
 
-<section id="stats" class="bg-white px-[9.75px] pt-[6px] pb-[20px]">
-  <div class="flex flex-col gap-[16px]">
+<section id="stats" class="bg-white px-[9.75px] pt-[6px] pb-[20px] md:px-8">
+  <div class="flex flex-col gap-[16px] md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-[20px] max-w-[1440px] mx-auto">
     {stats.map((stat, i) => (
       <div class="relative overflow-hidden rounded-[40px] reveal">
 
@@ -78,7 +78,7 @@ const stats = [
           {/* Number */}
           <div class="relative z-10 text-center">
             <span
-              class="font-heading font-bold text-[49px] text-white stat-counter"
+              class="font-heading font-bold text-[49px] md:text-[42px] lg:text-[49px] text-white stat-counter"
               data-target={stat.target}
               data-suffix={stat.suffix}
               data-duration={stat.target >= 1000 ? '1200' : '1800'}
@@ -89,7 +89,7 @@ const stats = [
 
           {/* Label */}
           <div class="relative z-10 text-center">
-            <p class="font-heading text-[23px] leading-[32.2px] tracking-[-0.345px] text-white whitespace-pre-line">
+            <p class="font-heading text-[23px] leading-[32.2px] tracking-[-0.345px] text-white whitespace-pre-line md:text-[19px] md:leading-[27px] lg:text-[22px] lg:leading-[30px]">
               {stat.label}
             </p>
           </div>
