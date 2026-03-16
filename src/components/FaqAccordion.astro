@@ -3,44 +3,124 @@ interface Props {
   faqs: Array<{ q: string; a: string[] }>;
 }
 const { faqs } = Astro.props;
+const half = Math.ceil(faqs.length / 2);
 ---
 
-<div class="flex flex-col gap-[12px] max-w-[1280px] mx-auto">
-  {faqs.map((faq, i) => (
-    <div class="faq-item rounded-[28px] overflow-hidden reveal" data-index={i}>
-      {/* Question row — clickable */}
-      <button
-        class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#003B1C] text-left cursor-pointer"
-        aria-expanded="false"
-      >
-        <span class="font-heading text-[18px] leading-[26px] md:text-[20px] md:leading-[28px] text-white">{faq.q}</span>
-        <div class="faq-icon flex-shrink-0 w-[40px] h-[40px] rounded-full bg-[#7cab06] flex items-center justify-center transition-all duration-300">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 8H12.5" stroke="#003B1C" stroke-width="2" stroke-linecap="round"/>
-            <path d="M9 4L13 8L9 12" stroke="#003B1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </button>
+{/* Single flat list on mobile, 2-column grid on lg+ */}
+<div class="faq-accordion max-w-[1280px] mx-auto">
+  {/* Mobile: single column — hidden on lg+ */}
+  <div class="flex flex-col gap-[12px] lg:hidden">
+    {faqs.map((faq, i) => (
+      <div class="faq-item rounded-[28px] overflow-hidden reveal" data-index={i}>
+        {/* Question row — clickable */}
+        <button
+          class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#003B1C] text-left cursor-pointer"
+          aria-expanded="false"
+        >
+          <span class="font-heading text-[18px] leading-[26px] md:text-[20px] md:leading-[28px] text-white">{faq.q}</span>
+          <div class="faq-icon flex-shrink-0 w-[40px] h-[40px] rounded-full bg-[#7cab06] flex items-center justify-center transition-all duration-300">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8H12.5" stroke="#003B1C" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 4L13 8L9 12" stroke="#003B1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </button>
 
-      {/* Answer — hidden by default */}
-      <div class="faq-answer bg-[#003B1C] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
-        <div class="px-[20px] pb-[22px] pt-[2px]">
-          {faq.a.length === 1 ? (
-            <p class="text-white/85 text-[15px] leading-[24px]">{faq.a[0]}</p>
-          ) : (
-            <ul class="list-none space-y-[10px]">
-              {faq.a.map(line => (
-                <li class="text-white/85 text-[15px] leading-[24px] flex gap-[8px]">
-                  <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
-          )}
+        {/* Answer — hidden by default */}
+        <div class="faq-answer bg-[#003B1C] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
+          <div class="px-[20px] pb-[22px] pt-[2px]">
+            {faq.a.length === 1 ? (
+              <p class="text-white/85 text-[15px] leading-[24px]">{faq.a[0]}</p>
+            ) : (
+              <ul class="list-none space-y-[10px]">
+                {faq.a.map(line => (
+                  <li class="text-white/85 text-[15px] leading-[24px] flex gap-[8px]">
+                    <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
+    ))}
+  </div>
+
+  {/* Desktop: 2-column layout — hidden below lg */}
+  <div class="hidden lg:grid lg:grid-cols-2 lg:gap-x-[24px] lg:items-start">
+    {/* Left column: first half */}
+    <div class="flex flex-col gap-[12px]">
+      {faqs.slice(0, half).map((faq, i) => (
+        <div class="faq-item rounded-[28px] overflow-hidden reveal" data-index={i}>
+          <button
+            class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#003B1C] text-left cursor-pointer"
+            aria-expanded="false"
+          >
+            <span class="font-heading text-[18px] leading-[26px] lg:text-[20px] lg:leading-[28px] text-white">{faq.q}</span>
+            <div class="faq-icon flex-shrink-0 w-[40px] h-[40px] rounded-full bg-[#7cab06] flex items-center justify-center transition-all duration-300">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 8H12.5" stroke="#003B1C" stroke-width="2" stroke-linecap="round"/>
+                <path d="M9 4L13 8L9 12" stroke="#003B1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer bg-[#003B1C] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
+            <div class="px-[20px] pb-[22px] pt-[2px]">
+              {faq.a.length === 1 ? (
+                <p class="text-white/85 text-[15px] leading-[24px]">{faq.a[0]}</p>
+              ) : (
+                <ul class="list-none space-y-[10px]">
+                  {faq.a.map(line => (
+                    <li class="text-white/85 text-[15px] leading-[24px] flex gap-[8px]">
+                      <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
-  ))}
+
+    {/* Right column: second half */}
+    <div class="flex flex-col gap-[12px]">
+      {faqs.slice(half).map((faq, i) => (
+        <div class="faq-item rounded-[28px] overflow-hidden reveal" data-index={half + i}>
+          <button
+            class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#003B1C] text-left cursor-pointer"
+            aria-expanded="false"
+          >
+            <span class="font-heading text-[18px] leading-[26px] lg:text-[20px] lg:leading-[28px] text-white">{faq.q}</span>
+            <div class="faq-icon flex-shrink-0 w-[40px] h-[40px] rounded-full bg-[#7cab06] flex items-center justify-center transition-all duration-300">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 8H12.5" stroke="#003B1C" stroke-width="2" stroke-linecap="round"/>
+                <path d="M9 4L13 8L9 12" stroke="#003B1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer bg-[#003B1C] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
+            <div class="px-[20px] pb-[22px] pt-[2px]">
+              {faq.a.length === 1 ? (
+                <p class="text-white/85 text-[15px] leading-[24px]">{faq.a[0]}</p>
+              ) : (
+                <ul class="list-none space-y-[10px]">
+                  {faq.a.map(line => (
+                    <li class="text-white/85 text-[15px] leading-[24px] flex gap-[8px]">
+                      <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+                      <span>{line}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
 </div>
 
 <style>
@@ -55,37 +135,42 @@ const { faqs } = Astro.props;
 
 <script>
   function initFaq() {
-    const items = document.querySelectorAll<HTMLElement>('.faq-item');
+    // Query all accordion containers (both mobile and desktop variants)
+    const containers = document.querySelectorAll<HTMLElement>('.faq-accordion');
 
-    items.forEach(item => {
-      const trigger = item.querySelector<HTMLButtonElement>('.faq-trigger');
-      const answer = item.querySelector<HTMLElement>('.faq-answer');
-      if (!trigger || !answer) return;
+    containers.forEach(container => {
+      const items = container.querySelectorAll<HTMLElement>('.faq-item');
 
-      trigger.addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
+      items.forEach(item => {
+        const trigger = item.querySelector<HTMLButtonElement>('.faq-trigger');
+        const answer = item.querySelector<HTMLElement>('.faq-answer');
+        if (!trigger || !answer) return;
 
-        // Close all others
-        items.forEach(other => {
-          if (other !== item) {
-            other.classList.remove('open');
-            const otherAnswer = other.querySelector<HTMLElement>('.faq-answer');
-            const otherTrigger = other.querySelector<HTMLButtonElement>('.faq-trigger');
-            if (otherAnswer) otherAnswer.style.maxHeight = '0';
-            if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        trigger.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+
+          // Close all others in this container
+          items.forEach(other => {
+            if (other !== item) {
+              other.classList.remove('open');
+              const otherAnswer = other.querySelector<HTMLElement>('.faq-answer');
+              const otherTrigger = other.querySelector<HTMLButtonElement>('.faq-trigger');
+              if (otherAnswer) otherAnswer.style.maxHeight = '0';
+              if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+            }
+          });
+
+          // Toggle this one
+          if (isOpen) {
+            item.classList.remove('open');
+            answer.style.maxHeight = '0';
+            trigger.setAttribute('aria-expanded', 'false');
+          } else {
+            item.classList.add('open');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            trigger.setAttribute('aria-expanded', 'true');
           }
         });
-
-        // Toggle this one
-        if (isOpen) {
-          item.classList.remove('open');
-          answer.style.maxHeight = '0';
-          trigger.setAttribute('aria-expanded', 'false');
-        } else {
-          item.classList.add('open');
-          answer.style.maxHeight = answer.scrollHeight + 'px';
-          trigger.setAttribute('aria-expanded', 'true');
-        }
       });
     });
   }
