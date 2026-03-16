@@ -1,9 +1,17 @@
 ---
 interface Props {
   className?: string;
+  currentPath?: string;
+  purchaseUrl?: string;
+  purchaseLabel?: string;
 }
 
-const { className = "" } = Astro.props;
+const { className = "", currentPath = "/", purchaseUrl, purchaseLabel = "Придбати навчання" } = Astro.props;
+
+function isActive(href: string): string {
+  if (href.startsWith('#')) return '';
+  return currentPath === href ? 'text-brand-lime font-bold' : '';
+}
 ---
 
 <header class={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-slate-100 ${className}`}>
@@ -20,9 +28,9 @@ const { className = "" } = Astro.props;
 
     <div class="hidden lg:flex items-center gap-8">
       <nav class="flex items-center gap-8">
-        <a href="/" class="text-sm font-medium text-brand-dark hover:text-brand-lime transition-colors">Головна</a>
-        <a href="/stvorennya-florariumu" class="text-sm font-medium text-brand-dark hover:text-brand-lime transition-colors">Створення флораріуму</a>
-        <a href="/kartini-zi-stabilizovanih-roslin" class="text-sm font-medium text-brand-dark hover:text-brand-lime transition-colors">Створення картини</a>
+        <a href="/" class={`text-sm font-medium hover:text-brand-lime transition-colors ${isActive('/') || 'text-brand-dark'}`}>Головна</a>
+        <a href="/stvorennya-florariumu" class={`text-sm font-medium hover:text-brand-lime transition-colors ${isActive('/stvorennya-florariumu') || 'text-brand-dark'}`}>Створення флораріуму</a>
+        <a href="/kartini-zi-stabilizovanih-roslin" class={`text-sm font-medium hover:text-brand-lime transition-colors ${isActive('/kartini-zi-stabilizovanih-roslin') || 'text-brand-dark'}`}>Створення картини</a>
         <a href="#about" class="text-sm font-medium text-brand-dark hover:text-brand-lime transition-colors">Про мене</a>
       </nav>
       <div class="flex items-center gap-4 ml-4">
@@ -48,19 +56,21 @@ const { className = "" } = Astro.props;
         </svg>
       </button>
     </div>
-    
+
     <div class="flex flex-col gap-6 text-left text-2xl font-heading text-brand-dark px-6 mt-8">
-      <a href="/" class="hover:text-brand-lime transition-colors py-2">Головна</a>
-      <a href="/stvorennya-florariumu" class="hover:text-brand-lime transition-colors py-2">Створення флораріуму</a>
-      <a href="/kartini-zi-stabilizovanih-roslin" class="hover:text-brand-lime transition-colors py-2">Створення картини</a>
+      <a href="/" class={`hover:text-brand-lime transition-colors py-2 ${isActive('/')}`}>Головна</a>
+      <a href="/stvorennya-florariumu" class={`hover:text-brand-lime transition-colors py-2 ${isActive('/stvorennya-florariumu')}`}>Створення флораріуму</a>
+      <a href="/kartini-zi-stabilizovanih-roslin" class={`hover:text-brand-lime transition-colors py-2 ${isActive('/kartini-zi-stabilizovanih-roslin')}`}>Створення картини</a>
       <a href="#about" class="hover:text-brand-lime transition-colors py-2">Про мене</a>
     </div>
-    
-    <div class="mt-12 px-6">
-      <button class="w-full py-4 bg-[#E63380] text-white rounded-full font-bold shadow-xl shadow-brand-pink/30 hover:scale-[1.02] transition-transform">
-        Придбати навчання
-      </button>
-    </div>
+
+    {purchaseUrl && (
+      <div class="mt-12 px-6">
+        <a href={purchaseUrl} class="block w-full py-4 bg-[#E63380] text-white rounded-full font-bold shadow-xl shadow-brand-pink/30 hover:scale-[1.02] transition-transform text-center">
+          {purchaseLabel}
+        </a>
+      </div>
+    )}
   </div>
 </header>
 
@@ -74,7 +84,7 @@ const { className = "" } = Astro.props;
       menu.classList.remove('-translate-x-full');
       document.body.style.overflow = 'hidden';
     });
-    
+
     close.addEventListener('click', () => {
       menu.classList.add('-translate-x-full');
       document.body.style.overflow = '';
@@ -87,6 +97,14 @@ const { className = "" } = Astro.props;
         menu.classList.add('-translate-x-full');
         document.body.style.overflow = '';
       });
+    });
+
+    // Reset mobile menu on resize to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) {
+        menu.classList.add('-translate-x-full');
+        document.body.style.overflow = '';
+      }
     });
   }
 </script>
