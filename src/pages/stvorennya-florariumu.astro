@@ -1,0 +1,143 @@
+---
+import MasterclassLayout from '../layouts/MasterclassLayout.astro';
+import ValueProps from '../components/ValueProps.astro';
+import InstructorSection from '../components/InstructorSection.astro';
+import PricingCta from '../components/PricingCta.astro';
+
+const valueCards = [
+  {
+    title: "Покрокові відеоуроки",
+    description: "Детальне відео з поясненнями кожного кроку — від вибору ґрунту та моху до фінального оформлення флораріуму.",
+    icon: "🎬",
+  },
+  {
+    title: "Список матеріалів",
+    description: "Отримаєте повний список необхідних матеріалів із посиланнями, де їх придбати в Україні.",
+    icon: "📋",
+  },
+  {
+    title: "Підтримка викладача",
+    description: "Маєте питання? Даша відповідає на запитання учнів через Instagram — підтримка впродовж усього навчання.",
+    icon: "💬",
+  },
+];
+---
+
+<MasterclassLayout
+  title="Створення флораріуму в скляній вазі — Floralab Education"
+  description="Покроковий онлайн майстер-клас зі створення живого флораріуму в скляній вазі. Дізнайтесь про вибір рослин, субстрату та догляд."
+  currentPath="/stvorennya-florariumu"
+  purchaseUrl="https://wayforpay.com/shop/floralab-florarium"
+  purchaseLabel="Придбати навчання"
+>
+
+  {/* ===== HERO ===== */}
+  <section class="relative bg-white pt-[96px] pb-[40px] md:pt-[112px] md:pb-[56px] lg:pt-[140px] lg:pb-[72px] overflow-hidden">
+    {/* Subtle background gradient */}
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(126,180,35,0.07) 0%, transparent 70%);"
+    />
+
+    <div class="relative z-10 max-w-[1280px] mx-auto px-[9.75px] md:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[64px] lg:items-center">
+
+        {/* Text column */}
+        <div class="mb-[40px] lg:mb-0">
+          <p class="font-heading text-[#7cab06] text-[14px] tracking-[2px] uppercase mb-[16px] reveal">
+            Онлайн майстер-клас
+          </p>
+          <h1 class="font-heading text-brand-dark text-[32px] md:text-[42px] lg:text-[52px] leading-[1.15] mb-[24px] reveal">
+            Створення флораріуму<br />в скляній вазі
+          </h1>
+          <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] mb-[32px] max-w-[540px] reveal">
+            Навчіться створювати живі мінітопіарії та флораріуми у скляних вазах — з мохом, сукулентами та декоративними каменями. Ідеально для початківців та любителів природи.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-[16px] reveal">
+            <a
+              href="#pricing"
+              class="inline-flex items-center justify-center px-[32px] py-[14px] bg-[#E63380] text-white rounded-full font-heading text-[18px] hover:scale-[1.02] transition-transform"
+              style="box-shadow: 0 10px 30px rgba(230,51,128,0.35);"
+            >
+              Придбати навчання
+            </a>
+            <a
+              href="#value-props"
+              class="inline-flex items-center justify-center px-[32px] py-[14px] border-2 border-brand-dark/20 text-brand-dark rounded-full font-heading text-[18px] hover:border-brand-dark/40 transition-colors"
+            >
+              Що включено
+            </a>
+          </div>
+        </div>
+
+        {/* Image column */}
+        <div class="flex items-center justify-center reveal">
+          <div class="relative w-full max-w-[480px] mx-auto">
+            {/* Background card */}
+            <div
+              class="absolute inset-[20px] rounded-[40px]"
+              style="background: linear-gradient(140deg, rgb(126,180,35) 0%, rgb(255,234,154) 100%); opacity: 0.15;"
+            />
+            <div
+              class="relative rounded-[40px] overflow-hidden"
+              style="background-image: url('/images/masterclass/bg/florarium-bg.webp'); background-size: cover; background-position: center; min-height: 420px;"
+            >
+              <img
+                src="/images/masterclass/florarium-product.webp"
+                alt="Флораріум у скляній вазі з мохом та мініатюрними деревами"
+                class="relative z-10 w-[240px] mx-auto block pt-[40px] pb-[20px]"
+                style="filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {/* ===== VALUE PROPS ===== */}
+  <ValueProps cards={valueCards} />
+
+  {/* ===== WHAT YOU LEARN ===== */}
+  <section class="bg-[#003B1C] px-[9.75px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+    <div class="max-w-[1280px] mx-auto">
+      <h2 class="font-heading text-white text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[32px] md:mb-[40px] reveal">
+        Що ви навчитесь
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[24px]">
+        {[
+          "Правильно обирати скляну ємність та підготовлювати її до посадки",
+          "Складати дренажний шар та субстрат для різних типів рослин",
+          "Розміщувати мох, сукуленти та декоративні камені в єдину композицію",
+          "Доглядати за флораріумом — полив, освітлення, температура",
+          "Створювати закриті та відкриті флораріуми різного типу",
+          "Комбінувати рослини за принципами сумісності та естетики",
+        ].map((item) => (
+          <div class="flex gap-[12px] items-start reveal">
+            <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <p class="text-white/85 text-[15px] leading-[24px]">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ===== INSTRUCTOR ===== */}
+  <InstructorSection />
+
+  {/* ===== PRICING ===== */}
+  <PricingCta
+    price="850 грн"
+    originalPrice="1200 грн"
+    ctaText="Придбати навчання"
+    purchaseUrl="https://wayforpay.com/shop/floralab-florarium"
+  />
+
+</MasterclassLayout>
