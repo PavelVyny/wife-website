@@ -125,6 +125,27 @@ const faqs = [
     </div>
   </section>
 
+  {/* ===== GALLERY ===== */}
+  <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+    <div class="max-w-[1280px] mx-auto">
+      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[28px] text-center reveal">
+        Роботи наших учнів
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-[12px] md:gap-[16px]">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <div class="rounded-[20px] overflow-hidden reveal">
+            <img
+              src={`/images/kartini-zi-stabilizovanih-roslin/gallery-${n}.webp`}
+              alt={`Картина зі стабілізованих рослин — приклад роботи ${n}`}
+              class="w-full aspect-square object-cover hover:scale-[1.05] transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   {/* ===== WHAT ARE STABILIZED PLANTS ===== */}
   <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
     <div class="max-w-[1280px] mx-auto">
