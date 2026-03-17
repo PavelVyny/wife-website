@@ -16,4 +16,6 @@
 ## Phase 03: Masterclass Pages
 | Plan | Name | Status | Plans | Summaries |
 |------|------|--------|-------|-----------|
+| 01   | Shared masterclass components (InstructorSection, ValueProps, PricingCta) | Complete | 1 | 0 |
+| 02   | InstructorSection image fix + masterclass pages verification | Complete | 1 | 1 |
 | 03   | Masterclass detail pages (florarium + stabilized art) | Complete | 1 | 1 |
