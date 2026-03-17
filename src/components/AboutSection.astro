@@ -4,8 +4,8 @@
 
 <section id="about" class="bg-white about-section">
 
-  {/* ===== Header banner ===== */}
-  <div class="px-[19.25px] pt-[20px] pb-[6px] max-w-[1280px] mx-auto md:px-8 reveal">
+  {/* ===== Mobile header banner (shown below md) ===== */}
+  <div class="px-[19.25px] pt-[20px] pb-[6px] max-w-[1280px] mx-auto md:hidden reveal">
     <img
       src="/images/about/header-banner.webp"
       alt="Інформація про мене"
@@ -17,8 +17,19 @@
   {/* ===== Content: text + photo — stacked on mobile, side-by-side on desktop ===== */}
   <div class="md:flex md:items-start md:gap-8 lg:gap-16 max-w-[1280px] mx-auto px-[24px] md:px-8">
 
-    {/* ===== Bio text ===== */}
+    {/* ===== Bio text (left column on desktop) ===== */}
     <div class="pt-[20px] pb-[6px] relative overflow-hidden md:w-1/2 md:pt-[28px] lg:pt-[36px]">
+
+      {/* Desktop header banner — inside left column */}
+      <div class="hidden md:block mb-4 reveal">
+        <img
+          src="/images/about/header-banner.webp"
+          alt="Інформація про мене"
+          class="w-full max-w-[680px] h-auto"
+          loading="lazy"
+        />
+      </div>
+
       <p class="font-heading text-[22px] leading-[30px] text-black mb-[18px] md:text-[26px] md:leading-[34px] lg:text-[28px] lg:leading-[36px] reveal">Привіт! Мене звати Даша.</p>
       <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify lg:text-[18px] lg:leading-[28px] reveal">Я — майстер-флорист, ботанік і викладач, засновниця майстерні декору Floralab.</p>
       <p class="text-[16px] leading-[25px] text-black mb-[16px] md:text-[17px] md:leading-[27px] md:text-justify lg:text-[18px] lg:leading-[28px] reveal">Моя пристрасть — створення флораріумів і композицій із сукулентів. Уже багато років я поєдную творчість і науку, допомагаючи людям відчути красу живої природи у власному просторі.</p>
@@ -33,7 +44,7 @@
       <img
         src="/images/about/decor-ball.webp"
         alt=""
-        class="absolute left-[18px] top-[45px] w-[44px] z-10 pointer-events-none cookie-decor md:left-[10px]"
+        class="absolute left-[18px] top-[45px] w-[44px] md:w-[64px] z-10 pointer-events-none cookie-decor md:left-[10px]"
         loading="lazy"
       />
 
@@ -61,14 +72,17 @@
   }
   @media (min-width: 768px) {
     .about-section {
-      background-position: 0 80px;
-      background-size: min(50%, 680px);
+      background-image: url('/images/about/about-bg-plants.webp');
+      background-position: -5% 60px;
+      background-size: 110%;
+      background-repeat: no-repeat;
+      opacity: 1;
     }
   }
   @media (min-width: 1024px) {
     .about-section {
-      background-position: 0 60px;
-      background-size: min(45%, 720px);
+      background-position: -5% 40px;
+      background-size: 110%;
     }
   }
 
