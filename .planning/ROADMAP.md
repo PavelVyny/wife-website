@@ -12,3 +12,8 @@
 |------|------|--------|-------|-----------|
 | 01   | Hero + Courses tablet/desktop | Complete | 1 | 1 |
 | 02   | About/Stats/FAQ desktop responsiveness | Complete | 1 | 1 |
+
+## Phase 03: Masterclass Pages
+| Plan | Name | Status | Plans | Summaries |
+|------|------|--------|-------|-----------|
+| 03   | Masterclass detail pages (florarium + stabilized art) | Complete | 1 | 1 |
