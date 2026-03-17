@@ -1,0 +1,46 @@
+---
+// PricingCta — pricing section with optional strikethrough price and pink Buy Now CTA
+// purchaseUrl links directly to WayForPay (same tab — no target="_blank")
+
+interface Props {
+  price: string;           // e.g. "0 грн"
+  originalPrice?: string;  // e.g. "1500 грн" — shown with strikethrough
+  ctaText: string;         // e.g. "Придбати навчання"
+  purchaseUrl: string;     // WayForPay payment URL
+}
+
+const { price, originalPrice, ctaText, purchaseUrl } = Astro.props;
+---
+
+<section id="pricing" class="bg-[#003B1C] px-[9.75px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+  <div class="max-w-[800px] mx-auto text-center">
+
+    <h2 class="font-heading text-white text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[24px] reveal">
+      Почніть навчання прямо зараз
+    </h2>
+
+    <div class="reveal">
+      <div class="mb-[16px]">
+        {originalPrice && (
+          <span class="text-white/50 line-through text-[20px] mr-[12px]">{originalPrice}</span>
+        )}
+        <span class="font-heading text-white text-[36px] md:text-[48px]">{price}</span>
+      </div>
+
+      <div class="space-y-[6px] mb-[24px]">
+        <p class="text-white/75 text-[15px] leading-[24px]">Доступ до відеоуроків не обмежений</p>
+        <p class="text-white/75 text-[15px] leading-[24px]">Майстер-клас доступний одразу після оплати</p>
+        <p class="text-white/75 text-[15px] leading-[24px]">Підтримка через Instagram</p>
+      </div>
+
+      <a
+        href={purchaseUrl}
+        class="inline-flex mt-[24px] px-[40px] py-[16px] bg-[#E63380] text-white rounded-full font-heading text-[20px] md:text-[22px] hover:scale-[1.02] transition-transform"
+        style="box-shadow: 0 10px 30px rgba(230,51,128,0.4);"
+      >
+        {ctaText}
+      </a>
+    </div>
+
+  </div>
+</section>
