@@ -1,120 +1,245 @@
 ---
 import MasterclassLayout from '../layouts/MasterclassLayout.astro';
-import ValueProps from '../components/ValueProps.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
 import InstructorSection from '../components/InstructorSection.astro';
+import ValueProps from '../components/ValueProps.astro';
 import PricingCta from '../components/PricingCta.astro';
+
+const PURCHASE_URL = 'https://secure.wayforpay.com/payment/sb10851d18b99';
 
 const valueCards = [
   {
-    title: "Покрокові відеоуроки",
-    description: "Детальне відео з поясненнями кожного кроку — від вибору ґрунту та моху до фінального оформлення флораріуму.",
-    icon: "🎬",
+    title: "Знання, які не знайти на YouTube",
+    description: "Перевірені секрети та підходи, напрацьовані роками практики — без здогадок та невдалих спроб.",
+    icon: "🎓",
   },
   {
-    title: "Список матеріалів",
-    description: "Отримаєте повний список необхідних матеріалів із посиланнями, де їх придбати в Україні.",
+    title: "Покроковий алгоритм",
+    description: "Повний покроковий супровід від вибору матеріалів та рослин до створення та догляду за флораріумом.",
     icon: "📋",
   },
   {
-    title: "Підтримка викладача",
-    description: "Маєте питання? Даша відповідає на запитання учнів через Instagram — підтримка впродовж усього навчання.",
-    icon: "💬",
+    title: "Економія часу та грошей",
+    description: "Вся потрібна інформація зібрана та структурована — не витрачайте час на пошуки та помилки.",
+    icon: "⏱️",
+  },
+];
+
+const faqs = [
+  {
+    q: 'Що я отримаю після проходження майстер-класу?',
+    a: [
+      'Ви створите свій унікальний флораріум, який прикрасить ваш дім або стане чудовим подарунком для близьких.',
+      'Дізнаєтеся, як правильно вибрати та закупити матеріали.',
+      'Отримаєте покрокові інструкції зі створення флораріуму.',
+      'Навчитеся доглядати за флораріумом, щоб він залишався гарним тривалий час.',
+      'Усі відео залишаються у вас у доступі, щоб ви могли працювати у своєму темпі.',
+    ],
+  },
+  {
+    q: 'Де проходить навчання?',
+    a: [
+      'Навчання проходить повністю онлайн: 4 відеоуроки у записі будуть розміщені на YouTube.',
+      'Ви отримаєте доступ до всіх матеріалів через Telegram-канал, що дуже зручно!',
+      'Ви можете дивитися уроки в будь-який час і з будь-якого пристрою.',
+    ],
+  },
+  {
+    q: 'Як можна оплатити майстер-клас?',
+    a: ['Оплату можна здійснити через банківський переказ на ФОП-рахунок.'],
+  },
+  {
+    q: 'Чи можу я навчатися, якщо ніколи не працював із рослинами?',
+    a: ['Так, майстер-клас розрахований навіть на початківців. Я все детально пояснюю у відео, тому вам не знадобляться попередні знання.'],
+  },
+  {
+    q: 'Скільки часу потрібно на створення флораріуму?',
+    a: [
+      'Ви можете працювати у своєму темпі. Для кожного уроку потрібно приблизно 30–60 хвилин, плюс час для закупівлі матеріалів.',
+      'Усі уроки доступні в записі, тому ви можете розподілити час так, як вам зручно.',
+    ],
+  },
+  {
+    q: 'Скільки коштує закупка матеріалів?',
+    a: [
+      'Вартість залежить від того, які матеріали ви оберете: який декор та елементи захочете додати, яку скляну вазу або форму виберете для флораріуму.',
+      'У середньому закупівля матеріалів для одного флораріуму обійдеться приблизно у 700–1000 грн.',
+      'При цьому частина матеріалів, як-от декор, залишиться, і ви зможете використовувати їх для наступних робіт.',
+    ],
+  },
+  {
+    q: 'Чи потрібно мати спеціальні інструменти або матеріали?',
+    a: ['Усе необхідне легко знайти в магазинах або замовити онлайн. У першому уроці я розповім, що саме вам знадобиться і де це можна придбати.'],
+  },
+  {
+    q: 'Чи є обмеження за часом доступу до відеоуроків?',
+    a: ['Ні, доступ до відео не обмежений. Ви можете повертатися до матеріалів у будь-який час.'],
+  },
+  {
+    q: 'Що робити, якщо у мене виникнуть питання під час навчання?',
+    a: ['Якщо у вас з\'являться питання, ви завжди можете написати мені через Instagram, і я із задоволенням допоможу.'],
+  },
+  {
+    q: 'Чи можна подарувати цей майстер-клас іншій людині?',
+    a: ['Так, звісно! Це чудовий подарунок для тих, хто любить творчість. Просто повідомте мене, і я оформлю доступ для вашого друга чи близького.'],
   },
 ];
 ---
 
 <MasterclassLayout
-  title="Створення флораріуму в скляній вазі — Floralab Education"
-  description="Покроковий онлайн майстер-клас зі створення живого флораріуму в скляній вазі. Дізнайтесь про вибір рослин, субстрату та догляд."
+  title="Створення флораріуму — Floralab Education"
+  description="Покроковий онлайн майстер-клас зі створення живого флораріуму у скляній вазі. 4 відеоуроки від експерта-флориста."
   currentPath="/stvorennya-florariumu"
-  purchaseUrl="https://wayforpay.com/shop/floralab-florarium"
+  purchaseUrl={PURCHASE_URL}
   purchaseLabel="Придбати навчання"
 >
 
   {/* ===== HERO ===== */}
-  <section class="relative bg-white pt-[96px] pb-[40px] md:pt-[112px] md:pb-[56px] lg:pt-[140px] lg:pb-[72px] overflow-hidden">
-    {/* Subtle background gradient */}
-    <div
-      class="absolute inset-0 pointer-events-none"
-      style="background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(126,180,35,0.07) 0%, transparent 70%);"
-    />
-
-    <div class="relative z-10 max-w-[1280px] mx-auto px-[9.75px] md:px-8">
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[64px] lg:items-center">
-
-        {/* Text column */}
-        <div class="mb-[40px] lg:mb-0">
-          <p class="font-heading text-[#7cab06] text-[14px] tracking-[2px] uppercase mb-[16px] reveal">
+  <section class="relative bg-brand-cream/30 pt-[96px] pb-[40px] md:pt-[120px] md:pb-[56px] lg:pt-[140px] lg:pb-[72px] overflow-hidden">
+    <div class="max-w-[1280px] mx-auto px-[24px] md:px-8">
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center">
+        <div class="mb-[32px] lg:mb-0">
+          <p class="font-heading text-[#7cab06] text-[14px] tracking-[2px] uppercase mb-[12px]">
             Онлайн майстер-клас
           </p>
-          <h1 class="font-heading text-brand-dark text-[32px] md:text-[42px] lg:text-[52px] leading-[1.15] mb-[24px] reveal">
-            Створення флораріуму<br />в скляній вазі
+          <h1 class="font-heading text-brand-dark text-[32px] md:text-[42px] lg:text-[56px] leading-[1.15] mb-[20px]">
+            Створення флораріуму
           </h1>
-          <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] mb-[32px] max-w-[540px] reveal">
-            Навчіться створювати живі мінітопіарії та флораріуми у скляних вазах — з мохом, сукулентами та декоративними каменями. Ідеально для початківців та любителів природи.
+          <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] mb-[28px] max-w-[540px]">
+            Створи унікальну композицію з сукулентами за 3 уроки з експертом-флористом!
           </p>
-
-          <div class="flex flex-col sm:flex-row gap-[16px] reveal">
-            <a
-              href="#pricing"
-              class="inline-flex items-center justify-center px-[32px] py-[14px] bg-[#E63380] text-white rounded-full font-heading text-[18px] hover:scale-[1.02] transition-transform"
-              style="box-shadow: 0 10px 30px rgba(230,51,128,0.35);"
-            >
-              Придбати навчання
-            </a>
-            <a
-              href="#value-props"
-              class="inline-flex items-center justify-center px-[32px] py-[14px] border-2 border-brand-dark/20 text-brand-dark rounded-full font-heading text-[18px] hover:border-brand-dark/40 transition-colors"
-            >
-              Що включено
-            </a>
-          </div>
+          <a
+            href={PURCHASE_URL}
+            class="inline-flex items-center justify-center px-[32px] py-[14px] bg-[#E63380] text-white rounded-full font-heading text-[18px] hover:scale-[1.02] transition-transform"
+            style="box-shadow: 0 10px 30px rgba(230,51,128,0.35);"
+          >
+            Придбати зараз
+          </a>
         </div>
-
-        {/* Image column */}
-        <div class="flex items-center justify-center reveal">
-          <div class="relative w-full max-w-[480px] mx-auto">
-            {/* Background card */}
-            <div
-              class="absolute inset-[20px] rounded-[40px]"
-              style="background: linear-gradient(140deg, rgb(126,180,35) 0%, rgb(255,234,154) 100%); opacity: 0.15;"
-            />
-            <div
-              class="relative rounded-[40px] overflow-hidden"
-              style="background-image: url('/images/masterclass/bg/florarium-bg.webp'); background-size: cover; background-position: center; min-height: 420px;"
-            >
-              <img
-                src="/images/masterclass/florarium-product.webp"
-                alt="Флораріум у скляній вазі з мохом та мініатюрними деревами"
-                class="relative z-10 w-[240px] mx-auto block pt-[40px] pb-[20px]"
-                style="filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));"
-                loading="eager"
-              />
-            </div>
-          </div>
+        <div class="flex items-center justify-center">
+          <img
+            src="/images/masterclass-florarium.webp"
+            alt="Флораріум у скляній вазі з мохом та сукулентами"
+            class="w-full max-w-[480px] rounded-[28px] object-cover"
+            loading="eager"
+          />
         </div>
-
       </div>
     </div>
   </section>
 
-  {/* ===== VALUE PROPS ===== */}
-  <ValueProps cards={valueCards} />
-
-  {/* ===== WHAT YOU LEARN ===== */}
-  <section class="bg-[#003B1C] px-[9.75px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+  {/* ===== WHAT IS A FLORARIUM ===== */}
+  <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
     <div class="max-w-[1280px] mx-auto">
-      <h2 class="font-heading text-white text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[32px] md:mb-[40px] reveal">
-        Що ви навчитесь
+      <div class="max-w-[800px] mx-auto text-center reveal">
+        <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[20px]">
+          Що таке флораріум?
+        </h2>
+        <p class="text-brand-dark/80 text-[16px] md:text-[18px] leading-[28px] mb-[32px]">
+          Флораріум — це унікальна мініатюрна багаторічна композиція з живих рослин, створена у скляній ємності
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-[16px]">
+          <div class="bg-brand-cream/50 rounded-[20px] p-[20px] reveal">
+            <span class="text-[32px] block mb-[8px]">🏡</span>
+            <p class="font-heading text-brand-dark text-[16px]">Стильний декор для дому чи офісу</p>
+          </div>
+          <div class="bg-brand-cream/50 rounded-[20px] p-[20px] reveal">
+            <span class="text-[32px] block mb-[8px]">🎁</span>
+            <p class="font-heading text-brand-dark text-[16px]">Особливий подарунок для близьких</p>
+          </div>
+          <div class="bg-brand-cream/50 rounded-[20px] p-[20px] reveal">
+            <span class="text-[32px] block mb-[8px]">🌿</span>
+            <p class="font-heading text-brand-dark text-[16px]">Спосіб додати природної краси у ваше життя</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== TARGET AUDIENCE ===== */}
+  <section class="bg-brand-cream/30 px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+    <div class="max-w-[1280px] mx-auto">
+      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[28px] text-center reveal">
+        Для кого цей курс?
+      </h2>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-[12px] md:gap-[20px]">
+        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
+          <span class="text-[32px] block mb-[12px]">🌱</span>
+          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Новачки та початківці</h3>
+          <p class="text-white/75 text-[14px] leading-[22px]">Ідеально для тих, хто ніколи не працював із рослинами та композиціями</p>
+        </div>
+        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
+          <span class="text-[32px] block mb-[12px]">✨</span>
+          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Шанувальники декору</h3>
+          <p class="text-white/75 text-[14px] leading-[22px]">Для любителів затишних інтер'єрних деталей та стильного домашнього декору</p>
+        </div>
+        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
+          <span class="text-[32px] block mb-[12px]">💡</span>
+          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Ті, хто шукає натхнення</h3>
+          <p class="text-white/75 text-[14px] leading-[22px]">Для творчих людей, які шукають нові ідеї та натхнення</p>
+        </div>
+        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
+          <span class="text-[32px] block mb-[12px]">🎀</span>
+          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Любителі подарунків</h3>
+          <p class="text-white/75 text-[14px] leading-[22px]">Для тих, хто хоче створити унікальний подарунок ручної роботи для близьких</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== CURRICULUM ===== */}
+  <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+    <div class="max-w-[1280px] mx-auto">
+      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[28px] text-center reveal">
+        Програма курсу
+      </h2>
+      <div class="max-w-[800px] mx-auto">
+        <ol class="flex flex-col gap-[20px]">
+          <li class="flex gap-[16px] items-start reveal">
+            <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">1</span>
+            <div>
+              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mb-[4px]">Підготовка та закупівля матеріалів</h3>
+              <p class="text-[15px] text-black/70 leading-[24px]">Повний список матеріалів із посиланнями, де їх придбати. Дізнаєтеся, як правильно обрати ґрунт, мох, сукуленти та скляну ємність.</p>
+            </div>
+          </li>
+          <li class="flex gap-[16px] items-start reveal">
+            <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">2</span>
+            <div>
+              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mb-[4px]">Створення флораріуму</h3>
+              <p class="text-[15px] text-black/70 leading-[24px]">Покрокове створення флораріуму у геометричній скляній вазі — від дренажу до фінального оформлення.</p>
+            </div>
+          </li>
+          <li class="flex gap-[16px] items-start reveal">
+            <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">3</span>
+            <div>
+              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mb-[4px]">Догляд за флораріумом</h3>
+              <p class="text-[15px] text-black/70 leading-[24px]">Як правильно доглядати за флораріумом, щоб він залишався гарним тривалий час — полив, освітлення, температура.</p>
+            </div>
+          </li>
+          <li class="flex gap-[16px] items-start reveal">
+            <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">4</span>
+            <div>
+              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mb-[4px]">Композиція в бетонному кашпо</h3>
+              <p class="text-[15px] text-black/70 leading-[24px]">Створення мініатюрної святкової композиції для декору або подарунку — бонусний урок.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== LEARNING OUTCOMES ===== */}
+  <section class="bg-[#003B1C] px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+    <div class="max-w-[1280px] mx-auto">
+      <h2 class="font-heading text-white text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[32px] reveal">
+        Що ви отримаєте
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[24px]">
         {[
-          "Правильно обирати скляну ємність та підготовлювати її до посадки",
-          "Складати дренажний шар та субстрат для різних типів рослин",
-          "Розміщувати мох, сукуленти та декоративні камені в єдину композицію",
-          "Доглядати за флораріумом — полив, освітлення, температура",
-          "Створювати закриті та відкриті флораріуми різного типу",
-          "Комбінувати рослини за принципами сумісності та естетики",
+          "Створите свій унікальний флораріум, який прикрасить ваш дім",
+          "Додасте затишку та природної краси до свого інтер'єру",
+          "Зможете створювати подарунки ручної роботи для близьких",
+          "Почнете творчий шлях у флористиці або хобі",
         ].map((item) => (
           <div class="flex gap-[12px] items-start reveal">
             <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
@@ -122,22 +247,35 @@ const valueCards = [
                 <path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
-            <p class="text-white/85 text-[15px] leading-[24px]">{item}</p>
+            <p class="text-white/85 text-[16px] leading-[26px]">{item}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  {/* ===== VALUE PROPS ===== */}
+  <ValueProps cards={valueCards} />
+
   {/* ===== INSTRUCTOR ===== */}
   <InstructorSection />
 
   {/* ===== PRICING ===== */}
   <PricingCta
-    price="850 грн"
-    originalPrice="1200 грн"
-    ctaText="Придбати навчання"
-    purchaseUrl="https://wayforpay.com/shop/floralab-florarium"
+    price="0 грн"
+    originalPrice="1500 грн"
+    ctaText="Придбати зараз"
+    purchaseUrl={PURCHASE_URL}
   />
+
+  {/* ===== FAQ ===== */}
+  <section id="faq" class="bg-white px-[24px] pt-[6px] pb-[24px] md:px-8 md:pb-[40px] lg:pb-[56px]">
+    <div class="max-w-[1280px] mx-auto">
+      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[20px] text-center reveal">
+        Питання та відповіді
+      </h2>
+      <FaqAccordion faqs={faqs} />
+    </div>
+  </section>
 
 </MasterclassLayout>
