@@ -13,7 +13,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 ---
 
 <section
-  class="relative z-[1] h-[calc(100svh-25px)] flex flex-col justify-start bg-brand-cream/30 pt-16 pb-0 md:pt-24 rounded-b-[25px] overflow-hidden"
+  class="relative z-[1] h-[calc(100svh-25px)] flex flex-col justify-start bg-brand-cream/30 pt-16 pb-0 md:pt-24 lg:pt-[130px] rounded-b-[25px] overflow-hidden"
 >
   {/* Background Image - Clipped by rounded corners */}
   <div
@@ -122,8 +122,9 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     <div
       class="flex flex-col items-center text-center md:items-start md:text-left md:w-1/2 md:pl-12 lg:pl-20 xl:pl-24 px-4"
     >
+      {/* Badge — mobile only */}
       <div
-        class="inline-flex items-center gap-2 px-[12px] py-[6px] rounded-full bg-[#00401E] border-[0.8px] border-[#00401E] mb-3 md:mb-6 slide-down shadow-[0_8px_25px_rgba(0,64,30,0.25)]"
+        class="inline-flex md:hidden items-center gap-2 px-[12px] py-[6px] rounded-full bg-[#00401E] border-[0.8px] border-[#00401E] mb-3 slide-down shadow-[0_8px_25px_rgba(0,64,30,0.25)]"
       >
         <img
           src="/images/star_2b50.webp"
@@ -137,14 +138,14 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       </div>
 
       <h1
-        class="text-[32px] md:text-[24px] font-heading text-brand-dark mb-3 md:mb-6 leading-[1.2] md:leading-[33.6px] max-w-lg md:max-w-[661px] slide-up"
+        class="text-[32px] lg:text-[69px] font-heading text-brand-dark mb-3 md:mb-6 leading-[1.2] lg:leading-[84px] max-w-lg lg:max-w-[661px] slide-up"
       >
         <span class="relative inline-block">
           Креативні
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 500 150"
-            class="absolute -bottom-1 md:-bottom-2 left-0 w-full h-8 md:h-12 wpr-highlight-underline-zigzag overflow-visible"
+            class="absolute -bottom-1 lg:-bottom-3 left-0 w-full h-8 lg:h-14 wpr-highlight-underline-zigzag overflow-visible"
             preserveAspectRatio="none"
           >
             <path
@@ -156,11 +157,11 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
               stroke-linecap="round"></path>
           </svg>
         </span>
-        <br /> Майстер-класи від FLORALAB
+        <br /> Майстер-класи <br class="hidden lg:inline" />від FLORALAB
       </h1>
 
       <p
-        class="text-[16px] md:text-xl font-heading font-medium text-black leading-[1.4] tracking-[-0.027em] max-w-2xl mb-2 slide-up px-4 md:px-0"
+        class="text-[16px] lg:text-[24px] font-heading font-medium text-black leading-[1.4] lg:leading-[30px] tracking-[-0.027em] max-w-2xl lg:max-w-[508px] mb-2 slide-up px-4 md:px-0"
       >
         Практичні онлайн <br class="md:hidden" /> майстер-класи для кожного, хто <br
           class="md:hidden"
@@ -212,7 +213,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
         <img
           src="/images/Daria-with-flower.webp"
           alt="Даша - засновник Floralab"
-          class="w-full h-auto max-h-full md:max-h-none object-contain relative z-20 block translate-y-[10px] md:max-w-[450px] lg:max-w-[520px] xl:max-w-[560px] mx-auto"
+          class="w-full h-auto max-h-full md:max-h-none object-contain relative z-20 block translate-y-[10px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[699px] mx-auto"
         />
         {/* Decorative Blur behind Daria */}
         <div
