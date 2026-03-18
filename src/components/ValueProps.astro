@@ -16,8 +16,8 @@ const { cards } = Astro.props;
 <section id="value-props" class="bg-white px-[24px] pt-[20px] pb-[24px] md:px-8 md:pt-[32px] md:pb-[40px] lg:pb-[56px]">
   <div class="max-w-[1280px] mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-[16px] md:gap-[24px]">
-      {cards.map((card) => (
-        <div class="bg-white border border-[#003B1C]/10 rounded-[28px] p-[24px] md:p-[32px] shadow-sm hover:shadow-md transition-shadow reveal">
+      {cards.map((card, i) => (
+        <div class="bg-white border border-[#003B1C]/10 rounded-[28px] p-[24px] md:p-[32px] shadow-sm hover:shadow-md transition-shadow reveal" style={i > 0 ? `transition-delay: ${i * 0.1}s` : ''}>
           {card.icon && (
             <div class="text-[32px] mb-[12px]">{card.icon}</div>
           )}
