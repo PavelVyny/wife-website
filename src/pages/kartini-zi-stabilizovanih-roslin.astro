@@ -4,6 +4,8 @@ import FaqAccordion from '../components/FaqAccordion.astro';
 import InstructorSection from '../components/InstructorSection.astro';
 import ValueProps from '../components/ValueProps.astro';
 import PricingCta from '../components/PricingCta.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import BotanicalElement from '../components/BotanicalElement.astro';
 
 const PURCHASE_URL = 'https://secure.wayforpay.com/payment/s9517959b27ff';
 
@@ -95,7 +97,7 @@ const faqs = [
   <section class="relative bg-brand-cream/30 pt-[96px] pb-[40px] md:pt-[120px] md:pb-[56px] lg:pt-[140px] lg:pb-[72px] overflow-hidden">
     <div class="max-w-[1280px] mx-auto px-[24px] md:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center">
-        <div class="mb-[32px] lg:mb-0">
+        <div class="mb-[32px] lg:mb-0 relative z-10">
           <p class="font-heading text-[#7cab06] text-[14px] tracking-[2px] uppercase mb-[12px]">
             Онлайн майстер-клас
           </p>
@@ -113,173 +115,269 @@ const faqs = [
             Придбати зараз
           </a>
         </div>
-        <div class="flex items-center justify-center">
+        <div class="relative flex items-center justify-center">
+          <img
+            src="/images/about/daria-photo.webp"
+            alt="Даша з картиною зі стабілізованих рослин"
+            class="w-full max-w-[420px] mx-auto rounded-[28px] relative z-10"
+            loading="eager"
+          />
+          <BotanicalElement src="/images/masterclass/decor-moss-1.webp" top="10%" right="-10%" size="w-20 h-20 md:w-28 md:h-28" animationType="slide-in" slideX="60px" slideY="-30px" delay="0.3s" />
+          <BotanicalElement src="/images/masterclass/decor-branch-1.webp" bottom="15%" left="-5%" size="w-16 h-16 md:w-24 md:h-24" animationType="slide-in" slideX="-50px" slideY="20px" delay="0.5s" />
+          <BotanicalElement src="/images/masterclass/decor-flower-2.webp" top="-5%" left="10%" size="w-20 h-20 md:w-28 md:h-28" animationType="float" delay="0.2s" opacity="opacity-70" />
+        </div>
+      </div>
+    </div>
+    <BotanicalElement src="/images/masterclass/decor-fern-1.webp" bottom="5%" left="2%" size="w-16 h-16 md:w-24 md:h-24" animationType="float" delay="1s" opacity="opacity-40" className="hidden md:block" />
+  </section>
+
+  {/* ===== TARGET AUDIENCE ===== */}
+  <section class="relative bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="flex justify-center mb-[12px] reveal">
+        <SectionHeader mainTitle="Для кого" accentTitle="Цей майстер-клас" />
+      </div>
+      <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] text-center mb-[32px] max-w-[700px] mx-auto reveal">
+        Цей майстер-клас для тих, хто хоче створити стильний природний декор своїми руками, додати затишку в інтер'єр і спробувати новий формат творчості без складнощів і спеціальної підготовки
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[24px]">
+        <div class="bg-white border border-[#003B1C]/10 rounded-[20px] p-[24px] md:p-[28px] shadow-sm reveal">
+          <h3 class="font-heading text-brand-dark text-[18px] md:text-[20px] leading-[26px] mb-[8px]">Новачки та початківці</h3>
+          <p class="text-brand-dark/60 text-[15px] leading-[24px]">Ідеально підійде для тих, хто ніколи не працював із стабілізованими рослинами. Ви отримаєте більше знань про матеріали, принципи побудови композиції, правила поєднання кольорів, підходящий алгоритм створення картини</p>
+        </div>
+        <div class="bg-white border border-[#003B1C]/10 rounded-[20px] p-[24px] md:p-[28px] shadow-sm reveal">
+          <h3 class="font-heading text-brand-dark text-[18px] md:text-[20px] leading-[26px] mb-[8px]">Шанувальники декору</h3>
+          <p class="text-brand-dark/60 text-[15px] leading-[24px]">Ідеальний формат для тих, хто обожнює стильні деталі в інтер'єрі. Картина зі стабілізованих рослин не потребує поливу та догляду, але при цьому має вигляд живого, дорогого та подає кожному простору</p>
+        </div>
+        <div class="bg-white border border-[#003B1C]/10 rounded-[20px] p-[24px] md:p-[28px] shadow-sm reveal">
+          <h3 class="font-heading text-brand-dark text-[18px] md:text-[20px] leading-[26px] mb-[8px]">Ті, хто шукає натхнення</h3>
+          <p class="text-brand-dark/60 text-[15px] leading-[24px]">Майстер-клас стане простором для творчого перезавантаження. Робота з природними текстурами знижує стрес, допомагає відволіктись та дає задоволення від створеного результату</p>
+        </div>
+        <div class="bg-white border border-[#003B1C]/10 rounded-[20px] p-[24px] md:p-[28px] shadow-sm reveal">
+          <h3 class="font-heading text-brand-dark text-[18px] md:text-[20px] leading-[26px] mb-[8px]">Любителі подарунків</h3>
+          <p class="text-brand-dark/60 text-[15px] leading-[24px]">Картина, створена власноруч — це особливий подарунок. Ви можете зробити розміку для близьких, створити декор на замовлення або дарувати собі на свято новий діалог</p>
+        </div>
+      </div>
+    </div>
+    <BotanicalElement src="/images/masterclass/decor-fern-2.webp" top="5%" right="2%" size="w-20 h-20 md:w-28 md:h-28" animationType="float" delay="0.5s" opacity="opacity-50" className="hidden lg:block" />
+  </section>
+
+  {/* ===== WHAT ARE STABILIZED PLANTS ===== */}
+  <section class="bg-brand-cream/20 px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="flex justify-center mb-[12px] reveal">
+        <SectionHeader mainTitle="Що таке" accentTitle="Стабілізовані рослини?" />
+      </div>
+
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[32px]">
+        <div class="mb-[24px] lg:mb-0 reveal">
+          <p class="text-brand-dark/80 text-[16px] md:text-[18px] leading-[28px] mb-[24px]">
+            <strong>Стабілізовані рослини</strong> — це натуральні рослини, які пройшли спеціальну обробку та зберегли свою форму, текстуру і колір
+          </p>
+          <ul class="space-y-[12px]">
+            {[
+              "Не потребують догляду",
+              "Не в'януть",
+              "Не потребують світла",
+              "Зберігають вигляд роками",
+              "Поєднують натуральність та практичність",
+            ].map((item) => (
+              <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[10px] items-start">
+                <span class="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="reveal">
           <img
             src="/images/masterclass/stabilized-art-product-2.webp"
-            alt="Картина зі стабілізованих рослин на дерев'яній основі"
-            class="w-full max-w-[320px] mx-auto"
-            loading="eager"
+            alt="Картина зі стабілізованих рослин"
+            class="w-full max-w-[450px] mx-auto rounded-[20px]"
+            loading="lazy"
+          />
+          <div class="bg-[#003B1C] rounded-[20px] p-[20px] mt-[20px] relative max-w-[450px] mx-auto">
+            <p class="text-white/90 text-[15px] leading-[24px] italic text-center">
+              "Це не просто декор — це жива енергія природи, дбайливо створена власноруч, щоб дарувати спокій, гармонію та затишок вашому простору."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== WHAT'S INCLUDED ===== */}
+  <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="flex justify-center mb-[12px] reveal">
+        <SectionHeader mainTitle="Що входить" accentTitle="У майстер-клас" />
+      </div>
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[32px]">
+        <div class="reveal">
+          <ul class="space-y-[14px]">
+            {[
+              "Три покрокові відео-уроки",
+              "Повний список матеріалів із зазначенням, де їх купити (з посиланнями на магазини)",
+              "Рекомендації щодо вибору рослин та інструментів",
+              "Технологічна карта круглого панно",
+              "Рекомендації з догляду за стабілізованими рослинами",
+              "Приклади робіт для натхнення",
+            ].map((item) => (
+              <li class="text-brand-dark/80 text-[16px] leading-[26px] flex gap-[10px] items-start">
+                <span class="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[3px]">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="mt-[24px] lg:mt-0 reveal">
+          <img
+            src="/images/masterclass/stabilized-art-product.webp"
+            alt="Що входить у майстер-клас з картин"
+            class="w-full max-w-[400px] mx-auto"
+            loading="lazy"
           />
         </div>
       </div>
     </div>
   </section>
 
-  {/* ===== WHAT ARE STABILIZED PLANTS ===== */}
-  <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
-    <div class="max-w-[1280px] mx-auto">
-      <div class="max-w-[800px] mx-auto text-center reveal">
-        <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[20px]">
-          Що таке стабілізовані рослини?
-        </h2>
-        <p class="text-brand-dark/80 text-[16px] md:text-[18px] leading-[28px] mb-[32px]">
-          Стабілізовані рослини — це натуральні рослини, які пройшли спеціальну обробку та зберегли свою форму, текстуру і колір
-        </p>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-[12px]">
-          {[
-            { icon: "🌿", text: "Не потребують догляду" },
-            { icon: "💧", text: "Не в'януть" },
-            { icon: "☀️", text: "Не потребують світла" },
-            { icon: "⏳", text: "Зберігають вигляд роками" },
-            { icon: "🌍", text: "Натуральність та практичність" },
-          ].map((item) => (
-            <div class="bg-brand-cream/50 rounded-[20px] p-[16px] reveal">
-              <span class="text-[28px] block mb-[6px]">{item.icon}</span>
-              <p class="font-heading text-brand-dark text-[14px] leading-[20px]">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* ===== TARGET AUDIENCE ===== */}
-  <section class="bg-brand-cream/30 px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
-    <div class="max-w-[1280px] mx-auto">
-      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[28px] text-center reveal">
-        Для кого цей курс?
-      </h2>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-[12px] md:gap-[20px]">
-        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
-          <span class="text-[32px] block mb-[12px]">🌱</span>
-          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Новачки та початківці</h3>
-          <p class="text-white/75 text-[14px] leading-[22px]">Базові знання про матеріали, композицію, колірну теорію та покроковий процес</p>
-        </div>
-        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
-          <span class="text-[32px] block mb-[12px]">✨</span>
-          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Шанувальники декору</h3>
-          <p class="text-white/75 text-[14px] leading-[22px]">Стильний декор без поливу — ідеальна інтер'єрна деталь, яка не потребує догляду</p>
-        </div>
-        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
-          <span class="text-[32px] block mb-[12px]">💡</span>
-          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Ті, хто шукає натхнення</h3>
-          <p class="text-white/75 text-[14px] leading-[22px]">Творче перезавантаження, робота з натуральними текстурами знижує стрес</p>
-        </div>
-        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
-          <span class="text-[32px] block mb-[12px]">🎀</span>
-          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Любителі подарунків</h3>
-          <p class="text-white/75 text-[14px] leading-[22px]">Особливий унікальний подарунок ручної роботи — персоналізований та зроблений з любов'ю</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   {/* ===== CURRICULUM ===== */}
-  <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+  <section class="bg-brand-cream/20 px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
     <div class="max-w-[1280px] mx-auto">
-      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[28px] text-center reveal">
-        Програма курсу
-      </h2>
-      <div class="max-w-[800px] mx-auto">
-        <ol class="flex flex-col gap-[24px]">
-          <li class="reveal">
-            <div class="flex gap-[16px] items-start mb-[12px]">
-              <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">1</span>
-              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mt-[8px]">Підготовка та теоретичний блок</h3>
-            </div>
-            <ul class="ml-[60px] space-y-[6px]">
-              <li class="text-[15px] text-black/70 leading-[24px] flex gap-[8px]">
-                <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                Що таке стабілізовані рослини та їхні особливості
-              </li>
-              <li class="text-[15px] text-black/70 leading-[24px] flex gap-[8px]">
-                <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                Особливості матеріалів, помилки новачків
-              </li>
-              <li class="text-[15px] text-black/70 leading-[24px] flex gap-[8px]">
-                <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                Поєднання текстур та кольорові комбінації
-              </li>
-            </ul>
-          </li>
-          <li class="reveal">
-            <div class="flex gap-[16px] items-start mb-[12px]">
-              <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">2</span>
-              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mt-[8px]">Огляд матеріалів та побудова композиції</h3>
-            </div>
-            <ul class="ml-[60px] space-y-[6px]">
-              <li class="text-[15px] text-black/70 leading-[24px] flex gap-[8px]">
-                <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                Інструменти, основа для панно, типи рослин та матеріалів
-              </li>
-              <li class="text-[15px] text-black/70 leading-[24px] flex gap-[8px]">
-                <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                Підготовка елементів та техніка безпеки
-              </li>
-              <li class="text-[15px] text-black/70 leading-[24px] flex gap-[8px]">
-                <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                Візуалізація кінцевого результату перед початком роботи
-              </li>
-            </ul>
-          </li>
-          <li class="reveal">
-            <div class="flex gap-[16px] items-start mb-[12px]">
-              <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">3</span>
-              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mt-[8px]">Створення та догляд</h3>
-            </div>
-            <ul class="ml-[60px] space-y-[6px]">
-              <li class="text-[15px] text-black/70 leading-[24px] flex gap-[8px]">
-                <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                Покрокове створення круглого панно зі стабілізованих рослин
-              </li>
-              <li class="text-[15px] text-black/70 leading-[24px] flex gap-[8px]">
-                <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                Техніки акуратної та довговічної роботи
-              </li>
-              <li class="text-[15px] text-black/70 leading-[24px] flex gap-[8px]">
-                <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-                Догляд та умови зберігання готових виробів
-              </li>
-            </ul>
-          </li>
-        </ol>
+      <div class="flex justify-center mb-[32px] md:mb-[48px] reveal">
+        <SectionHeader mainTitle="Програма" accentTitle="Майстер-класу" />
+      </div>
+
+      {/* Lesson 1 */}
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mb-[48px] md:mb-[64px] reveal">
+        <div class="mb-[24px] lg:mb-0">
+          <img src="/images/masterclass/stabilized-art-product-2.webp" alt="Підготовка та теорія" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
+        </div>
+        <div>
+          <div class="flex items-center gap-[16px] mb-[16px]">
+            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">1</span>
+            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Підготовка та теоретичний блок</h3>
+          </div>
+          <ul class="space-y-[8px] ml-[72px]">
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Що таке стабілізовані рослини та їхні особливості
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Особливості матеріалів, помилки новачків
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Поєднання текстур та кольорові комбінації
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Lesson 2 */}
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mb-[48px] md:mb-[64px] reveal">
+        <div class="order-2 lg:order-1">
+          <div class="flex items-center gap-[16px] mb-[16px]">
+            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">2</span>
+            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Огляд матеріалів та побудова композиції</h3>
+          </div>
+          <ul class="space-y-[8px] ml-[72px]">
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Інструменти для роботи
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Основа для панно: вибір формату та підкладки
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Різновиди стабілізованих рослин та сухоцвітів
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Підготовка елементів до монтажу
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Техніка безпеки
+            </li>
+          </ul>
+        </div>
+        <div class="order-1 lg:order-2 mb-[24px] lg:mb-0">
+          <img src="/images/masterclass/stabilized-art-product.webp" alt="Огляд матеріалів" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
+        </div>
+      </div>
+
+      {/* Lesson 3 */}
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center reveal">
+        <div class="mb-[24px] lg:mb-0">
+          <img src="/images/masterclass/stabilized-art-product-2.webp" alt="Створення та догляд" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
+        </div>
+        <div>
+          <div class="flex items-center gap-[16px] mb-[16px]">
+            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">3</span>
+            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Створення та догляд</h3>
+          </div>
+          <ul class="space-y-[8px] ml-[72px]">
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Покрокове створення круглого панно
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Як зробити роботу акуратною та довговічною
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Як доглядати за стабілізованими рослинами
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[8px]">
+              <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
+              Умови зберігання
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
   {/* ===== LEARNING OUTCOMES ===== */}
-  <section class="bg-[#003B1C] px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+  <section class="relative bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
     <div class="max-w-[1280px] mx-auto">
-      <h2 class="font-heading text-white text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[32px] reveal">
-        Що ви отримаєте
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[24px]">
-        {[
-          "Створите стильне панно зі стабілізованих рослин",
-          "Зрозумієте основи композиції та роботи з натуральними текстурами",
-          "Зможете повторити чи адаптувати техніку для різних форматів",
-          "Отримаєте структуровану систему знань замість хаотичних спроб",
-          "Додасте до інтер'єру декор, який не потребує догляду",
-        ].map((item) => (
-          <div class="flex gap-[12px] items-start reveal">
-            <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <p class="text-white/85 text-[16px] leading-[26px]">{item}</p>
-          </div>
-        ))}
+      <div class="flex justify-center mb-[12px] reveal">
+        <SectionHeader mainTitle="Результати" accentTitle="Які ви отримаєте" />
+      </div>
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[32px]">
+        <div class="reveal">
+          <ul class="space-y-[16px]">
+            {[
+              "Створите стильне панно зі стабілізованих рослин власноруч",
+              "Зрозумієте основи композиції та роботи з природними текстурами",
+              "Зможете повторити чи адаптувати техніку для інших форматів",
+              "Отримаєте структуровану систему знань замість хаотичних спроб",
+              "Додасте в інтер'єр декор, який не потребує догляду",
+            ].map((item) => (
+              <li class="text-brand-dark/80 text-[16px] leading-[26px] flex gap-[12px] items-start">
+                <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="mt-[24px] lg:mt-0 reveal">
+          <img src="/images/masterclass/stabilized-art-product.webp" alt="Результати навчання" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
@@ -299,11 +397,11 @@ const faqs = [
   />
 
   {/* ===== FAQ ===== */}
-  <section id="faq" class="bg-white px-[24px] pt-[6px] pb-[24px] md:px-8 md:pb-[40px] lg:pb-[56px]">
+  <section id="faq" class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
     <div class="max-w-[1280px] mx-auto">
-      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[20px] text-center reveal">
-        Питання та відповіді
-      </h2>
+      <div class="flex justify-center mb-[20px] reveal">
+        <SectionHeader mainTitle="Питання" accentTitle="Відповідь" />
+      </div>
       <FaqAccordion faqs={faqs} />
     </div>
   </section>

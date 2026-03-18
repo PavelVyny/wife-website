@@ -4,6 +4,8 @@ import FaqAccordion from '../components/FaqAccordion.astro';
 import InstructorSection from '../components/InstructorSection.astro';
 import ValueProps from '../components/ValueProps.astro';
 import PricingCta from '../components/PricingCta.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import BotanicalElement from '../components/BotanicalElement.astro';
 
 const PURCHASE_URL = 'https://secure.wayforpay.com/payment/sb10851d18b99';
 
@@ -98,7 +100,7 @@ const faqs = [
   <section class="relative bg-brand-cream/30 pt-[96px] pb-[40px] md:pt-[120px] md:pb-[56px] lg:pt-[140px] lg:pb-[72px] overflow-hidden">
     <div class="max-w-[1280px] mx-auto px-[24px] md:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center">
-        <div class="mb-[32px] lg:mb-0">
+        <div class="mb-[32px] lg:mb-0 relative z-10">
           <p class="font-heading text-[#7cab06] text-[14px] tracking-[2px] uppercase mb-[12px]">
             Онлайн майстер-клас
           </p>
@@ -116,140 +118,238 @@ const faqs = [
             Придбати зараз
           </a>
         </div>
-        <div class="flex items-center justify-center">
+        <div class="relative flex items-center justify-center">
+          <img
+            src="/images/about/daria-photo.webp"
+            alt="Даша з флораріумом"
+            class="w-full max-w-[420px] mx-auto rounded-[28px] relative z-10"
+            loading="eager"
+          />
+          <BotanicalElement src="/images/masterclass/decor-pot-1.webp" top="10%" right="-10%" size="w-20 h-20 md:w-28 md:h-28" animationType="slide-in" slideX="60px" slideY="-30px" delay="0.3s" />
+          <BotanicalElement src="/images/masterclass/decor-moss-1.webp" bottom="15%" left="-5%" size="w-16 h-16 md:w-24 md:h-24" animationType="slide-in" slideX="-50px" slideY="20px" delay="0.5s" />
+          <BotanicalElement src="/images/masterclass/decor-flower-1.webp" top="-5%" left="10%" size="w-20 h-20 md:w-28 md:h-28" animationType="float" delay="0.2s" opacity="opacity-70" />
+        </div>
+      </div>
+    </div>
+    <BotanicalElement src="/images/masterclass/decor-leaf-1.webp" bottom="5%" left="2%" size="w-16 h-16 md:w-24 md:h-24" animationType="float" delay="1s" opacity="opacity-40" className="hidden md:block" />
+  </section>
+
+  {/* ===== TARGET AUDIENCE ===== */}
+  <section class="relative bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="flex justify-center mb-[12px] reveal">
+        <SectionHeader mainTitle="Для кого" accentTitle="Цей майстер-клас" />
+      </div>
+      <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] text-center mb-[32px] max-w-[700px] mx-auto reveal">
+        Цей майстер-клас для тих, хто мріє додати затишку в інтер'єр, створити щось особливе своїми руками та втілити власні творчі ідеї!
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[24px]">
+        <div class="bg-white border border-[#003B1C]/10 rounded-[20px] p-[24px] md:p-[28px] shadow-sm reveal">
+          <h3 class="font-heading text-brand-dark text-[18px] md:text-[20px] leading-[26px] mb-[8px]">Новачки та початківці</h3>
+          <p class="text-brand-dark/60 text-[15px] leading-[24px]">Цей майстер-клас чудово підійде для тих, хто ніколи не працював із рослинами чи декоративними композиціями. Ви навчитесь базовим технікам створення флораріумів на легкій та доступній формі</p>
+        </div>
+        <div class="bg-white border border-[#003B1C]/10 rounded-[20px] p-[24px] md:p-[28px] shadow-sm reveal">
+          <h3 class="font-heading text-brand-dark text-[18px] md:text-[20px] leading-[26px] mb-[8px]">Шанувальники декору</h3>
+          <p class="text-brand-dark/60 text-[15px] leading-[24px]">Ідеальний вибір для тих, хто обожнює створювати стильний декор для дому. Флораріум додасть естетику вашому інтер'єру та стане природним акцентом навколишнього простору</p>
+        </div>
+        <div class="bg-white border border-[#003B1C]/10 rounded-[20px] p-[24px] md:p-[28px] shadow-sm reveal">
+          <h3 class="font-heading text-brand-dark text-[18px] md:text-[20px] leading-[26px] mb-[8px]">Ті, хто шукає натхнення</h3>
+          <p class="text-brand-dark/60 text-[15px] leading-[24px]">Для креативних особистостей, які любіть щось нове. Майстер-клас стане джерелом натхнення та простором для творчого самовираження</p>
+        </div>
+        <div class="bg-white border border-[#003B1C]/10 rounded-[20px] p-[24px] md:p-[28px] shadow-sm reveal">
+          <h3 class="font-heading text-brand-dark text-[18px] md:text-[20px] leading-[26px] mb-[8px]">Любителі подарунків</h3>
+          <p class="text-brand-dark/60 text-[15px] leading-[24px]">Якщо ви хочете створювати щось унікальне: щоб подарувати це різним або друзям, цей майстер-клас точно для вас. Флораріум стане символом уваги та турботи</p>
+        </div>
+      </div>
+    </div>
+    <BotanicalElement src="/images/masterclass/decor-plant-1.webp" top="5%" right="2%" size="w-20 h-20 md:w-28 md:h-28" animationType="float" delay="0.5s" opacity="opacity-50" className="hidden lg:block" />
+  </section>
+
+  {/* ===== WHAT IS A FLORARIUM ===== */}
+  <section class="bg-brand-cream/20 px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="flex justify-center mb-[12px] reveal">
+        <SectionHeader mainTitle="Що таке" accentTitle="Флораріум?" />
+      </div>
+
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[32px]">
+        <div class="mb-[24px] lg:mb-0 reveal">
+          <p class="text-brand-dark/80 text-[16px] md:text-[18px] leading-[28px] mb-[24px]">
+            <strong>Флораріум</strong> — це унікальна мініатюрна багаторічна композиція з живих рослин, створена у скляній ємності
+          </p>
+          <ul class="space-y-[12px]">
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[10px] items-start">
+              <span class="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Стильний декор для дому чи офісу
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[10px] items-start">
+              <span class="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Особливий подарунок для близьких
+            </li>
+            <li class="text-brand-dark/70 text-[15px] leading-[24px] flex gap-[10px] items-start">
+              <span class="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Спосіб додати природної краси у ваше життя
+            </li>
+          </ul>
+        </div>
+        <div class="reveal">
           <img
             src="/images/masterclass/florarium-product.webp"
             alt="Флораріум у скляній вазі з мохом та сукулентами"
-            class="w-full max-w-[320px] mx-auto"
-            loading="eager"
+            class="w-full max-w-[450px] mx-auto"
+            loading="lazy"
+          />
+          <div class="bg-[#003B1C] rounded-[20px] p-[20px] mt-[20px] relative max-w-[450px] mx-auto">
+            <p class="text-white/90 text-[15px] leading-[24px] italic text-center">
+              "Це не просто рослини у горщику — це маленький живий світ, який ви створюєте власноруч!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== WHAT'S INCLUDED ===== */}
+  <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="flex justify-center mb-[12px] reveal">
+        <SectionHeader mainTitle="Що входить" accentTitle="У майстер-клас" />
+      </div>
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[32px]">
+        <div class="reveal">
+          <ul class="space-y-[14px]">
+            {[
+              "Повний список матеріалів із зазначенням, де їх купити (з посиланнями на магазини)",
+              "Три детальних відео з покроковими інструкціями",
+              "Відео-урок по створенню композиції в бетонному кашпо",
+            ].map((item) => (
+              <li class="text-brand-dark/80 text-[16px] leading-[26px] flex gap-[10px] items-start">
+                <span class="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[3px]">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div class="mt-[20px] inline-flex items-center gap-[8px] bg-[#7cab06]/10 rounded-full px-[16px] py-[8px]">
+            <span class="text-[#7cab06] font-heading text-[14px] uppercase tracking-[1px]">🎁 Бонус</span>
+          </div>
+        </div>
+        <div class="mt-[24px] lg:mt-0 reveal">
+          <img
+            src="/images/masterclass/florarium-product.webp"
+            alt="Що входить у майстер-клас зі створення флораріуму"
+            class="w-full max-w-[400px] mx-auto"
+            loading="lazy"
           />
         </div>
       </div>
     </div>
   </section>
 
-  {/* ===== WHAT IS A FLORARIUM ===== */}
-  <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
-    <div class="max-w-[1280px] mx-auto">
-      <div class="max-w-[800px] mx-auto text-center reveal">
-        <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[20px]">
-          Що таке флораріум?
-        </h2>
-        <p class="text-brand-dark/80 text-[16px] md:text-[18px] leading-[28px] mb-[32px]">
-          Флораріум — це унікальна мініатюрна багаторічна композиція з живих рослин, створена у скляній ємності
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-[16px]">
-          <div class="bg-brand-cream/50 rounded-[20px] p-[20px] reveal">
-            <span class="text-[32px] block mb-[8px]">🏡</span>
-            <p class="font-heading text-brand-dark text-[16px]">Стильний декор для дому чи офісу</p>
-          </div>
-          <div class="bg-brand-cream/50 rounded-[20px] p-[20px] reveal">
-            <span class="text-[32px] block mb-[8px]">🎁</span>
-            <p class="font-heading text-brand-dark text-[16px]">Особливий подарунок для близьких</p>
-          </div>
-          <div class="bg-brand-cream/50 rounded-[20px] p-[20px] reveal">
-            <span class="text-[32px] block mb-[8px]">🌿</span>
-            <p class="font-heading text-brand-dark text-[16px]">Спосіб додати природної краси у ваше життя</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* ===== TARGET AUDIENCE ===== */}
-  <section class="bg-brand-cream/30 px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
-    <div class="max-w-[1280px] mx-auto">
-      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[28px] text-center reveal">
-        Для кого цей курс?
-      </h2>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-[12px] md:gap-[20px]">
-        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
-          <span class="text-[32px] block mb-[12px]">🌱</span>
-          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Новачки та початківці</h3>
-          <p class="text-white/75 text-[14px] leading-[22px]">Ідеально для тих, хто ніколи не працював із рослинами та композиціями</p>
-        </div>
-        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
-          <span class="text-[32px] block mb-[12px]">✨</span>
-          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Шанувальники декору</h3>
-          <p class="text-white/75 text-[14px] leading-[22px]">Для любителів затишних інтер'єрних деталей та стильного домашнього декору</p>
-        </div>
-        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
-          <span class="text-[32px] block mb-[12px]">💡</span>
-          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Ті, хто шукає натхнення</h3>
-          <p class="text-white/75 text-[14px] leading-[22px]">Для творчих людей, які шукають нові ідеї та натхнення</p>
-        </div>
-        <div class="bg-[#003B1C] rounded-[28px] p-[20px] md:p-[24px] reveal">
-          <span class="text-[32px] block mb-[12px]">🎀</span>
-          <h3 class="font-heading text-white text-[18px] leading-[26px] mb-[8px]">Любителі подарунків</h3>
-          <p class="text-white/75 text-[14px] leading-[22px]">Для тих, хто хоче створити унікальний подарунок ручної роботи для близьких</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   {/* ===== CURRICULUM ===== */}
-  <section class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+  <section class="bg-brand-cream/20 px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
     <div class="max-w-[1280px] mx-auto">
-      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[28px] text-center reveal">
-        Програма курсу
-      </h2>
-      <div class="max-w-[800px] mx-auto">
-        <ol class="flex flex-col gap-[20px]">
-          <li class="flex gap-[16px] items-start reveal">
-            <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">1</span>
-            <div>
-              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mb-[4px]">Підготовка та закупівля матеріалів</h3>
-              <p class="text-[15px] text-black/70 leading-[24px]">Повний список матеріалів із посиланнями, де їх придбати. Дізнаєтеся, як правильно обрати ґрунт, мох, сукуленти та скляну ємність.</p>
-            </div>
-          </li>
-          <li class="flex gap-[16px] items-start reveal">
-            <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">2</span>
-            <div>
-              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mb-[4px]">Створення флораріуму</h3>
-              <p class="text-[15px] text-black/70 leading-[24px]">Покрокове створення флораріуму у геометричній скляній вазі — від дренажу до фінального оформлення.</p>
-            </div>
-          </li>
-          <li class="flex gap-[16px] items-start reveal">
-            <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">3</span>
-            <div>
-              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mb-[4px]">Догляд за флораріумом</h3>
-              <p class="text-[15px] text-black/70 leading-[24px]">Як правильно доглядати за флораріумом, щоб він залишався гарним тривалий час — полив, освітлення, температура.</p>
-            </div>
-          </li>
-          <li class="flex gap-[16px] items-start reveal">
-            <span class="flex-shrink-0 w-[44px] h-[44px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[18px]">4</span>
-            <div>
-              <h3 class="font-heading text-[18px] md:text-[20px] text-brand-dark mb-[4px]">Композиція в бетонному кашпо</h3>
-              <p class="text-[15px] text-black/70 leading-[24px]">Створення мініатюрної святкової композиції для декору або подарунку — бонусний урок.</p>
-            </div>
-          </li>
-        </ol>
+      <div class="flex justify-center mb-[32px] md:mb-[48px] reveal">
+        <SectionHeader mainTitle="Програма" accentTitle="Майстер-класу" />
+      </div>
+
+      {/* Lesson 1 */}
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mb-[48px] md:mb-[64px] reveal">
+        <div class="mb-[24px] lg:mb-0">
+          <img src="/images/masterclass/florarium-product.webp" alt="Підготовка матеріалів" class="w-full max-w-[400px] mx-auto" loading="lazy" />
+        </div>
+        <div>
+          <div class="flex items-center gap-[16px] mb-[16px]">
+            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">1</span>
+            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Підготовка та закупівля матеріалів</h3>
+          </div>
+          <p class="text-brand-dark/70 text-[15px] leading-[24px]">Список усіх необхідних матеріалів, перелік магазинів, корисні поради щодо вибору компонентів</p>
+        </div>
+      </div>
+
+      {/* Lesson 2 */}
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mb-[48px] md:mb-[64px] reveal">
+        <div class="order-2 lg:order-1">
+          <div class="flex items-center gap-[16px] mb-[16px]">
+            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">2</span>
+            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Створення флораріуму</h3>
+          </div>
+          <p class="text-brand-dark/70 text-[15px] leading-[24px]">Детальна покрокова інструкція зі створення флораріуму в геометричній скляній вазі</p>
+        </div>
+        <div class="order-1 lg:order-2 mb-[24px] lg:mb-0">
+          <img src="/images/masterclass/florarium-product.webp" alt="Створення флораріуму" class="w-full max-w-[400px] mx-auto" loading="lazy" />
+        </div>
+      </div>
+
+      {/* Lesson 3 */}
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mb-[48px] md:mb-[64px] reveal">
+        <div class="mb-[24px] lg:mb-0">
+          <img src="/images/masterclass/florarium-product.webp" alt="Догляд за флораріумом" class="w-full max-w-[400px] mx-auto" loading="lazy" />
+        </div>
+        <div>
+          <div class="flex items-center gap-[16px] mb-[16px]">
+            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">3</span>
+            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Догляд за флораріумом</h3>
+          </div>
+          <p class="text-brand-dark/70 text-[15px] leading-[24px]">Як доглядати за флораріумом, щоб він залишався свіжим та гарним максимально довго</p>
+        </div>
+      </div>
+
+      {/* Lesson 4 — Bonus */}
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center reveal">
+        <div class="order-2 lg:order-1">
+          <div class="flex items-center gap-[16px] mb-[16px]">
+            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">4</span>
+            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Композиція в бетонному кашпо</h3>
+          </div>
+          <p class="text-brand-dark/70 text-[15px] leading-[24px]">Створення мініатюрної святкової композиції для декору столу або на подарунок</p>
+          <div class="mt-[12px] inline-flex items-center gap-[8px] bg-[#7cab06]/10 rounded-full px-[16px] py-[8px]">
+            <span class="text-[#7cab06] font-heading text-[14px] uppercase tracking-[1px]">🎁 Бонус</span>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2 mb-[24px] lg:mb-0">
+          <img src="/images/masterclass/florarium-product.webp" alt="Композиція в бетонному кашпо" class="w-full max-w-[400px] mx-auto" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
 
   {/* ===== LEARNING OUTCOMES ===== */}
-  <section class="bg-[#003B1C] px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+  <section class="relative bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
     <div class="max-w-[1280px] mx-auto">
-      <h2 class="font-heading text-white text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[32px] reveal">
-        Що ви отримаєте
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[24px]">
-        {[
-          "Створите свій унікальний флораріум, який прикрасить ваш дім",
-          "Додасте затишку та природної краси до свого інтер'єру",
-          "Зможете створювати подарунки ручної роботи для близьких",
-          "Почнете творчий шлях у флористиці або хобі",
-        ].map((item) => (
-          <div class="flex gap-[12px] items-start reveal">
-            <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <p class="text-white/85 text-[16px] leading-[26px]">{item}</p>
-          </div>
-        ))}
+      <div class="flex justify-center mb-[12px] reveal">
+        <SectionHeader mainTitle="Результати" accentTitle="Які ви отримаєте" />
+      </div>
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[32px]">
+        <div class="reveal">
+          <ul class="space-y-[16px]">
+            {[
+              "Ви створите стильний флораріум своїми руками",
+              "Додасте до свого інтер'єру затишку",
+              "Зробите незвичайний подарунок для близьких, створений власноруч",
+              "Зможете почати свій творчий шлях у флористиці або ж отримати натхнення для хобі",
+            ].map((item) => (
+              <li class="text-brand-dark/80 text-[16px] leading-[26px] flex gap-[12px] items-start">
+                <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="mt-[24px] lg:mt-0 reveal">
+          <img src="/images/masterclass/florarium-product.webp" alt="Результати навчання" class="w-full max-w-[400px] mx-auto" loading="lazy" />
+        </div>
       </div>
     </div>
   </section>
@@ -269,11 +369,11 @@ const faqs = [
   />
 
   {/* ===== FAQ ===== */}
-  <section id="faq" class="bg-white px-[24px] pt-[6px] pb-[24px] md:px-8 md:pb-[40px] lg:pb-[56px]">
+  <section id="faq" class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
     <div class="max-w-[1280px] mx-auto">
-      <h2 class="font-heading text-brand-dark text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[20px] text-center reveal">
-        Питання та відповіді
-      </h2>
+      <div class="flex justify-center mb-[20px] reveal">
+        <SectionHeader mainTitle="Питання" accentTitle="Відповідь" />
+      </div>
       <FaqAccordion faqs={faqs} />
     </div>
   </section>

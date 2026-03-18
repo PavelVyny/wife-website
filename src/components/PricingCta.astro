@@ -1,45 +1,75 @@
 ---
-// PricingCta — pricing section with optional strikethrough price and pink Buy Now CTA
-// purchaseUrl links directly to WayForPay (same tab — no target="_blank")
+// PricingCta — pricing section with strikethrough price, motivational text, and pink Buy Now CTA
+import SectionHeader from './SectionHeader.astro';
 
 interface Props {
-  price: string;           // e.g. "0 грн"
-  originalPrice?: string;  // e.g. "1500 грн" — shown with strikethrough
-  ctaText: string;         // e.g. "Придбати навчання"
-  purchaseUrl: string;     // WayForPay payment URL
+  price: string;
+  originalPrice?: string;
+  ctaText: string;
+  purchaseUrl: string;
+  motivationalText?: string;
 }
 
-const { price, originalPrice, ctaText, purchaseUrl } = Astro.props;
+const { price, originalPrice, ctaText, purchaseUrl, motivationalText } = Astro.props;
 ---
 
-<section id="pricing" class="bg-[#003B1C] px-[9.75px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
-  <div class="max-w-[800px] mx-auto text-center">
+<section id="pricing" class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+  <div class="max-w-[1280px] mx-auto">
+    <div class="flex justify-center mb-[32px] md:mb-[40px] reveal">
+      <SectionHeader mainTitle="Вартість" accentTitle="Та доступ" />
+    </div>
 
-    <h2 class="font-heading text-white text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[24px] reveal">
-      Почніть навчання прямо зараз
-    </h2>
-
-    <div class="reveal">
-      <div class="mb-[16px]">
-        {originalPrice && (
-          <span class="text-white/50 line-through text-[20px] mr-[12px]">{originalPrice}</span>
+    <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center reveal">
+      {/* Motivational text — left column on desktop */}
+      <div class="mb-[32px] lg:mb-0">
+        {motivationalText ? (
+          <div class="bg-[#003B1C] rounded-[20px] p-[24px] md:p-[32px]">
+            <p class="text-white/90 text-[16px] md:text-[18px] leading-[28px] italic">
+              {motivationalText}
+            </p>
+          </div>
+        ) : (
+          <div class="bg-[#003B1C] rounded-[20px] p-[24px] md:p-[32px]">
+            <p class="text-white/90 text-[16px] md:text-[18px] leading-[28px] italic">
+              Забудь про штучний декор з магазинів! Замовляй майстер-клас вже сьогодні та створи унікальний виріб, який стане родзинкою твого інтер'єру.
+            </p>
+          </div>
         )}
-        <span class="font-heading text-white text-[36px] md:text-[48px]">{price}</span>
       </div>
 
-      <div class="space-y-[6px] mb-[24px]">
-        <p class="text-white/75 text-[15px] leading-[24px]">Доступ до відеоуроків не обмежений</p>
-        <p class="text-white/75 text-[15px] leading-[24px]">Майстер-клас доступний одразу після оплати</p>
-        <p class="text-white/75 text-[15px] leading-[24px]">Підтримка через Instagram</p>
-      </div>
+      {/* Price + CTA — right column */}
+      <div class="text-center lg:text-left">
+        <div class="mb-[16px]">
+          {originalPrice && (
+            <span class="text-brand-dark/40 line-through text-[20px] mr-[12px]">{originalPrice}</span>
+          )}
+          <span class="font-heading text-[#E63380] text-[42px] md:text-[56px]">{price}</span>
+        </div>
 
-      <a
-        href={purchaseUrl}
-        class="inline-flex mt-[24px] px-[40px] py-[16px] bg-[#E63380] text-white rounded-full font-heading text-[20px] md:text-[22px] hover:scale-[1.02] transition-transform"
-        style="box-shadow: 0 10px 30px rgba(230,51,128,0.4);"
-      >
-        {ctaText}
-      </a>
+        <p class="text-[#7cab06] font-heading text-[16px] mb-[20px]">
+          Акційна пропозиція обмежена
+        </p>
+
+        <a
+          href={purchaseUrl}
+          class="inline-flex px-[40px] py-[16px] bg-[#E63380] text-white rounded-full font-heading text-[20px] md:text-[22px] hover:scale-[1.02] transition-transform mb-[24px]"
+          style="box-shadow: 0 10px 30px rgba(230,51,128,0.4);"
+        >
+          {ctaText}
+        </a>
+
+        <div class="space-y-[8px] mt-[16px]">
+          <p class="text-brand-dark/70 text-[15px] leading-[24px] flex items-center gap-[8px] justify-center lg:justify-start">
+            <span class="text-[#7cab06]">✓</span> Акційна пропозиція обмежена в часі
+          </p>
+          <p class="text-brand-dark/70 text-[15px] leading-[24px] flex items-center gap-[8px] justify-center lg:justify-start">
+            <span class="text-[#7cab06]">✓</span> Доступ до відеоуроків не обмежений
+          </p>
+          <p class="text-brand-dark/70 text-[15px] leading-[24px] flex items-center gap-[8px] justify-center lg:justify-start">
+            <span class="text-[#7cab06]">✓</span> Майстер-клас доступний в Telegram одразу після оплати
+          </p>
+        </div>
+      </div>
     </div>
 
   </div>

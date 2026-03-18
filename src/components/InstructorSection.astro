@@ -1,53 +1,68 @@
 ---
 // InstructorSection — Daria's credentials, shared across all masterclass pages
-// No props — content is fixed (same instructor on all pages)
+import SectionHeader from './SectionHeader.astro';
 ---
 
-<section id="instructor" class="bg-[#003B1C] px-[9.75px] pt-[20px] pb-[24px] md:px-8 md:pt-[32px] md:pb-[40px] lg:pb-[56px]">
+<section id="instructor" class="relative bg-white px-[24px] pt-[40px] pb-[40px] md:px-8 md:pt-[56px] md:pb-[56px] lg:pt-[72px] lg:pb-[72px] overflow-hidden">
   <div class="max-w-[1280px] mx-auto">
-    <div class="lg:grid lg:grid-cols-2 lg:gap-[40px] lg:items-center">
+    <div class="flex justify-center mb-[32px] md:mb-[40px] reveal">
+      <SectionHeader mainTitle="Інформація" accentTitle="Про мене" />
+    </div>
+
+    <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center">
 
       {/* Photo — top on mobile, left column on desktop */}
       <div class="mb-[24px] lg:mb-0 reveal">
-        <img
-          src="/images/about/daria-photo.webp"
-          alt="Даша — засновниця Floralab"
-          width="500"
-          height="500"
-          class="w-full max-w-[400px] mx-auto rounded-[28px] object-cover"
-          loading="lazy"
-        />
+        <div class="relative max-w-[400px] mx-auto">
+          <img
+            src="/images/about/daria-photo.webp"
+            alt="Даша — засновниця Floralab"
+            width="500"
+            height="500"
+            class="w-full rounded-[28px] object-cover"
+            loading="lazy"
+          />
+          <div class="absolute bottom-[16px] left-[16px] bg-[#003B1C]/90 px-[16px] py-[8px] rounded-[12px]">
+            <p class="font-heading text-[#7cab06] text-[12px] tracking-[1px] uppercase">Флорист</p>
+            <p class="font-heading text-white text-[16px]">Дар'я Ковальова</p>
+          </div>
+        </div>
       </div>
 
       {/* Text content — below photo on mobile, right column on desktop */}
       <div class="reveal">
-        <h2 class="font-heading text-white text-[28px] md:text-[36px] lg:text-[42px] leading-[1.2] mb-[16px]">
-          Ваш викладач — Даша
-        </h2>
-        <p class="text-[#7cab06] font-heading text-[18px] mb-[16px]">
+        <p class="text-[#7cab06] font-heading text-[18px] mb-[12px]">
           Майстер-флорист, ботанік, викладач
         </p>
-        <p class="text-white/85 text-[15px] leading-[24px] mb-[16px]">
+        <p class="text-brand-dark/70 text-[15px] leading-[24px] mb-[16px]">
           Засновниця майстерні декору Floralab
         </p>
-        <ul class="space-y-[10px]">
-          <li class="text-white/85 text-[15px] leading-[24px] flex gap-[8px]">
+        <ul class="space-y-[10px] mb-[24px]">
+          <li class="text-brand-dark/80 text-[15px] leading-[24px] flex gap-[8px]">
             <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
             Провела понад 60 успішних майстер-класів і створила більше 500 флораріумів
           </li>
-          <li class="text-white/85 text-[15px] leading-[24px] flex gap-[8px]">
+          <li class="text-brand-dark/80 text-[15px] leading-[24px] flex gap-[8px]">
             <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
             Більше 5 років досвіду роботи з сукулентами та флораріумами
           </li>
-          <li class="text-white/85 text-[15px] leading-[24px] flex gap-[8px]">
+          <li class="text-brand-dark/80 text-[15px] leading-[24px] flex gap-[8px]">
             <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
             4 роки консультую, проводжу майстер-класи та створюю композиції з сукулентів
           </li>
-          <li class="text-white/85 text-[15px] leading-[24px] flex gap-[8px]">
+          <li class="text-brand-dark/80 text-[15px] leading-[24px] flex gap-[8px]">
             <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
             Завжди вчуся та щедро ділюся знаннями з іншими
           </li>
         </ul>
+
+        {/* Quote bubble */}
+        <div class="bg-[#003B1C] rounded-[20px] p-[20px] md:p-[24px] relative">
+          <p class="text-white/90 text-[15px] md:text-[16px] leading-[26px] italic">
+            "Я переконана, що творчий потенціал закладений у кожному з нас."
+          </p>
+          <div class="absolute -top-[8px] left-[32px] w-[16px] h-[16px] bg-[#003B1C] rotate-45"></div>
+        </div>
       </div>
 
     </div>
