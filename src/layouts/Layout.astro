@@ -144,4 +144,16 @@ import tenorSansWoff2 from '@fontsource/tenor-sans/files/tenor-sans-latin-400-no
 			transition: none;
 		}
 	}
+
+	/* Accessible focus rings — brand lime green */
+	:focus-visible {
+		outline: 2px solid #8EC641;
+		outline-offset: 2px;
+		border-radius: 4px;
+	}
+
+	/* Remove default outline on mouse click — only show on keyboard navigation */
+	:focus:not(:focus-visible) {
+		outline: none;
+	}
 </style>

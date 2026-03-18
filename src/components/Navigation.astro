@@ -14,13 +14,20 @@ function isActive(href: string): string {
 }
 ---
 
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-[#003B1C] focus:text-white focus:rounded-lg focus:font-heading focus:shadow-lg"
+>
+  Перейти до основного змісту
+</a>
+
 <header class={`fixed top-0 left-0 right-0 z-50 lg:top-[20px] lg:left-1/2 lg:-translate-x-1/2 lg:right-auto lg:w-full lg:max-w-[1381px] bg-white border-b border-slate-100 lg:border lg:border-slate-100 lg:rounded-full lg:shadow-sm ${className}`}>
   <div class="max-w-[1280px] mx-auto px-4 md:px-8 h-16 lg:h-[90px] flex items-center justify-between">
     <a href="/" class="flex items-center group">
       <img src="/images/logo-flora-edu.webp" alt="Floralab Education" class="h-8 md:h-10 w-auto object-contain" />
     </a>
 
-    <button id="mobile-menu-toggle" class="p-2 lg:hidden flex flex-col gap-[5px] items-end group" aria-label="Toggle Menu">
+    <button id="mobile-menu-toggle" class="p-2 lg:hidden flex flex-col gap-[5px] items-end group" aria-label="Toggle Menu" aria-expanded="false">
       <span class="w-6 h-[2px] bg-[#003B1C] rounded-full transition-all"></span>
       <span class="w-4 h-[2px] bg-[#003B1C] rounded-full transition-all"></span>
       <span class="w-6 h-[2px] bg-[#003B1C] rounded-full transition-all"></span>
@@ -83,11 +90,13 @@ function isActive(href: string): string {
     toggle.addEventListener('click', () => {
       menu.classList.remove('-translate-x-full');
       document.body.style.overflow = 'hidden';
+      toggle.setAttribute('aria-expanded', 'true');
     });
 
     close.addEventListener('click', () => {
       menu.classList.add('-translate-x-full');
       document.body.style.overflow = '';
+      toggle.setAttribute('aria-expanded', 'false');
     });
 
     // Close on link click
@@ -96,6 +105,7 @@ function isActive(href: string): string {
       link.addEventListener('click', () => {
         menu.classList.add('-translate-x-full');
         document.body.style.overflow = '';
+        toggle.setAttribute('aria-expanded', 'false');
       });
     });
 
@@ -104,6 +114,7 @@ function isActive(href: string): string {
       if (window.innerWidth >= 1024) {
         menu.classList.add('-translate-x-full');
         document.body.style.overflow = '';
+        toggle.setAttribute('aria-expanded', 'false');
       }
     });
   }

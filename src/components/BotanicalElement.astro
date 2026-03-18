@@ -90,4 +90,14 @@ if (animate && animationType === 'slide-in') {
   .animate-float {
     animation: float-new 6s ease-in-out infinite;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide-in-element {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+    .animate-float {
+      animation: none !important;
+    }
+  }
 </style>
