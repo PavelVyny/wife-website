@@ -8,9 +8,10 @@ interface Props {
   ctaText: string;
   purchaseUrl: string;
   motivationalText?: string;
+  course: 'florarium' | 'paintings';
 }
 
-const { price, originalPrice, ctaText, purchaseUrl, motivationalText } = Astro.props;
+const { price, originalPrice, ctaText, purchaseUrl, motivationalText, course } = Astro.props;
 ---
 
 <section id="pricing" class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
@@ -52,6 +53,8 @@ const { price, originalPrice, ctaText, purchaseUrl, motivationalText } = Astro.p
 
         <a
           href={purchaseUrl}
+          data-course={course}
+          data-buy-now-cta
           class="inline-flex px-[40px] py-[16px] bg-[#E63380] text-white rounded-full font-heading text-[20px] md:text-[22px] hover:scale-[1.02] transition-transform mb-[24px]"
           style="box-shadow: 0 10px 30px rgba(230,51,128,0.4);"
         >
@@ -74,3 +77,19 @@ const { price, originalPrice, ctaText, purchaseUrl, motivationalText } = Astro.p
 
   </div>
 </section>
+
+<script is:inline>
+  document.querySelectorAll('[data-buy-now-cta]').forEach(function(cta) {
+    cta.addEventListener('click', function() {
+      var course = this.getAttribute('data-course');
+      // GA4 custom event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'buy_now_click', { course: course });
+      }
+      // Clarity custom tag — filters session recordings by purchase intent
+      if (typeof clarity !== 'undefined') {
+        clarity('set', 'clicked_buy_now', course);
+      }
+    });
+  });
+</script>
