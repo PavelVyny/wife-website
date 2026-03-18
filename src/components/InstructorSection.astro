@@ -1,6 +1,8 @@
 ---
 // InstructorSection — Daria's credentials, shared across all masterclass pages
 import SectionHeader from './SectionHeader.astro';
+import { Image } from 'astro:assets';
+import dariaPhoto from '../assets/about/daria-photo.webp';
 ---
 
 <section id="instructor" class="relative bg-white px-[24px] pt-[40px] pb-[40px] md:px-8 md:pt-[56px] md:pb-[56px] lg:pt-[72px] lg:pb-[72px] overflow-hidden">
@@ -14,11 +16,9 @@ import SectionHeader from './SectionHeader.astro';
       {/* Photo — top on mobile, left column on desktop */}
       <div class="mb-[24px] lg:mb-0 reveal">
         <div class="relative max-w-[400px] mx-auto">
-          <img
-            src="/images/about/daria-photo.webp"
+          <Image
+            src={dariaPhoto}
             alt="Даша — засновниця Floralab"
-            width="500"
-            height="500"
             class="w-full rounded-[28px] object-cover"
             loading="lazy"
           />

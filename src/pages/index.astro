@@ -9,6 +9,8 @@ import Footer from '../components/Footer.astro';
 import StatsSection from '../components/StatsSection.astro';
 import AboutSection from '../components/AboutSection.astro';
 import FaqSection from '../components/FaqSection.astro';
+import { Image } from 'astro:assets';
+import sectionHeaderBanner from '../assets/masterclass/section-header-banner.webp';
 ---
 
 <Layout title="Floralab Education — Онлайн-навчання флористиці">
@@ -24,8 +26,8 @@ import FaqSection from '../components/FaqSection.astro';
 
 		{/* ===== SECTION HEADER BANNER ===== */}
 		<section class="bg-white px-[9.75px] pt-[6px] pb-[20px] md:px-8 max-w-[1280px] mx-auto reveal">
-			<img
-				src="/images/masterclass/section-header-banner.webp"
+			<Image
+				src={sectionHeaderBanner}
 				alt="Доступні Майстер-Класи"
 				class="w-full h-auto md:max-w-[672px] md:mx-auto"
 				loading="lazy"

@@ -1,5 +1,8 @@
 ---
 import BotanicalElement from "./BotanicalElement.astro";
+import { Image } from 'astro:assets';
+import dariaWithFlower from '../assets/hero/Daria-with-flower.webp';
+import starIcon from '../assets/hero/star_2b50.webp';
 
 interface Props {
   title: string;
@@ -126,8 +129,8 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       <div
         class="inline-flex md:hidden items-center gap-2 px-[12px] py-[6px] rounded-full bg-[#00401E] border-[0.8px] border-[#00401E] mb-3 slide-down shadow-[0_8px_25px_rgba(0,64,30,0.25)]"
       >
-        <img
-          src="/images/star_2b50.webp"
+        <Image
+          src={starIcon}
           alt="Star"
           class="w-[14px] h-[14px] object-contain"
         />
@@ -210,8 +213,8 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       class="hero-photo relative w-full max-w-[340px] md:max-w-none md:w-1/2 mx-auto px-4 slide-up left-[-10px] md:left-0 flex-1 min-h-0 md:flex-none md:self-end overflow-hidden"
     >
       <div class="relative flex justify-center items-end h-full md:h-auto">
-        <img
-          src="/images/Daria-with-flower.webp"
+        <Image
+          src={dariaWithFlower}
           alt="Даша - засновник Floralab"
           class="w-full h-auto max-h-full md:max-h-none object-contain relative z-20 block translate-y-[10px] md:max-w-[500px] lg:max-w-[600px] xl:max-w-[699px] mx-auto"
         />

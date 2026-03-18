@@ -6,6 +6,10 @@ import ValueProps from '../components/ValueProps.astro';
 import PricingCta from '../components/PricingCta.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import BotanicalElement from '../components/BotanicalElement.astro';
+import { Image } from 'astro:assets';
+import dariaPhoto from '../assets/about/daria-photo.webp';
+import stabilizedArt from '../assets/masterclass/stabilized-art-product.webp';
+import stabilizedArt2 from '../assets/masterclass/stabilized-art-product-2.webp';
 
 const PURCHASE_URL = 'https://secure.wayforpay.com/payment/s9517959b27ff';
 
@@ -116,8 +120,8 @@ const faqs = [
           </a>
         </div>
         <div class="relative flex items-center justify-center">
-          <img
-            src="/images/about/daria-photo.webp"
+          <Image
+            src={dariaPhoto}
             alt="Даша з картиною зі стабілізованих рослин"
             class="w-full max-w-[420px] mx-auto rounded-[28px] relative z-10"
             loading="eager"
@@ -192,8 +196,8 @@ const faqs = [
           </ul>
         </div>
         <div class="reveal">
-          <img
-            src="/images/masterclass/stabilized-art-product-2.webp"
+          <Image
+            src={stabilizedArt2}
             alt="Картина зі стабілізованих рослин"
             class="w-full max-w-[450px] mx-auto rounded-[20px]"
             loading="lazy"
@@ -235,8 +239,8 @@ const faqs = [
           </ul>
         </div>
         <div class="mt-[24px] lg:mt-0 reveal">
-          <img
-            src="/images/masterclass/stabilized-art-product.webp"
+          <Image
+            src={stabilizedArt}
             alt="Що входить у майстер-клас з картин"
             class="w-full max-w-[400px] mx-auto"
             loading="lazy"
@@ -256,7 +260,7 @@ const faqs = [
       {/* Lesson 1 */}
       <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mb-[48px] md:mb-[64px] reveal">
         <div class="mb-[24px] lg:mb-0">
-          <img src="/images/masterclass/stabilized-art-product-2.webp" alt="Підготовка та теорія" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
+          <Image src={stabilizedArt2} alt="Підготовка та теорія" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
         </div>
         <div>
           <div class="flex items-center gap-[16px] mb-[16px]">
@@ -311,14 +315,14 @@ const faqs = [
           </ul>
         </div>
         <div class="order-1 lg:order-2 mb-[24px] lg:mb-0">
-          <img src="/images/masterclass/stabilized-art-product.webp" alt="Огляд матеріалів" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
+          <Image src={stabilizedArt} alt="Огляд матеріалів" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
         </div>
       </div>
 
       {/* Lesson 3 */}
       <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center reveal">
         <div class="mb-[24px] lg:mb-0">
-          <img src="/images/masterclass/stabilized-art-product-2.webp" alt="Створення та догляд" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
+          <Image src={stabilizedArt2} alt="Створення та догляд" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
         </div>
         <div>
           <div class="flex items-center gap-[16px] mb-[16px]">
@@ -376,7 +380,7 @@ const faqs = [
           </ul>
         </div>
         <div class="mt-[24px] lg:mt-0 reveal">
-          <img src="/images/masterclass/stabilized-art-product.webp" alt="Результати навчання" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
+          <Image src={stabilizedArt} alt="Результати навчання" class="w-full max-w-[400px] mx-auto rounded-[20px]" loading="lazy" />
         </div>
       </div>
     </div>

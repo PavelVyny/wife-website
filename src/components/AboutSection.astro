@@ -1,13 +1,16 @@
 ---
 // About section — ІНФОРМАЦІЯ ПРО МЕНЕ
+import { Image } from 'astro:assets';
+import dariaPhoto from '../assets/about/daria-photo.webp';
+import aboutBanner from '../assets/about/header-banner.webp';
 ---
 
 <section id="about" class="bg-white about-section lg:pb-[40px]">
 
   {/* ===== Mobile header banner (shown below md) ===== */}
   <div class="px-[19.25px] pt-[20px] pb-[6px] max-w-[1280px] mx-auto md:hidden reveal">
-    <img
-      src="/images/about/header-banner.webp"
+    <Image
+      src={aboutBanner}
       alt="Інформація про мене"
       class="w-full h-auto"
       loading="lazy"
@@ -22,8 +25,8 @@
 
       {/* Desktop header banner — inside left column */}
       <div class="hidden md:block mb-4 reveal">
-        <img
-          src="/images/about/header-banner.webp"
+        <Image
+          src={aboutBanner}
           alt="Інформація про мене"
           class="w-full max-w-[680px] h-auto"
           loading="lazy"
@@ -49,8 +52,8 @@
       />
 
       <div class="px-[9.75px] md:px-0">
-        <img
-          src="/images/about/daria-photo.webp"
+        <Image
+          src={dariaPhoto}
           alt="Дар'я Ковальова — флорист"
           class="w-full h-auto"
           loading="lazy"

@@ -1,5 +1,7 @@
 ---
 import FaqAccordion from './FaqAccordion.astro';
+import { Image } from 'astro:assets';
+import faqBanner from '../assets/faq/header-banner.webp';
 
 const faqs = [
   {
@@ -66,8 +68,8 @@ const faqs = [
 
   {/* Header banner */}
   <div class="mb-[14px] px-[9.75px] md:px-0 max-w-[1280px] mx-auto reveal">
-    <img
-      src="/images/faq/header-banner.webp"
+    <Image
+      src={faqBanner}
       alt="Питання та відповіді"
       class="w-full h-auto md:max-w-[672px] md:mx-auto"
       loading="lazy"
