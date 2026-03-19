@@ -7,7 +7,6 @@ import PricingCta from '../components/PricingCta.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import BotanicalElement from '../components/BotanicalElement.astro';
 import { Image } from 'astro:assets';
-import dariaPhoto from '../assets/about/daria-photo.webp';
 import florariumProduct from '../assets/masterclass/florarium-product.webp';
 
 const PURCHASE_URL = 'https://secure.wayforpay.com/payment/sb10851d18b99';
@@ -100,41 +99,109 @@ const faqs = [
 >
 
   {/* ===== HERO ===== */}
-  <section class="relative bg-brand-cream/30 pt-[96px] pb-[40px] md:pt-[120px] md:pb-[56px] lg:pt-[140px] lg:pb-[72px] overflow-hidden">
-    <div class="max-w-[1280px] mx-auto px-[24px] md:px-8">
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center">
-        <div class="mb-[32px] lg:mb-0 relative z-10">
-          <p class="font-heading text-[#7cab06] text-[14px] tracking-[2px] uppercase mb-[12px]">
-            Онлайн майстер-клас
-          </p>
-          <h1 class="font-heading text-brand-dark text-[32px] md:text-[42px] lg:text-[56px] leading-[1.15] mb-[20px]">
-            Створення флораріуму
-          </h1>
-          <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] mb-[28px] max-w-[540px]">
-            Створи унікальну композицію з сукулентами за 3 уроки з експертом-флористом!
-          </p>
+  <section
+    class="relative overflow-hidden min-h-screen"
+    style="background: url('/images/masterclass/hero/hero-bg.webp') no-repeat center/cover;"
+  >
+    {/* Daria — desktop: absolutely positioned, right half, full hero height */}
+    <div
+      class="hidden lg:block absolute inset-y-0 pointer-events-none z-0"
+      style="left: 44%; right: -80px;"
+    >
+      <img
+        src="/images/masterclass/hero/daria-florarium.webp"
+        alt=""
+        width="1035"
+        height="1067"
+        class="h-full w-auto object-contain object-bottom"
+        loading="eager"
+      />
+    </div>
+
+    {/* Content */}
+    <div
+      class="max-w-[1280px] mx-auto px-6 md:px-8 relative z-10 pt-[100px] md:pt-[140px] lg:pt-[270px] pb-[80px]"
+    >
+      <div class="max-w-[600px] lg:max-w-[540px] mx-auto lg:mx-0 text-center lg:text-left">
+
+        {/* Badge */}
+        <div class="flex justify-center lg:justify-start mb-6">
+          <div
+            class="inline-flex items-center gap-[10px] rounded-full"
+            style="background: #00401E; padding: 10px 20px;"
+          >
+            <span style="font-size: 20px; line-height: 1;">⭐</span>
+            <span class="font-heading text-white font-medium" style="font-size: 17px; line-height: 1;">Онлайн майстер-клас</span>
+          </div>
+        </div>
+
+        {/* Title */}
+        <h1 class="font-heading text-black uppercase mb-5" style="line-height: 1.08; letter-spacing: -0.36px;">
+          <span class="block text-[44px] md:text-[68px] lg:text-[89px]">Створення</span>
+          <span class="block relative text-[44px] md:text-[68px] lg:text-[89px]" style="padding-bottom: 14px;">
+            флораріуму
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 500 150"
+              preserveAspectRatio="none"
+              class="absolute left-0 w-full pointer-events-none"
+              style="height: 20px; bottom: -2px; overflow: visible;"
+              aria-hidden="true"
+            >
+              <path
+                d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"
+                fill="none"
+                stroke="#7cab06"
+                stroke-width="4"
+                vector-effect="non-scaling-stroke"
+              />
+            </svg>
+          </span>
+        </h1>
+
+        {/* Subtitle */}
+        <p class="font-heading text-black mb-8 mx-auto lg:mx-0" style="font-size: 22px; line-height: 30px; max-width: 440px;">
+          Створи унікальну композицію з сукулентами за 3 уроки з експертом-флористом!
+        </p>
+
+        {/* CTA */}
+        <div class="flex justify-center lg:justify-start">
           <a
             href={PURCHASE_URL}
-            class="inline-flex items-center justify-center px-[32px] py-[14px] bg-[#E63380] text-white rounded-full font-heading text-[18px] hover:scale-[1.02] transition-transform"
-            style="box-shadow: 0 10px 30px rgba(230,51,128,0.35);"
+            class="inline-flex items-center justify-center font-heading text-white font-medium hover:scale-[1.02] transition-transform"
+            style="padding: 18px 36px; background: #F3237D; border-radius: 100px; font-size: 21px;"
           >
             Придбати зараз
           </a>
         </div>
-        <div class="relative flex items-center justify-center">
-          <Image
-            src={dariaPhoto}
-            alt="Даша з флораріумом"
-            class="w-full max-w-[420px] mx-auto rounded-[28px] relative z-10"
-            loading="eager"
-          />
-          <BotanicalElement src="/images/masterclass/decor-pot-1.webp" top="10%" right="-10%" size="w-20 h-20 md:w-28 md:h-28" animationType="slide-in" slideX="60px" slideY="-30px" delay="0.3s" />
-          <BotanicalElement src="/images/masterclass/decor-moss-1.webp" bottom="15%" left="-5%" size="w-16 h-16 md:w-24 md:h-24" animationType="slide-in" slideX="-50px" slideY="20px" delay="0.5s" />
-          <BotanicalElement src="/images/masterclass/decor-flower-1.webp" top="-5%" left="10%" size="w-20 h-20 md:w-28 md:h-28" animationType="float" delay="0.2s" opacity="opacity-70" />
-        </div>
+      </div>
+
+      {/* Mobile: Daria below content */}
+      <div class="lg:hidden mt-10">
+        <img
+          src="/images/masterclass/hero/daria-florarium.webp"
+          alt="Даша з флораріумом"
+          width="1035"
+          height="1067"
+          class="w-full max-w-[380px] mx-auto"
+          loading="eager"
+        />
       </div>
     </div>
-    <BotanicalElement src="/images/masterclass/decor-leaf-1.webp" bottom="5%" left="2%" size="w-16 h-16 md:w-24 md:h-24" animationType="float" delay="1s" opacity="opacity-40" className="hidden md:block" />
+
+    {/* Floating botanical decor — desktop only, mirroring original positions */}
+    <img src="/images/masterclass/hero/decor-green-1.webp" alt="" width="227" height="212"
+      class="hidden lg:block absolute pointer-events-none z-0"
+      style="top: 40%; left: 53.5%; width: 62px; height: auto;" />
+    <img src="/images/masterclass/hero/decor-green-2.webp" alt="" width="227" height="212"
+      class="hidden lg:block absolute pointer-events-none z-0"
+      style="top: 62%; right: -1%; width: 85px; height: auto;" />
+    <img src="/images/masterclass/hero/decor-green-3.webp" alt="" width="162" height="202"
+      class="hidden lg:block absolute pointer-events-none z-0"
+      style="top: 14%; right: 10%; width: 102px; height: auto;" />
+    <img src="/images/masterclass/hero/decor-succulent.webp" alt="" width="213" height="215"
+      class="hidden lg:block absolute pointer-events-none z-0"
+      style="bottom: 22%; left: 27%; width: 53px; height: auto;" />
   </section>
 
   {/* ===== TARGET AUDIENCE ===== */}
