@@ -55,8 +55,7 @@ const { price, originalPrice, ctaText, purchaseUrl, motivationalText, course } =
           href={purchaseUrl}
           data-course={course}
           data-buy-now-cta
-          class="inline-flex px-[40px] py-[16px] bg-[#E63380] text-white rounded-full font-heading text-[20px] md:text-[22px] hover:scale-[1.02] transition-transform mb-[24px]"
-          style="box-shadow: 0 10px 30px rgba(230,51,128,0.4);"
+          class="pricing-cta-btn inline-flex px-[40px] py-[16px] bg-[#E63380] text-white rounded-full font-heading text-[20px] md:text-[22px] mb-[24px]"
         >
           {ctaText}
         </a>
@@ -77,6 +76,39 @@ const { price, originalPrice, ctaText, purchaseUrl, motivationalText, course } =
 
   </div>
 </section>
+
+<style>
+  @keyframes pinkPulse {
+    0%, 100% {
+      box-shadow: 0 8px 24px rgba(230, 51, 128, 0.35);
+    }
+    50% {
+      box-shadow: 0 14px 44px rgba(230, 51, 128, 0.65), 0 0 0 8px rgba(230, 51, 128, 0.1);
+    }
+  }
+
+  .pricing-cta-btn {
+    animation: pinkPulse 2.4s ease-in-out infinite;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    will-change: transform, box-shadow;
+  }
+
+  .pricing-cta-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 18px 52px rgba(230, 51, 128, 0.75);
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pricing-cta-btn {
+      animation: none;
+      box-shadow: 0 10px 30px rgba(230, 51, 128, 0.4);
+    }
+    .pricing-cta-btn:hover {
+      transform: none;
+    }
+  }
+</style>
 
 <script is:inline>
   document.querySelectorAll('[data-buy-now-cta]').forEach(function(cta) {
