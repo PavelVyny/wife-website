@@ -8,19 +8,20 @@ interface Props {
 const { mainTitle, accentTitle, className = "" } = Astro.props;
 ---
 
-<div class={`relative inline-flex items-center py-4 px-8 mb-12 ${className}`}>
-  {/* Overlapping Blob Backgrounds */}
-  <div class="absolute inset-0 flex items-center justify-center opacity-80 pointer-events-none">
-    <div class="absolute -left-4 w-full h-full bg-brand-dark rounded-full blur-xl scale-x-110 -rotate-2"></div>
-    <div class="absolute -right-4 w-full h-full bg-brand-lime rounded-full blur-lg scale-x-105 rotate-1"></div>
+<div class={`relative inline-flex flex-col items-center mb-6 md:mb-12 ${className}`}>
+  {/* Lime green top pill — smaller, offset to the right */}
+  <div
+    class="relative z-10 self-end font-heading text-white uppercase rounded-full tracking-widest text-[11px] md:text-[18px] px-[12px] py-[6px] md:px-[28px] md:py-[10px]"
+    style="background: #7cab06; letter-spacing: 0.15em; margin-bottom: -12px; margin-right: 10px;"
+  >
+    {mainTitle}
   </div>
-  
-  <div class="relative z-10 flex flex-col items-center text-center">
-    <span class="text-white font-heading text-sm sm:text-lg tracking-[0.2em] uppercase leading-none mb-1 translate-y-1">
-      {mainTitle}
-    </span>
-    <span class="text-white font-heading text-2xl sm:text-4xl tracking-wider uppercase leading-none">
-      {accentTitle}
-    </span>
+
+  {/* Dark green bottom pill — wider, main title */}
+  <div
+    class="font-heading text-white uppercase rounded-full tracking-widest text-center text-[14px] md:text-[28px] px-[16px] py-[10px] md:px-[40px] md:py-[16px]"
+    style="background: #003B1C; letter-spacing: 0.1em;"
+  >
+    {accentTitle}
   </div>
 </div>
