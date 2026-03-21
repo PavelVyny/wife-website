@@ -121,7 +121,11 @@ import tenorSansWoff2 from '@fontsource/tenor-sans/files/tenor-sans-latin-400-no
 		scroll-behavior: smooth;
 		overflow-x: hidden;
 		overflow-y: scroll;
-		scrollbar-gutter: stable;
+	}
+	@media (min-width: 1024px) {
+		html {
+			scrollbar-gutter: stable;
+		}
 	}
 	body, h1, h2, h3, h4, .font-heading {
 		font-family: 'Tenor Sans', 'Tenor Sans Fallback', serif !important;

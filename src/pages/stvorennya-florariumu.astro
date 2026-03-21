@@ -14,18 +14,18 @@ const PURCHASE_URL = 'https://secure.wayforpay.com/payment/sb10851d18b99';
 const valueCards = [
   {
     title: "Знання, які не знайти на YouTube",
-    description: "Перевірені секрети та підходи, напрацьовані роками практики — без здогадок та невдалих спроб.",
-    icon: "🎓",
+    description: "Я ділюся перевіреними секретами та порадами, які напрацювала за роки роботи. Ви отримаєте чіткий план створення флораріуму — без здогадок, помилок і марно витраченого часу",
+    image: "/images/masterclass/value-memoji-1.webp",
   },
   {
     title: "Покроковий алгоритм",
-    description: "Повний покроковий супровід від вибору матеріалів та рослин до створення та догляду за флораріумом.",
-    icon: "📋",
+    description: "Я покажу кожен етап створення — від вибору матеріалів до догляду за композицією. Вам не доведеться шукати додаткову інформацію, усе вже зібрано для вас!",
+    image: "/images/masterclass/value-memoji-2.webp",
   },
   {
     title: "Економія часу та грошей",
-    description: "Вся потрібна інформація зібрана та структурована — не витрачайте час на пошуки та помилки.",
-    icon: "⏱️",
+    description: "Вам не потрібно переглядати десятки відео в пошуках потрібної інформації. Ви отримаєте все і одразу в структурованому вигляді, який легко застосувати на практиці",
+    image: "/images/masterclass/value-memoji-3.webp",
   },
 ];
 
@@ -99,11 +99,14 @@ const faqs = [
 >
 
   {/* ===== HERO ===== */}
+  {/* Wrapper for hero + blurred cookie that bleeds below */}
+  <div class="relative">
   <section
-    class="relative overflow-hidden min-h-screen"
-    style="background: url('/images/masterclass/hero/hero-bg.webp') no-repeat center/cover;"
+    id="florarium-hero"
+    class="relative overflow-hidden rounded-b-[25px]"
+    style="background: #f8f8f8 url('/images/masterclass/hero/hero-bg-original.webp') no-repeat 0% 0%/cover;"
   >
-    {/* Daria — desktop: absolutely positioned, right half, full hero height */}
+    {/* Daria — desktop: absolutely positioned, right half */}
     <div
       class="hidden lg:block absolute inset-y-0 pointer-events-none z-0"
       style="left: 44%; right: -80px;"
@@ -118,78 +121,106 @@ const faqs = [
       />
     </div>
 
-    {/* Content */}
-    <div
-      class="max-w-[1280px] mx-auto px-6 md:px-8 relative z-10 pt-[100px] md:pt-[140px] lg:pt-[270px] pb-[80px]"
-    >
-      <div class="max-w-[600px] lg:max-w-[540px] mx-auto lg:mx-0 text-center lg:text-left">
+    {/* Mobile decorative images — slide-in animations matching main hero */}
+    {/* Top-left cookie — slides from left */}
+    <img src="/images/masterclass/hero/decor-cookie-1.webp" alt="" width="213" height="215"
+      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
+      style="top: 28%; left: 2%; width: 42px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" />
+    {/* Small cookie left (near Daria) — slides from left */}
+    <img src="/images/masterclass/hero/decor-cookie-2.webp" alt="" width="200" height="200"
+      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
+      style="top: 58%; left: 2%; width: 42px; height: auto; --slide-x: -80px; --slide-y: 20px; animation-delay: 0.5s;" />
+    {/* Cookie right — slides from right */}
+    <img src="/images/masterclass/hero/decor-cookie-3.webp" alt="" width="200" height="185"
+      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
+      style="top: 64%; right: 2%; width: 42px; height: auto; --slide-x: 80px; --slide-y: 20px; animation-delay: 0.6s;" />
+    {/* Plant with pot — slides from bottom-left, moved up */}
+    <img src="/images/masterclass/hero/decor-plant-pot.webp" alt="" width="280" height="310"
+      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
+      style="top: 64%; left: 8%; width: 84px; height: auto; --slide-x: -60px; --slide-y: 80px; animation-delay: 0.4s;" />
+    {/* Small plant top-right — slides from right */}
+    <img src="/images/masterclass/hero/decor-small-plant.webp" alt="" width="200" height="250"
+      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
+      style="top: 30%; right: 0%; width: 50px; height: auto; --slide-x: 100px; --slide-y: -60px; animation-delay: 0.35s;" />
 
-        {/* Badge */}
-        <div class="flex justify-center lg:justify-start mb-6">
-          <div
-            class="inline-flex items-center gap-[10px] rounded-full"
-            style="background: #00401E; padding: 10px 20px;"
-          >
-            <span style="font-size: 20px; line-height: 1;">⭐</span>
-            <span class="font-heading text-white font-medium" style="font-size: 17px; line-height: 1;">Онлайн майстер-клас</span>
+    {/* Content */}
+    <div class="relative">
+      <div
+        class="max-w-[1280px] mx-auto px-6 md:px-8 relative z-10 pt-[60px] md:pt-[80px] lg:pt-[200px] pb-[20px] lg:pb-[80px]"
+      >
+        <div class="max-w-[600px] lg:max-w-[540px] mx-auto lg:mx-0 text-center lg:text-left">
+
+          {/* Badge — fade in from top, smaller matching original ~206x32 */}
+          <div class="flex justify-center lg:justify-start mb-8 hero-text-fade" style="animation-delay: 0s;">
+            <div
+              class="inline-flex items-center gap-[8px] rounded-full"
+              style="background: #00401E; padding: 7px 16px;"
+            >
+              <span style="font-size: 14px; line-height: 1; display: inline-block; transform: rotate(15deg);">⭐</span>
+              <span class="font-heading text-white font-medium" style="font-size: 14px; line-height: 1;">Онлайн майстер-клас</span>
+            </div>
+          </div>
+
+          {/* Title — fade in from top */}
+          <h1 class="font-heading text-black uppercase mb-7 hero-text-fade" style="line-height: 1.08; letter-spacing: -0.36px; animation-delay: 0.1s;">
+            <span class="block text-[38px] md:text-[68px] lg:text-[89px]">Створення</span>
+            <span class="relative inline-block text-[38px] md:text-[68px] lg:text-[89px]">
+              флораріуму
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 150"
+                class="absolute -bottom-1 left-0 w-full h-8 overflow-visible pointer-events-none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path
+                  class="hero-zigzag-path"
+                  d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"
+                  fill="none"
+                  stroke="#7fac00"
+                  stroke-width="28"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+          </h1>
+
+          {/* Subtitle — fade in from top */}
+          <p class="font-heading text-black mb-8 mx-auto lg:mx-0 hero-text-fade" style="font-size: 16px; line-height: 24px; max-width: 340px; animation-delay: 0.2s;">
+            Онлайн навчання зі створення<br class="md:hidden" />
+            ексклюзивних композицій з<br class="md:hidden" />
+            сукулентів у скляних вазах
+          </p>
+
+          {/* CTA — fade in from top */}
+          <div class="flex justify-center lg:justify-start hero-text-fade" style="animation-delay: 0.3s;">
+            <a
+              href={PURCHASE_URL}
+              class="inline-flex items-center justify-center font-heading text-white font-medium hover:scale-[1.02] transition-transform"
+              style="padding: 16px 30px; background: #F3237D; border-radius: 100px; font-size: 18px;"
+            >
+              Придбати зараз
+            </a>
           </div>
         </div>
 
-        {/* Title */}
-        <h1 class="font-heading text-black uppercase mb-5" style="line-height: 1.08; letter-spacing: -0.36px;">
-          <span class="block text-[44px] md:text-[68px] lg:text-[89px]">Створення</span>
-          <span class="block relative text-[44px] md:text-[68px] lg:text-[89px]" style="padding-bottom: 14px;">
-            флораріуму
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 500 150"
-              preserveAspectRatio="none"
-              class="absolute left-0 w-full pointer-events-none"
-              style="height: 20px; bottom: -2px; overflow: visible;"
-              aria-hidden="true"
-            >
-              <path
-                d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"
-                fill="none"
-                stroke="#7cab06"
-                stroke-width="4"
-                vector-effect="non-scaling-stroke"
-              />
-            </svg>
-          </span>
-        </h1>
-
-        {/* Subtitle */}
-        <p class="font-heading text-black mb-8 mx-auto lg:mx-0" style="font-size: 22px; line-height: 30px; max-width: 440px;">
-          Онлайн навчання зі створення ексклюзивних композицій з сукулентів у скляних вазах
-        </p>
-
-        {/* CTA */}
-        <div class="flex justify-center lg:justify-start">
-          <a
-            href={PURCHASE_URL}
-            class="inline-flex items-center justify-center font-heading text-white font-medium hover:scale-[1.02] transition-transform"
-            style="padding: 18px 36px; background: #E63380; border-radius: 100px; font-size: 21px;"
-          >
-            Придбати зараз
-          </a>
+        {/* Mobile: Daria — 10px from right screen edge, slides up from bottom */}
+        <div class="lg:hidden mt-6 flex justify-end relative z-[6] hero-daria-slide"
+          style="margin-bottom: -40px; margin-right: -14px;"
+        >
+          <img
+            src="/images/masterclass/hero/daria-florarium.webp"
+            alt="Даша з флораріумом"
+            width="661"
+            height="1019"
+            class="w-full max-w-[232px]"
+            loading="eager"
+          />
         </div>
-      </div>
-
-      {/* Mobile: Daria below content */}
-      <div class="lg:hidden mt-10">
-        <img
-          src="/images/masterclass/hero/daria-florarium.webp"
-          alt="Даша з флораріумом"
-          width="1035"
-          height="1067"
-          class="w-full max-w-[380px] mx-auto"
-          loading="eager"
-        />
       </div>
     </div>
 
-    {/* Floating botanical decor — desktop only, mirroring original positions */}
+    {/* Floating botanical decor — desktop only */}
     <img src="/images/masterclass/hero/decor-green-1.webp" alt="" width="227" height="212"
       class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
       style="top: 40%; left: 53.5%; width: 62px; height: auto; --dur: 6s; --del: -1s;" />
@@ -210,8 +241,14 @@ const faqs = [
       style="top: 52%; left: 42%; width: 48px; height: auto; --dur: 5s; --del: -1.5s;" />
   </section>
 
+  {/* Blurred cookie — bleeds below hero section */}
+  <img src="/images/masterclass/hero/decor-cookie-2.webp" alt="" width="200" height="200"
+    class="lg:hidden absolute pointer-events-none z-[1] hero-decor-slide"
+    style="bottom: -60px; left: 2%; width: 132px; height: auto; filter: brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg); --slide-x: -60px; --slide-y: 100px; animation-delay: 0.15s;" />
+  </div>
+
   {/* ===== TARGET AUDIENCE ===== */}
-  <section class="relative bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+  <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
     {/* Decorative elements — matching originals exact positions */}
     <img src="/images/masterclass/decor-herb-cluster.webp" alt="" width="280" height="268"
       class="hidden lg:block absolute pointer-events-none z-0 decor-sway"
@@ -222,7 +259,14 @@ const faqs = [
 
     <div class="max-w-[1280px] mx-auto relative z-10">
       <div class="flex justify-center mb-[8px] reveal">
-        <SectionHeader mainTitle="Для кого" accentTitle="Цей майстер-клас" />
+        <img
+          src="/images/masterclass/for-who-title.webp"
+          alt="Для кого цей майстер-клас"
+          width="1024"
+          height="460"
+          class="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[460px] h-auto"
+          loading="lazy"
+        />
       </div>
       <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] text-center mb-[40px] max-w-[780px] mx-auto reveal">
         Цей майстер-клас для тих, хто мріє додати затишку в інтер'єр, створити щось особливе своїми руками та втілити власні творчі ідеї!
@@ -279,8 +323,8 @@ const faqs = [
     </div>
   </section>
 
-  {/* ===== WHAT IS A FLORARIUM ("ЩО ВХОДИТЬ У ФЛОРАРІУМ?") ===== */}
-  <section class="relative bg-brand-cream/20 px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+  {/* ===== WHAT IS A FLORARIUM ("ЩО ТАКЕ ФЛОРАРІУМ?") ===== */}
+  <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] lg:pb-[120px] overflow-hidden">
     <img src="/images/masterclass/decor-leaf-3.webp" alt="" width="180" height="200"
       class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
       style="top: 12%; left: -1.5%; width: 130px; height: auto; opacity: 0.8; --dur: 7s; --del: -3s;" />
@@ -288,88 +332,212 @@ const faqs = [
       class="hidden lg:block absolute pointer-events-none z-0 decor-anim-mirror"
       style="bottom: 8%; right: -1%; width: 140px; height: auto; opacity: 0.75; --dur: 8s; --del: -1.5s;" />
     <div class="max-w-[1280px] mx-auto relative z-10">
-      <div class="flex justify-center mb-[12px] reveal">
-        <SectionHeader mainTitle="Що входить" accentTitle="У флораріум?" />
+
+      {/* Title banner — original image with decorative flowers */}
+      <div class="flex justify-center mb-[16px] md:mb-[24px] reveal">
+        <img
+          src="/images/masterclass/what-is-florarium-title.webp"
+          alt="Що таке флораріум?"
+          width="1024"
+          height="506"
+          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[500px] h-auto"
+          loading="lazy"
+        />
       </div>
 
-      <p class="text-center text-brand-dark/80 text-[16px] md:text-[18px] leading-[30px] mb-[36px] max-w-[720px] mx-auto reveal">
-        <strong>Флораріум</strong> — це унікальна мініатюрна багаторічна композиція з живих рослин, створена у скляній ємності
-      </p>
+      {/* Desktop: 2 columns — text left, benefits right */}
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-start mt-[8px] lg:mt-[24px]">
 
-      {/* Hexagonal florarium illustration — centered, floating animation */}
-      <div class="flex justify-center mb-[40px] reveal">
-        <div class="florarium-float">
-          {/* TODO: replace src with locally-downloaded image once Chrome DevTools is available */}
-          {/* Original: https://floralabeducation.com.ua/wp-content/uploads/2026/03/wwdwfw-e1773210654135.webp */}
+        {/* Left column: heading text with animated highlight */}
+        <div class="reveal">
+          <h2 class="font-heading text-black text-[22px] md:text-[36px] lg:text-[50px] leading-[1.25] text-center lg:text-left mb-[24px] lg:mb-0">
+            <span class="relative inline">
+              <span class="relative z-10 font-heading">Флораріум </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 150"
+                class="absolute -bottom-[6px] md:-bottom-[10px] lg:-bottom-[14px] left-0 w-full h-[20px] md:h-[28px] lg:h-[38px] florarium-highlight overflow-visible"
+                preserveAspectRatio="none"
+              >
+                <path
+                  class="highlight-path"
+                  d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0"
+                  fill="none"
+                  stroke="#a5d100"
+                  stroke-width="38"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>— це унікальна мініатюрна багаторічна композиція з живих рослин, створена у скляній ємності
+          </h2>
+        </div>
+
+        {/* Right column: empty on desktop for layout balance */}
+        <div class="hidden lg:block" />
+      </div>
+
+      {/* Florarium image with interactive hotspots */}
+      <div class="flex justify-center mt-[24px] lg:mt-[48px] reveal">
+        <div class="florarium-hotspot-container relative inline-block">
           <img
             src="https://floralabeducation.com.ua/wp-content/uploads/2026/03/wwdwfw-e1773210654135.webp"
-            alt="Що входить у флораріум — гексагональна ілюстрація"
+            alt="Що таке флораріум — гексагональна ілюстрація"
             width="560"
             height="540"
-            class="w-full max-w-[380px] md:max-w-[480px] lg:max-w-[560px] mx-auto"
+            class="w-full max-w-[380px] md:max-w-[480px] lg:max-w-[560px]"
             loading="lazy"
           />
+
+          {/* 6 interactive hotspots with tooltips */}
+          {[
+            { label: "Живі сукуленти", left: "50%", top: "39%" },
+            { label: "Стабілізований мох", left: "16%", top: "38%" },
+            { label: "Декоративні камінці", left: "28%", top: "60%" },
+            { label: "Кольоровий пісок", left: "74%", top: "74%" },
+            { label: "Грунт і керамзит", left: "55%", top: "90%" },
+            { label: "Скляна форма", left: "80%", top: "17%" },
+          ].map((h) => (
+            <button class="hotspot-btn" style={`left: ${h.left}; top: ${h.top};`} aria-label={h.label}>
+              <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><rect x="9" y="4" width="2" height="12" rx="1" fill="white"/><rect x="4" y="9" width="12" height="2" rx="1" fill="white"/></svg>
+              <span class="hotspot-tooltip">{h.label}</span>
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* 3 benefit items — horizontal row */}
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-[24px] max-w-[900px] mx-auto">
+      {/* Benefits list — below florarium image */}
+      <div class="flex flex-col gap-[16px] mt-[24px] mb-[8px] reveal">
         {[
           "Стильний декор для дому чи офісу",
           "Особливий подарунок для близьких",
           "Спосіб додати природної краси у ваше життя",
         ].map((item) => (
-          <div class="flex flex-col items-center text-center gap-[12px] reveal">
-            <div class="w-[52px] h-[52px] rounded-full bg-[#7cab06] flex items-center justify-center flex-shrink-0">
-              <svg width="22" height="22" viewBox="0 0 12 12" fill="none">
+          <div class="flex items-center gap-[12px]">
+            <div class="w-[28px] h-[28px] rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #7fac00;">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <p class="font-heading text-brand-dark text-[17px] leading-[26px]">{item}</p>
+            <p class="font-heading text-[#7b7b7b] text-[16px] leading-[24px]">{item}</p>
           </div>
         ))}
+      </div>
+
+      {/* Quote bubble — original site image with Daria memoji */}
+      <div class="flex justify-center lg:justify-end mt-[24px] lg:mt-[-60px] lg:mr-[40px] reveal">
+        <img
+          src="/images/masterclass/quote-bubble.webp"
+          alt="Це не просто рослини у горщику — це маленький живий світ, який ви створюєте власноруч!"
+          width="1024"
+          height="525"
+          class="w-full max-w-[340px] md:max-w-[400px] lg:max-w-[440px] h-auto"
+          loading="lazy"
+        />
       </div>
     </div>
 
   </section>
 
   {/* ===== WHAT'S INCLUDED ===== */}
-  <section class="relative bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+  <section class="relative bg-white px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[72px] pb-[80px] overflow-hidden">
     <img src="/images/masterclass/decor-branch-1.webp" alt="" width="200" height="180"
       class="hidden lg:block absolute pointer-events-none z-0 decor-sway"
       style="top: 5%; left: -2%; width: 160px; height: auto; opacity: 0.7; --dur: 6s; --del: -2s;" />
     <img src="/images/masterclass/decor-small-leaf.webp" alt="" width="150" height="150"
       class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
       style="bottom: 10%; right: 0%; width: 110px; height: auto; opacity: 0.8; --dur: 7s; --del: -4s;" />
+    {/* Blurred cookie — bottom left, matching original */}
+    <img src="/images/masterclass/decor-cookie-blur.webp" alt="" width="280" height="268"
+      class="absolute pointer-events-none z-0"
+      style="bottom: 0%; left: 20%; width: 35px; height: auto; filter: brightness(107%) contrast(100%) saturate(71%) blur(6.7px) hue-rotate(0deg);" />
     <div class="max-w-[1280px] mx-auto">
-      <div class="flex justify-center mb-[12px] reveal">
-        <SectionHeader mainTitle="Що входить" accentTitle="У майстер-клас" />
+
+      {/* Animated lightbulb — left-aligned, slightly lower */}
+      <div class="flex justify-start ml-[40px] md:ml-[60px] lg:justify-center mb-[-20px] reveal">
+        <svg width="44" height="56" viewBox="0 0 44 56" fill="none" xmlns="http://www.w3.org/2000/svg" class="bulb-glow">
+          {/* Glow rays */}
+          <line x1="22" y1="2" x2="22" y2="6" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          <line x1="8" y1="8" x2="11" y2="11" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          <line x1="36" y1="8" x2="33" y2="11" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          <line x1="4" y1="22" x2="8" y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          <line x1="40" y1="22" x2="36" y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          {/* Bulb body */}
+          <path d="M22 10C16.5 10 12 14.5 12 20c0 3.6 1.9 6.7 4.8 8.5V32c0 .6.4 1 1 1h8.4c.6 0 1-.4 1-1v-3.5C30.1 26.7 32 23.6 32 20c0-5.5-4.5-10-10-10z" fill="#FFD700" stroke="#E8B800" stroke-width="0.8"/>
+          {/* Bulb shine */}
+          <path d="M17 19c0-2.8 2.2-5 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+          {/* Base lines */}
+          <rect x="16" y="34" width="12" height="1.5" rx="0.75" fill="#E8B800"/>
+          <rect x="17" y="37" width="10" height="1.5" rx="0.75" fill="#E8B800"/>
+          <path d="M19 40.5L22 43L25 40.5" stroke="#E8B800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[32px]">
+
+      {/* Title — original image with decorative plants */}
+      <div class="flex justify-center mb-[16px] reveal">
+        <img
+          src="/images/masterclass/whats-included-title.webp"
+          alt="Що входить у майстер-клас"
+          width="1024"
+          height="460"
+          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
         <div class="reveal">
-          <ul class="space-y-[14px]">
-            {[
-              "Повний список матеріалів із зазначенням, де їх купити (з посиланнями на магазини)",
-              "Три детальних відео з покроковими інструкціями",
-              "Відео-урок по створенню композиції в бетонному кашпо",
-            ].map((item) => (
-              <li class="text-brand-dark/80 text-[16px] leading-[26px] flex gap-[10px] items-start">
-                <span class="flex-shrink-0 w-[22px] h-[22px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[3px]">
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                {item}
-              </li>
-            ))}
+          {/* List items: first 2 green, third pink (bonus) */}
+          <ul class="space-y-[20px] px-[14px] md:px-0">
+            <li class="text-[#4a4a4a] text-[16px] leading-[24px] flex gap-[12px] items-center font-heading font-medium">
+              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Повний список матеріалів із зазначенням, де їх купити (з посиланнями на магазини)
+            </li>
+            <li class="text-[#4a4a4a] text-[16px] leading-[24px] flex gap-[12px] items-center font-heading font-medium">
+              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Три детальні відео з покроковими інструкціями
+            </li>
+            <li class="text-[#4a4a4a] text-[16px] leading-[24px] flex gap-[12px] items-center font-heading font-medium">
+              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #F3237D;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              Відео-урок по створенню композиції в бетонному кашпо
+            </li>
           </ul>
-          <div class="mt-[20px] inline-flex items-center gap-[8px] bg-[#7cab06]/10 rounded-full px-[16px] py-[8px]">
-            <span class="text-[#7cab06] font-heading text-[14px] uppercase tracking-[1px]">🎁 Бонус</span>
+
+          {/* Curved arrow doodle + БОНУС badge */}
+          <div class="mt-[16px] flex items-center gap-[8px] px-[14px] md:px-0">
+            <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0" style="rotate: -105deg; margin-top: -40px;">
+              <path d="M5 35C10 15 25 5 45 10" stroke="#333" stroke-width="2" stroke-linecap="round" fill="none" stroke-dasharray="3 3"/>
+              <path d="M40 5L46 10L39 14" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span class="inline-block font-heading text-white text-[14px] uppercase tracking-[1px] rounded-full" style="background: #F3237D; padding: 8px 20px;">
+              Бонус
+            </span>
           </div>
         </div>
-        <div class="mt-[24px] lg:mt-0 reveal">
-          <Image
-            src={florariumProduct}
-            alt="Що входить у майстер-клас зі створення флораріуму"
-            class="w-full max-w-[400px] mx-auto"
+
+        {/* Product images — large left 86% width, small right, both rounded-[30px] */}
+        <div class="mt-[24px] lg:mt-0 relative" style="min-height: 380px;">
+          <img
+            src="/images/masterclass/florarium-included-1.webp"
+            alt="Флораріум — що входить у майстер-клас"
+            width="1024"
+            height="1024"
+            class="rounded-[30px] reveal included-slide-left"
+            style="width: 86%; display: block;"
+            loading="lazy"
+          />
+          <img
+            src="/images/masterclass/florarium-included-2.webp"
+            alt="Композиція в бетонному кашпо"
+            width="1024"
+            height="1024"
+            class="rounded-[30px] absolute reveal included-slide-right"
+            style="width: 50%; bottom: -20px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
             loading="lazy"
           />
         </div>
@@ -378,7 +546,7 @@ const faqs = [
   </section>
 
   {/* ===== CURRICULUM ===== */}
-  <section class="relative bg-brand-cream/20 px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+  <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
     <img src="/images/masterclass/decor-fern-1.webp" alt="" width="190" height="210"
       class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
       style="top: 8%; left: -1.5%; width: 145px; height: auto; opacity: 0.75; --dur: 8s; --del: -1s;" />
@@ -386,120 +554,141 @@ const faqs = [
       class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
       style="bottom: 6%; right: -0.5%; width: 130px; height: auto; opacity: 0.8; --dur: 5.5s; --del: -3s;" />
     <div class="max-w-[1280px] mx-auto">
+
+      {/* Title — original image */}
       <div class="flex justify-center mb-[32px] md:mb-[48px] reveal">
-        <SectionHeader mainTitle="Програма" accentTitle="Майстер-класу" />
+        <img
+          src="/images/masterclass/curriculum-title.webp"
+          alt="Програма майстер-класу"
+          width="1024"
+          height="460"
+          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
+          loading="lazy"
+        />
       </div>
 
-      {/* Lesson 1 — image left, text right */}
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mb-[48px] md:mb-[64px] reveal">
-        <div class="mb-[24px] lg:mb-0 overflow-hidden rounded-[16px]">
-          <img
-            src="https://floralabeducation.com.ua/wp-content/uploads/2026/03/%D1%80%D0%B0%D1%81%D1%82%D0%B5%D0%BD%D0%B8%D0%B5-2.webp"
-            alt="Підготовка та закупівля матеріалів"
-            width="600" height="500"
-            class="w-full max-w-[500px] mx-auto object-cover curriculum-img"
-            loading="lazy"
-          />
+      {/* Lessons container with vertical connecting line */}
+      <div class="curriculum-timeline relative">
+
+      {/* Lesson 1 */}
+      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0">
+        <div class="flex items-start gap-[12px] mb-[12px]">
+          <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">1</span>
+          <h3 class="font-heading text-black text-[26px] leading-[1.2]">
+            <span class="relative inline">
+              <span class="relative z-10">Підготовка</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
+                <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
+              </svg>
+            </span><br/>та закупівля матеріалів
+          </h3>
         </div>
-        <div>
-          <div class="flex items-center gap-[16px] mb-[16px]">
-            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">1</span>
-            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Підготовка та закупівля матеріалів</h3>
-          </div>
-          <p class="text-brand-dark/70 text-[15px] leading-[24px]">Список усіх необхідних матеріалів, перелік магазинів, корисні поради щодо вибору компонентів</p>
-        </div>
+        <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Список усіх необхідних матеріалів, перелік магазинів, корисні поради щодо вибору компонентів</p>
+      </div>
+      <div class="flex justify-center mb-[48px] reveal">
+        <img src="/images/masterclass/curriculum-lesson-1.webp" alt="Підготовка та закупівля матеріалів" width="1024" height="1024" class="w-[280px] h-auto" loading="lazy"/>
       </div>
 
-      {/* Lesson 2 — text left, image right */}
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mb-[48px] md:mb-[64px] reveal">
-        <div class="order-2 lg:order-1">
-          <div class="flex items-center gap-[16px] mb-[16px]">
-            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">2</span>
-            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Створення флораріуму</h3>
-          </div>
-          <p class="text-brand-dark/70 text-[15px] leading-[24px]">Детальна покрокова інструкція зі створення флораріуму в геометричній скляній вазі</p>
+      {/* Lesson 2 */}
+      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0">
+        <div class="flex items-start gap-[12px] mb-[12px]">
+          <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">2</span>
+          <h3 class="font-heading text-black text-[26px] leading-[1.2]">
+            <span class="relative inline">
+              <span class="relative z-10">Створення</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
+                <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
+              </svg>
+            </span><br/>флораріуму
+          </h3>
         </div>
-        <div class="order-1 lg:order-2 mb-[24px] lg:mb-0 overflow-hidden rounded-[16px]">
-          <img
-            src="https://floralabeducation.com.ua/wp-content/uploads/2026/03/%D0%91%D0%B5%D0%B7-%D0%B8%D1%86%D1%84%D0%B0%D1%84%D0%BC%D0%B5%D0%BD%D0%B8-3.webp"
-            alt="Створення флораріуму"
-            width="600" height="500"
-            class="w-full max-w-[500px] mx-auto object-cover curriculum-img"
-            loading="lazy"
-          />
-        </div>
+        <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Детальна покрокова інструкція зі створення флораріуму в геометричній скляній вазі</p>
+      </div>
+      <div class="flex justify-center mb-[48px] reveal">
+        <img src="/images/masterclass/curriculum-lesson-2.webp" alt="Створення флораріуму" width="1024" height="1024" class="w-[280px] h-auto" loading="lazy"/>
       </div>
 
-      {/* Lesson 3 — image left, text right */}
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mb-[48px] md:mb-[64px] reveal">
-        <div class="mb-[24px] lg:mb-0 overflow-hidden rounded-[16px]">
-          <img
-            src="https://floralabeducation.com.ua/wp-content/uploads/2026/03/%D0%91%D0%B5%D0%B7-%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-3adawd.webp"
-            alt="Догляд за флораріумом"
-            width="600" height="500"
-            class="w-full max-w-[500px] mx-auto object-cover curriculum-img"
-            loading="lazy"
-          />
+      {/* Lesson 3 */}
+      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0">
+        <div class="flex items-start gap-[12px] mb-[12px]">
+          <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">3</span>
+          <h3 class="font-heading text-black text-[26px] leading-[1.2]">
+            <span class="relative inline">
+              <span class="relative z-10">Догляд</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
+                <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
+              </svg>
+            </span><br/>за флораріумом
+          </h3>
         </div>
-        <div>
-          <div class="flex items-center gap-[16px] mb-[16px]">
-            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">3</span>
-            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Догляд за флораріумом</h3>
-          </div>
-          <p class="text-brand-dark/70 text-[15px] leading-[24px]">Як доглядати за флораріумом, щоб він залишався свіжим та гарним максимально довго</p>
-        </div>
+        <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Як доглядати за флораріумом, щоб він залишався свіжим та гарним максимально довго</p>
+      </div>
+      <div class="flex justify-center mb-[48px] reveal">
+        <img src="/images/masterclass/curriculum-lesson-3.webp" alt="Догляд за флораріумом" width="1024" height="1024" class="w-[280px] h-auto" loading="lazy"/>
       </div>
 
-      {/* Lesson 4 — text left, image right — Bonus */}
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center reveal">
-        <div class="order-2 lg:order-1">
-          <div class="flex items-center gap-[16px] mb-[16px]">
-            <span class="flex-shrink-0 w-[56px] h-[56px] rounded-full bg-[#7cab06] flex items-center justify-center font-heading text-white text-[22px]">4</span>
-            <h3 class="font-heading text-brand-dark text-[22px] md:text-[28px] leading-[1.2]">Композиція в бетонному кашпо</h3>
-          </div>
-          <p class="text-brand-dark/70 text-[15px] leading-[24px]">Створення мініатюрної святкової композиції для декору столу або на подарунок</p>
-          <div class="mt-[12px] inline-flex items-center gap-[8px] bg-[#7cab06]/10 rounded-full px-[16px] py-[8px]">
-            <span class="text-[#7cab06] font-heading text-[14px] uppercase tracking-[1px]">🎁 Бонус</span>
-          </div>
+      {/* Lesson 4 */}
+      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0">
+        <div class="flex items-start gap-[12px] mb-[12px]">
+          <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">4</span>
+          <h3 class="font-heading text-black text-[26px] leading-[1.2]">
+            <span class="relative inline">
+              <span class="relative z-10">Композиція</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
+                <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
+              </svg>
+            </span><br/>в бетонному кашпо
+          </h3>
         </div>
-        <div class="order-1 lg:order-2 mb-[24px] lg:mb-0 overflow-hidden rounded-[16px]">
-          <img
-            src="https://floralabeducation.com.ua/wp-content/uploads/2026/03/%D0%91%D0%B5%D0%B7-%D0%B8%D1%84%D1%86%D0%B0%D1%84%D0%B0%D0%BC%D0%B5%D0%BD%D0%B8-3.webp"
-            alt="Композиція в бетонному кашпо"
-            width="600" height="500"
-            class="w-full max-w-[500px] mx-auto object-cover curriculum-img"
-            loading="lazy"
-          />
-        </div>
+        <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Створення мініатюрної святкової композиції для декору столу або на подарунок</p>
       </div>
+      <div class="flex justify-center reveal">
+        <img src="/images/masterclass/curriculum-lesson-4.webp" alt="Композиція в бетонному кашпо" width="1024" height="1024" class="w-[340px] h-auto" loading="lazy"/>
+      </div>
+
+      </div>{/* end curriculum-timeline */}
     </div>
   </section>
 
   {/* ===== LEARNING OUTCOMES ===== */}
-  <section class="relative bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+  <section class="relative px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[72px] pb-[80px] overflow-hidden" style="background: #f8f8f8;">
     <img src="/images/masterclass/decor-leaf-2.webp" alt="" width="170" height="190"
       class="hidden lg:block absolute pointer-events-none z-0 decor-sway"
       style="top: 10%; left: -1%; width: 130px; height: auto; opacity: 0.7; --dur: 7s; --del: -2.5s;" />
     <img src="/images/masterclass/decor-flower-1.webp" alt="" width="160" height="160"
       class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
       style="bottom: 8%; right: -0.5%; width: 115px; height: auto; opacity: 0.75; --dur: 6s; --del: -1s;" />
+    {/* Blurred cookie — top area */}
+    <img src="/images/masterclass/decor-cookie-blur.webp" alt="" width="280" height="268"
+      class="absolute pointer-events-none z-0"
+      style="top: 2%; left: 5%; width: 54px; height: auto; filter: brightness(107%) contrast(100%) saturate(71%) blur(6.7px) hue-rotate(0deg);" />
     <div class="max-w-[1280px] mx-auto">
-      <div class="flex justify-center mb-[12px] reveal">
-        <SectionHeader mainTitle="Результати" accentTitle="Які ви отримаєте" />
+
+      {/* Title — original image */}
+      <div class="flex justify-center mb-[16px] reveal">
+        <img
+          src="/images/masterclass/results-title.webp"
+          alt="Результати які ви отримаєте"
+          width="1024"
+          height="460"
+          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
+          loading="lazy"
+        />
       </div>
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[32px]">
+
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
         <div class="reveal">
-          <ul class="space-y-[16px]">
+          <ul class="space-y-[20px] px-[14px] md:px-0">
             {[
               "Ви створите стильний флораріум своїми руками",
               "Додасте до свого інтер'єру затишку",
               "Зробите незвичайний подарунок для близьких, створений власноруч",
               "Зможете почати свій творчий шлях у флористиці або ж отримати натхнення для хобі",
             ].map((item) => (
-              <li class="text-brand-dark/80 text-[16px] leading-[26px] flex gap-[12px] items-start">
-                <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full bg-[#7cab06] flex items-center justify-center mt-[2px]">
+              <li class="text-[#7b7b7b] text-[18px] leading-[28px] flex gap-[12px] items-center font-heading">
+                <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </span>
                 {item}
@@ -507,18 +696,37 @@ const faqs = [
             ))}
           </ul>
         </div>
-        <div class="mt-[24px] lg:mt-0 reveal">
-          <Image src={florariumProduct} alt="Результати навчання" class="w-full max-w-[400px] mx-auto" loading="lazy" />
+
+        {/* Product images — same pattern as what's-included */}
+        <div class="mt-[24px] lg:mt-0 relative" style="min-height: 380px;">
+          <img
+            src="/images/masterclass/results-img-1.webp"
+            alt="Результати — флораріум"
+            width="1024"
+            height="1024"
+            class="rounded-[30px] reveal included-slide-left"
+            style="width: 86%; display: block;"
+            loading="lazy"
+          />
+          <img
+            src="/images/masterclass/results-img-2.webp"
+            alt="Результати — композиція"
+            width="1024"
+            height="1024"
+            class="rounded-[30px] absolute reveal included-slide-right"
+            style="width: 50%; bottom: -20px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
   </section>
 
-  {/* ===== VALUE PROPS ===== */}
-  <ValueProps cards={valueCards} />
-
   {/* ===== INSTRUCTOR ===== */}
   <InstructorSection />
+
+  {/* ===== VALUE PROPS ===== */}
+  <ValueProps cards={valueCards} />
 
   {/* ===== PRICING ===== */}
   <PricingCta
@@ -530,7 +738,7 @@ const faqs = [
   />
 
   {/* ===== FAQ ===== */}
-  <section id="faq" class="relative bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
+  <section id="faq" class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
     <img src="/images/masterclass/decor-wreath-1.webp" alt="" width="200" height="200"
       class="hidden lg:block absolute pointer-events-none z-0 decor-sway"
       style="top: 4%; right: -1%; width: 150px; height: auto; opacity: 0.55; --dur: 8s; --del: -4s;" />
@@ -539,7 +747,14 @@ const faqs = [
       style="bottom: 5%; left: -1%; width: 120px; height: auto; opacity: 0.6; --dur: 7s; --del: -2s;" />
     <div class="max-w-[1280px] mx-auto">
       <div class="flex justify-center mb-[20px] reveal">
-        <SectionHeader mainTitle="Питання" accentTitle="Відповідь" />
+        <img
+          src="/images/masterclass/faq-title.webp"
+          alt="Питання та відповідь"
+          width="1024"
+          height="460"
+          class="w-full max-w-[280px] md:max-w-[380px] lg:max-w-[420px] h-auto"
+          loading="lazy"
+        />
       </div>
       <FaqAccordion faqs={faqs} />
     </div>
@@ -594,9 +809,236 @@ const faqs = [
     will-change: transform;
   }
 
+  /* ===== Curriculum vertical timeline line ===== */
+  .curriculum-timeline {
+    --timeline-bottom: 420px; /* height of lesson 4 image + margin, line stops at circle 4 */
+  }
+  .curriculum-timeline::before {
+    content: '';
+    position: absolute;
+    left: 32px; /* 14px padding + 18px (center of 36px circle) */
+    top: 18px;
+    bottom: var(--timeline-bottom);
+    width: 1px;
+    background: #d9d9d9;
+    z-index: 0;
+  }
+  @media (min-width: 768px) {
+    .curriculum-timeline::before {
+      left: 18px;
+    }
+  }
+
+  /* ===== Product image slide-in animations ===== */
+  .included-slide-left {
+    transform: translateX(-60px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .included-slide-left.revealed {
+    transform: translateX(0);
+  }
+  .included-slide-right {
+    transform: translateX(60px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition-delay: 0.15s;
+  }
+  .included-slide-right.revealed {
+    transform: translateX(0);
+  }
+
+  /* ===== Animated lightbulb glow ===== */
+  .bulb-glow {
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
+  }
+  .bulb-ray {
+    animation: bulbRayPulse 2s ease-in-out infinite;
+  }
+  .bulb-ray:nth-child(2) { animation-delay: 0.15s; }
+  .bulb-ray:nth-child(3) { animation-delay: 0.3s; }
+  .bulb-ray:nth-child(4) { animation-delay: 0.45s; }
+  .bulb-ray:nth-child(5) { animation-delay: 0.6s; }
+  @keyframes bulbRayPulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+  /* ===== Hero text fade-in from top (matching main hero slide-up) ===== */
+  .hero-text-fade {
+    opacity: 0;
+    animation: heroTextFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes heroTextFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ===== Hero zigzag underline animation (stroke-dashoffset draw) ===== */
+  .hero-zigzag-path {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    opacity: 0;
+    animation: heroZigzagDraw 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+  }
+  @keyframes heroZigzagDraw {
+    to {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  /* ===== Daria slide-up from bottom ===== */
+  .hero-daria-slide {
+    opacity: 0;
+    animation: heroDecorSlideIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+    --slide-x: 0px;
+    --slide-y: 40px;
+  }
+
+  /* ===== Hero decorative slide-in animation (matching main hero) ===== */
+  @keyframes heroDecorSlideIn {
+    from {
+      opacity: 0;
+      transform: translate(var(--slide-x, 0), var(--slide-y, 0));
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+  .hero-decor-slide {
+    opacity: 0;
+    animation: heroDecorSlideIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* ===== Hotspot buttons (pink pulsing circles with white +) ===== */
+  .florarium-hotspot-container {
+    position: relative;
+  }
+  .hotspot-btn {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #F3237D;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: transform 0.2s ease;
+  }
+  .hotspot-btn:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  /* Ripple pulse animation */
+  .hotspot-btn::before,
+  .hotspot-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    border: 1px solid rgba(243, 35, 125, 0.5);
+    border-radius: 50%;
+    animation: hotspot-ripple 2.6s cubic-bezier(0.25, 0.9, 0.2, 1) infinite;
+  }
+  .hotspot-btn::before {
+    width: 140%;
+    height: 140%;
+    border-color: rgba(243, 35, 125, 0.6);
+  }
+  .hotspot-btn::after {
+    width: 100%;
+    height: 100%;
+    border-color: rgba(243, 35, 125, 0.4);
+    animation-delay: 0.4s;
+  }
+  @keyframes hotspot-ripple {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1.7); opacity: 0; }
+  }
+
+  /* Tooltip */
+  .hotspot-btn .hotspot-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    background: #003B1C;
+    color: white;
+    font-family: 'Tenor Sans', serif;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 20;
+  }
+  .hotspot-btn .hotspot-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #003B1C;
+  }
+  .hotspot-btn.active .hotspot-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    pointer-events: auto;
+  }
+
+  /* ===== Animated green highlight underline for "Флораріум" ===== */
+  .highlight-path {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    opacity: 0;
+    transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
+    transition-delay: 0.3s;
+  }
+  .revealed .highlight-path,
+  .reveal.revealed .highlight-path {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .decor-anim, .decor-sway, .decor-anim-mirror {
       animation: none !important;
     }
+    .hotspot-btn::before, .hotspot-btn::after {
+      animation: none !important;
+    }
+    .highlight-path {
+      stroke-dashoffset: 0 !important;
+      opacity: 1 !important;
+      transition: none !important;
+    }
   }
 </style>
+
+<script>
+  // Hotspot tooltip toggle on click
+  document.querySelectorAll('.hotspot-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasActive = btn.classList.contains('active');
+      document.querySelectorAll('.hotspot-btn.active').forEach(b => b.classList.remove('active'));
+      if (!wasActive) btn.classList.add('active');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.hotspot-btn.active').forEach(b => b.classList.remove('active'));
+  });
+</script>
