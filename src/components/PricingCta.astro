@@ -1,89 +1,206 @@
 ---
-// PricingCta — pricing section with strikethrough price, motivational text, and pink Buy Now CTA
-import SectionHeader from './SectionHeader.astro';
-
+// PricingCta — pricing section matching original WordPress site
 interface Props {
   price: string;
   originalPrice?: string;
   ctaText: string;
   purchaseUrl: string;
-  motivationalText?: string;
   course: 'florarium' | 'paintings';
 }
 
-const { price, originalPrice, ctaText, purchaseUrl, motivationalText, course } = Astro.props;
+const { price, originalPrice, ctaText, purchaseUrl, course } = Astro.props;
 ---
 
-<section id="pricing" class="bg-white px-[24px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px]">
+<section id="pricing" class="relative px-[10px] pt-[60px] pb-[40px] md:px-8 md:pt-[70px] md:pb-[56px] lg:pt-[80px] lg:pb-[72px] overflow-hidden"
+  style="background-color: #f8f8f8; background-image: url('/images/masterclass/pricing-bg.webp'); background-position: 50% 0%; background-size: contain; background-repeat: no-repeat;">
+
+  {/* Decorative cookie at top — positioned inside section with top padding */}
+  <img src="/images/masterclass/pricing-cookie.webp" alt="" width="54" height="56"
+    class="absolute pointer-events-none z-10"
+    style="top: 8px; right: 40%; width: 54px; height: auto;" loading="lazy" />
+
   <div class="max-w-[1280px] mx-auto">
-    <div class="flex justify-center mb-[32px] md:mb-[40px] reveal">
-      <SectionHeader mainTitle="Вартість" accentTitle="Та доступ" />
+
+    {/* Title image */}
+    <div class="flex justify-center mb-[24px] md:mb-[32px] reveal">
+      <img
+        src="/images/masterclass/pricing-title.webp"
+        alt="Вартість та доступ"
+        width="1024"
+        height="460"
+        class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
+        loading="lazy"
+      />
     </div>
 
-    <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center reveal">
-      {/* Motivational text — left column on desktop */}
-      <div class="mb-[32px] lg:mb-0">
-        {motivationalText ? (
-          <div class="bg-[#003B1C] rounded-[20px] p-[24px] md:p-[32px]">
-            <p class="text-white/90 text-[16px] md:text-[18px] leading-[28px] italic">
-              {motivationalText}
-            </p>
-          </div>
-        ) : (
-          <div class="bg-[#003B1C] rounded-[20px] p-[24px] md:p-[32px]">
-            <p class="text-white/90 text-[16px] md:text-[18px] leading-[28px] italic">
-              Забудь про штучний декор з магазинів! Замовляй майстер-клас вже сьогодні та створи унікальний виріб, який стане родзинкою твого інтер'єру.
-            </p>
-          </div>
-        )}
+    {/* Price display */}
+    <div class="flex flex-col items-center mb-[16px] reveal">
+      {originalPrice && (
+        <span class="inline-block bg-[#7b7b7b] text-white font-heading text-[22px] font-medium line-through px-[24px] py-[6px] rounded-[20px] mb-[-10px] z-10">
+          {originalPrice}
+        </span>
+      )}
+      <span class="inline-block bg-[#E63380] text-white font-heading text-[50px] md:text-[60px] px-[48px] py-[8px] rounded-[40px] relative">
+        {price === "0 грн" ? "375 грн" : price}
+        <span class="absolute bottom-[-22px] right-[0px] text-[44px]">💸</span>
+      </span>
+    </div>
+
+    {/* "Акційна пропозиція обмежена" */}
+    <div class="text-center mb-[24px] reveal">
+      <h2 class="font-heading text-black text-[26px] leading-[1.3]">
+        Акційна пропозиція<br/>
+        <span class="relative inline-block">
+          обмежена
+          <svg class="absolute left-0 w-full highlight-path" style="bottom: 3px; height: 16px; z-index: -1;" viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0"
+              fill="none" stroke="#E63380" stroke-width="52" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </h2>
+    </div>
+
+    {/* Countdown timer */}
+    <div class="flex justify-center gap-[10px] md:gap-[12px] mb-[32px] reveal" id="countdown-timer">
+      <div class="countdown-item">
+        <span class="countdown-number" id="cd-days">14</span>
+        <span class="countdown-label">Днів</span>
       </div>
-
-      {/* Price + CTA — right column */}
-      <div class="text-center lg:text-left">
-        <div class="mb-[16px]">
-          {originalPrice && (
-            <span class="text-brand-dark/40 line-through text-[20px] mr-[12px]">{originalPrice}</span>
-          )}
-          <span class="font-heading text-[#E63380] text-[42px] md:text-[56px]">{price}</span>
-        </div>
-
-        <p class="text-[#7cab06] font-heading text-[16px] mb-[20px]">
-          Акційна пропозиція обмежена
-        </p>
-
-        <a
-          href={purchaseUrl}
-          data-course={course}
-          data-buy-now-cta
-          class="pricing-cta-btn inline-flex px-[40px] py-[16px] bg-[#E63380] text-white rounded-full font-heading text-[20px] md:text-[22px] mb-[24px]"
-        >
-          {ctaText}
-        </a>
-
-        <div class="space-y-[8px] mt-[16px]">
-          <p class="text-brand-dark/70 text-[15px] leading-[24px] flex items-center gap-[8px] justify-center lg:justify-start">
-            <span class="text-[#7cab06]">✓</span> Акційна пропозиція обмежена в часі
-          </p>
-          <p class="text-brand-dark/70 text-[15px] leading-[24px] flex items-center gap-[8px] justify-center lg:justify-start">
-            <span class="text-[#7cab06]">✓</span> Доступ до відеоуроків не обмежений
-          </p>
-          <p class="text-brand-dark/70 text-[15px] leading-[24px] flex items-center gap-[8px] justify-center lg:justify-start">
-            <span class="text-[#7cab06]">✓</span> Майстер-клас доступний в Telegram одразу після оплати
-          </p>
-        </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="cd-hours">00</span>
+        <span class="countdown-label">Годин</span>
       </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="cd-minutes">00</span>
+        <span class="countdown-label">Хвилин</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="cd-seconds">00</span>
+        <span class="countdown-label">Секунд</span>
+      </div>
+    </div>
+
+    {/* CTA button */}
+    <div class="flex justify-center mb-[32px] reveal">
+      <a
+        href={purchaseUrl}
+        data-course={course}
+        data-buy-now-cta
+        class="pricing-cta-btn inline-flex px-[30px] py-[16px] bg-[#7fac00] text-white rounded-full font-heading text-[23px]"
+      >
+        {ctaText}
+      </a>
+    </div>
+
+    {/* Benefits list */}
+    <div class="reveal mb-[32px]">
+      <ul class="space-y-[20px] px-[14px] md:px-0">
+        <li class="text-black text-[18px] leading-[28px] flex gap-[12px] items-center font-heading font-medium">
+          <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #F3237D;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="white"/></svg>
+          </span>
+          Акційна пропозиція обмежена в часі
+        </li>
+        <li class="text-black text-[18px] leading-[28px] flex gap-[12px] items-center font-heading font-medium">
+          <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="white"/></svg>
+          </span>
+          Доступ до відеоуроків не обмежений
+        </li>
+        <li class="text-black text-[18px] leading-[28px] flex gap-[12px] items-center font-heading font-medium">
+          <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="white"/></svg>
+          </span>
+          Майстер-клас доступний в Telegram одразу після оплати
+        </li>
+      </ul>
+    </div>
+
+    {/* Product images — overlapping pattern like other sections */}
+    <div class="relative" style="min-height: 380px;">
+      <img
+        src="/images/masterclass/pricing-product-1.webp"
+        alt="Флораріум — результат"
+        width="800"
+        height="496"
+        class="rounded-[30px] reveal included-slide-left"
+        style="width: 86%; display: block;"
+        loading="lazy"
+      />
+      <img
+        src="/images/masterclass/pricing-product-2.webp"
+        alt="Флораріум — деталь"
+        width="800"
+        height="496"
+        class="rounded-[30px] absolute reveal included-slide-right"
+        style="width: 60%; bottom: 70px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
+        loading="lazy"
+      />
+    </div>
+
+    {/* Bottom banner image */}
+    <div class="mt-[40px] reveal">
+      <img
+        src="/images/masterclass/pricing-banner.webp"
+        alt="Забудь про штучний декор з магазинів! Замовляй майстер-клас вже сьогодні та створи унікальний флораріум, який стане родзинкою твого інтер'єру."
+        width="1024"
+        height="569"
+        class="w-full h-auto rounded-[16px]"
+        loading="lazy"
+      />
     </div>
 
   </div>
 </section>
 
 <style>
+  .countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #00401e;
+    border-radius: 25px;
+    width: 76px;
+    height: 86px;
+    border: 2px solid #00401e;
+  }
+  @media (min-width: 400px) {
+    .countdown-item {
+      width: 82px;
+      height: 92px;
+    }
+  }
+  @media (min-width: 768px) {
+    .countdown-item {
+      width: 106px;
+      height: 110px;
+    }
+  }
+  .countdown-number {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 36px;
+    color: white;
+    line-height: 1;
+  }
+  @media (min-width: 768px) {
+    .countdown-number {
+      font-size: 42px;
+    }
+  }
+  .countdown-label {
+    font-family: 'Tenor Sans', sans-serif;
+    font-size: 13px;
+    color: white;
+    margin-top: 4px;
+  }
+
   @keyframes pinkPulse {
     0%, 100% {
-      box-shadow: 0 8px 24px rgba(230, 51, 128, 0.35);
+      box-shadow: 0 8px 24px rgba(127, 172, 0, 0.35);
     }
     50% {
-      box-shadow: 0 14px 44px rgba(230, 51, 128, 0.65), 0 0 0 8px rgba(230, 51, 128, 0.1);
+      box-shadow: 0 14px 44px rgba(127, 172, 0, 0.65), 0 0 0 8px rgba(127, 172, 0, 0.1);
     }
   }
 
@@ -95,14 +212,14 @@ const { price, originalPrice, ctaText, purchaseUrl, motivationalText, course } =
 
   .pricing-cta-btn:hover {
     transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 18px 52px rgba(230, 51, 128, 0.75);
+    box-shadow: 0 18px 52px rgba(127, 172, 0, 0.75);
     animation-play-state: paused;
   }
 
   @media (prefers-reduced-motion: reduce) {
     .pricing-cta-btn {
       animation: none;
-      box-shadow: 0 10px 30px rgba(230, 51, 128, 0.4);
+      box-shadow: 0 10px 30px rgba(127, 172, 0, 0.4);
     }
     .pricing-cta-btn:hover {
       transform: none;
@@ -111,14 +228,72 @@ const { price, originalPrice, ctaText, purchaseUrl, motivationalText, course } =
 </style>
 
 <script is:inline>
+  // 14-day rolling countdown timer
+  // Resets every 13 days so it never hits 0
+  (function() {
+    var CYCLE_DAYS = 14;
+    var RESET_AT_DAYS = 1; // reset when 1 day left
+
+    function getTargetTime() {
+      var stored = localStorage.getItem('countdown_target');
+      var now = Date.now();
+
+      if (stored) {
+        var target = parseInt(stored, 10);
+        var remaining = target - now;
+        // If expired or less than 1 day left, reset
+        if (remaining <= RESET_AT_DAYS * 24 * 60 * 60 * 1000) {
+          target = now + CYCLE_DAYS * 24 * 60 * 60 * 1000;
+          localStorage.setItem('countdown_target', target.toString());
+        }
+        return target;
+      } else {
+        var target = now + CYCLE_DAYS * 24 * 60 * 60 * 1000;
+        localStorage.setItem('countdown_target', target.toString());
+        return target;
+      }
+    }
+
+    var target = getTargetTime();
+
+    function pad(n) { return n < 10 ? '0' + n : n.toString(); }
+
+    function update() {
+      var now = Date.now();
+      var diff = target - now;
+
+      if (diff <= 0) {
+        target = getTargetTime();
+        diff = target - now;
+      }
+
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      var daysEl = document.getElementById('cd-days');
+      var hoursEl = document.getElementById('cd-hours');
+      var minutesEl = document.getElementById('cd-minutes');
+      var secondsEl = document.getElementById('cd-seconds');
+
+      if (daysEl) daysEl.textContent = pad(days);
+      if (hoursEl) hoursEl.textContent = pad(hours);
+      if (minutesEl) minutesEl.textContent = pad(minutes);
+      if (secondsEl) secondsEl.textContent = pad(seconds);
+    }
+
+    update();
+    setInterval(update, 1000);
+  })();
+
+  // Analytics tracking
   document.querySelectorAll('[data-buy-now-cta]').forEach(function(cta) {
     cta.addEventListener('click', function() {
       var course = this.getAttribute('data-course');
-      // GA4 custom event
       if (typeof gtag !== 'undefined') {
         gtag('event', 'buy_now_click', { course: course });
       }
-      // Clarity custom tag — filters session recordings by purchase intent
       if (typeof clarity !== 'undefined') {
         clarity('set', 'clicked_buy_now', course);
       }

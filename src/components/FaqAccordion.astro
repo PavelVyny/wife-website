@@ -11,10 +11,10 @@ const half = Math.ceil(faqs.length / 2);
   {/* Mobile: single column — hidden on lg+ */}
   <div class="flex flex-col gap-[12px] lg:hidden">
     {faqs.map((faq, i) => (
-      <div class="faq-item rounded-[28px] overflow-hidden reveal" data-index={i}>
+      <div class="faq-item rounded-[30px] overflow-hidden reveal" data-index={i}>
         {/* Question row — clickable */}
         <button
-          class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#003B1C] text-left cursor-pointer"
+          class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#00401e] text-left cursor-pointer"
           aria-expanded="false"
         >
           <span class="font-heading text-[18px] leading-[26px] md:text-[20px] md:leading-[28px] text-white">{faq.q}</span>
@@ -27,7 +27,7 @@ const half = Math.ceil(faqs.length / 2);
         </button>
 
         {/* Answer — hidden by default */}
-        <div class="faq-answer bg-[#003B1C] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
+        <div class="faq-answer bg-[#00401e] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
           <div class="px-[20px] pb-[22px] pt-[2px]">
             {faq.a.length === 1 ? (
               <p class="text-white/85 text-[15px] leading-[24px]">{faq.a[0]}</p>
@@ -52,9 +52,9 @@ const half = Math.ceil(faqs.length / 2);
     {/* Left column: first half */}
     <div class="flex flex-col gap-[12px]">
       {faqs.slice(0, half).map((faq, i) => (
-        <div class="faq-item rounded-[28px] overflow-hidden reveal" data-index={i}>
+        <div class="faq-item rounded-[30px] overflow-hidden reveal" data-index={i}>
           <button
-            class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#003B1C] text-left cursor-pointer"
+            class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#00401e] text-left cursor-pointer"
             aria-expanded="false"
           >
             <span class="font-heading text-[18px] leading-[26px] lg:text-[20px] lg:leading-[28px] text-white">{faq.q}</span>
@@ -65,7 +65,7 @@ const half = Math.ceil(faqs.length / 2);
               </svg>
             </div>
           </button>
-          <div class="faq-answer bg-[#003B1C] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
+          <div class="faq-answer bg-[#00401e] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
             <div class="px-[20px] pb-[22px] pt-[2px]">
               {faq.a.length === 1 ? (
                 <p class="text-white/85 text-[15px] leading-[24px]">{faq.a[0]}</p>
@@ -88,9 +88,9 @@ const half = Math.ceil(faqs.length / 2);
     {/* Right column: second half */}
     <div class="flex flex-col gap-[12px]">
       {faqs.slice(half).map((faq, i) => (
-        <div class="faq-item rounded-[28px] overflow-hidden reveal" data-index={half + i}>
+        <div class="faq-item rounded-[30px] overflow-hidden reveal" data-index={half + i}>
           <button
-            class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#003B1C] text-left cursor-pointer"
+            class="faq-trigger w-full flex items-center justify-between gap-[14px] px-[20px] py-[20px] bg-[#00401e] text-left cursor-pointer"
             aria-expanded="false"
           >
             <span class="font-heading text-[18px] leading-[26px] lg:text-[20px] lg:leading-[28px] text-white">{faq.q}</span>
@@ -101,7 +101,7 @@ const half = Math.ceil(faqs.length / 2);
               </svg>
             </div>
           </button>
-          <div class="faq-answer bg-[#003B1C] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
+          <div class="faq-answer bg-[#00401e] overflow-hidden" style="max-height: 0; transition: max-height 0.4s ease-out, padding 0.3s ease-out;" aria-hidden="true">
             <div class="px-[20px] pb-[22px] pt-[2px]">
               {faq.a.length === 1 ? (
                 <p class="text-white/85 text-[15px] leading-[24px]">{faq.a[0]}</p>

@@ -1,30 +1,50 @@
 ---
-// ValueProps — responsive 3-card grid of value propositions
-// Accepts card data via props so each masterclass page can define its own content
+// ValueProps — responsive grid of value propositions with memoji images and numbered badges
+// Matches original site layout: centered image, title, description, numbered badge
 
 interface Props {
   cards: Array<{
     title: string;
     description: string;
     icon?: string;
+    image?: string;
   }>;
 }
 
 const { cards } = Astro.props;
 ---
 
-<section id="value-props" class="bg-white px-[24px] pt-[20px] pb-[24px] md:px-8 md:pt-[32px] md:pb-[40px] lg:pb-[56px]">
+<section id="value-props" class="bg-white px-[10px] pt-[40px] pb-[40px] md:px-8 md:pt-[56px] md:pb-[56px] lg:pb-[72px]">
   <div class="max-w-[1280px] mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-[16px] md:gap-[24px]">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px] md:gap-[24px]">
       {cards.map((card, i) => (
-        <div class="bg-white border border-[#003B1C]/10 rounded-[28px] p-[24px] md:p-[32px] shadow-sm hover:shadow-md transition-shadow reveal" style={i > 0 ? `transition-delay: ${i * 0.1}s` : ''}>
-          {card.icon && (
-            <div class="text-[32px] mb-[12px]">{card.icon}</div>
+        <div
+          class="relative text-center px-[16px] py-[32px] md:p-[32px] reveal"
+          style={`transition-delay: ${i * 0.15}s`}
+        >
+          {/* Numbered badge */}
+          <div class="absolute top-[8px] left-[16px] w-[42px] h-[42px] rounded-full flex items-center justify-center text-white font-heading text-[24px]" style="background: #00401e;">
+            {i + 1}
+          </div>
+
+          {/* Memoji image */}
+          {card.image && (
+            <div class="flex justify-center mb-[16px]">
+              <img
+                src={card.image}
+                alt={card.title}
+                width="228"
+                height="228"
+                class="w-[180px] h-[180px] md:w-[200px] md:h-[200px] object-contain"
+                loading="lazy"
+              />
+            </div>
           )}
-          <h3 class="font-heading text-brand-dark text-[20px] md:text-[22px] leading-[1.3] mb-[12px]">
+
+          <h3 class="font-heading text-black text-[24px] md:text-[29px] leading-[1.3] mb-[12px]">
             {card.title}
           </h3>
-          <p class="text-brand-dark/60 text-[15px] leading-[24px]">
+          <p class="text-[#8a8a8a] text-[16px] leading-[24px]">
             {card.description}
           </p>
         </div>
@@ -32,3 +52,4 @@ const { cards } = Astro.props;
     </div>
   </div>
 </section>
+

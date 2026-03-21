@@ -1,70 +1,77 @@
 ---
 // InstructorSection — Daria's credentials, shared across all masterclass pages
-import SectionHeader from './SectionHeader.astro';
-import { Image } from 'astro:assets';
-import dariaPhoto from '../assets/about/daria-photo.webp';
 ---
 
-<section id="instructor" class="relative bg-white px-[24px] pt-[40px] pb-[40px] md:px-8 md:pt-[56px] md:pb-[56px] lg:pt-[72px] lg:pb-[72px] overflow-hidden">
+<section id="instructor" class="relative bg-white px-[10px] pt-[20px] pb-[40px] md:px-8 md:pt-[40px] md:pb-[56px] lg:pt-[56px] lg:pb-[72px] overflow-hidden"
+  style="background-image: url('/images/masterclass/about-bg.webp'); background-position: 50% 0%; background-size: contain; background-repeat: no-repeat;">
   <div class="max-w-[1280px] mx-auto">
-    <div class="flex justify-center mb-[32px] md:mb-[40px] reveal">
-      <SectionHeader mainTitle="Інформація" accentTitle="Про мене" />
+
+    {/* Title image */}
+    <div class="flex justify-center mb-[16px] md:mb-[24px] reveal">
+      <img
+        src="/images/masterclass/about-title.webp"
+        alt="Інформація про мене"
+        width="1024"
+        height="460"
+        class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
+        loading="lazy"
+      />
     </div>
 
     <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center">
 
       {/* Photo — top on mobile, left column on desktop */}
       <div class="mb-[24px] lg:mb-0 reveal">
-        <div class="relative max-w-[400px] mx-auto">
-          <Image
-            src={dariaPhoto}
-            alt="Даша — засновниця Floralab"
-            class="w-full rounded-[28px] object-cover"
+        <div class="relative mx-auto">
+          {/* Star-eyes emoji decoration — top-right of photo */}
+          <span class="absolute top-[-10px] right-[16%] text-[48px] z-10 decor-sway" style="--dur: 3s; --del: 0s;">🤩</span>
+          <img
+            src="/images/masterclass/about-daria-portrait.webp"
+            alt="Дар'я Ковальова — засновниця Floralab"
+            width="1024"
+            height="1024"
+            class="w-full object-contain"
             loading="lazy"
           />
-          <div class="absolute bottom-[16px] left-[16px] bg-[#003B1C]/90 px-[16px] py-[8px] rounded-[12px]">
-            <p class="font-heading text-[#7cab06] text-[12px] tracking-[1px] uppercase">Флорист</p>
-            <p class="font-heading text-white text-[16px]">Дар'я Ковальова</p>
-          </div>
         </div>
       </div>
 
       {/* Text content — below photo on mobile, right column on desktop */}
       <div class="reveal">
-        <p class="text-[#7cab06] font-heading text-[18px] mb-[12px]">
-          Майстер-флорист, ботанік, викладач
-        </p>
-        <p class="text-brand-dark/70 text-[15px] leading-[24px] mb-[16px]">
-          Засновниця майстерні декору Floralab
-        </p>
-        <ul class="space-y-[10px] mb-[24px]">
-          <li class="text-brand-dark/80 text-[15px] leading-[24px] flex gap-[8px]">
-            <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-            Провела понад 60 успішних майстер-класів і створила більше 500 флораріумів
-          </li>
-          <li class="text-brand-dark/80 text-[15px] leading-[24px] flex gap-[8px]">
-            <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-            Більше 5 років досвіду роботи з сукулентами та флораріумами
-          </li>
-          <li class="text-brand-dark/80 text-[15px] leading-[24px] flex gap-[8px]">
-            <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-            4 роки консультую, проводжу майстер-класи та створюю композиції з сукулентів
-          </li>
-          <li class="text-brand-dark/80 text-[15px] leading-[24px] flex gap-[8px]">
-            <span class="text-[#7cab06] mt-[1px] flex-shrink-0">•</span>
-            Завжди вчуся та щедро ділюся знаннями з іншими
-          </li>
+        <ul class="space-y-[20px] px-[14px] md:px-0 mb-[24px]">
+          {[
+            "Майстер-флорист, ботанік, викладач",
+            "Засновниця майстерні декору Floralab",
+            "Провела понад 60 успішних майстер-класів і створила більше 500 флораріумів",
+            "Більше 5 років досвіду роботи з сукулентами та флораріумами",
+            "4 роки консультую, проводжу майстер-класи та створюю композиції з сукулентів",
+            "Завжди вчуся та щедро ділюся знаннями з іншими",
+          ].map((item) => (
+            <li class="text-black text-[18px] leading-[28px] flex gap-[12px] items-center font-heading font-medium">
+              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              {item}
+            </li>
+          ))}
         </ul>
 
-        {/* Quote bubble */}
-        <div class="bg-[#003B1C] rounded-[20px] p-[20px] md:p-[24px] relative">
-          <p class="text-white/90 text-[15px] md:text-[16px] leading-[26px] italic">
-            "Я переконана, що творчий потенціал закладений у кожному з нас."
-          </p>
-          <div class="absolute -top-[8px] left-[32px] w-[16px] h-[16px] bg-[#003B1C] rotate-45"></div>
-        </div>
       </div>
 
+    </div>
+
+    {/* Quote banner image — below photo + list */}
+    <div class="reveal mt-[24px]">
+      <img
+        src="/images/masterclass/about-quote-banner.webp"
+        alt="Я переконана, що творчий потенціал закладений у кожному з нас"
+        width="1024"
+        height="525"
+        class="w-full h-auto"
+        loading="lazy"
+      />
     </div>
   </div>
 </section>
