@@ -6,9 +6,15 @@ interface Props {
   ctaText: string;
   purchaseUrl: string;
   course: 'florarium' | 'paintings';
+  productImg1?: string;
+  productImg2?: string;
+  bannerImg?: string;
 }
 
-const { price, originalPrice, ctaText, purchaseUrl, course } = Astro.props;
+const { price, originalPrice, ctaText, purchaseUrl, course, productImg1, productImg2, bannerImg } = Astro.props;
+const img1 = productImg1 || '/images/masterclass/pricing-product-1.webp';
+const img2 = productImg2 || '/images/masterclass/pricing-product-2.webp';
+const banner = bannerImg || '/images/masterclass/pricing-banner.webp';
 ---
 
 <section id="pricing" class="relative px-[10px] pt-[60px] pb-[40px] md:px-8 md:pt-[70px] md:pb-[56px] lg:pt-[80px] lg:pb-[72px] overflow-hidden"
@@ -119,7 +125,7 @@ const { price, originalPrice, ctaText, purchaseUrl, course } = Astro.props;
     {/* Product images — overlapping pattern like other sections */}
     <div class="relative" style="min-height: 380px;">
       <img
-        src="/images/masterclass/pricing-product-1.webp"
+        src={img1}
         alt="Флораріум — результат"
         width="800"
         height="496"
@@ -128,7 +134,7 @@ const { price, originalPrice, ctaText, purchaseUrl, course } = Astro.props;
         loading="lazy"
       />
       <img
-        src="/images/masterclass/pricing-product-2.webp"
+        src={img2}
         alt="Флораріум — деталь"
         width="800"
         height="496"
@@ -141,7 +147,7 @@ const { price, originalPrice, ctaText, purchaseUrl, course } = Astro.props;
     {/* Bottom banner image */}
     <div class="mt-[40px] reveal">
       <img
-        src="/images/masterclass/pricing-banner.webp"
+        src={banner}
         alt="Забудь про штучний декор з магазинів! Замовляй майстер-клас вже сьогодні та створи унікальний флораріум, який стане родзинкою твого інтер'єру."
         width="1024"
         height="569"
