@@ -467,7 +467,11 @@ const faqs = [
       <div class="curriculum-timeline-k relative">
 
       {/* Lesson 1 */}
-      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0">
+      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0 lg:flex lg:items-start lg:gap-[48px]">
+        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
+          <img src="/images/masterclass-kartini/curriculum-1.webp" alt="Підготовка та теоретичний блок" width="600" height="600" class="w-[380px] rounded-[20px]" loading="lazy"/>
+        </div>
+        <div class="lg:w-[60%]">
         <div class="flex items-start gap-[12px] mb-[12px]">
           <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">1</span>
           <h3 class="font-heading text-black text-[26px] leading-[1.2]">
@@ -480,13 +484,18 @@ const faqs = [
           </h3>
         </div>
         <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Що таке стабілізовані рослини, особливості моху та декоративних елементів, часті помилки новачків, основи кольорових поєднань та візуальні акценти</p>
+        </div>
       </div>
-      <div class="flex justify-center mb-[48px] reveal">
+      <div class="flex justify-center mb-[48px] reveal lg:hidden">
         <img src="/images/masterclass-kartini/curriculum-1.webp" alt="Підготовка та теоретичний блок" width="600" height="600" class="w-[280px] h-auto" loading="lazy"/>
       </div>
 
       {/* Lesson 2 */}
-      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0">
+      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0 lg:flex lg:items-start lg:gap-[48px]">
+        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
+          <img src="/images/masterclass-kartini/curriculum-2.webp" alt="Огляд матеріалів та побудова композиції" width="600" height="600" class="w-[380px] rounded-[20px]" loading="lazy"/>
+        </div>
+        <div class="lg:w-[60%]">
         <div class="flex items-start gap-[12px] mb-[12px]">
           <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">2</span>
           <h3 class="font-heading text-black text-[26px] leading-[1.2]">
@@ -499,13 +508,18 @@ const faqs = [
           </h3>
         </div>
         <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Інструменти для роботи, основа для панно, різновиди стабілізованих рослин та сухоцвітів, підготовка елементів до монтажу</p>
+        </div>
       </div>
-      <div class="flex justify-center mb-[48px] reveal">
+      <div class="flex justify-center mb-[48px] reveal lg:hidden">
         <img src="/images/masterclass-kartini/curriculum-2.webp" alt="Огляд матеріалів та побудова композиції" width="600" height="600" class="w-[280px] h-auto" loading="lazy"/>
       </div>
 
       {/* Lesson 3 */}
-      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0">
+      <div class="mb-[48px] md:mb-[64px] reveal px-[14px] md:px-0 lg:flex lg:items-start lg:gap-[48px]">
+        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
+          <img src="/images/masterclass-kartini/curriculum-3.webp" alt="Створення панно" width="600" height="600" class="w-[380px] rounded-[20px]" loading="lazy"/>
+        </div>
+        <div class="lg:w-[60%]">
         <div class="flex items-start gap-[12px] mb-[12px]">
           <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">3</span>
           <h3 class="font-heading text-black text-[26px] leading-[1.2]">
@@ -518,8 +532,9 @@ const faqs = [
           </h3>
         </div>
         <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Покрокове створення, як зробити роботу акуратною та довговічною, догляд за стабілізованими рослинами та умови зберігання</p>
+        </div>
       </div>
-      <div class="flex justify-center reveal">
+      <div class="flex justify-center reveal lg:hidden">
         <img src="/images/masterclass-kartini/curriculum-3.webp" alt="Створення панно" width="600" height="600" class="w-[280px] h-auto" loading="lazy"/>
       </div>
 
@@ -852,6 +867,12 @@ const faqs = [
   @media (min-width: 768px) {
     .curriculum-timeline-k::before {
       left: 18px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .curriculum-timeline-k::before {
+      left: calc(40% + 48px + 18px);
+      --timeline-bottom: 120px;
     }
   }
 

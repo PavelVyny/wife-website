@@ -6,10 +6,10 @@ const { faqs } = Astro.props;
 const half = Math.ceil(faqs.length / 2);
 ---
 
-{/* Single flat list on mobile, 2-column grid on lg+ */}
+{/* Single flat list on mobile, 2-column grid on md+ */}
 <div class="faq-accordion max-w-[1280px] mx-auto">
-  {/* Mobile: single column — hidden on lg+ */}
-  <div class="flex flex-col gap-[12px] lg:hidden">
+  {/* Mobile: single column — hidden on md+ */}
+  <div class="flex flex-col gap-[12px] md:hidden">
     {faqs.map((faq, i) => (
       <div class="faq-item rounded-[30px] overflow-hidden reveal" data-index={i}>
         {/* Question row — clickable */}
@@ -47,8 +47,8 @@ const half = Math.ceil(faqs.length / 2);
     ))}
   </div>
 
-  {/* Desktop: 2-column layout — hidden below lg */}
-  <div class="hidden lg:grid lg:grid-cols-2 lg:gap-x-[24px] lg:items-start">
+  {/* Tablet+Desktop: 2-column layout — hidden below md */}
+  <div class="hidden md:grid md:grid-cols-2 md:gap-x-[24px] md:items-start">
     {/* Left column: first half */}
     <div class="flex flex-col gap-[12px]">
       {faqs.slice(0, half).map((faq, i) => (
