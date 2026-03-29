@@ -478,7 +478,17 @@ const faqs = [
             </span><br/>теоретичний блок
           </h3>
         </div>
-        <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Що таке стабілізовані рослини, особливості моху, квітів та декоративних елементів, часті помилки новачків, як поєднувати текстури, кольорові принципи, баланс об'єму та візуальні акценти</p>
+        {/* Sub-items as checkmark list */}
+        <ul class="space-y-[16px] ml-[48px] mt-[8px]">
+          {["Що таке стабілізовані рослини та як вони зберігаються", "Особливості моху, квітів та декоративних елементів", "Часті помилки новачків", "Як поєднувати текстури", "Основи кольорових поєднань", "Баланс об'єму", "Візуальні акценти"].map((item) => (
+            <li class="text-[#4a4a4a] text-[16px] leading-[24px] flex gap-[10px] items-center font-heading">
+              <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
       <div class="flex justify-center mb-[48px] reveal">
         <img src="/images/masterclass-vinok/curriculum-1.webp" alt="Підготовка та теоретичний блок" width="600" height="600" class="w-[280px] h-auto" loading="lazy"/>
@@ -497,7 +507,16 @@ const faqs = [
             </span><br/>та побудова композиції
           </h3>
         </div>
-        <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Інструменти для роботи, варіанти основи для вінка, різновиди стабілізованих рослин, підготовка елементів, техніка безпеки</p>
+        <ul class="space-y-[16px] ml-[48px] mt-[8px]">
+          {["Інструменти для роботи", "Варіанти основи для вінка", "Різновиди стабілізованих рослин", "Підготовка елементів до монтажу", "Техніка безпеки"].map((item) => (
+            <li class="text-[#4a4a4a] text-[16px] leading-[24px] flex gap-[10px] items-center font-heading">
+              <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
       <div class="flex justify-center mb-[48px] reveal">
         <img src="/images/masterclass-vinok/curriculum-2.webp" alt="Огляд матеріалів та побудова композиції" width="600" height="600" class="w-[280px] h-auto" loading="lazy"/>
@@ -509,14 +528,23 @@ const faqs = [
           <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">3</span>
           <h3 class="font-heading text-black text-[26px] leading-[1.2]">
             <span class="relative inline">
-              <span class="relative z-10">Створення</span>
+              <span class="relative z-10">Покрокове створення</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
                 <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
               </svg>
             </span><br/>вінка та догляд
           </h3>
         </div>
-        <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Покрокове створення вінка, надійне кріплення рослин, акуратність та довговічність, розміщення в інтер'єрі та умови зберігання</p>
+        <ul class="space-y-[16px] ml-[48px] mt-[8px]">
+          {["Покрокове створення вінка", "Надійне кріплення рослин", "Акуратність та довговічність", "Розміщення в інтер'єрі", "Умови зберігання"].map((item) => (
+            <li class="text-[#4a4a4a] text-[16px] leading-[24px] flex gap-[10px] items-center font-heading">
+              <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
       <div class="flex justify-center reveal">
         <img src="/images/masterclass-vinok/curriculum-3.webp" alt="Створення вінка" width="600" height="600" class="w-[280px] h-auto" loading="lazy"/>
@@ -567,8 +595,8 @@ const faqs = [
         {/* Product images — overlapping pattern */}
         <div class="mt-[24px] lg:mt-0 relative" style="min-height: 380px;">
           <img
-            src="/images/masterclass-vinok/results-img-1.webp"
-            alt="Результати — вінок"
+            src="/images/masterclass-vinok/results-interior-1.webp"
+            alt="Вінок зі стабілізованих рослин в інтер'єрі"
             width="800"
             height="800"
             class="rounded-[30px] reveal included-slide-left"
@@ -576,8 +604,8 @@ const faqs = [
             loading="lazy"
           />
           <img
-            src="/images/masterclass-vinok/results-img-2.webp"
-            alt="Результати — процес"
+            src="/images/masterclass-vinok/results-interior-2.webp"
+            alt="Вінок на дверях — декор для дому"
             width="800"
             height="800"
             class="rounded-[30px] absolute reveal included-slide-right"
