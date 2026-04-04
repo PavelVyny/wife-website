@@ -126,21 +126,21 @@ const faqs = [
     <img src="/images/masterclass/hero/decor-cookie-1.webp" alt="" width="213" height="215"
       class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
       style="top: 28%; left: 2%; width: 42px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" />
-    {/* Small cookie left (near Daria) — slides from left */}
+    {/* Small cookie left (near Daria) — slides from left, hidden at md to avoid text overlap */}
     <img src="/images/masterclass/hero/decor-cookie-2.webp" alt="" width="200" height="200"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
+      class="md:hidden absolute pointer-events-none z-[5] hero-decor-slide"
       style="top: 58%; left: 2%; width: 42px; height: auto; --slide-x: -80px; --slide-y: 20px; animation-delay: 0.5s;" />
-    {/* Cookie right — slides from right */}
+    {/* Cookie right — slides from right, hidden at md to avoid Daria overlap */}
     <img src="/images/masterclass/hero/decor-cookie-3.webp" alt="" width="200" height="185"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
+      class="md:hidden absolute pointer-events-none z-[5] hero-decor-slide"
       style="top: 64%; right: 2%; width: 42px; height: auto; --slide-x: 80px; --slide-y: 20px; animation-delay: 0.6s;" />
-    {/* Plant with pot — slides from bottom-left, moved up */}
+    {/* Plant with pot — slides from bottom-left, hidden at md */}
     <img src="/images/masterclass/hero/decor-plant-pot.webp" alt="" width="280" height="310"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
+      class="md:hidden absolute pointer-events-none z-[5] hero-decor-slide"
       style="top: 64%; left: 8%; width: 84px; height: auto; --slide-x: -60px; --slide-y: 80px; animation-delay: 0.4s;" />
-    {/* Small plant top-right — slides from right */}
+    {/* Small plant top-right — slides from right, hidden at md */}
     <img src="/images/masterclass/hero/decor-small-plant.webp" alt="" width="200" height="250"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
+      class="md:hidden absolute pointer-events-none z-[5] hero-decor-slide"
       style="top: 30%; right: 0%; width: 50px; height: auto; --slide-x: 100px; --slide-y: -60px; animation-delay: 0.35s;" />
 
     {/* Content */}
@@ -204,7 +204,7 @@ const faqs = [
           </div>
         </div>
 
-        {/* Mobile: Daria — 10px from right screen edge, slides up from bottom */}
+        {/* Mobile/Tablet: Daria — slides up from bottom */}
         <div class="lg:hidden mt-6 flex justify-end relative z-[6] hero-daria-slide"
           style="margin-bottom: -40px; margin-right: -14px;"
         >
@@ -213,7 +213,7 @@ const faqs = [
             alt="Даша з флораріумом"
             width="661"
             height="1019"
-            class="w-full max-w-[232px]"
+            class="w-full max-w-[232px] md:max-w-[320px]"
             loading="eager"
           />
         </div>
@@ -241,9 +241,9 @@ const faqs = [
       style="top: 52%; left: 42%; width: 48px; height: auto; --dur: 5s; --del: -1.5s;" />
   </section>
 
-  {/* Blurred cookie — bleeds below hero section */}
+  {/* Blurred cookie — bleeds below hero section, mobile only */}
   <img src="/images/masterclass/hero/decor-cookie-2.webp" alt="" width="200" height="200"
-    class="lg:hidden absolute pointer-events-none z-[1] hero-decor-slide"
+    class="md:hidden absolute pointer-events-none z-[1] hero-decor-slide"
     style="bottom: -60px; left: 2%; width: 132px; height: auto; filter: brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg); --slide-x: -60px; --slide-y: 100px; animation-delay: 0.15s;" />
   </div>
 
@@ -376,8 +376,11 @@ const faqs = [
         <div class="hidden lg:block" />
       </div>
 
+      {/* Florarium image + benefits — side by side on lg */}
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px] lg:mt-[48px]">
+
       {/* Florarium image with interactive hotspots */}
-      <div class="flex justify-center mt-[24px] lg:mt-[48px] reveal">
+      <div class="flex justify-center reveal">
         <div class="florarium-hotspot-container relative inline-block">
           <img
             src="https://floralabeducation.com.ua/wp-content/uploads/2026/03/wwdwfw-e1773210654135.webp"
@@ -405,8 +408,8 @@ const faqs = [
         </div>
       </div>
 
-      {/* Benefits list — below florarium image */}
-      <div class="flex flex-col gap-[16px] mt-[24px] mb-[8px] reveal">
+      {/* Benefits list — beside image on lg */}
+      <div class="flex flex-col gap-[16px] mt-[24px] lg:mt-0 mb-[8px] lg:mb-0 reveal">
         {[
           "Стильний декор для дому чи офісу",
           "Особливий подарунок для близьких",
@@ -422,6 +425,8 @@ const faqs = [
           </div>
         ))}
       </div>
+
+      </div>{/* end lg:grid for hotspot + benefits */}
 
       {/* Quote bubble — original site image with Daria memoji */}
       <div class="flex justify-center lg:justify-end mt-[24px] lg:mt-[-60px] lg:mr-[40px] reveal">
