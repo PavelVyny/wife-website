@@ -3,7 +3,10 @@
 ---
 
 <section id="instructor" class="relative bg-white px-[10px] pt-[20px] pb-[40px] md:px-8 md:pt-[40px] md:pb-[56px] lg:pt-[56px] lg:pb-[72px] overflow-hidden"
-  style="background-image: url('/images/masterclass/about-bg.webp'); background-position: 50% 0%; background-size: contain; background-repeat: no-repeat;">
+  style="background-image: url('/images/masterclass/about-bg.webp'); background-position: 50% 100px; background-size: contain; background-repeat: no-repeat;">
+  {/* Gradient fade from previous section */}
+  <div class="absolute top-0 left-0 right-0 h-[60px] pointer-events-none z-0" style="background: linear-gradient(to bottom, #f8f8f8, transparent);"></div>
+
   <div class="max-w-[1280px] mx-auto">
 
     {/* Title image */}
@@ -63,7 +66,7 @@
     </div>
 
     {/* Quote banner image — below photo + list */}
-    <div class="reveal mt-[24px]">
+    <div class="reveal mt-[40px] px-[14px] md:px-0">
       <img
         src="/images/masterclass/about-quote-banner.webp"
         alt="Я переконана, що творчий потенціал закладений у кожному з нас"

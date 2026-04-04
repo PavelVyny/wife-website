@@ -66,8 +66,8 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
     )
   }
 
-  {/* Card body — overflow-hidden for rounded bg */}
-  <div class={`rounded-[40px] overflow-hidden h-full ${className}`}>
+  {/* Card body — overflow-hidden for rounded bg, entire card is clickable */}
+  <a href={isComingSoon ? undefined : link} class={`block rounded-[40px] overflow-hidden h-full cursor-pointer ${className}`}>
     {/* Inner wrapper handles grayscale for coming soon */}
     <div class={`masterclass-card relative h-full ${comingSoonClass}`}>
       {/* Background image (no blur — matching original site) */}
@@ -111,13 +111,12 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
                 Деталі
               </span>
             ) : (
-              <a
-                href={link}
-                class="inline-flex items-center justify-center px-[25px] py-[12px] bg-[#7cab06] text-white rounded-full font-heading text-[22px] leading-[24px] hover:bg-[#6d9a05] hover:scale-105 active:scale-95 transition-all"
+              <span
+                class="inline-flex items-center justify-center px-[25px] py-[12px] bg-[#7cab06] text-white rounded-full font-heading text-[22px] leading-[24px] group-hover:bg-[#6d9a05] transition-all"
                 style="box-shadow: 0 10px 25px rgba(124, 171, 6, 0.25);"
               >
                 Деталі
-              </a>
+              </span>
             )
           }
         </div>
@@ -141,7 +140,7 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
       {/* Slot for decorative elements */}
       <slot />
     </div>
-  </div>
+  </a>
 </div>
 
 <style>

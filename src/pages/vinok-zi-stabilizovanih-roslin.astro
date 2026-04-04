@@ -446,6 +446,97 @@ const faqs = [
     </div>
   </section>
 
+  {/* ===== PRICING ===== */}
+  <PricingCta
+    price="450 грн"
+    originalPrice="1500 грн"
+    ctaText="Придбати зараз"
+    purchaseUrl={PURCHASE_URL}
+    course="wreath"
+    productImg1="/images/masterclass-vinok/pricing-product-1.webp"
+    productImg2="/images/masterclass-vinok/pricing-product-2.webp"
+    bannerImg="/images/masterclass-vinok/pricing-banner.webp"
+  />
+
+  {/* ===== LEARNING OUTCOMES ===== */}
+  <section class="relative px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[72px] pb-[80px] overflow-hidden" style="background: #f8f8f8;">
+    <div class="max-w-[1280px] mx-auto">
+
+      {/* Title image */}
+      <div class="flex justify-center mb-[24px] reveal">
+        <img
+          src="/images/masterclass-vinok/results-title.webp"
+          alt="Результати які ви отримаєте"
+          width="1024"
+          height="460"
+          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
+        <div class="reveal">
+          <ul class="space-y-[20px] px-[14px] md:px-0">
+            {[
+              "Створите власний стильний вінок зі стабілізованих рослин",
+              "Навчитеся працювати з текстурами та кольорами",
+              "Зрозумієте принципи гармонійної композиції",
+              "Додасте унікальний природний акцент у свій простір",
+              "Отримаєте нові творчі навички",
+            ].map((item) => (
+              <li class="text-[#7b7b7b] text-[18px] leading-[28px] flex gap-[12px] items-center font-heading">
+                <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Product images — overlapping pattern */}
+        <div class="mt-[24px] lg:mt-0 relative" style="min-height: 380px;">
+          <img
+            src="/images/masterclass-vinok/results-interior-1.webp"
+            alt="Вінок зі стабілізованих рослин в інтер'єрі"
+            width="800"
+            height="800"
+            class="rounded-[30px] reveal included-slide-left"
+            style="width: 86%; display: block;"
+            loading="lazy"
+          />
+          <img
+            src="/images/masterclass-vinok/results-interior-2.webp"
+            alt="Вінок на дверях — декор для дому"
+            width="800"
+            height="800"
+            class="rounded-[30px] absolute reveal included-slide-right"
+            style="width: 50%; bottom: -20px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
+            loading="lazy"
+          />
+          {/* Decorative wood branch */}
+          <img
+            src="/images/masterclass-vinok/results-decor.webp"
+            alt=""
+            width="200"
+            height="200"
+            class="absolute pointer-events-none reveal"
+            style="width: 118px; z-index: 5; left: 39px; bottom: -20px;"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ===== INSTRUCTOR ===== */}
+  <InstructorSection />
+
+  {/* ===== VALUE PROPS ===== */}
+  <ValueProps cards={valueCards} />
+
   {/* ===== CURRICULUM ===== */}
   <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
     <div class="max-w-[1280px] mx-auto relative z-10">
@@ -568,97 +659,6 @@ const faqs = [
       </div>{/* end curriculum-timeline-k */}
     </div>
   </section>
-
-  {/* ===== LEARNING OUTCOMES ===== */}
-  <section class="relative px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[72px] pb-[80px] overflow-hidden" style="background: #f8f8f8;">
-    <div class="max-w-[1280px] mx-auto">
-
-      {/* Title image */}
-      <div class="flex justify-center mb-[24px] reveal">
-        <img
-          src="/images/masterclass-vinok/results-title.webp"
-          alt="Результати які ви отримаєте"
-          width="1024"
-          height="460"
-          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
-        <div class="reveal">
-          <ul class="space-y-[20px] px-[14px] md:px-0">
-            {[
-              "Створите власний стильний вінок зі стабілізованих рослин",
-              "Навчитеся працювати з текстурами та кольорами",
-              "Зрозумієте принципи гармонійної композиції",
-              "Додасте унікальний природний акцент у свій простір",
-              "Отримаєте нові творчі навички",
-            ].map((item) => (
-              <li class="text-[#7b7b7b] text-[18px] leading-[28px] flex gap-[12px] items-center font-heading">
-                <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Product images — overlapping pattern */}
-        <div class="mt-[24px] lg:mt-0 relative" style="min-height: 380px;">
-          <img
-            src="/images/masterclass-vinok/results-interior-1.webp"
-            alt="Вінок зі стабілізованих рослин в інтер'єрі"
-            width="800"
-            height="800"
-            class="rounded-[30px] reveal included-slide-left"
-            style="width: 86%; display: block;"
-            loading="lazy"
-          />
-          <img
-            src="/images/masterclass-vinok/results-interior-2.webp"
-            alt="Вінок на дверях — декор для дому"
-            width="800"
-            height="800"
-            class="rounded-[30px] absolute reveal included-slide-right"
-            style="width: 50%; bottom: -20px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
-            loading="lazy"
-          />
-          {/* Decorative wood branch */}
-          <img
-            src="/images/masterclass-vinok/results-decor.webp"
-            alt=""
-            width="200"
-            height="200"
-            class="absolute pointer-events-none reveal"
-            style="width: 118px; z-index: 5; left: 39px; bottom: -20px;"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* ===== INSTRUCTOR ===== */}
-  <InstructorSection />
-
-  {/* ===== VALUE PROPS ===== */}
-  <ValueProps cards={valueCards} />
-
-  {/* ===== PRICING ===== */}
-  <PricingCta
-    price="450 грн"
-    originalPrice="1500 грн"
-    ctaText="Придбати зараз"
-    purchaseUrl={PURCHASE_URL}
-    course="wreath"
-    productImg1="/images/masterclass-vinok/pricing-product-1.webp"
-    productImg2="/images/masterclass-vinok/pricing-product-2.webp"
-    bannerImg="/images/masterclass-vinok/pricing-banner.webp"
-  />
 
   {/* ===== FAQ ===== */}
   <section id="faq" class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">

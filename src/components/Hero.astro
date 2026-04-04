@@ -16,25 +16,12 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 ---
 
 <section
-  class="relative z-[1] h-[calc(100svh-64px-25px)] lg:h-[calc(100svh-25px)] lg:mt-[-90px] lg:pt-[90px] flex flex-col justify-start bg-brand-cream/30 pb-0"
+  class="relative z-[1] h-[calc(100svh-64px-25px)] md:h-auto md:min-h-0 lg:h-auto lg:max-h-[900px] xl:h-[calc(100svh-25px)] xl:max-h-none lg:mt-[-90px] lg:pt-[90px] flex flex-col justify-start bg-brand-cream/30 pb-0"
 >
-  {/* Background Image - Clipped by rounded corners */}
+  {/* Background Image - CSS background to avoid layout shift */}
   <div
-    class="absolute inset-x-0 top-0 bottom-0 z-0 text-brand-dark/30 rounded-b-[25px] overflow-hidden"
-  >
-    {/* Mobile background */}
-    <img
-      src="/images/hero-bg-moss.webp"
-      alt=""
-      class="w-full h-full object-cover md:hidden"
-    />
-    {/* Desktop background */}
-    <img
-      src="/images/hero-bg-desktop.webp"
-      alt=""
-      class="w-full h-full object-cover hidden md:block"
-    />
-  </div>
+    class="absolute inset-x-0 top-0 bottom-0 z-0 rounded-b-[25px] overflow-hidden hero-bg"
+  />
 
   {/* Floating Decorative Elements - Not clipped, allowing bleed */}
   <div
@@ -44,9 +31,9 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     {/* Top Left: Moss (blurred) - Slides from top-left edge */}
     <BotanicalElement
       src="/images/moss-small-1.webp"
-      top="15%"
-      left="7%"
-      size="w-[35px] md:w-[80px] lg:w-[120px] h-auto"
+      top="7%"
+      left="5%"
+      size="w-[35px] md:hidden lg:block lg:w-[120px] h-auto"
       rotation="-131deg"
       opacity="opacity-80"
       filter="brightness(103%) contrast(100%) saturate(71%) blur(4px) hue-rotate(0deg)"
@@ -59,9 +46,9 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     {/* Top Right: Wood - Slides from top-right edge */}
     <BotanicalElement
       src="/images/wood-1.webp"
-      top="16%"
+      top="5%"
       right="2%"
-      size="w-[67px] md:w-[100px] lg:w-[121px] h-auto"
+      size="w-[67px] md:w-[80px] lg:w-[121px] h-auto"
       rotation="0deg"
       opacity="opacity-95"
       animationType="slide-in"
@@ -74,7 +61,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     <BotanicalElement
       src="/images/cookie-1.webp"
       top="55%"
-      left="-1%"
+      left="-2%"
       size="w-[41px] md:w-[50px] lg:w-[69px] h-auto"
       rotation="15deg"
       opacity="opacity-100"
@@ -88,9 +75,9 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     {/* Large wood branch — fills empty top-center space on md+ */}
     <BotanicalElement
       src="/images/wood-1.webp"
-      top="5%"
+      top="7%"
       left="38%"
-      size="hidden md:block md:w-[110px] lg:w-[155px] h-auto"
+      size="hidden lg:block lg:w-[155px] h-auto"
       rotation="-25deg"
       opacity="opacity-85"
       animationType="slide-in"
@@ -102,9 +89,9 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     {/* Right side: Moss - Slides from right edge */}
     <BotanicalElement
       src="/images/moss-small-1.webp"
-      bottom="33%"
+      bottom="36%"
       right="9%"
-      size="w-[49px] md:w-[80px] lg:w-[108px] h-auto"
+      size="w-[49px] md:w-[60px] lg:w-[80px] h-auto"
       blur="blur-none"
       rotation="5deg"
       opacity="opacity-80"
@@ -115,28 +102,20 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     />
   </div>
 
-  {/* Bottom Left Large Moss — above content layer so it overlaps Daria */}
-  <BotanicalElement
-    src="/images/moss-small-2.webp"
-    bottom="-7%"
-    left="8%"
-    size="w-[127px] md:w-[200px] lg:w-[259px] h-auto"
-    zIndex="z-30"
-    rotation="-10deg"
-    opacity="opacity-90"
-    filter="brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg)"
-    animationType="slide-in"
-    delay="0.1s"
-    slideX="-60px"
-    slideY="100px"
-  />
+  {/* Bottom Left Large Moss — above content layer, self-animated */}
+  <div
+    class="absolute pointer-events-none z-30 w-[127px] md:w-[112px] lg:w-[180px] xl:w-[259px] h-auto hero-moss-slide"
+    style="bottom: -7%; left: 8%; filter: brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg);"
+  >
+    <img src="/images/moss-small-2.webp" alt="" class="w-full h-full object-contain" />
+  </div>
 
   {/* Main content wrapper — stacks on mobile, side-by-side on desktop */}
-  <div class="flex-1 min-h-0 flex flex-col md:flex-row md:items-center relative z-20 mt-8 md:mt-0 max-w-[1280px] mx-auto w-full">
+  <div class="flex-1 min-h-0 flex flex-col md:flex-row md:items-center relative z-20 mt-8 md:mt-0 lg:mt-24 max-w-[1280px] mx-auto w-full">
 
     {/* Text content */}
     <div
-      class="flex flex-col items-center text-center md:items-start md:text-left md:w-1/2 md:pl-12 lg:pl-20 xl:pl-24 px-4"
+      class="flex flex-col items-center text-center md:items-start md:text-left md:w-1/2 lg:w-[65%] md:pl-12 lg:pl-20 xl:pl-24 px-4 lg:pb-12"
     >
       {/* Badge — mobile only */}
       <div
@@ -154,7 +133,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       </div>
 
       <h1
-        class="text-[32px] md:text-[36px] lg:text-[69px] font-heading text-brand-dark mb-3 md:mb-6 leading-[1.2] md:leading-[1.2] lg:leading-[84px] max-w-lg lg:max-w-[661px] slide-up"
+        class="text-[32px] md:text-[36px] lg:text-[69px] font-heading text-brand-dark mb-3 md:mb-6 leading-[1.2] md:leading-[1.2] lg:leading-[84px] max-w-lg lg:max-w-[700px] slide-up"
       >
         <span class="relative inline-block">
           Креативні
@@ -223,20 +202,20 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 
     {/* Founders photo */}
     <div
-      class="hero-photo relative w-full max-w-[340px] md:max-w-none md:w-1/2 mx-auto px-4 slide-up left-[-10px] md:left-0 flex-1 min-h-0 md:self-end overflow-hidden md:overflow-visible"
+      class="hero-photo relative w-full max-w-[340px] md:max-w-none md:w-1/2 lg:w-[35%] mx-auto px-4 slide-up left-[-10px] md:left-0 flex-1 min-h-0 md:self-end overflow-hidden md:overflow-visible"
     >
       <div class="relative flex justify-center items-end h-full md:h-auto">
         <Image
           src={dariaWithFlower}
           alt="Даша - засновник Floralab"
-          class="w-full h-auto max-h-full object-contain relative z-20 block translate-y-[10px] md:translate-y-0 md:max-w-[500px] lg:max-w-[600px] xl:max-w-[699px] mx-auto"
+          class="w-full h-auto max-h-full object-contain relative z-20 block translate-y-[10px] md:translate-y-0 md:max-w-[400px] lg:max-w-[480px] xl:max-w-[699px] mx-auto"
         />
         {/* Pot plant — tablet+ only, anchored to Daria */}
         <img
           src="/images/masterclass/decor-pot-plant.webp"
           alt=""
-          class="hidden md:block absolute z-30 md:w-[120px] lg:w-[156px] h-auto pointer-events-none"
-          style="bottom: 18%; left: calc(-8% - 20px); transform: rotate(5deg);"
+          class="hidden md:block absolute z-30 md:w-[90px] lg:w-[110px] xl:w-[156px] h-auto pointer-events-none"
+          style="bottom: 18%; left: calc(-12% - 20px); transform: rotate(5deg);"
         />
         {/* Decorative Blur behind Daria */}
         <div
@@ -250,6 +229,15 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 </section>
 
 <style>
+  .hero-bg {
+    background: url('/images/hero-bg-moss.webp') no-repeat center/cover;
+  }
+  @media (min-width: 768px) {
+    .hero-bg {
+      background-image: url('/images/hero-bg-desktop.webp');
+    }
+  }
+
   .slide-up {
     opacity: 0;
     transform: translateY(20px);
@@ -321,6 +309,36 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     100% {
       opacity: 0;
       transform: translateY(2px);
+    }
+  }
+
+  /* Bottom moss — self-animated slide-in (outside deco-container) */
+  .hero-moss-slide {
+    opacity: 0;
+    transform: translate(-60px, 100px) rotate(-10deg);
+    animation: heroMossSlide 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+  @keyframes heroMossSlide {
+    to {
+      opacity: 1;
+      transform: translate(0, 0) rotate(-10deg);
+    }
+  }
+  @media (min-width: 768px) {
+    .hero-moss-slide {
+      bottom: -14% !important;
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero-moss-slide {
+      bottom: -18% !important;
+    }
+  }
+
+  /* Wood branch — move inward on desktop */
+  @media (min-width: 1024px) {
+    #hero-deco-container > :nth-child(2) {
+      right: 25% !important;
     }
   }
 
