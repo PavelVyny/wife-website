@@ -10,7 +10,7 @@ const { className = "", currentPath = "/", purchaseUrl, purchaseLabel = "При�
 
 function isActive(href: string): string {
   if (href.startsWith('#')) return '';
-  return currentPath === href ? 'text-brand-lime font-bold' : '';
+  return currentPath === href ? 'text-brand-lime font-semibold' : '';
 }
 ---
 
@@ -34,12 +34,12 @@ function isActive(href: string): string {
     </button>
 
     <div class="hidden lg:flex items-center gap-8">
-      <nav class="flex items-center gap-8">
-        <a href="/" class={`text-sm font-medium hover:text-brand-lime transition-colors ${isActive('/') || 'text-brand-dark'}`}>Головна</a>
-        <a href="/stvorennya-florariumu" class={`text-sm font-medium hover:text-brand-lime transition-colors ${isActive('/stvorennya-florariumu') || 'text-brand-dark'}`}>Створення флораріуму</a>
-        <a href="/kartini-zi-stabilizovanih-roslin" class={`text-sm font-medium hover:text-brand-lime transition-colors ${isActive('/kartini-zi-stabilizovanih-roslin') || 'text-brand-dark'}`}>Створення картини</a>
-        <a href="/vinok-zi-stabilizovanih-roslin" class={`text-sm font-medium hover:text-brand-lime transition-colors ${isActive('/vinok-zi-stabilizovanih-roslin') || 'text-brand-dark'}`}>Створення вінка</a>
-        <a href="#about" class="text-sm font-medium text-brand-dark hover:text-brand-lime transition-colors">Про мене</a>
+      <nav class="flex items-center gap-6">
+        <a href="/" class={`nav-link text-[15px] font-medium transition-all duration-200 ${isActive('/') || 'text-brand-dark'}`}>Головна</a>
+        <a href="/stvorennya-florariumu" class={`nav-link text-[15px] font-medium transition-all duration-200 ${isActive('/stvorennya-florariumu') || 'text-brand-dark'}`}>Створення флораріуму</a>
+        <a href="/kartini-zi-stabilizovanih-roslin" class={`nav-link text-[15px] font-medium transition-all duration-200 ${isActive('/kartini-zi-stabilizovanih-roslin') || 'text-brand-dark'}`}>Створення картини</a>
+        <a href="/vinok-zi-stabilizovanih-roslin" class={`nav-link text-[15px] font-medium transition-all duration-200 ${isActive('/vinok-zi-stabilizovanih-roslin') || 'text-brand-dark'}`}>Створення вінка</a>
+        <a href="#about" class="nav-link text-[15px] font-medium text-brand-dark transition-all duration-200">Про мене</a>
       </nav>
       <div class="flex items-center gap-4 ml-4">
         <a href="https://www.instagram.com/floralab_ua" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-brand-dark hover:text-brand-lime transition-colors">
@@ -82,6 +82,33 @@ function isActive(href: string): string {
     )}
   </div>
 </header>
+
+<style>
+  .nav-link {
+    position: relative;
+    padding: 6px 14px;
+    border-radius: 100px;
+    z-index: 1;
+  }
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 100px;
+    background: #7cab06;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: -1;
+  }
+  .nav-link:hover::before {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+  .nav-link:hover {
+    color: #5a8a00;
+  }
+</style>
 
 <script>
   const toggle = document.getElementById('mobile-menu-toggle');

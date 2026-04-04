@@ -77,7 +77,7 @@ import tenorSansWoff2 from '@fontsource/tenor-sans/files/tenor-sans-latin-400-no
 							obs.unobserve(e.target);
 						}
 					});
-				}, { threshold: 0.1 });
+				}, { threshold: 0.01, rootMargin: '0px 0px 200px 0px' });
 				els.forEach((el) => obs.observe(el));
 			}
 			document.addEventListener('astro:page-load', initReveal);

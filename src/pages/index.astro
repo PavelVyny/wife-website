@@ -20,12 +20,12 @@ import sectionHeaderBanner from '../assets/masterclass/section-header-banner.web
 			title="КРЕАТИВНІ МАЙСТЕР-КЛАСИ ВІД FLORALAB"
 			subtitle="Практичні онлайн майстер-класи для кожного, хто хоче зануритися у світ природи та ручної роботи"
 			ctaText="Доступні навчання"
-			ctaLink="#courses"
+			ctaLink="#available-courses"
 			imageAlt="Daria from Floralab"
 		/>
 
 		{/* ===== SECTION HEADER BANNER ===== */}
-		<section class="bg-white px-[9.75px] pt-[6px] pb-[20px] md:px-8 max-w-[1280px] mx-auto reveal">
+		<section id="available-courses" class="bg-white px-[9.75px] pt-[6px] pb-[20px] md:px-8 max-w-[1280px] mx-auto reveal scroll-mt-[100px]">
 			<Image
 				src={sectionHeaderBanner}
 				alt="Доступні Майстер-Класи"
@@ -35,7 +35,7 @@ import sectionHeaderBanner from '../assets/masterclass/section-header-banner.web
 		</section>
 
 		{/* ===== COURSES / MASTERCLASSES SECTION ===== */}
-		<section id="courses" class="relative bg-white pb-[20px] md:pb-[30px] lg:pb-[40px]">
+		<section id="courses" class="relative bg-white pb-[20px] md:pb-[30px] lg:pb-[40px] scroll-mt-[100px]">
 			<div class="relative z-10 px-[9.75px] md:px-8 max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] md:gap-[30px]">
 
 				{/* Card 1: Florarium — no badge */}
@@ -83,6 +83,7 @@ import sectionHeaderBanner from '../assets/masterclass/section-header-banner.web
 						image="/images/masterclass/wreath-product-2.webp"
 						imageAlt="Вінок зі стабілізованих рослин"
 						bgImage="/images/masterclass/bg/wreath-bg.webp"
+						isNew={true}
 						isComingSoon={false}
 						rotateImage={true}
 						imageWidth="270px"

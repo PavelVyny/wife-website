@@ -251,7 +251,7 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
             }
           });
         },
-        { threshold: 0, rootMargin: "0px 0px -100px 0px" },
+        { threshold: 0, rootMargin: "0px 0px 50px 0px" },
       );
       wrappers.forEach((w) => cardObserver.observe(w));
     }
@@ -271,7 +271,7 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
             }
           });
         },
-        { threshold: 0, rootMargin: "0px 0px -100px 0px" },
+        { threshold: 0, rootMargin: "0px 0px 50px 0px" },
       );
       images.forEach((img: HTMLElement) => imageObserver.observe(img));
     }

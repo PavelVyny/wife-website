@@ -16,7 +16,7 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 ---
 
 <section
-  class="relative z-[1] h-[calc(100svh-64px-25px)] flex flex-col justify-start bg-brand-cream/30 pt-0 pb-0 md:pt-0 lg:pt-0 rounded-b-[25px] overflow-hidden"
+  class="relative z-[1] h-[calc(100svh-64px-25px)] lg:h-[calc(100svh-25px)] lg:mt-[-90px] lg:pt-[90px] flex flex-col justify-start bg-brand-cream/30 pb-0"
 >
   {/* Background Image - Clipped by rounded corners */}
   <div
@@ -99,23 +99,6 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       slideY="-100px"
     />
 
-    {
-      /* Bottom Left Large Flower/Moss: Slides from bottom-left corner */
-    }
-    <BotanicalElement
-      src="/images/moss-small-2.webp"
-      bottom="-7%"
-      left="8%"
-      size="w-[127px] md:w-[200px] lg:w-[259px] h-auto"
-      rotation="-10deg"
-      opacity="opacity-90"
-      filter="brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg)"
-      animationType="slide-in"
-      delay="0.1s"
-      slideX="-60px"
-      slideY="100px"
-    />
-
     {/* Right side: Moss - Slides from right edge */}
     <BotanicalElement
       src="/images/moss-small-1.webp"
@@ -131,6 +114,22 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
       slideY="60px"
     />
   </div>
+
+  {/* Bottom Left Large Moss — above content layer so it overlaps Daria */}
+  <BotanicalElement
+    src="/images/moss-small-2.webp"
+    bottom="-7%"
+    left="8%"
+    size="w-[127px] md:w-[200px] lg:w-[259px] h-auto"
+    zIndex="z-30"
+    rotation="-10deg"
+    opacity="opacity-90"
+    filter="brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg)"
+    animationType="slide-in"
+    delay="0.1s"
+    slideX="-60px"
+    slideY="100px"
+  />
 
   {/* Main content wrapper — stacks on mobile, side-by-side on desktop */}
   <div class="flex-1 min-h-0 flex flex-col md:flex-row md:items-center relative z-20 mt-8 md:mt-0 max-w-[1280px] mx-auto w-full">
@@ -187,14 +186,14 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
 
       <a
         href={ctaLink}
-        class="hidden md:inline-flex items-center justify-center px-[28px] py-[13px] bg-[#7cab06] text-white rounded-full font-heading text-[18px] leading-[24px] hover:bg-[#6d9a05] hover:scale-105 active:scale-95 transition-all slide-up mt-4 mb-2"
+        class="hidden md:inline-flex items-center justify-center px-[28px] py-[13px] bg-[#7cab06] text-white rounded-full font-heading text-[18px] leading-[24px] hover:bg-[#6d9a05] hover:scale-[1.02] active:scale-95 hero-cta-btn scroll-to-next mt-4 mb-2"
         style="box-shadow: 0 10px 25px rgba(124, 171, 6, 0.25);"
       >
         {ctaText}
       </a>
 
-      {/* Arrows — mobile only */}
-      <div class="flex flex-col items-center slide-up md:hidden">
+      {/* Arrows — mobile only, clickable scroll to next section */}
+      <a href="#available-courses" class="flex flex-col items-center slide-up md:hidden cursor-pointer scroll-to-next">
         <div class="relative w-11 h-10 flex flex-col items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -219,18 +218,25 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
               stroke-linejoin="round"></path>
           </svg>
         </div>
-      </div>
+      </a>
     </div>
 
     {/* Founders photo */}
     <div
-      class="hero-photo relative w-full max-w-[340px] md:max-w-none md:w-1/2 mx-auto px-4 slide-up left-[-10px] md:left-0 flex-1 min-h-0 md:self-end overflow-hidden"
+      class="hero-photo relative w-full max-w-[340px] md:max-w-none md:w-1/2 mx-auto px-4 slide-up left-[-10px] md:left-0 flex-1 min-h-0 md:self-end overflow-hidden md:overflow-visible"
     >
       <div class="relative flex justify-center items-end h-full md:h-auto">
         <Image
           src={dariaWithFlower}
           alt="Даша - засновник Floralab"
           class="w-full h-auto max-h-full object-contain relative z-20 block translate-y-[10px] md:translate-y-0 md:max-w-[500px] lg:max-w-[600px] xl:max-w-[699px] mx-auto"
+        />
+        {/* Pot plant — tablet+ only, anchored to Daria */}
+        <img
+          src="/images/masterclass/decor-pot-plant.webp"
+          alt=""
+          class="hidden md:block absolute z-30 md:w-[120px] lg:w-[156px] h-auto pointer-events-none"
+          style="bottom: 18%; left: calc(-8% - 20px); transform: rotate(5deg);"
         />
         {/* Decorative Blur behind Daria */}
         <div
@@ -255,6 +261,10 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
   .slide-up.active {
     opacity: 1;
     transform: translateY(0);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.3s ease,
+      background-color 0.3s ease;
   }
 
   .slide-down {
@@ -314,6 +324,17 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     }
   }
 
+  /* Hero CTA button — fade-in on load, smooth hover */
+  .hero-cta-btn {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroCTAFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+  @keyframes heroCTAFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   /* Hide Daria photo on very short viewports */
   @media (max-height: 480px) {
     .hero-photo {
@@ -344,5 +365,19 @@ const { title, subtitle, ctaText, ctaLink, imageAlt } = Astro.props;
     document
       .querySelectorAll(".slide-up, .slide-down")
       .forEach((el) => observer.observe(el));
+
+    // Smooth scroll for hero anchor links
+    document.querySelectorAll('.scroll-to-next').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (!href?.startsWith('#')) return;
+        e.preventDefault();
+        const target = document.querySelector(href) as HTMLElement;
+        if (target) {
+          const y = target.getBoundingClientRect().top + window.scrollY - 10;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
   });
 </script>
