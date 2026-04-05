@@ -1,0 +1,177 @@
+---
+interface DecorElement {
+  src: string;
+  width: number;
+  height: number;
+  visibility: 'mobile-only' | 'tablet-down' | 'desktop-only' | 'all';
+  style: string;
+}
+
+interface Props {
+  heroId: string;
+  bgMobile: string;
+  bgDesktop?: string;
+  dariaImg: string;
+  dariaAlt: string;
+  dariaWidth: number;
+  dariaHeight: number;
+  badgeText: string;
+  titleLine1: string;
+  titleLine2: string;
+  subtitle: string;
+  ctaText: string;
+  ctaHref: string;
+  ctaPulse?: boolean;
+  decorElements: DecorElement[];
+  bleedElement?: {
+    src: string;
+    width: number;
+    height: number;
+    style: string;
+  };
+}
+
+const {
+  heroId, bgMobile, bgDesktop, dariaImg, dariaAlt, dariaWidth, dariaHeight,
+  badgeText, titleLine1, titleLine2, subtitle, ctaText, ctaHref, ctaPulse = false,
+  decorElements, bleedElement
+} = Astro.props;
+
+const visibilityClasses: Record<DecorElement['visibility'], string> = {
+  'mobile-only': 'md:hidden absolute pointer-events-none z-[5] hero-decor-slide',
+  'tablet-down': 'lg:hidden absolute pointer-events-none z-[5] hero-decor-slide',
+  'desktop-only': 'hidden lg:block absolute pointer-events-none z-[5] hero-decor-slide',
+  'all': 'absolute pointer-events-none z-[5] hero-decor-slide',
+};
+---
+
+{/* Wrapper for hero + bleed element that bleeds below */}
+<div class="relative">
+<section
+  id={heroId}
+  class="relative overflow-hidden rounded-b-[25px] lg:mt-[-90px]"
+  style={`background: #f8f8f8 url('${bgMobile}') no-repeat center/cover;`}
+>
+  {/* Daria — desktop: absolutely positioned, right half, pinned to bottom */}
+  <div
+    class="hidden lg:block absolute bottom-0 pointer-events-none z-0 lg:left-[54%] xl:left-[58%]"
+    style="right: -80px;"
+  >
+    <img
+      src={dariaImg}
+      alt=""
+      width={dariaWidth}
+      height={dariaHeight}
+      class="w-auto object-contain object-bottom lg:max-h-[520px] xl:max-h-[620px]"
+      loading="eager"
+    />
+  </div>
+
+  {/* Decorative elements — slide-in animations */}
+  {decorElements.map((el) => (
+    <img
+      src={el.src}
+      alt=""
+      width={el.width}
+      height={el.height}
+      class={visibilityClasses[el.visibility]}
+      style={el.style}
+    />
+  ))}
+
+  {/* Content — stacked on mobile, side-by-side on md */}
+  <div class="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 pt-[60px] md:pt-[40px] lg:pt-[220px] pb-[20px] md:pb-0 lg:pb-[120px] lg:min-h-[720px] md:flex md:items-end lg:items-center md:min-h-0">
+
+    {/* Text content */}
+    <div class="max-w-[600px] md:max-w-none md:w-1/2 lg:w-[540px] mx-auto md:mx-0 text-center md:text-left md:pb-[60px]">
+
+      {/* Badge */}
+      <div class="flex justify-center md:justify-start mb-8 hero-text-fade" style="animation-delay: 0s;">
+        <div
+          class="inline-flex items-center gap-[8px] rounded-full"
+          style="background: #00401E; padding: 7px 16px;"
+        >
+          <span style="font-size: 14px; line-height: 1; display: inline-block; transform: rotate(15deg);">&#11088;</span>
+          <span class="font-heading text-white font-medium" style="font-size: 14px; line-height: 1;">{badgeText}</span>
+        </div>
+      </div>
+
+      {/* Title */}
+      <h1 class="font-heading text-black uppercase mb-7 hero-text-fade" style="line-height: 1.08; letter-spacing: -0.36px; animation-delay: 0.1s;">
+        <span class="block text-[38px] md:text-[44px] lg:text-[68px] xl:text-[89px]">{titleLine1}</span>
+        <span class="relative inline-block text-[38px] md:text-[44px] lg:text-[68px] xl:text-[89px]">
+          {titleLine2}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 500 150"
+            class="absolute -bottom-1 left-0 w-full h-8 overflow-visible pointer-events-none"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              class="hero-zigzag-path"
+              d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"
+              fill="none"
+              stroke="#7fac00"
+              stroke-width="28"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+      </h1>
+
+      {/* Subtitle */}
+      <p class="font-heading text-black mb-8 mx-auto md:mx-0 hero-text-fade" style="font-size: 16px; line-height: 24px; max-width: 340px; animation-delay: 0.2s;">
+        <Fragment set:html={subtitle} />
+      </p>
+
+      {/* CTA */}
+      <div class="flex justify-center md:justify-start hero-text-fade" style="animation-delay: 0.3s;">
+        <a
+          href={ctaHref}
+          class={`inline-flex items-center justify-center font-heading text-white font-medium hover:scale-[1.02] transition-transform ${ctaPulse ? 'hero-cta-pulse' : ''}`}
+          style="padding: 16px 30px; background: #F3237D; border-radius: 100px; font-size: 18px;"
+        >
+          {ctaText}
+        </a>
+      </div>
+    </div>
+
+    {/* Daria — mobile: stacked below, md: right side, lg: hidden (desktop uses absolute version) */}
+    <div class="lg:hidden mt-6 md:mt-0 md:w-1/2 flex justify-end relative z-[6] hero-daria-slide"
+      style="margin-right: -14px; margin-bottom: -20px;"
+    >
+      <img
+        src={dariaImg}
+        alt={dariaAlt}
+        width={dariaWidth}
+        height={dariaHeight}
+        class="w-full max-w-[232px] md:max-w-[380px]"
+        loading="eager"
+      />
+    </div>
+  </div>
+</section>
+
+{/* Bleed element — bleeds below hero section */}
+{bleedElement && (
+  <img
+    src={bleedElement.src}
+    alt=""
+    width={bleedElement.width}
+    height={bleedElement.height}
+    class="absolute pointer-events-none z-[1] hero-decor-slide"
+    style={bleedElement.style}
+  />
+)}
+</div>
+
+{bgDesktop && (
+  <style is:global set:html={`
+    @media (min-width: 768px) {
+      #${heroId} {
+        background-image: url('${bgDesktop}') !important;
+      }
+    }
+  `}></style>
+)}

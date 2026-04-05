@@ -1,0 +1,64 @@
+---
+interface Props {
+  titleImage: string;
+  titleImageAlt: string;
+  subtitle: string;
+  cards: Array<{
+    image: string;
+    imageAlt: string;
+    title: string;
+    description: string;
+  }>;
+  decorLeftImage?: string;
+  decorLeftStyle?: string;
+  decorRightImage?: string;
+  decorRightStyle?: string;
+}
+const { titleImage, titleImageAlt, subtitle, cards, decorLeftImage, decorLeftStyle, decorRightImage, decorRightStyle } = Astro.props;
+---
+
+<section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[48px] overflow-hidden">
+  {/* Decorative elements */}
+  {decorRightImage && (
+    <img src={decorRightImage} alt="" width="929" height="906"
+      class="hidden lg:block absolute pointer-events-none z-0"
+      style={decorRightStyle || "top: 2%; right: 1%; width: 160px; height: auto;"} />
+  )}
+  {decorLeftImage && (
+    <img src={decorLeftImage} alt="" width="929" height="906"
+      class="hidden lg:block absolute pointer-events-none z-0 decor-sway"
+      style={decorLeftStyle || "top: 5%; left: -3%; width: 210px; height: auto; opacity: 0.9; filter: blur(1px); --dur: 7s; --del: -2s;"} />
+  )}
+
+  <div class="max-w-[1280px] mx-auto relative z-10">
+    <div class="flex justify-center mb-[8px] reveal">
+      <img
+        src={titleImage}
+        alt={titleImageAlt}
+        width="1024"
+        height="460"
+        class="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[460px] h-auto"
+        loading="lazy"
+      />
+    </div>
+    <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] text-center mb-[40px] max-w-[780px] mx-auto reveal">
+      {subtitle}
+    </p>
+
+    {/* 2x2 grid — image left, text right */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
+      {cards.map((card) => (
+        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
+          <img src={card.image} alt={card.imageAlt}
+            width="800" height="783"
+            class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"
+            loading="lazy" />
+          <div>
+            <h3 class="font-heading text-[#1a1a1a] text-[20px] md:text-[22px] leading-[1.3] mb-[8px]">{card.title}</h3>
+            <p class="text-[#8a8a8a] text-[15px] leading-[24px] text-left">{card.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -20,15 +20,10 @@
 | 02   | InstructorSection image fix + masterclass pages verification | Complete | 1 | 1 |
 | 03   | Masterclass detail pages (florarium + stabilized art) | Complete | 1 | 1 |
 
-### Phase 4: Extract reusable masterclass section components and rebuild kartini/vinok pages
-
-**Goal:** Extract ALL section components (Hero, TargetAudience, EducationalBlock, WhatsIncluded, LearningOutcomes, Curriculum, FAQ wrapper, CTA button) from the florarium reference page, consolidate all animation CSS into MasterclassLayout, fix PricingCta type, and rebuild all 3 masterclass pages to use shared components.
-**Requirements:** [P4-CSS, P4-COMPONENTS, P4-TYPEFIX, P4-KARTINI, P4-VINOK, P4-DEDUP]
-**Depends on:** Phase 3
-**Plans:** 4 plans
-
-Plans:
-- [ ] 04-01-PLAN.md — Consolidate shared CSS + extract MasterclassHero, TargetAudienceSection, EducationalBlock + fix PricingCta type
-- [ ] 04-02-PLAN.md — Extract WhatsIncludedSection, LearningOutcomes, CurriculumSection, FaqSection, CtaButton
-- [ ] 04-03-PLAN.md — Rebuild florarium + kartini pages using all shared components
-- [ ] 04-04-PLAN.md — Rebuild vinok page using all shared components
+## Phase 04: Extract Reusable Masterclass Section Components and Rebuild Kartini/Vinok Pages
+| Plan | Name | Status | Plans | Summaries |
+|------|------|--------|-------|-----------|
+| 01   | Shared CSS + MasterclassHero, TargetAudienceSection, EducationalBlock extraction | Complete | 1 | 1 |
+| 02   | (pending) | Planned | 1 | 0 |
+| 03   | (pending) | Planned | 1 | 0 |
+| 04   | (pending) | Planned | 1 | 0 |

@@ -1,0 +1,177 @@
+---
+interface HotspotItem {
+  label: string;
+  left: string;
+  top: string;
+}
+
+interface Props {
+  titleImage: string;
+  titleImageAlt: string;
+  headingHighlight: string;
+  headingRest: string;
+  productImage: string;
+  productImageAlt: string;
+  productImageWidth: number;
+  productImageHeight: number;
+  hotspots: HotspotItem[];
+  benefits: string[];
+  quoteImage: string;
+  quoteImageAlt: string;
+  memojiImage?: string;
+  memojiStyle?: string;
+}
+
+const {
+  titleImage, titleImageAlt, headingHighlight, headingRest,
+  productImage, productImageAlt, productImageWidth, productImageHeight,
+  hotspots, benefits, quoteImage, quoteImageAlt, memojiImage, memojiStyle
+} = Astro.props;
+---
+
+<section class="relative bg-white px-[10px] py-[24px] md:px-8 md:py-[56px] lg:py-[48px] lg:pb-[48px] overflow-hidden">
+  {memojiImage && (
+    <img src={memojiImage} alt="" width="180" height="200"
+      class="hidden lg:block absolute pointer-events-none z-0"
+      style={memojiStyle || "top: 15%; right: 2%; width: 130px; height: auto; rotate: 15deg;"} />
+  )}
+  <div class="max-w-[1280px] mx-auto relative z-10">
+
+    {/* Title banner */}
+    <div class="flex justify-center mb-[16px] md:mb-[24px] reveal">
+      <img
+        src={titleImage}
+        alt={titleImageAlt}
+        width="1024"
+        height="506"
+        class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[500px] h-auto"
+        loading="lazy"
+      />
+    </div>
+
+    {/* Image left + heading/benefits right on lg */}
+    <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[8px] lg:mt-[24px]">
+
+      {/* Left: heading (mobile/tablet) + product image */}
+      <div>
+        {/* Heading — shown above image on mobile, hidden on lg (moved to right column) */}
+        <div class="reveal lg:hidden">
+          <h2 class="font-heading text-black text-[22px] md:text-[28px] leading-[1.25] text-center mb-[24px]">
+            <span class="relative inline">
+              <span class="relative z-10 font-heading">{headingHighlight} </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 150"
+                class="absolute -bottom-[6px] md:-bottom-[8px] left-0 w-full h-[20px] md:h-[24px] overflow-visible"
+                preserveAspectRatio="none"
+              >
+                <path
+                  class="highlight-path"
+                  d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0"
+                  fill="none"
+                  stroke="#a5d100"
+                  stroke-width="38"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>{headingRest}
+          </h2>
+        </div>
+
+        {/* Product image with interactive hotspots */}
+        <div class="flex justify-center reveal">
+          <div class="florarium-hotspot-container relative inline-block">
+            <img
+              src={productImage}
+              alt={productImageAlt}
+              width={productImageWidth}
+              height={productImageHeight}
+              class="w-full max-w-[380px] md:max-w-[480px] lg:max-w-[560px]"
+              loading="lazy"
+            />
+
+            {/* Interactive hotspots with tooltips */}
+            {hotspots.map((h) => (
+              <button class="hotspot-btn" style={`left: ${h.left}; top: ${h.top};`} aria-label={h.label}>
+                <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                  <rect x="9" y="4" width="2" height="12" rx="1" fill="white"/>
+                  <rect x="4" y="9" width="12" height="2" rx="1" fill="white"/>
+                </svg>
+                <span class="hotspot-tooltip">{h.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Right: heading (lg) + benefits */}
+      <div>
+        {/* Heading — lg only, beside image */}
+        <div class="hidden lg:block reveal mb-[28px]">
+          <h2 class="font-heading text-black lg:text-[42px] xl:text-[44px] leading-[1.25] text-left">
+            <span class="relative inline">
+              <span class="relative z-10 font-heading">{headingHighlight} </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 500 150"
+                class="absolute lg:-bottom-[10px] left-0 w-full lg:h-[30px] overflow-visible"
+                preserveAspectRatio="none"
+              >
+                <path
+                  class="highlight-path"
+                  d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0"
+                  fill="none"
+                  stroke="#a5d100"
+                  stroke-width="38"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>{headingRest}
+          </h2>
+        </div>
+
+        {/* Benefits list */}
+        <div class="flex flex-col gap-[16px] mt-[16px] lg:mt-0 mb-[8px] lg:mb-[20px] reveal">
+          {benefits.map((item) => (
+            <div class="flex items-center gap-[12px]">
+              <div class="w-[28px] h-[28px] rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #7fac00;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <p class="font-heading text-[#333] text-[18px] lg:text-[20px] leading-[26px] lg:leading-[28px]">{item}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Quote bubble */}
+        <div class="flex justify-center lg:justify-end mt-[24px] lg:mt-[16px] reveal">
+          <img
+            src={quoteImage}
+            alt={quoteImageAlt}
+            width="1024"
+            height="525"
+            class="w-full max-w-[340px] md:max-w-[400px] lg:max-w-[440px] h-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+    </div>{/* end lg:grid */}
+  </div>
+
+</section>
+
+<script>
+  document.querySelectorAll('.hotspot-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasActive = btn.classList.contains('active');
+      document.querySelectorAll('.hotspot-btn.active').forEach(b => b.classList.remove('active'));
+      if (!wasActive) btn.classList.add('active');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.hotspot-btn.active').forEach(b => b.classList.remove('active'));
+  });
+</script>
