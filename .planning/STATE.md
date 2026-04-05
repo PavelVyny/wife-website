@@ -2,11 +2,11 @@
 
 ## Current Position
 - Phase: 04-extract-reusable-masterclass-section-components-and-rebuild-kartini-vinok-pages
-- Plan: 02
-- Status: phase-04-plan-01-complete
+- Plan: 04 (next, if any)
+- Status: phase-04-plan-03-complete
 
 ## Progress
-[#####...............] 25% (1/4 plans in phase 04 complete)
+[###############.....] 75% (3/4 plans in phase 04 complete)
 
 ## Decisions
 - Used max-w-[1280px] as the consistent max-width across all components
@@ -20,6 +20,8 @@
 - All shared animation CSS consolidated into MasterclassLayout <style is:global> — single source, no duplication per page
 - Components extracted verbatim from florarium page as source of truth — kartini/vinok will use same layout via props
 - DecorElement visibility prop maps to responsive visibility classes (mobile-only, tablet-down, desktop-only, all)
+- Both pages follow identical structure: imports, data arrays, component calls, page-specific CSS only
+- Florarium keeps curriculum-timeline and florarium-float as page-specific CSS; kartini keeps curriculum-timeline-k
 
 ## Performance Metrics
 | Phase | Plan | Duration | Tasks | Files |
@@ -29,7 +31,8 @@
 | 03    | 02   | ~2m      | 4     | 2     |
 | 03    | 03   | ~2m      | 3     | 2     |
 | 04    | 01   | ~3m      | 3     | 5     |
+| 04    | 03   | ~6m      | 2     | 2     |
 
 ## Last Session
-- Stopped at: Completed 04-01-PLAN.md — shared CSS + 3 components extracted
+- Stopped at: Completed 04-03-PLAN.md — florarium + kartini pages rebuilt with shared components
 - Date: 2026-04-05
