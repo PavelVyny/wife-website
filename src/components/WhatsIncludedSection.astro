@@ -1,0 +1,121 @@
+---
+interface Props {
+  titleImage: string;
+  titleImageAlt: string;
+  items: string[];
+  bonusItem?: string;
+  productImg1: string;
+  productImg1Alt: string;
+  productImg2: string;
+  productImg2Alt: string;
+  decorMossImage?: string;
+  decorMossStyle?: string;
+  bleedCookieImage?: string;
+  bleedCookieStyle?: string;
+}
+const { titleImage, titleImageAlt, items, bonusItem, productImg1, productImg1Alt, productImg2, productImg2Alt, decorMossImage, decorMossStyle, bleedCookieImage, bleedCookieStyle } = Astro.props;
+---
+
+<div class="relative">
+<section class="relative bg-white px-[10px] md:px-8 py-[24px] md:py-[56px] lg:py-[48px] pb-[80px] overflow-hidden">
+  {decorMossImage && (
+    <img src={decorMossImage} alt="" width="200" height="200"
+      class="hidden lg:block absolute pointer-events-none z-0 decor-sway"
+      style={decorMossStyle || "top: 5%; left: -2%; width: 90px; height: auto; opacity: 0.7; --dur: 6s; --del: -2s;"} />
+  )}
+  <div class="max-w-[1280px] mx-auto">
+
+    {/* Title with lightbulb */}
+    <div class="flex justify-center mb-[16px] reveal">
+      <div class="relative">
+        <svg width="44" height="56" viewBox="0 0 44 56" fill="none" xmlns="http://www.w3.org/2000/svg" class="bulb-glow absolute -top-[48px] left-[10px] z-10">
+          {/* Glow rays */}
+          <line x1="22" y1="2" x2="22" y2="6" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          <line x1="8" y1="8" x2="11" y2="11" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          <line x1="36" y1="8" x2="33" y2="11" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          <line x1="4" y1="22" x2="8" y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          <line x1="40" y1="22" x2="36" y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
+          {/* Bulb body */}
+          <path d="M22 10C16.5 10 12 14.5 12 20c0 3.6 1.9 6.7 4.8 8.5V32c0 .6.4 1 1 1h8.4c.6 0 1-.4 1-1v-3.5C30.1 26.7 32 23.6 32 20c0-5.5-4.5-10-10-10z" fill="#FFD700" stroke="#E8B800" stroke-width="0.8"/>
+          {/* Bulb shine */}
+          <path d="M17 19c0-2.8 2.2-5 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+          {/* Base lines */}
+          <rect x="16" y="34" width="12" height="1.5" rx="0.75" fill="#E8B800"/>
+          <rect x="17" y="37" width="10" height="1.5" rx="0.75" fill="#E8B800"/>
+          <path d="M19 40.5L22 43L25 40.5" stroke="#E8B800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <img
+          src={titleImage}
+          alt={titleImageAlt}
+          width="1024"
+          height="460"
+          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
+      <div class="reveal">
+        <ul class="space-y-[20px] px-[14px] md:px-0">
+          {items.map((item) => (
+            <li class="text-[#333] text-[18px] leading-[26px] flex gap-[12px] items-center font-heading font-medium">
+              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              {item}
+            </li>
+          ))}
+          {bonusItem && (
+            <li class="text-[#333] text-[18px] leading-[26px] flex gap-[12px] items-center font-heading font-medium">
+              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #F3237D;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              {bonusItem}
+            </li>
+          )}
+        </ul>
+
+        {bonusItem && (
+          <div class="mt-[16px] flex items-center gap-[8px] px-[14px] md:px-0">
+            <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0" style="rotate: -105deg; margin-top: -40px;">
+              <path d="M5 35C10 15 25 5 45 10" stroke="#333" stroke-width="2" stroke-linecap="round" fill="none" stroke-dasharray="3 3"/>
+              <path d="M40 5L46 10L39 14" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span class="inline-block font-heading text-white text-[14px] uppercase tracking-[1px] rounded-full" style="background: #F3237D; padding: 8px 20px;">
+              Бонус
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Product images — large left 86% width, small right, both rounded-[30px] */}
+      <div class="mt-[24px] lg:mt-0 relative" style="min-height: 380px;">
+        <img
+          src={productImg1}
+          alt={productImg1Alt}
+          width="1024"
+          height="1024"
+          class="rounded-[30px] reveal included-slide-left"
+          style="width: 86%; display: block;"
+          loading="lazy"
+        />
+        <img
+          src={productImg2}
+          alt={productImg2Alt}
+          width="1024"
+          height="1024"
+          class="rounded-[30px] absolute reveal included-slide-right"
+          style="width: 50%; bottom: -20px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+{bleedCookieImage && (
+  <img src={bleedCookieImage} alt="" width="280" height="268"
+    class="absolute pointer-events-none z-10"
+    style={bleedCookieStyle} />
+)}
+</div>

@@ -1,0 +1,102 @@
+---
+interface LessonItem {
+  title: string;
+  titleRest: string;
+  description?: string;
+  bullets?: string[];
+  imageMobile: string;
+  imageDesktop: string;
+  imageAlt: string;
+}
+interface Props {
+  titleImage: string;
+  titleImageAlt: string;
+  lessons: LessonItem[];
+  layout?: 'zigzag' | 'stacked';
+  timelineClass?: string;
+  decorImage?: string;
+  decorStyle?: string;
+}
+const { titleImage, titleImageAlt, lessons, layout = 'zigzag', timelineClass = 'curriculum-timeline', decorImage, decorStyle } = Astro.props;
+
+const isZigzag = layout === 'zigzag';
+---
+
+<section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[48px] overflow-hidden">
+  {decorImage && (
+    <img src={decorImage} alt="" width="190" height="210"
+      class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
+      style={decorStyle} />
+  )}
+  <div class="max-w-[1280px] mx-auto">
+
+    {/* Title image centered */}
+    <div class="flex justify-center mb-[32px] md:mb-[48px] reveal">
+      <img
+        src={titleImage}
+        alt={titleImageAlt}
+        width="1024"
+        height="460"
+        class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
+        loading="lazy"
+      />
+    </div>
+
+    {/* Lessons container with vertical connecting line */}
+    <div class={timelineClass + ' relative'}>
+
+    {lessons.map((lesson, i) => {
+      const isEven = i % 2 === 0;
+      const isOdd = !isEven;
+      const isLast = i === lessons.length - 1;
+      const layoutClasses = isZigzag
+        ? (isEven ? 'lg:flex lg:items-center lg:gap-[48px]' : 'lg:flex lg:flex-row-reverse lg:items-center lg:gap-[48px]')
+        : 'lg:flex lg:items-start lg:gap-[48px]';
+      const imgColWidth = isZigzag ? 'lg:w-[46%]' : 'lg:w-[40%]';
+      const textColWidth = isZigzag ? 'lg:w-[46%]' : 'lg:w-[60%]';
+
+      return (
+        <>
+          <div class={`relative mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 ${layoutClasses}`}>
+            <div class={`hidden lg:flex ${imgColWidth} justify-center flex-shrink-0`}>
+              <img src={lesson.imageDesktop} alt={lesson.imageAlt} width="1024" height="1024" class="w-[380px] rounded-[20px]" loading="lazy"/>
+            </div>
+            <div class={`${textColWidth} ${isZigzag && isEven ? 'lg:pl-[40px]' : ''} ${isZigzag && isOdd ? 'lg:text-right lg:pr-[40px]' : ''}`}>
+              <div class={`flex items-start gap-[12px] mb-[12px] ${isZigzag && isOdd ? 'lg:justify-end' : ''}`}>
+                <span class={`flex-shrink-0 w-[36px] h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center font-heading text-white text-[16px] lg:text-[20px] font-bold ${isZigzag ? 'lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0 lg:z-10' : ''}`} style="background: #7fac00;">{i + 1}</span>
+                <h3 class="font-heading text-black text-[26px] leading-[1.2]">
+                  <span class="relative inline">
+                    <span class="relative z-10">{lesson.title}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
+                      <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
+                    </svg>
+                  </span><br/>{lesson.titleRest}
+                </h3>
+              </div>
+              {lesson.description && (
+                <p class={`text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px] ${isZigzag ? 'lg:ml-0' : ''}`}>{lesson.description}</p>
+              )}
+              {lesson.bullets && (
+                <ul class="space-y-[16px] ml-[48px] mt-[8px]">
+                  {lesson.bullets.map((bullet) => (
+                    <li class="text-[#7b7b7b] text-[18px] leading-[28px] flex gap-[12px] items-center font-heading">
+                      <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                        <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </span>
+                      {bullet}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+          <div class={`flex justify-center ${isLast ? '' : 'mb-[48px]'} reveal lg:hidden`}>
+            <img src={lesson.imageMobile} alt={lesson.imageAlt} width="1024" height="1024" class={`${isLast ? 'w-[340px]' : 'w-[280px]'} h-auto`} loading="lazy"/>
+          </div>
+        </>
+      );
+    })}
+
+    </div>{/* end timeline */}
+  </div>
+</section>
