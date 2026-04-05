@@ -1,13 +1,16 @@
 ---
 import MasterclassLayout from '../layouts/MasterclassLayout.astro';
-import FaqAccordion from '../components/FaqAccordion.astro';
+import MasterclassHero from '../components/MasterclassHero.astro';
+import TargetAudienceSection from '../components/TargetAudienceSection.astro';
+import EducationalBlock from '../components/EducationalBlock.astro';
+import WhatsIncludedSection from '../components/WhatsIncludedSection.astro';
+import PricingCta from '../components/PricingCta.astro';
+import LearningOutcomes from '../components/LearningOutcomes.astro';
 import InstructorSection from '../components/InstructorSection.astro';
 import ValueProps from '../components/ValueProps.astro';
-import PricingCta from '../components/PricingCta.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import BotanicalElement from '../components/BotanicalElement.astro';
-import { Image } from 'astro:assets';
-import florariumProduct from '../assets/masterclass/florarium-product.webp';
+import CurriculumSection from '../components/CurriculumSection.astro';
+import CtaButton from '../components/CtaButton.astro';
+import FaqSection from '../components/FaqSection.astro';
 
 const PURCHASE_URL = 'https://secure.wayforpay.com/payment/sb10851d18b99';
 
@@ -88,6 +91,105 @@ const faqs = [
     a: ['Так, звісно! Це чудовий подарунок для тих, хто любить творчість. Просто повідомте мене, і я оформлю доступ для вашого друга чи близького.'],
   },
 ];
+
+const heroDecorElements = [
+  { src: "/images/masterclass/hero/decor-cookie-1.webp", width: 213, height: 215, visibility: "mobile-only" as const, style: "top: 28%; left: 2%; width: 42px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" },
+  { src: "/images/masterclass/hero/decor-cookie-3.webp", width: 200, height: 185, visibility: "tablet-down" as const, style: "top: 64%; right: 2%; width: 42px; height: auto; --slide-x: 80px; --slide-y: 20px; animation-delay: 0.6s;" },
+  { src: "/images/masterclass/hero/decor-plant-pot.webp", width: 280, height: 310, visibility: "mobile-only" as const, style: "top: 60%; left: 4%; width: 56px; height: auto; --slide-x: -60px; --slide-y: 80px; animation-delay: 0.4s;" },
+  { src: "/images/masterclass/hero/decor-plant-pot.webp", width: 280, height: 310, visibility: "tablet-down" as const, style: "top: 16%; left: 1%; width: 84px; height: auto; --slide-x: -60px; --slide-y: -40px; animation-delay: 0.3s;" },
+  { src: "/images/masterclass/hero/decor-small-plant.webp", width: 200, height: 250, visibility: "tablet-down" as const, style: "top: 22%; right: 0%; width: 50px; height: auto; --slide-x: 100px; --slide-y: -60px; animation-delay: 0.35s;" },
+  { src: "/images/masterclass/hero/decor-succulent.webp", width: 213, height: 215, visibility: "desktop-only" as const, style: "top: 56%; right: 0%; width: 55px; height: auto; --slide-x: 100px; --slide-y: 20px; animation-delay: 0.3s;" },
+  { src: "/images/masterclass/hero/decor-green-3.webp", width: 162, height: 202, visibility: "desktop-only" as const, style: "top: 14%; right: 0%; width: 80px; height: auto; --slide-x: 100px; --slide-y: -40px; animation-delay: 0.3s;" },
+];
+
+const audienceCards = [
+  {
+    image: "/images/masterclass/audience-beginners.webp",
+    imageAlt: "Новачки та початківці",
+    title: "Новачки та початківці",
+    description: "Цей майстер-клас чудово підійде для тих, хто ніколи не працював із рослинами чи декоративними композиціями. Ви навчитесь базовим технікам створення флораріумів у легкій та доступній формі",
+  },
+  {
+    image: "/images/masterclass/audience-decor.webp",
+    imageAlt: "Шанувальники декору",
+    title: "Шанувальники декору",
+    description: "Ідеальний вибір для тих, хто обожнює створювати стильний декор для дому. Флораріум додасть затишку вашому простору та стане прекрасним елементом новорічного настрою",
+  },
+  {
+    image: "/images/masterclass/audience-inspiration.webp",
+    imageAlt: "Ті, хто шукає натхнення",
+    title: "Ті, хто шукає натхнення",
+    description: "Для креативних особистостей, які люблять постійно генерувати нові ідеї, майстер-клас стане джерелом натхнення та простором для творчого самовираження",
+  },
+  {
+    image: "/images/masterclass/audience-gifts.webp",
+    imageAlt: "Любителі подарунків",
+    title: "Любителі подарунків",
+    description: "Якщо ви хочете створити щось унікальне своїми руками, щоб подарувати рідним або друзям, цей майстер-клас точно для вас. Флораріум стане символом уваги та турботи",
+  },
+];
+
+const educationalHotspots = [
+  { label: "Живі сукуленти", left: "50%", top: "39%" },
+  { label: "Стабілізований мох", left: "16%", top: "38%" },
+  { label: "Декоративні камінці", left: "28%", top: "60%" },
+  { label: "Кольоровий пісок", left: "74%", top: "74%" },
+  { label: "Грунт і керамзит", left: "55%", top: "90%" },
+  { label: "Скляна форма", left: "80%", top: "17%" },
+];
+
+const educationalBenefits = [
+  "Стильний декор для дому чи офісу",
+  "Особливий подарунок для близьких",
+  "Спосіб додати природної краси у ваше життя",
+];
+
+const includedItems = [
+  "Повний список матеріалів із зазначенням, де їх купити (з посиланнями на магазини)",
+  "Три детальні відео з покроковими інструкціями",
+];
+
+const learningItems = [
+  "Ви створите стильний флораріум своїми руками",
+  "Додасте до свого інтер'єру затишку",
+  "Зробите незвичайний подарунок для близьких, створений власноруч",
+  "Зможете почати свій творчий шлях у флористиці або ж отримати натхнення для хобі",
+];
+
+const curriculumLessons = [
+  {
+    title: "Підготовка",
+    titleRest: "та закупівля матеріалів",
+    description: "Список усіх необхідних матеріалів, перелік магазинів, корисні поради щодо вибору компонентів",
+    imageMobile: "/images/masterclass/curriculum-lesson-1.webp",
+    imageDesktop: "/images/masterclass/curriculum-lesson-1.webp",
+    imageAlt: "Підготовка та закупівля матеріалів",
+  },
+  {
+    title: "Створення",
+    titleRest: "флораріуму",
+    description: "Детальна покрокова інструкція зі створення флораріуму в геометричній скляній вазі",
+    imageMobile: "/images/masterclass/curriculum-lesson-2.webp",
+    imageDesktop: "/images/masterclass/curriculum-lesson-2.webp",
+    imageAlt: "Створення флораріуму",
+  },
+  {
+    title: "Догляд",
+    titleRest: "за флораріумом",
+    description: "Як доглядати за флораріумом, щоб він залишався свіжим та гарним максимально довго",
+    imageMobile: "/images/masterclass/curriculum-lesson-3.webp",
+    imageDesktop: "/images/masterclass/curriculum-lesson-3.webp",
+    imageAlt: "Догляд за флораріумом",
+  },
+  {
+    title: "Композиція",
+    titleRest: "в бетонному кашпо",
+    description: "Створення мініатюрної святкової композиції для декору столу або на подарунок",
+    imageMobile: "/images/masterclass/curriculum-lesson-4.webp",
+    imageDesktop: "/images/masterclass/curriculum-lesson-4.webp",
+    imageAlt: "Композиція в бетонному кашпо",
+  },
+];
 ---
 
 <MasterclassLayout
@@ -98,458 +200,62 @@ const faqs = [
   purchaseLabel="Придбати навчання"
 >
 
-  {/* ===== HERO ===== */}
-  {/* Wrapper for hero + blurred cookie that bleeds below */}
-  <div class="relative">
-  <section
-    id="florarium-hero"
-    class="relative overflow-hidden rounded-b-[25px] lg:mt-[-90px]"
-    style="background: #f8f8f8 url('/images/masterclass/hero/hero-bg-original.webp') no-repeat 0% 0%/cover;"
-  >
-    {/* Daria — desktop: absolutely positioned, right half, pinned to bottom */}
-    <div
-      class="hidden lg:block absolute bottom-0 pointer-events-none z-0 lg:left-[54%] xl:left-[58%]"
-      style="right: -80px;"
-    >
-      <img
-        src="/images/masterclass/hero/daria-florarium.webp"
-        alt=""
-        width="1035"
-        height="1067"
-        class="w-auto object-contain object-bottom lg:max-h-[520px] xl:max-h-[620px]"
-        loading="eager"
-      />
-    </div>
+  <MasterclassHero
+    heroId="florarium-hero"
+    bgMobile="/images/hero-bg-moss.webp"
+    bgDesktop="/images/hero-bg-desktop.webp"
+    dariaImg="/images/masterclass/hero/daria-florarium.webp"
+    dariaAlt="Даша з флораріумом"
+    dariaWidth={1035}
+    dariaHeight={1067}
+    badgeText="Онлайн майстер-клас"
+    titleLine1="Створення"
+    titleLine2="флораріуму"
+    subtitle="Онлайн навчання зі створення<br class='md:hidden' /> ексклюзивних композицій з<br class='md:hidden' /> сукулентів у скляних вазах"
+    ctaText="Дізнатися більше"
+    ctaHref="#pricing"
+    decorElements={heroDecorElements}
+    bleedElement={{ src: "/images/masterclass/hero/decor-cookie-2.webp", width: 200, height: 200, style: "bottom: -40px; left: 2%; height: auto; filter: brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg); --slide-x: -60px; --slide-y: 100px; animation-delay: 0.15s; width: 88px;" }}
+  />
 
-    {/* Mobile decorative images — slide-in animations matching main hero */}
-    {/* Top-left cookie — mobile only */}
-    <img src="/images/masterclass/hero/decor-cookie-1.webp" alt="" width="213" height="215"
-      class="md:hidden absolute pointer-events-none z-[5] hero-decor-slide"
-      style="top: 28%; left: 2%; width: 42px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" />
-    {/* Cookie right — slides from right */}
-    <img src="/images/masterclass/hero/decor-cookie-3.webp" alt="" width="200" height="185"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
-      style="top: 64%; right: 2%; width: 42px; height: auto; --slide-x: 80px; --slide-y: 20px; animation-delay: 0.6s;" />
-    {/* Plant with pot — mobile: bottom-left, tablet: top-left (replaces cookie) */}
-    <img src="/images/masterclass/hero/decor-plant-pot.webp" alt="" width="280" height="310"
-      class="md:hidden absolute pointer-events-none z-[5] hero-decor-slide"
-      style="top: 60%; left: 4%; width: 56px; height: auto; --slide-x: -60px; --slide-y: 80px; animation-delay: 0.4s;" />
-    <img src="/images/masterclass/hero/decor-plant-pot.webp" alt="" width="280" height="310"
-      class="hidden md:block absolute pointer-events-none z-[5] hero-decor-slide"
-      style="top: 16%; left: 1%; width: 84px; height: auto; --slide-x: -60px; --slide-y: -40px; animation-delay: 0.3s;" />
-    {/* Small plant top-right — slides from right */}
-    <img src="/images/masterclass/hero/decor-small-plant.webp" alt="" width="200" height="250"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide"
-      style="top: 22%; right: 0%; width: 50px; height: auto; --slide-x: 100px; --slide-y: -60px; animation-delay: 0.35s;" />
+  <TargetAudienceSection
+    titleImage="/images/masterclass/for-who-title.webp"
+    titleImageAlt="Для кого цей майстер-клас"
+    subtitle="Цей майстер-клас для тих, хто мріє додати затишку в інтер'єр, створити щось особливе своїми руками та втілити власні творчі ідеї!"
+    cards={audienceCards}
+    decorRightImage="/images/masterclass/decor-right-plant.webp"
+  />
 
-    {/* Content — stacked on mobile, side-by-side on md (matching main hero) */}
-    <div class="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 pt-[60px] md:pt-[40px] lg:pt-[220px] pb-[20px] md:pb-0 lg:pb-[120px] lg:min-h-[720px] md:flex md:items-end lg:items-center md:min-h-0">
+  <EducationalBlock
+    titleImage="/images/masterclass/what-is-florarium-title.webp"
+    titleImageAlt="Що таке флораріум?"
+    headingHighlight="Флораріум"
+    headingRest="— це унікальна мініатюрна багаторічна композиція з живих рослин, створена у скляній ємності"
+    productImage="https://floralabeducation.com.ua/wp-content/uploads/2026/03/wwdwfw-e1773210654135.webp"
+    productImageAlt="Що таке флораріум — гексагональна ілюстрація"
+    productImageWidth={560}
+    productImageHeight={540}
+    hotspots={educationalHotspots}
+    benefits={educationalBenefits}
+    quoteImage="/images/masterclass/quote-bubble.webp"
+    quoteImageAlt="Це не просто рослини у горщику — це маленький живий світ, який ви створюєте власноруч!"
+    memojiImage="/images/masterclass/daria-memoji.webp"
+  />
 
-      {/* Text content */}
-      <div class="max-w-[600px] md:max-w-none md:w-1/2 lg:w-[540px] mx-auto md:mx-0 text-center md:text-left md:pb-[60px]">
+  <WhatsIncludedSection
+    titleImage="/images/masterclass/whats-included-title.webp"
+    titleImageAlt="Що входить у майстер-клас"
+    items={includedItems}
+    bonusItem="Відео-урок по створенню композиції в бетонному кашпо"
+    productImg1="/images/masterclass/florarium-included-1.webp"
+    productImg1Alt="Флораріум — що входить у майстер-клас"
+    productImg2="/images/masterclass/florarium-included-2.webp"
+    productImg2Alt="Композиція в бетонному кашпо"
+    decorMossImage="/images/masterclass/decor-moss-ball.webp"
+    bleedCookieImage="/images/masterclass/decor-cookie-blur.webp"
+    bleedCookieStyle="bottom: -15px; left: 20%; width: 65px; height: auto; filter: brightness(107%) contrast(100%) saturate(71%) blur(6.7px) hue-rotate(0deg);"
+  />
 
-        {/* Badge */}
-        <div class="flex justify-center md:justify-start mb-8 hero-text-fade" style="animation-delay: 0s;">
-          <div
-            class="inline-flex items-center gap-[8px] rounded-full"
-            style="background: #00401E; padding: 7px 16px;"
-          >
-            <span style="font-size: 14px; line-height: 1; display: inline-block; transform: rotate(15deg);">⭐</span>
-            <span class="font-heading text-white font-medium" style="font-size: 14px; line-height: 1;">Онлайн майстер-клас</span>
-          </div>
-        </div>
-
-        {/* Title */}
-        <h1 class="font-heading text-black uppercase mb-7 hero-text-fade" style="line-height: 1.08; letter-spacing: -0.36px; animation-delay: 0.1s;">
-          <span class="block text-[38px] md:text-[44px] lg:text-[68px] xl:text-[89px]">Створення</span>
-          <span class="relative inline-block text-[38px] md:text-[44px] lg:text-[68px] xl:text-[89px]">
-            флораріуму
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 500 150"
-              class="absolute -bottom-1 left-0 w-full h-8 overflow-visible pointer-events-none"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <path
-                class="hero-zigzag-path"
-                d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"
-                fill="none"
-                stroke="#7fac00"
-                stroke-width="28"
-                stroke-linecap="round"
-              />
-            </svg>
-          </span>
-        </h1>
-
-        {/* Subtitle */}
-        <p class="font-heading text-black mb-8 mx-auto md:mx-0 hero-text-fade" style="font-size: 16px; line-height: 24px; max-width: 340px; animation-delay: 0.2s;">
-          Онлайн навчання зі створення<br class="md:hidden" />
-          ексклюзивних композицій з<br class="md:hidden" />
-          сукулентів у скляних вазах
-        </p>
-
-        {/* CTA */}
-        <div class="flex justify-center md:justify-start hero-text-fade" style="animation-delay: 0.3s;">
-          <a
-            href="#pricing"
-            class="inline-flex items-center justify-center font-heading text-white font-medium hover:scale-[1.02] transition-transform"
-            style="padding: 16px 30px; background: #F3237D; border-radius: 100px; font-size: 18px;"
-          >
-            Дізнатися більше
-          </a>
-        </div>
-      </div>
-
-      {/* Daria — mobile: stacked below, md: right side, lg: hidden (desktop uses absolute version) */}
-      <div class="lg:hidden mt-6 md:mt-0 md:w-1/2 flex justify-end relative z-[6] hero-daria-slide"
-        style="margin-right: -14px; margin-bottom: -20px;"
-      >
-        <img
-          src="/images/masterclass/hero/daria-florarium.webp"
-          alt="Даша з флораріумом"
-          width="661"
-          height="1019"
-          class="w-full max-w-[232px] md:max-w-[380px]"
-          loading="eager"
-        />
-      </div>
-    </div>
-
-    {/* Floating botanical decor — desktop only, slide in from right */}
-    <img src="/images/masterclass/hero/decor-succulent.webp" alt="" width="213" height="215"
-      class="hidden lg:block absolute pointer-events-none z-[5] hero-decor-slide"
-      style="top: 56%; right: 0%; width: 55px; height: auto; --slide-x: 100px; --slide-y: 20px; animation-delay: 0.3s;" />
-    <img src="/images/masterclass/hero/decor-green-3.webp" alt="" width="162" height="202"
-      class="hidden lg:block absolute pointer-events-none z-[5] hero-decor-slide"
-      style="top: 14%; right: 0%; width: 80px; height: auto; --slide-x: 100px; --slide-y: -40px; animation-delay: 0.3s;" />
-  </section>
-
-  {/* Blurred cookie — bleeds below hero section */}
-  <img src="/images/masterclass/hero/decor-cookie-2.webp" alt="" width="200" height="200"
-    class="absolute pointer-events-none z-[1] hero-decor-slide w-[88px] lg:w-[100px]"
-    style="bottom: -40px; left: 2%; height: auto; filter: brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg); --slide-x: -60px; --slide-y: 100px; animation-delay: 0.15s;" />
-  </div>
-
-  {/* ===== TARGET AUDIENCE ===== */}
-  <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[48px] overflow-hidden">
-    {/* Decorative elements — matching originals exact positions */}
-    <img src="/images/masterclass/decor-right-plant.webp" alt="" width="929" height="906"
-      class="hidden lg:block absolute pointer-events-none z-0"
-      style="top: 2%; right: 1%; width: 160px; height: auto;" />
-
-    <div class="max-w-[1280px] mx-auto relative z-10">
-      <div class="flex justify-center mb-[8px] reveal">
-        <img
-          src="/images/masterclass/for-who-title.webp"
-          alt="Для кого цей майстер-клас"
-          width="1024"
-          height="460"
-          class="w-full max-w-[300px] md:max-w-[400px] lg:max-w-[460px] h-auto"
-          loading="lazy"
-        />
-      </div>
-      <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] text-center mb-[40px] max-w-[780px] mx-auto reveal">
-        Цей майстер-клас для тих, хто мріє додати затишку в інтер'єр, створити щось особливе своїми руками та втілити власні творчі ідеї!
-      </p>
-
-      {/* 2×2 grid — image left, text right */}
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
-
-        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
-          <img src="/images/masterclass/audience-beginners.webp" alt="Новачки та початківці"
-            width="800" height="783"
-            class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"
-            loading="lazy" />
-          <div>
-            <h3 class="font-heading text-[#1a1a1a] text-[20px] md:text-[22px] leading-[1.3] mb-[8px]">Новачки та початківці</h3>
-            <p class="text-[#8a8a8a] text-[15px] leading-[24px] text-left">Цей майстер-клас чудово підійде для тих, хто ніколи не працював із рослинами чи декоративними композиціями. Ви навчитесь базовим технікам створення флораріумів у легкій та доступній формі</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
-          <img src="/images/masterclass/audience-decor.webp" alt="Шанувальники декору"
-            width="800" height="783"
-            class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"
-            loading="lazy" />
-          <div>
-            <h3 class="font-heading text-[#1a1a1a] text-[20px] md:text-[22px] leading-[1.3] mb-[8px]">Шанувальники декору</h3>
-            <p class="text-[#8a8a8a] text-[15px] leading-[24px] text-left">Ідеальний вибір для тих, хто обожнює створювати стильний декор для дому. Флораріум додасть затишку вашому простору та стане прекрасним елементом новорічного настрою</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
-          <img src="/images/masterclass/audience-inspiration.webp" alt="Ті, хто шукає натхнення"
-            width="800" height="783"
-            class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"
-            loading="lazy" />
-          <div>
-            <h3 class="font-heading text-[#1a1a1a] text-[20px] md:text-[22px] leading-[1.3] mb-[8px]">Ті, хто шукає натхнення</h3>
-            <p class="text-[#8a8a8a] text-[15px] leading-[24px] text-left">Для креативних особистостей, які люблять постійно генерувати нові ідеї, майстер-клас стане джерелом натхнення та простором для творчого самовираження</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
-          <img src="/images/masterclass/audience-gifts.webp" alt="Любителі подарунків"
-            width="800" height="783"
-            class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"
-            loading="lazy" />
-          <div>
-            <h3 class="font-heading text-brand-dark text-[20px] md:text-[22px] leading-[1.3] mb-[8px]">Любителі подарунків</h3>
-            <p class="text-[#8a8a8a] text-[15px] leading-[24px] text-left">Якщо ви хочете створити щось унікальне своїми руками, щоб подарувати рідним або друзям, цей майстер-клас точно для вас. Флораріум стане символом уваги та турботи</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  {/* ===== WHAT IS A FLORARIUM ("ЩО ТАКЕ ФЛОРАРІУМ?") ===== */}
-  <section class="relative bg-white px-[10px] py-[24px] md:px-8 md:py-[56px] lg:py-[48px] lg:pb-[48px] overflow-hidden">
-    <img src="/images/masterclass/daria-memoji.webp" alt="" width="180" height="200"
-      class="hidden lg:block absolute pointer-events-none z-0"
-      style="top: 15%; right: 2%; width: 130px; height: auto; rotate: 15deg;" />
-    <div class="max-w-[1280px] mx-auto relative z-10">
-
-      {/* Title banner — original image with decorative flowers */}
-      <div class="flex justify-center mb-[16px] md:mb-[24px] reveal">
-        <img
-          src="/images/masterclass/what-is-florarium-title.webp"
-          alt="Що таке флораріум?"
-          width="1024"
-          height="506"
-          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[500px] h-auto"
-          loading="lazy"
-        />
-      </div>
-
-      {/* Image left + heading/benefits right on lg */}
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[8px] lg:mt-[24px]">
-
-      {/* Left: heading (mobile/tablet) + florarium image */}
-      <div>
-        {/* Heading — shown above image on mobile, hidden on lg (moved to right column) */}
-        <div class="reveal lg:hidden">
-          <h2 class="font-heading text-black text-[22px] md:text-[28px] leading-[1.25] text-center mb-[24px]">
-            <span class="relative inline">
-              <span class="relative z-10 font-heading">Флораріум </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 500 150"
-                class="absolute -bottom-[6px] md:-bottom-[8px] left-0 w-full h-[20px] md:h-[24px] florarium-highlight overflow-visible"
-                preserveAspectRatio="none"
-              >
-                <path
-                  class="highlight-path"
-                  d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0"
-                  fill="none"
-                  stroke="#a5d100"
-                  stroke-width="38"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </span>— це унікальна мініатюрна багаторічна композиція з живих рослин, створена у скляній ємності
-          </h2>
-        </div>
-
-        {/* Florarium image with interactive hotspots */}
-        <div class="flex justify-center reveal">
-          <div class="florarium-hotspot-container relative inline-block">
-            <img
-              src="https://floralabeducation.com.ua/wp-content/uploads/2026/03/wwdwfw-e1773210654135.webp"
-              alt="Що таке флораріум — гексагональна ілюстрація"
-              width="560"
-              height="540"
-              class="w-full max-w-[380px] md:max-w-[480px] lg:max-w-[560px]"
-              loading="lazy"
-            />
-
-            {/* 6 interactive hotspots with tooltips */}
-            {[
-              { label: "Живі сукуленти", left: "50%", top: "39%" },
-              { label: "Стабілізований мох", left: "16%", top: "38%" },
-              { label: "Декоративні камінці", left: "28%", top: "60%" },
-              { label: "Кольоровий пісок", left: "74%", top: "74%" },
-              { label: "Грунт і керамзит", left: "55%", top: "90%" },
-              { label: "Скляна форма", left: "80%", top: "17%" },
-            ].map((h) => (
-              <button class="hotspot-btn" style={`left: ${h.left}; top: ${h.top};`} aria-label={h.label}>
-                <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><rect x="9" y="4" width="2" height="12" rx="1" fill="white"/><rect x="4" y="9" width="12" height="2" rx="1" fill="white"/></svg>
-                <span class="hotspot-tooltip">{h.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Right: heading (lg) + benefits */}
-      <div>
-        {/* Heading — lg only, beside image */}
-        <div class="hidden lg:block reveal mb-[28px]">
-          <h2 class="font-heading text-black lg:text-[42px] xl:text-[44px] leading-[1.25] text-left">
-            <span class="relative inline">
-              <span class="relative z-10 font-heading">Флораріум </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 500 150"
-                class="absolute lg:-bottom-[10px] left-0 w-full lg:h-[30px] florarium-highlight overflow-visible"
-                preserveAspectRatio="none"
-              >
-                <path
-                  class="highlight-path"
-                  d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0"
-                  fill="none"
-                  stroke="#a5d100"
-                  stroke-width="38"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </span>— це унікальна мініатюрна багаторічна композиція з живих рослин, створена у скляній ємності
-          </h2>
-        </div>
-
-        {/* Benefits list */}
-        <div class="flex flex-col gap-[16px] mt-[16px] lg:mt-0 mb-[8px] lg:mb-[20px] reveal">
-          {[
-            "Стильний декор для дому чи офісу",
-            "Особливий подарунок для близьких",
-            "Спосіб додати природної краси у ваше життя",
-          ].map((item) => (
-            <div class="flex items-center gap-[12px]">
-              <div class="w-[28px] h-[28px] rounded-full flex items-center justify-center flex-shrink-0" style="background-color: #7fac00;">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <p class="font-heading text-[#333] text-[18px] lg:text-[20px] leading-[26px] lg:leading-[28px]">{item}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Quote bubble — inside right column on lg */}
-        <div class="flex justify-center lg:justify-end mt-[24px] lg:mt-[16px] reveal">
-          <img
-            src="/images/masterclass/quote-bubble.webp"
-            alt="Це не просто рослини у горщику — це маленький живий світ, який ви створюєте власноруч!"
-            width="1024"
-            height="525"
-            class="w-full max-w-[340px] md:max-w-[400px] lg:max-w-[440px] h-auto"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      </div>{/* end lg:grid */}
-    </div>
-
-  </section>
-
-  {/* ===== WHAT'S INCLUDED ===== */}
-  <div class="relative">
-  <section class="relative bg-white px-[10px] md:px-8 py-[24px] md:py-[56px] lg:py-[48px] pb-[80px] overflow-hidden">
-    <img src="/images/masterclass/decor-moss-ball.webp" alt="" width="200" height="200"
-      class="hidden lg:block absolute pointer-events-none z-0 decor-sway"
-      style="top: 5%; left: -2%; width: 90px; height: auto; opacity: 0.7; --dur: 6s; --del: -2s;" />
-    <div class="max-w-[1280px] mx-auto">
-
-      {/* Title with lightbulb — bulb positioned relative to title */}
-      <div class="flex justify-center mb-[16px] reveal">
-        <div class="relative">
-          <svg width="44" height="56" viewBox="0 0 44 56" fill="none" xmlns="http://www.w3.org/2000/svg" class="bulb-glow absolute -top-[48px] left-[10px] z-10">
-            {/* Glow rays */}
-            <line x1="22" y1="2" x2="22" y2="6" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-            <line x1="8" y1="8" x2="11" y2="11" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-            <line x1="36" y1="8" x2="33" y2="11" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-            <line x1="4" y1="22" x2="8" y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-            <line x1="40" y1="22" x2="36" y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-            {/* Bulb body */}
-            <path d="M22 10C16.5 10 12 14.5 12 20c0 3.6 1.9 6.7 4.8 8.5V32c0 .6.4 1 1 1h8.4c.6 0 1-.4 1-1v-3.5C30.1 26.7 32 23.6 32 20c0-5.5-4.5-10-10-10z" fill="#FFD700" stroke="#E8B800" stroke-width="0.8"/>
-            {/* Bulb shine */}
-            <path d="M17 19c0-2.8 2.2-5 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-            {/* Base lines */}
-            <rect x="16" y="34" width="12" height="1.5" rx="0.75" fill="#E8B800"/>
-            <rect x="17" y="37" width="10" height="1.5" rx="0.75" fill="#E8B800"/>
-            <path d="M19 40.5L22 43L25 40.5" stroke="#E8B800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <img
-            src="/images/masterclass/whats-included-title.webp"
-            alt="Що входить у майстер-клас"
-            width="1024"
-            height="460"
-            class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
-        <div class="reveal">
-          {/* List items: first 2 green, third pink (bonus) */}
-          <ul class="space-y-[20px] px-[14px] md:px-0">
-            <li class="text-[#333] text-[18px] leading-[26px] flex gap-[12px] items-center font-heading font-medium">
-              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              Повний список матеріалів із зазначенням, де їх купити (з посиланнями на магазини)
-            </li>
-            <li class="text-[#333] text-[18px] leading-[26px] flex gap-[12px] items-center font-heading font-medium">
-              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              Три детальні відео з покроковими інструкціями
-            </li>
-            <li class="text-[#333] text-[18px] leading-[26px] flex gap-[12px] items-center font-heading font-medium">
-              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #F3237D;">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              Відео-урок по створенню композиції в бетонному кашпо
-            </li>
-          </ul>
-
-          {/* Curved arrow doodle + БОНУС badge */}
-          <div class="mt-[16px] flex items-center gap-[8px] px-[14px] md:px-0">
-            <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0" style="rotate: -105deg; margin-top: -40px;">
-              <path d="M5 35C10 15 25 5 45 10" stroke="#333" stroke-width="2" stroke-linecap="round" fill="none" stroke-dasharray="3 3"/>
-              <path d="M40 5L46 10L39 14" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-            <span class="inline-block font-heading text-white text-[14px] uppercase tracking-[1px] rounded-full" style="background: #F3237D; padding: 8px 20px;">
-              Бонус
-            </span>
-          </div>
-        </div>
-
-        {/* Product images — large left 86% width, small right, both rounded-[30px] */}
-        <div class="mt-[24px] lg:mt-0 relative" style="min-height: 380px;">
-          <img
-            src="/images/masterclass/florarium-included-1.webp"
-            alt="Флораріум — що входить у майстер-клас"
-            width="1024"
-            height="1024"
-            class="rounded-[30px] reveal included-slide-left"
-            style="width: 86%; display: block;"
-            loading="lazy"
-          />
-          <img
-            src="/images/masterclass/florarium-included-2.webp"
-            alt="Композиція в бетонному кашпо"
-            width="1024"
-            height="1024"
-            class="rounded-[30px] absolute reveal included-slide-right"
-            style="width: 50%; bottom: -20px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-  {/* Blurred cookie — positioned outside section to avoid overflow clip */}
-  <img src="/images/masterclass/decor-cookie-blur.webp" alt="" width="280" height="268"
-    class="absolute pointer-events-none z-10"
-    style="bottom: -15px; left: 20%; width: 65px; height: auto; filter: brightness(107%) contrast(100%) saturate(71%) blur(6.7px) hue-rotate(0deg);" />
-  </div>
-
-  {/* ===== PRICING ===== */}
   <PricingCta
     price="450 грн"
     originalPrice="1500 грн"
@@ -558,234 +264,39 @@ const faqs = [
     course="florarium"
   />
 
-  {/* ===== LEARNING OUTCOMES ===== */}
-  <section class="relative px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[48px] pb-[80px] overflow-hidden" style="background: #f8f8f8;">
-    <img src="/images/masterclass/decor-cookie-blur.webp" alt="" width="80" height="80"
-      class="hidden lg:block absolute top-[30px] right-[50px] w-[50px] h-auto z-10 pointer-events-none"
-      style="filter: brightness(100%) contrast(100%) saturate(73%) blur(0) hue-rotate(0deg);"
-      loading="lazy" />
-    <div class="max-w-[1280px] mx-auto">
+  <LearningOutcomes
+    titleImage="/images/masterclass/results-title.webp"
+    items={learningItems}
+    img1="/images/masterclass/results-img-1.webp"
+    img1Alt="Результати — флораріум"
+    img2="/images/masterclass/results-img-2.webp"
+    img2Alt="Результати — композиція"
+    topDecorImage="/images/masterclass/decor-cookie-blur.webp"
+    topDecorStyle="top: 30px; right: 50px; width: 50px; height: auto; filter: brightness(100%) contrast(100%) saturate(73%) blur(0) hue-rotate(0deg);"
+  />
 
-      {/* Title — mobile/tablet only (centered above) */}
-      <div class="flex justify-center mb-[16px] lg:hidden reveal">
-        <img
-          src="/images/masterclass/results-title.webp"
-          alt="Результати які ви отримаєте"
-          width="1024"
-          height="460"
-          class="w-full max-w-[320px] md:max-w-[420px] h-auto"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
-        {/* LEFT — images (on desktop) */}
-        <div class="mt-[24px] lg:mt-0 relative lg:order-1" style="min-height: 380px;">
-          <img
-            src="/images/masterclass/results-img-1.webp"
-            alt="Результати — флораріум"
-            width="1024"
-            height="1024"
-            class="rounded-[30px] reveal included-slide-left"
-            style="width: 86%; display: block;"
-            loading="lazy"
-          />
-          <img
-            src="/images/masterclass/results-img-2.webp"
-            alt="Результати — композиція"
-            width="1024"
-            height="1024"
-            class="rounded-[30px] absolute reveal included-slide-right"
-            style="width: 50%; bottom: -20px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
-            loading="lazy"
-          />
-        </div>
-
-        {/* RIGHT — title + bullet list (on desktop) */}
-        <div class="mt-[40px] lg:mt-0 lg:order-2 reveal">
-          {/* Title — desktop only (inside right column) */}
-          <div class="hidden lg:flex justify-center lg:justify-start mb-[24px]">
-            <img
-              src="/images/masterclass/results-title.webp"
-              alt="Результати які ви отримаєте"
-              width="1024"
-              height="460"
-              class="w-full max-w-[460px] h-auto"
-              loading="lazy"
-            />
-          </div>
-          <ul class="space-y-[20px] px-[14px] md:px-0">
-            {[
-              "Ви створите стильний флораріум своїми руками",
-              "Додасте до свого інтер'єру затишку",
-              "Зробите незвичайний подарунок для близьких, створений власноруч",
-              "Зможете почати свій творчий шлях у флористиці або ж отримати натхнення для хобі",
-            ].map((item) => (
-              <li class="text-[#333] text-[18px] leading-[28px] flex gap-[12px] items-center font-heading">
-                <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* ===== INSTRUCTOR ===== */}
   <InstructorSection />
 
-  {/* ===== VALUE PROPS ===== */}
   <ValueProps cards={valueCards} />
 
-  {/* ===== CURRICULUM ===== */}
-  <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[48px] overflow-hidden">
-    <img src="/images/masterclass/decor-fern-1.webp" alt="" width="190" height="210"
-      class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
-      style="top: 8%; left: -1.5%; width: 145px; height: auto; opacity: 0.75; --dur: 8s; --del: -1s;" />
-    <div class="max-w-[1280px] mx-auto">
+  <CurriculumSection
+    titleImage="/images/masterclass/curriculum-title.webp"
+    titleImageAlt="Програма майстер-класу"
+    lessons={curriculumLessons}
+    layout="zigzag"
+    timelineClass="curriculum-timeline"
+    decorImage="/images/masterclass/decor-fern-1.webp"
+    decorStyle="top: 8%; left: -1.5%; width: 145px; height: auto; opacity: 0.75; --dur: 8s; --del: -1s;"
+  />
 
-      {/* Title — original image */}
-      <div class="flex justify-center mb-[32px] md:mb-[48px] reveal">
-        <img
-          src="/images/masterclass/curriculum-title.webp"
-          alt="Програма майстер-класу"
-          width="1024"
-          height="460"
-          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
-          loading="lazy"
-        />
-      </div>
+  <CtaButton />
 
-      {/* Lessons container with vertical connecting line */}
-      <div class="curriculum-timeline relative">
-
-      {/* Lesson 1 — image left, text right */}
-      <div class="relative mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:items-center lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[46%] justify-center flex-shrink-0">
-          <img src="/images/masterclass/curriculum-lesson-1.webp" alt="Підготовка та закупівля матеріалів" width="1024" height="1024" class="w-[380px] rounded-[20px]" loading="lazy"/>
-        </div>
-        <div class="lg:w-[46%] lg:pl-[40px]">
-          <div class="flex items-start gap-[12px] mb-[12px]">
-            <span class="flex-shrink-0 w-[36px] h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center font-heading text-white text-[16px] lg:text-[20px] font-bold lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0 lg:z-10" style="background: #7fac00;">1</span>
-            <h3 class="font-heading text-black text-[26px] leading-[1.2]">
-              <span class="relative inline">
-                <span class="relative z-10">Підготовка</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
-                  <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
-                </svg>
-              </span><br/>та закупівля матеріалів
-            </h3>
-          </div>
-          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px] lg:ml-0">Список усіх необхідних матеріалів, перелік магазинів, корисні поради щодо вибору компонентів</p>
-        </div>
-      </div>
-      <div class="flex justify-center mb-[48px] reveal lg:hidden">
-        <img src="/images/masterclass/curriculum-lesson-1.webp" alt="Підготовка та закупівля матеріалів" width="1024" height="1024" class="w-[280px] h-auto" loading="lazy"/>
-      </div>
-
-      {/* Lesson 2 — text left (right-aligned), image right */}
-      <div class="relative mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:flex-row-reverse lg:items-center lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[46%] justify-center flex-shrink-0">
-          <img src="/images/masterclass/curriculum-lesson-2.webp" alt="Створення флораріуму" width="1024" height="1024" class="w-[380px] rounded-[20px]" loading="lazy"/>
-        </div>
-        <div class="lg:w-[46%] lg:text-right lg:pr-[40px]">
-          <div class="flex items-start gap-[12px] mb-[12px] lg:justify-end">
-            <span class="flex-shrink-0 w-[36px] h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center font-heading text-white text-[16px] lg:text-[20px] font-bold lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0 lg:z-10" style="background: #7fac00;">2</span>
-            <h3 class="font-heading text-black text-[26px] leading-[1.2]">
-              <span class="relative inline">
-                <span class="relative z-10">Створення</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
-                  <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
-                </svg>
-              </span><br/>флораріуму
-            </h3>
-          </div>
-          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px] lg:ml-0">Детальна покрокова інструкція зі створення флораріуму в геометричній скляній вазі</p>
-        </div>
-      </div>
-      <div class="flex justify-center mb-[48px] reveal lg:hidden">
-        <img src="/images/masterclass/curriculum-lesson-2.webp" alt="Створення флораріуму" width="1024" height="1024" class="w-[280px] h-auto" loading="lazy"/>
-      </div>
-
-      {/* Lesson 3 — image left, text right */}
-      <div class="relative mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:items-center lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[46%] justify-center flex-shrink-0">
-          <img src="/images/masterclass/curriculum-lesson-3.webp" alt="Догляд за флораріумом" width="1024" height="1024" class="w-[380px] rounded-[20px]" loading="lazy"/>
-        </div>
-        <div class="lg:w-[46%] lg:pl-[40px]">
-          <div class="flex items-start gap-[12px] mb-[12px]">
-            <span class="flex-shrink-0 w-[36px] h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center font-heading text-white text-[16px] lg:text-[20px] font-bold lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0 lg:z-10" style="background: #7fac00;">3</span>
-            <h3 class="font-heading text-black text-[26px] leading-[1.2]">
-              <span class="relative inline">
-                <span class="relative z-10">Догляд</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
-                  <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
-                </svg>
-              </span><br/>за флораріумом
-            </h3>
-          </div>
-          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px] lg:ml-0">Як доглядати за флораріумом, щоб він залишався свіжим та гарним максимально довго</p>
-        </div>
-      </div>
-      <div class="flex justify-center mb-[48px] reveal lg:hidden">
-        <img src="/images/masterclass/curriculum-lesson-3.webp" alt="Догляд за флораріумом" width="1024" height="1024" class="w-[280px] h-auto" loading="lazy"/>
-      </div>
-
-      {/* Lesson 4 — text left (right-aligned), image right */}
-      <div class="relative mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:flex-row-reverse lg:items-center lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[46%] justify-center flex-shrink-0">
-          <img src="/images/masterclass/curriculum-lesson-4.webp" alt="Композиція в бетонному кашпо" width="1024" height="1024" class="w-[380px] rounded-[20px]" loading="lazy"/>
-        </div>
-        <div class="lg:w-[46%] lg:text-right lg:pr-[40px]">
-          <div class="flex items-start gap-[12px] mb-[12px] lg:justify-end">
-            <span class="flex-shrink-0 w-[36px] h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center font-heading text-white text-[16px] lg:text-[20px] font-bold lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0 lg:z-10" style="background: #7fac00;">4</span>
-            <h3 class="font-heading text-black text-[26px] leading-[1.2]">
-              <span class="relative inline">
-                <span class="relative z-10">Композиція</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
-                  <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
-                </svg>
-              </span><br/>в бетонному кашпо
-            </h3>
-          </div>
-          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px] lg:ml-0">Створення мініатюрної святкової композиції для декору столу або на подарунок</p>
-        </div>
-      </div>
-      <div class="flex justify-center reveal lg:hidden">
-        <img src="/images/masterclass/curriculum-lesson-4.webp" alt="Композиція в бетонному кашпо" width="1024" height="1024" class="w-[340px] h-auto" loading="lazy"/>
-      </div>
-
-      </div>{/* end curriculum-timeline */}
-    </div>
-  </section>
-
-  {/* ===== FAQ ===== */}
-  <section id="faq" class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[48px] overflow-hidden">
-    <img src="/images/masterclass/decor-pot-plant.webp" alt="" width="200" height="200"
-      class="hidden lg:block absolute pointer-events-none z-0"
-      style="top: 4%; right: calc(-1% + 20px); width: 100px; height: auto; opacity: 0.55;" />
-    <img src="/images/masterclass/decor-leaf-1.webp" alt="" width="160" height="180"
-      class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
-      style="bottom: 5%; left: -1%; width: 120px; height: auto; opacity: 0.6; --dur: 7s; --del: -2s;" />
-    <div class="max-w-[1280px] mx-auto">
-      <div class="flex justify-center mb-[20px] reveal">
-        <img
-          src="/images/masterclass/faq-title.webp"
-          alt="Питання та відповідь"
-          width="1024"
-          height="460"
-          class="w-full max-w-[280px] md:max-w-[380px] lg:max-w-[420px] h-auto"
-          loading="lazy"
-        />
-      </div>
-      <FaqAccordion faqs={faqs} />
-    </div>
-  </section>
+  <FaqSection
+    titleImage="/images/masterclass/faq-title.webp"
+    faqs={faqs}
+    decorTopRight={{ src: "/images/masterclass/decor-pot-plant.webp", style: "top: 4%; right: calc(-1% + 20px); width: 100px; height: auto; opacity: 0.55;" }}
+    decorBottomLeft={{ src: "/images/masterclass/decor-leaf-1.webp", style: "bottom: 5%; left: -1%; width: 120px; height: auto; opacity: 0.6; --dur: 7s; --del: -2s;" }}
+  />
 
 </MasterclassLayout>
 
@@ -799,51 +310,14 @@ const faqs = [
     50% { transform: translateY(-14px); }
   }
 
-  /* Curriculum image hover zoom */
-  .curriculum-img {
-    transition: transform 0.4s ease;
-    will-change: transform;
-  }
-  .curriculum-img:hover {
-    transform: scale(1.04);
-  }
-
-  /* ===== Decorative botanical element animations ===== */
-  @keyframes decorFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-  @keyframes decorSway {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-7px) rotate(2deg); }
-    66% { transform: translateY(-11px) rotate(-1.5deg); }
-  }
-  @keyframes decorFloatMirror {
-    0%, 100% { transform: scaleX(-1) translateY(0px); }
-    50% { transform: scaleX(-1) translateY(-10px); }
-  }
-
-  .decor-anim {
-    animation: decorFloat var(--dur, 7s) ease-in-out var(--del, 0s) infinite;
-    will-change: transform;
-  }
-  .decor-sway {
-    animation: decorSway var(--dur, 7s) ease-in-out var(--del, 0s) infinite;
-    will-change: transform;
-  }
-  .decor-anim-mirror {
-    animation: decorFloatMirror var(--dur, 7s) ease-in-out var(--del, 0s) infinite;
-    will-change: transform;
-  }
-
-  /* ===== Curriculum vertical timeline line ===== */
+  /* Curriculum vertical timeline line — florarium-specific (zigzag, 4 lessons) */
   .curriculum-timeline {
-    --timeline-bottom: 420px; /* height of lesson 4 image + margin, line stops at circle 4 */
+    --timeline-bottom: 420px;
   }
   .curriculum-timeline::before {
     content: '';
     position: absolute;
-    left: 22px; /* 4px padding + 18px (center of 36px circle) */
+    left: 22px;
     top: 18px;
     bottom: var(--timeline-bottom);
     width: 1px;
@@ -851,227 +325,13 @@ const faqs = [
     z-index: 0;
   }
   @media (min-width: 768px) {
-    .curriculum-timeline::before {
-      left: 18px;
-    }
+    .curriculum-timeline::before { left: 18px; }
   }
   @media (min-width: 1024px) {
-    .curriculum-timeline::before {
-      left: 50%;
-      --timeline-bottom: 120px;
-    }
-  }
-
-  /* ===== Product image slide-in animations ===== */
-  .included-slide-left {
-    transform: translateX(-60px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  .included-slide-left.revealed {
-    transform: translateX(0);
-  }
-  .included-slide-right {
-    transform: translateX(60px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    transition-delay: 0.15s;
-  }
-  .included-slide-right.revealed {
-    transform: translateX(0);
-  }
-
-  /* ===== Animated lightbulb glow ===== */
-  .bulb-glow {
-    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
-  }
-  .bulb-ray {
-    animation: bulbRayPulse 2s ease-in-out infinite;
-  }
-  .bulb-ray:nth-child(2) { animation-delay: 0.15s; }
-  .bulb-ray:nth-child(3) { animation-delay: 0.3s; }
-  .bulb-ray:nth-child(4) { animation-delay: 0.45s; }
-  .bulb-ray:nth-child(5) { animation-delay: 0.6s; }
-  @keyframes bulbRayPulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.15); }
-  }
-
-  /* ===== Hero text fade-in from top (matching main hero slide-up) ===== */
-  .hero-text-fade {
-    opacity: 0;
-    animation: heroTextFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-  @keyframes heroTextFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* ===== Hero zigzag underline animation (stroke-dashoffset draw) ===== */
-  .hero-zigzag-path {
-    stroke-dasharray: 1200;
-    stroke-dashoffset: 1200;
-    opacity: 0;
-    animation: heroZigzagDraw 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
-  }
-  @keyframes heroZigzagDraw {
-    to {
-      stroke-dashoffset: 0;
-      opacity: 1;
-    }
-  }
-
-  /* ===== Daria slide-up from bottom ===== */
-  .hero-daria-slide {
-    opacity: 0;
-    animation: heroDecorSlideIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-    --slide-x: 0px;
-    --slide-y: 40px;
-  }
-
-  /* ===== Hero decorative slide-in animation (matching main hero) ===== */
-  @keyframes heroDecorSlideIn {
-    from {
-      opacity: 0;
-      transform: translate(var(--slide-x, 0), var(--slide-y, 0));
-    }
-    to {
-      opacity: 1;
-      transform: translate(0, 0);
-    }
-  }
-  .hero-decor-slide {
-    opacity: 0;
-    animation: heroDecorSlideIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-
-  /* ===== Hotspot buttons (pink pulsing circles with white +) ===== */
-  .florarium-hotspot-container {
-    position: relative;
-  }
-  .hotspot-btn {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #F3237D;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: transform 0.2s ease;
-  }
-  .hotspot-btn:hover {
-    transform: translate(-50%, -50%) scale(1.15);
-  }
-  /* Ripple pulse animation */
-  .hotspot-btn::before,
-  .hotspot-btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: block;
-    border: 1px solid rgba(243, 35, 125, 0.5);
-    border-radius: 50%;
-    animation: hotspot-ripple 2.6s cubic-bezier(0.25, 0.9, 0.2, 1) infinite;
-  }
-  .hotspot-btn::before {
-    width: 140%;
-    height: 140%;
-    border-color: rgba(243, 35, 125, 0.6);
-  }
-  .hotspot-btn::after {
-    width: 100%;
-    height: 100%;
-    border-color: rgba(243, 35, 125, 0.4);
-    animation-delay: 0.4s;
-  }
-  @keyframes hotspot-ripple {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.7); opacity: 0; }
-  }
-
-  /* Tooltip */
-  .hotspot-btn .hotspot-tooltip {
-    position: absolute;
-    bottom: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%) scale(0.9);
-    background: #003B1C;
-    color: white;
-    font-family: 'Tenor Sans', serif;
-    font-size: 14px;
-    padding: 6px 14px;
-    border-radius: 8px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    z-index: 20;
-  }
-  .hotspot-btn .hotspot-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: #003B1C;
-  }
-  .hotspot-btn.active .hotspot-tooltip {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-    pointer-events: auto;
-  }
-
-  /* ===== Animated green highlight underline for "Флораріум" ===== */
-  .highlight-path {
-    stroke-dasharray: 1200;
-    stroke-dashoffset: 1200;
-    opacity: 0;
-    transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
-    transition-delay: 0.3s;
-  }
-  .revealed .highlight-path,
-  .reveal.revealed .highlight-path {
-    stroke-dashoffset: 0;
-    opacity: 1;
+    .curriculum-timeline::before { left: 50%; --timeline-bottom: 120px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .decor-anim, .decor-sway, .decor-anim-mirror {
-      animation: none !important;
-    }
-    .hotspot-btn::before, .hotspot-btn::after {
-      animation: none !important;
-    }
-    .highlight-path {
-      stroke-dashoffset: 0 !important;
-      opacity: 1 !important;
-      transition: none !important;
-    }
+    .florarium-float { animation: none !important; }
   }
 </style>
-
-<script>
-  // Hotspot tooltip toggle on click
-  document.querySelectorAll('.hotspot-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const wasActive = btn.classList.contains('active');
-      document.querySelectorAll('.hotspot-btn.active').forEach(b => b.classList.remove('active'));
-      if (!wasActive) btn.classList.add('active');
-    });
-  });
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.hotspot-btn.active').forEach(b => b.classList.remove('active'));
-  });
-</script>
