@@ -19,3 +19,11 @@
 | 01   | Shared masterclass components (InstructorSection, ValueProps, PricingCta) | Complete | 1 | 0 |
 | 02   | InstructorSection image fix + masterclass pages verification | Complete | 1 | 1 |
 | 03   | Masterclass detail pages (florarium + stabilized art) | Complete | 1 | 1 |
+
+## Phase 04: Extract Reusable Masterclass Section Components and Rebuild Kartini/Vinok Pages
+| Plan | Name | Status | Plans | Summaries |
+|------|------|--------|-------|-----------|
+| 01   | Shared CSS + MasterclassHero, TargetAudienceSection, EducationalBlock extraction | Complete | 1 | 1 |
+| 02   | (pending) | Planned | 1 | 0 |
+| 03   | (pending) | Planned | 1 | 0 |
+| 04   | (pending) | Planned | 1 | 0 |
