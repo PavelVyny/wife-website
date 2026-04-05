@@ -14,12 +14,12 @@ interface Props {
 const { cards } = Astro.props;
 ---
 
-<section id="value-props" class="bg-white px-[10px] pt-[40px] pb-[40px] md:px-8 md:pt-[56px] md:pb-[56px] lg:pb-[72px]">
+<section id="value-props" class="bg-white px-[10px] pt-[40px] pb-[40px] md:px-8 md:pt-[56px] md:pb-[56px] lg:pb-[40px]">
   <div class="max-w-[1280px] mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-[20px] lg:gap-[24px]">
       {cards.map((card, i) => (
         <div
-          class="relative text-center px-[16px] py-[32px] md:p-[32px] reveal"
+          class="relative text-center px-[16px] py-[32px] md:p-[32px] lg:p-[16px] reveal"
           style={`transition-delay: ${i * 0.15}s`}
         >
           {/* Numbered badge */}
