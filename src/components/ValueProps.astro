@@ -16,14 +16,14 @@ const { cards } = Astro.props;
 
 <section id="value-props" class="bg-white px-[10px] pt-[40px] pb-[40px] md:px-8 md:pt-[56px] md:pb-[56px] lg:pb-[72px]">
   <div class="max-w-[1280px] mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-[20px] md:gap-[24px]">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-[20px] lg:gap-[24px]">
       {cards.map((card, i) => (
         <div
           class="relative text-center px-[16px] py-[32px] md:p-[32px] reveal"
           style={`transition-delay: ${i * 0.15}s`}
         >
           {/* Numbered badge */}
-          <div class="absolute top-[8px] left-[16px] w-[42px] h-[42px] rounded-full flex items-center justify-center text-white font-heading text-[24px]" style="background: #00401e;">
+          <div class="hidden lg:flex absolute top-[8px] left-[16px] w-[42px] h-[42px] rounded-full items-center justify-center text-white font-heading text-[24px]" style="background: #00401e;">
             {i + 1}
           </div>
 

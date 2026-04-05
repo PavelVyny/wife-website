@@ -236,8 +236,8 @@ const faqs = [
   <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[48px] overflow-hidden">
     {/* Decorative elements — matching originals exact positions */}
     <img src="/images/masterclass/decor-right-plant.webp" alt="" width="929" height="906"
-      class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
-      style="top: 2%; right: 1%; width: 160px; height: auto; --dur: 6s; --del: -1s;" />
+      class="hidden lg:block absolute pointer-events-none z-0"
+      style="top: 2%; right: 1%; width: 160px; height: auto;" />
 
     <div class="max-w-[1280px] mx-auto relative z-10">
       <div class="flex justify-center mb-[8px] reveal">
@@ -257,7 +257,7 @@ const faqs = [
       {/* 2×2 grid — image left, text right */}
       <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
 
-        <div class="bg-white border border-[#E0E0E0] rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-center lg:text-left gap-[16px] lg:gap-[20px] reveal">
+        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
           <img src="/images/masterclass/audience-beginners.webp" alt="Новачки та початківці"
             width="800" height="783"
             class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"
@@ -268,7 +268,7 @@ const faqs = [
           </div>
         </div>
 
-        <div class="bg-white border border-[#E0E0E0] rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-center lg:text-left gap-[16px] lg:gap-[20px] reveal">
+        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
           <img src="/images/masterclass/audience-decor.webp" alt="Шанувальники декору"
             width="800" height="783"
             class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"
@@ -279,7 +279,7 @@ const faqs = [
           </div>
         </div>
 
-        <div class="bg-white border border-[#E0E0E0] rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-center lg:text-left gap-[16px] lg:gap-[20px] reveal">
+        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
           <img src="/images/masterclass/audience-inspiration.webp" alt="Ті, хто шукає натхнення"
             width="800" height="783"
             class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"
@@ -290,7 +290,7 @@ const faqs = [
           </div>
         </div>
 
-        <div class="bg-white border border-[#E0E0E0] rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-center lg:text-left gap-[16px] lg:gap-[20px] reveal">
+        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
           <img src="/images/masterclass/audience-gifts.webp" alt="Любителі подарунків"
             width="800" height="783"
             class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"
@@ -308,8 +308,8 @@ const faqs = [
   {/* ===== WHAT IS A FLORARIUM ("ЩО ТАКЕ ФЛОРАРІУМ?") ===== */}
   <section class="relative bg-white px-[10px] py-[24px] md:px-8 md:py-[56px] lg:py-[48px] lg:pb-[48px] overflow-hidden">
     <img src="/images/masterclass/daria-memoji.webp" alt="" width="180" height="200"
-      class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
-      style="top: 15%; right: 2%; width: 130px; height: auto; rotate: 15deg; --dur: 7s; --del: -3s;" />
+      class="hidden lg:block absolute pointer-events-none z-0"
+      style="top: 15%; right: 2%; width: 130px; height: auto; rotate: 15deg;" />
     <div class="max-w-[1280px] mx-auto relative z-10">
 
       {/* Title banner — original image with decorative flowers */}
@@ -560,43 +560,27 @@ const faqs = [
 
   {/* ===== LEARNING OUTCOMES ===== */}
   <section class="relative px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[48px] pb-[80px] overflow-hidden" style="background: #f8f8f8;">
+    <img src="/images/masterclass/decor-cookie-blur.webp" alt="" width="80" height="80"
+      class="hidden lg:block absolute top-[30px] right-[50px] w-[50px] h-auto z-10 pointer-events-none"
+      style="filter: brightness(100%) contrast(100%) saturate(73%) blur(0) hue-rotate(0deg);"
+      loading="lazy" />
     <div class="max-w-[1280px] mx-auto">
 
-      {/* Title — original image */}
-      <div class="flex justify-center mb-[16px] reveal">
+      {/* Title — mobile/tablet only (centered above) */}
+      <div class="flex justify-center mb-[16px] lg:hidden reveal">
         <img
           src="/images/masterclass/results-title.webp"
           alt="Результати які ви отримаєте"
           width="1024"
           height="460"
-          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
+          class="w-full max-w-[320px] md:max-w-[420px] h-auto"
           loading="lazy"
         />
       </div>
 
       <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
-        <div class="reveal">
-          <ul class="space-y-[20px] px-[14px] md:px-0">
-            {[
-              "Ви створите стильний флораріум своїми руками",
-              "Додасте до свого інтер'єру затишку",
-              "Зробите незвичайний подарунок для близьких, створений власноруч",
-              "Зможете почати свій творчий шлях у флористиці або ж отримати натхнення для хобі",
-            ].map((item) => (
-              <li class="text-[#333] text-[18px] leading-[28px] flex gap-[12px] items-center font-heading">
-                <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Product images — same pattern as what's-included */}
-        <div class="mt-[24px] lg:mt-0 relative" style="min-height: 380px;">
+        {/* LEFT — images (on desktop) */}
+        <div class="mt-[24px] lg:mt-0 relative lg:order-1" style="min-height: 380px;">
           <img
             src="/images/masterclass/results-img-1.webp"
             alt="Результати — флораріум"
@@ -616,6 +600,38 @@ const faqs = [
             loading="lazy"
           />
         </div>
+
+        {/* RIGHT — title + bullet list (on desktop) */}
+        <div class="mt-[40px] lg:mt-0 lg:order-2 reveal">
+          {/* Title — desktop only (inside right column) */}
+          <div class="hidden lg:flex justify-center lg:justify-start mb-[24px]">
+            <img
+              src="/images/masterclass/results-title.webp"
+              alt="Результати які ви отримаєте"
+              width="1024"
+              height="460"
+              class="w-full max-w-[460px] h-auto"
+              loading="lazy"
+            />
+          </div>
+          <ul class="space-y-[20px] px-[14px] md:px-0">
+            {[
+              "Ви створите стильний флораріум своїми руками",
+              "Додасте до свого інтер'єру затишку",
+              "Зробите незвичайний подарунок для близьких, створений власноруч",
+              "Зможете почати свій творчий шлях у флористиці або ж отримати натхнення для хобі",
+            ].map((item) => (
+              <li class="text-[#333] text-[18px] leading-[28px] flex gap-[12px] items-center font-heading">
+                <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -631,9 +647,6 @@ const faqs = [
     <img src="/images/masterclass/decor-fern-1.webp" alt="" width="190" height="210"
       class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
       style="top: 8%; left: -1.5%; width: 145px; height: auto; opacity: 0.75; --dur: 8s; --del: -1s;" />
-    <img src="/images/masterclass/decor-pot-2.webp" alt="" width="220" height="260"
-      class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
-      style="bottom: 6%; right: -0.5%; width: 130px; height: auto; opacity: 0.8; --dur: 5.5s; --del: -3s;" />
     <div class="max-w-[1280px] mx-auto">
 
       {/* Title — original image */}
@@ -651,14 +664,14 @@ const faqs = [
       {/* Lessons container with vertical connecting line */}
       <div class="curriculum-timeline relative">
 
-      {/* Lesson 1 */}
-      <div class="mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:items-start lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
+      {/* Lesson 1 — image left, text right */}
+      <div class="relative mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:items-center lg:gap-[48px]">
+        <div class="hidden lg:flex lg:w-[46%] justify-center flex-shrink-0">
           <img src="/images/masterclass/curriculum-lesson-1.webp" alt="Підготовка та закупівля матеріалів" width="1024" height="1024" class="w-[380px] rounded-[20px]" loading="lazy"/>
         </div>
-        <div class="lg:w-[60%]">
+        <div class="lg:w-[46%] lg:pl-[40px]">
           <div class="flex items-start gap-[12px] mb-[12px]">
-            <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">1</span>
+            <span class="flex-shrink-0 w-[36px] h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center font-heading text-white text-[16px] lg:text-[20px] font-bold lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0 lg:z-10" style="background: #7fac00;">1</span>
             <h3 class="font-heading text-black text-[26px] leading-[1.2]">
               <span class="relative inline">
                 <span class="relative z-10">Підготовка</span>
@@ -668,21 +681,21 @@ const faqs = [
               </span><br/>та закупівля матеріалів
             </h3>
           </div>
-          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Список усіх необхідних матеріалів, перелік магазинів, корисні поради щодо вибору компонентів</p>
+          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px] lg:ml-0">Список усіх необхідних матеріалів, перелік магазинів, корисні поради щодо вибору компонентів</p>
         </div>
       </div>
       <div class="flex justify-center mb-[48px] reveal lg:hidden">
         <img src="/images/masterclass/curriculum-lesson-1.webp" alt="Підготовка та закупівля матеріалів" width="1024" height="1024" class="w-[280px] h-auto" loading="lazy"/>
       </div>
 
-      {/* Lesson 2 */}
-      <div class="mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:items-start lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
+      {/* Lesson 2 — text left (right-aligned), image right */}
+      <div class="relative mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:flex-row-reverse lg:items-center lg:gap-[48px]">
+        <div class="hidden lg:flex lg:w-[46%] justify-center flex-shrink-0">
           <img src="/images/masterclass/curriculum-lesson-2.webp" alt="Створення флораріуму" width="1024" height="1024" class="w-[380px] rounded-[20px]" loading="lazy"/>
         </div>
-        <div class="lg:w-[60%]">
-          <div class="flex items-start gap-[12px] mb-[12px]">
-            <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">2</span>
+        <div class="lg:w-[46%] lg:text-right lg:pr-[40px]">
+          <div class="flex items-start gap-[12px] mb-[12px] lg:justify-end">
+            <span class="flex-shrink-0 w-[36px] h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center font-heading text-white text-[16px] lg:text-[20px] font-bold lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0 lg:z-10" style="background: #7fac00;">2</span>
             <h3 class="font-heading text-black text-[26px] leading-[1.2]">
               <span class="relative inline">
                 <span class="relative z-10">Створення</span>
@@ -692,21 +705,21 @@ const faqs = [
               </span><br/>флораріуму
             </h3>
           </div>
-          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Детальна покрокова інструкція зі створення флораріуму в геометричній скляній вазі</p>
+          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px] lg:ml-0">Детальна покрокова інструкція зі створення флораріуму в геометричній скляній вазі</p>
         </div>
       </div>
       <div class="flex justify-center mb-[48px] reveal lg:hidden">
         <img src="/images/masterclass/curriculum-lesson-2.webp" alt="Створення флораріуму" width="1024" height="1024" class="w-[280px] h-auto" loading="lazy"/>
       </div>
 
-      {/* Lesson 3 */}
-      <div class="mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:items-start lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
+      {/* Lesson 3 — image left, text right */}
+      <div class="relative mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:items-center lg:gap-[48px]">
+        <div class="hidden lg:flex lg:w-[46%] justify-center flex-shrink-0">
           <img src="/images/masterclass/curriculum-lesson-3.webp" alt="Догляд за флораріумом" width="1024" height="1024" class="w-[380px] rounded-[20px]" loading="lazy"/>
         </div>
-        <div class="lg:w-[60%]">
+        <div class="lg:w-[46%] lg:pl-[40px]">
           <div class="flex items-start gap-[12px] mb-[12px]">
-            <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">3</span>
+            <span class="flex-shrink-0 w-[36px] h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center font-heading text-white text-[16px] lg:text-[20px] font-bold lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0 lg:z-10" style="background: #7fac00;">3</span>
             <h3 class="font-heading text-black text-[26px] leading-[1.2]">
               <span class="relative inline">
                 <span class="relative z-10">Догляд</span>
@@ -716,21 +729,21 @@ const faqs = [
               </span><br/>за флораріумом
             </h3>
           </div>
-          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Як доглядати за флораріумом, щоб він залишався свіжим та гарним максимально довго</p>
+          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px] lg:ml-0">Як доглядати за флораріумом, щоб він залишався свіжим та гарним максимально довго</p>
         </div>
       </div>
       <div class="flex justify-center mb-[48px] reveal lg:hidden">
         <img src="/images/masterclass/curriculum-lesson-3.webp" alt="Догляд за флораріумом" width="1024" height="1024" class="w-[280px] h-auto" loading="lazy"/>
       </div>
 
-      {/* Lesson 4 */}
-      <div class="mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:items-start lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
+      {/* Lesson 4 — text left (right-aligned), image right */}
+      <div class="relative mb-[48px] md:mb-[64px] reveal px-[4px] md:px-0 lg:flex lg:flex-row-reverse lg:items-center lg:gap-[48px]">
+        <div class="hidden lg:flex lg:w-[46%] justify-center flex-shrink-0">
           <img src="/images/masterclass/curriculum-lesson-4.webp" alt="Композиція в бетонному кашпо" width="1024" height="1024" class="w-[380px] rounded-[20px]" loading="lazy"/>
         </div>
-        <div class="lg:w-[60%]">
-          <div class="flex items-start gap-[12px] mb-[12px]">
-            <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">4</span>
+        <div class="lg:w-[46%] lg:text-right lg:pr-[40px]">
+          <div class="flex items-start gap-[12px] mb-[12px] lg:justify-end">
+            <span class="flex-shrink-0 w-[36px] h-[36px] lg:w-[46px] lg:h-[46px] rounded-full flex items-center justify-center font-heading text-white text-[16px] lg:text-[20px] font-bold lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-0 lg:z-10" style="background: #7fac00;">4</span>
             <h3 class="font-heading text-black text-[26px] leading-[1.2]">
               <span class="relative inline">
                 <span class="relative z-10">Композиція</span>
@@ -740,7 +753,7 @@ const faqs = [
               </span><br/>в бетонному кашпо
             </h3>
           </div>
-          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px]">Створення мініатюрної святкової композиції для декору столу або на подарунок</p>
+          <p class="text-[#7b7b7b] text-[18px] leading-[28px] font-heading ml-[48px] lg:ml-0">Створення мініатюрної святкової композиції для декору столу або на подарунок</p>
         </div>
       </div>
       <div class="flex justify-center reveal lg:hidden">
@@ -753,9 +766,9 @@ const faqs = [
 
   {/* ===== FAQ ===== */}
   <section id="faq" class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[48px] overflow-hidden">
-    <img src="/images/masterclass/decor-wreath-1.webp" alt="" width="200" height="200"
-      class="hidden lg:block absolute pointer-events-none z-0 decor-sway"
-      style="top: 4%; right: -1%; width: 150px; height: auto; opacity: 0.55; --dur: 8s; --del: -4s;" />
+    <img src="/images/masterclass/decor-pot-plant.webp" alt="" width="200" height="200"
+      class="hidden lg:block absolute pointer-events-none z-0"
+      style="top: 4%; right: calc(-1% + 20px); width: 100px; height: auto; opacity: 0.55;" />
     <img src="/images/masterclass/decor-leaf-1.webp" alt="" width="160" height="180"
       class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
       style="bottom: 5%; left: -1%; width: 120px; height: auto; opacity: 0.6; --dur: 7s; --del: -2s;" />
@@ -844,7 +857,7 @@ const faqs = [
   }
   @media (min-width: 1024px) {
     .curriculum-timeline::before {
-      left: calc(40% + 48px + 18px);
+      left: 50%;
       --timeline-bottom: 120px;
     }
   }

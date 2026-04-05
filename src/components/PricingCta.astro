@@ -42,7 +42,7 @@ const banner = bannerImg || '/images/masterclass/pricing-banner.webp';
         alt="Вартість та доступ"
         width="1024"
         height="460"
-        class="w-full max-w-[320px] md:max-w-[380px] lg:max-w-[400px] h-auto"
+        class="w-full max-w-[256px] md:max-w-[380px] lg:max-w-[400px] h-auto"
         loading="lazy"
       />
     </div>
@@ -159,7 +159,7 @@ const banner = bannerImg || '/images/masterclass/pricing-banner.webp';
         </div>
 
         {/* Bottom banner image */}
-        <div class="mt-[40px] reveal">
+        <div class="mt-[40px] xl:mt-[80px] reveal">
           <img
             src={banner}
             alt="Забудь про штучний декор з магазинів! Замовляй майстер-клас вже сьогодні та створи унікальний флораріум, який стане родзинкою твого інтер'єру."
@@ -204,14 +204,19 @@ const banner = bannerImg || '/images/masterclass/pricing-banner.webp';
   }
   @media (min-width: 1024px) {
     .pricing-images {
-      min-height: 380px;
+      min-height: 340px;
     }
     .pricing-img-main {
-      width: 86%;
+      width: 76%;
     }
     .pricing-img-overlay {
-      width: 60%;
+      width: 44%;
       bottom: 70px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .pricing-img-overlay {
+      bottom: -42px;
     }
   }
 
