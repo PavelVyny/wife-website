@@ -1,9 +1,15 @@
 ---
 import MasterclassLayout from '../layouts/MasterclassLayout.astro';
-import FaqAccordion from '../components/FaqAccordion.astro';
+import MasterclassHero from '../components/MasterclassHero.astro';
+import TargetAudienceSection from '../components/TargetAudienceSection.astro';
+import EducationalBlock from '../components/EducationalBlock.astro';
+import WhatsIncludedSection from '../components/WhatsIncludedSection.astro';
+import PricingCta from '../components/PricingCta.astro';
+import LearningOutcomes from '../components/LearningOutcomes.astro';
 import InstructorSection from '../components/InstructorSection.astro';
 import ValueProps from '../components/ValueProps.astro';
-import PricingCta from '../components/PricingCta.astro';
+import CurriculumSection from '../components/CurriculumSection.astro';
+import FaqSection from '../components/FaqSection.astro';
 
 const PURCHASE_URL = 'https://secure.wayforpay.com/payment/s9517959b27ff'; // TODO: update with real vinok payment URL
 
@@ -24,7 +30,6 @@ const valueCards = [
     image: "/images/masterclass/value-memoji-3.webp",
   },
 ];
-
 
 const faqs = [
   {
@@ -87,6 +92,121 @@ const faqs = [
     a: ['Так, звісно! Це чудовий подарунок для тих, хто любить творчість. Просто повідомте мене, і я оформлю доступ для вашого друга чи близького.'],
   },
 ];
+
+const heroDecorElements = [
+  { src: "/images/masterclass-vinok/hero/decor-5.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 16%; left: 4%; width: 53px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" },
+  { src: "/images/masterclass-vinok/hero/decor-2.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 37%; left: 85%; width: 49px; height: auto; --slide-x: 80px; --slide-y: -20px; animation-delay: 0.35s;" },
+  { src: "/images/masterclass-vinok/hero/decor-3.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 55%; left: 12%; width: 59px; height: auto; --slide-x: -100px; --slide-y: 20px; animation-delay: 0.4s;" },
+  { src: "/images/masterclass-vinok/hero/decor-4.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 65%; left: 88%; width: 31px; height: auto; --slide-x: 60px; --slide-y: 10px; animation-delay: 0.5s;" },
+  { src: "/images/masterclass-vinok/hero/decor-6.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 53%; left: 64%; width: 159px; height: auto; --slide-x: 100px; --slide-y: 40px; animation-delay: 0.45s;" },
+];
+
+const audienceCards = [
+  {
+    image: "/images/masterclass-vinok/audience-beginners.webp",
+    imageAlt: "Новачки та початківці",
+    title: "Новачки та початківці",
+    description: "Ідеально підійде тим, хто ніколи не працював зі стабілізованими рослинами. Ви отримаєте базові знання про матеріали, принципи побудови композиції, правила поєднання кольорів, підходящий алгоритм створення вінка",
+  },
+  {
+    image: "/images/masterclass-vinok/audience-decor.webp",
+    imageAlt: "Шанувальники декору",
+    title: "Шанувальники декору",
+    description: "Ідеальний формат для тих, хто любить стильні деталі в інтер'єрі. Вінок зі стабілізованих рослин не потребує поливу та догляду, але при цьому має вигляд живого, дорогого та прикрашає кожен простір",
+  },
+  {
+    image: "/images/masterclass-vinok/audience-inspiration.webp",
+    imageAlt: "Ті, хто шукає натхнення",
+    title: "Ті, хто шукає натхнення",
+    description: "Майстер-клас стане простором для творчого перезавантаження. Робота з природними текстурами чудово знімає стрес, допомагає відволіктись та дає задоволення від створеного результату",
+  },
+  {
+    image: "/images/masterclass-vinok/audience-gifts.webp",
+    imageAlt: "Любителі подарунків",
+    title: "Любителі подарунків",
+    description: "Вінок, створений власноруч, — це особливий подарунок. Ви зможете зробити унікальну річ для близьких, створити декор на замовлення або подарувати собі новий творчий досвід",
+  },
+];
+
+const educationalHotspots = [
+  { label: "Дерев'яна основа", left: "83.5%", top: "20.8%" },
+  { label: "Ягель зелений", left: "33.5%", top: "22.8%" },
+  { label: "Коряга", left: "69.5%", top: "45.8%" },
+  { label: "Амарант", left: "23.5%", top: "55.8%" },
+  { label: "Плоский мох", left: "60.5%", top: "77.8%" },
+];
+
+const educationalBenefits = [
+  "Не потребують догляду",
+  "Не в'януть",
+  "Не потребують світла",
+  "Зберігають вигляд роками",
+  "Поєднують натуральність та практичність",
+];
+
+const includedItems = [
+  "Три покрокові відео-уроки",
+  "Повний список матеріалів із зазначенням, де їх купити (з посиланнями на магазини)",
+  "Рекомендації щодо вибору рослин та інструментів",
+  "Технологічна карта створення вінка",
+  "Рекомендації з догляду за стабілізованими рослинами",
+  "Приклади робіт для натхнення",
+];
+
+const learningItems = [
+  "Створите власний стильний вінок зі стабілізованих рослин",
+  "Навчитеся працювати з текстурами та кольорами",
+  "Зрозумієте принципи гармонійної композиції",
+  "Додасте унікальний природний акцент у свій простір",
+  "Отримаєте нові творчі навички",
+];
+
+const curriculumLessons = [
+  {
+    title: "Підготовка та",
+    titleRest: "теоретичний блок",
+    bullets: [
+      "Що таке стабілізовані рослини та як вони зберігаються",
+      "Особливості моху, квітів та декоративних елементів",
+      "Часті помилки новачків",
+      "Як поєднувати текстури",
+      "Основи кольорових поєднань",
+      "Баланс об'єму",
+      "Візуальні акценти",
+    ],
+    imageMobile: "/images/masterclass-vinok/curriculum-1.webp",
+    imageDesktop: "/images/masterclass-vinok/curriculum-1.webp",
+    imageAlt: "Підготовка та теоретичний блок",
+  },
+  {
+    title: "Огляд матеріалів",
+    titleRest: "та побудова композиції",
+    bullets: [
+      "Інструменти для роботи",
+      "Варіанти основи для вінка",
+      "Різновиди стабілізованих рослин",
+      "Підготовка елементів до монтажу",
+      "Техніка безпеки",
+    ],
+    imageMobile: "/images/masterclass-vinok/curriculum-2.webp",
+    imageDesktop: "/images/masterclass-vinok/curriculum-2.webp",
+    imageAlt: "Огляд матеріалів та побудова композиції",
+  },
+  {
+    title: "Покрокове створення",
+    titleRest: "вінка та догляд",
+    bullets: [
+      "Покрокове створення вінка",
+      "Надійне кріплення рослин",
+      "Акуратність та довговічність",
+      "Розміщення в інтер'єрі",
+      "Умови зберігання",
+    ],
+    imageMobile: "/images/masterclass-vinok/curriculum-3.webp",
+    imageDesktop: "/images/masterclass-vinok/curriculum-3.webp",
+    imageAlt: "Створення вінка",
+  },
+];
 ---
 
 <MasterclassLayout
@@ -97,354 +217,58 @@ const faqs = [
   purchaseLabel="Придбати навчання"
 >
 
-  {/* ===== HERO ===== */}
-  <div class="relative">
-  <section
-    id="vinok-hero"
-    class="relative overflow-hidden rounded-b-[25px] lg:mt-[-90px]"
-    style="background: #f8f8f8 url('/images/masterclass-vinok/hero/hero-bg.webp') no-repeat 0% 0%/cover;"
-  >
-    {/* Mobile decorative images — positions matched from original */}
-    {/* Top-left: green moss ball — 16% top, 4% left, 53px */}
-    <img src="/images/masterclass-vinok/hero/decor-5.webp" alt="" width="200" height="200"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide-k"
-      style="top: 16%; left: 4%; width: 53px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" />
-    {/* Right of description: cotton/white piece — 37% top, 85% left, 49px */}
-    <img src="/images/masterclass-vinok/hero/decor-2.webp" alt="" width="200" height="200"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide-k"
-      style="top: 37%; left: 85%; width: 49px; height: auto; --slide-x: 80px; --slide-y: -20px; animation-delay: 0.35s;" />
-    {/* Left mid: brown piece — 55% top, 12% left, 59px */}
-    <img src="/images/masterclass-vinok/hero/decor-3.webp" alt="" width="200" height="200"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide-k"
-      style="top: 55%; left: 12%; width: 59px; height: auto; --slide-x: -100px; --slide-y: 20px; animation-delay: 0.4s;" />
-    {/* Right below CTA: tiny green — 65% top, 88% left, 31px */}
-    <img src="/images/masterclass-vinok/hero/decor-4.webp" alt="" width="200" height="200"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide-k"
-      style="top: 65%; left: 88%; width: 31px; height: auto; --slide-x: 60px; --slide-y: 10px; animation-delay: 0.5s;" />
-    {/* Right mid: large bark/branch — 53% top, 64% left, 159px */}
-    <img src="/images/masterclass-vinok/hero/decor-6.webp" alt="" width="200" height="200"
-      class="lg:hidden absolute pointer-events-none z-[5] hero-decor-slide-k"
-      style="top: 53%; left: 64%; width: 159px; height: auto; --slide-x: 100px; --slide-y: 40px; animation-delay: 0.45s;" />
+  <MasterclassHero
+    heroId="vinok-hero"
+    bgMobile="/images/masterclass-vinok/hero/hero-bg.webp"
+    dariaImg="/images/masterclass-vinok/hero/daria-vinok.webp"
+    dariaAlt="Дар'я з вінком зі стабілізованих рослин"
+    dariaWidth={600}
+    dariaHeight={673}
+    badgeText="Онлайн майстер-клас"
+    titleLine1="Вінок зі"
+    titleLine2="стабілізованих рослин"
+    subtitle="Навчіться створювати стильний<br class='md:hidden' /> декоративний вінок для інтер'єру —<br class='md:hidden' /> без складних технік та досвіду"
+    ctaText="Дізнатися більше"
+    ctaHref="#pricing"
+    ctaPulse={true}
+    decorElements={heroDecorElements}
+    bleedElement={{ src: "/images/masterclass-vinok/hero/decor-1.webp", width: 200, height: 200, style: "bottom: -40px; left: 7%; width: 132px; height: auto; --slide-x: -60px; --slide-y: 80px; animation-delay: 0.55s;" }}
+  />
 
-    {/* Content */}
-    <div class="relative">
-      <div
-        class="max-w-[1280px] mx-auto px-6 md:px-8 relative z-10 pt-[60px] md:pt-[80px] lg:pt-[290px] pb-[20px] lg:pb-[80px]"
-      >
-        <div class="max-w-[600px] lg:max-w-[540px] mx-auto lg:mx-0 text-center lg:text-left">
+  <TargetAudienceSection
+    titleImage="/images/masterclass-vinok/for-who-title.webp"
+    titleImageAlt="Для кого цей майстер-клас"
+    subtitle="Цей майстер-клас для тих, хто хоче створити стильний природний декор своїми руками, додати затишку в інтер'єр і спробувати новий формат творчості без складнощів і спеціальної підготовки"
+    cards={audienceCards}
+    decorLeftImage="/images/masterclass/decor-herb-cluster.webp"
+    decorRightImage="/images/masterclass/decor-right-plant.webp"
+  />
 
-          {/* Badge */}
-          <div class="flex justify-center lg:justify-start mb-8 hero-text-fade-k" style="animation-delay: 0.1s;">
-            <div class="inline-flex items-center gap-2 bg-[#003B1C] text-white font-heading text-[14px] px-5 py-2 rounded-full shadow-md">
-              <img src="/images/masterclass/star_2b50.webp" alt="" width="14" height="14" class="w-[14px] h-[14px]" style="transform: rotate(15deg);" />
-              Онлайн майстер-клас
-            </div>
-          </div>
+  <EducationalBlock
+    titleImage="/images/masterclass-vinok/what-is-title.webp"
+    titleImageAlt="Що таке стабілізовані рослини?"
+    headingHighlight="Стабілізовані рослини"
+    headingRest="— це натуральні рослини, які пройшли спеціальну обробку та зберегли свою форму, текстуру і колір"
+    productImage="/images/masterclass-vinok/stabilized-product.webp"
+    productImageAlt="Вінок зі стабілізованих рослин з позначеними елементами"
+    productImageWidth={900}
+    productImageHeight={817}
+    hotspots={educationalHotspots}
+    benefits={educationalBenefits}
+    quoteImage="/images/masterclass-vinok/what-is-quote.webp"
+    quoteImageAlt="Стабілізовані рослини зберігають натуральність"
+  />
 
-          {/* Title with zigzag under ВІНОК */}
-          <h1 class="font-heading text-brand-dark text-[32px] md:text-[42px] lg:text-[56px] leading-[1.1] mb-5 hero-text-fade-k" style="animation-delay: 0.2s;">
-            <span class="relative inline-block">ВІНОК
-              <svg class="absolute left-0 w-full highlight-path" style="bottom: 2px; height: 12px; z-index: -1;" viewBox="0 0 500 150" preserveAspectRatio="none">
-                <path d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0"
-                  fill="none" stroke="#a5d100" stroke-width="42" stroke-linecap="round"/>
-              </svg>
-            </span> ЗІ<br/>СТАБІЛІЗОВАНИХ<br/>РОСЛИН
-          </h1>
+  <WhatsIncludedSection
+    titleImage="/images/masterclass-vinok/whats-included-title.webp"
+    titleImageAlt="Що входить у майстер-клас"
+    items={includedItems}
+    productImg1="/images/masterclass-vinok/included-img-1.webp"
+    productImg1Alt="Вінок зі стабілізованих рослин"
+    productImg2="/images/masterclass-vinok/included-img-2.webp"
+    productImg2Alt="Процес створення вінка"
+  />
 
-          {/* Description */}
-          <p class="text-brand-dark/80 text-[16px] md:text-[18px] leading-[28px] mb-7 hero-text-fade-k" style="animation-delay: 0.3s;">
-            Навчіться створювати стильний<br/>
-            декоративний вінок для інтер'єру —<br/>
-            без складних технік та досвіду
-          </p>
-
-          {/* CTA */}
-          <div class="flex justify-center lg:justify-start hero-text-fade-k" style="animation-delay: 0.35s;">
-            <a
-              href="#pricing"
-              class="kartini-cta-btn inline-flex items-center justify-center px-[40px] py-[16px] bg-[#E63380] text-white rounded-full font-heading text-[20px] md:text-[22px]"
-            >
-              Дізнатися більше
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Daria mobile */}
-      <div class="lg:hidden flex justify-center mt-[-20px] relative z-[2] hero-daria-slide-k">
-        <img
-          src="/images/masterclass-vinok/hero/daria-vinok.webp"
-          alt="Дар'я з вінком зі стабілізованих рослин"
-          width="600"
-          height="673"
-          class="w-[80%] max-w-[320px] h-auto object-contain"
-          loading="eager"
-        />
-      </div>
-    </div>
-  </section>
-
-  {/* Bottom large moss ball — bleeds below hero, 132px, partially visible */}
-  <img src="/images/masterclass-vinok/hero/decor-1.webp" alt="" width="200" height="200"
-    class="lg:hidden absolute pointer-events-none z-[6] hero-decor-slide-k"
-    style="bottom: -40px; left: 7%; width: 132px; height: auto; --slide-x: -60px; --slide-y: 80px; animation-delay: 0.55s;" />
-  </div>
-
-  {/* ===== TARGET AUDIENCE ===== */}
-  <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
-    {/* Decorative elements */}
-    <img src="/images/masterclass/decor-herb-cluster.webp" alt="" width="280" height="268"
-      class="hidden lg:block absolute pointer-events-none z-0 decor-sway"
-      style="top: 5%; left: -3%; width: 210px; height: auto; opacity: 0.9; filter: blur(1px); --dur: 7s; --del: -2s;" />
-    <img src="/images/masterclass/decor-right-plant.webp" alt="" width="929" height="906"
-      class="hidden lg:block absolute pointer-events-none z-0 decor-anim"
-      style="top: 2%; right: 1%; width: 160px; height: auto; --dur: 6s; --del: -1s;" />
-
-    <div class="max-w-[1280px] mx-auto relative z-10">
-      {/* Title image */}
-      <div class="flex justify-center mb-[8px] reveal">
-        <img
-          src="/images/masterclass-vinok/for-who-title.webp"
-          alt="Для кого цей майстер-клас"
-          width="1024"
-          height="460"
-          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
-          loading="lazy"
-        />
-      </div>
-      <p class="text-brand-dark/70 text-[16px] md:text-[18px] leading-[28px] text-center mb-[40px] max-w-[780px] mx-auto reveal">
-        Цей майстер-клас для тих, хто хоче створити стильний природний декор своїми руками, додати затишку в інтер'єр і спробувати новий формат творчості без складнощів і спеціальної підготовки
-      </p>
-
-      {/* 2×2 grid — image left, text right */}
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
-
-        <div class="bg-white border border-[#E0E0E0] rounded-[20px] p-[20px] flex flex-col items-center text-center md:flex-row md:items-center md:text-left gap-[16px] md:gap-[20px] reveal">
-          <img src="/images/masterclass-vinok/audience-beginners.webp" alt="Новачки та початківці"
-            width="800" height="800"
-            class="flex-shrink-0 w-[220px] h-[220px] md:w-[260px] md:h-[260px] object-contain"
-            loading="lazy" />
-          <div>
-            <h3 class="font-heading text-[#1a1a1a] text-[20px] md:text-[22px] leading-[1.3] mb-[8px]">Новачки та початківці</h3>
-            <p class="text-[#8a8a8a] text-[15px] leading-[24px] text-left">Ідеально підійде тим, хто ніколи не працював зі стабілізованими рослинами. Ви отримаєте базові знання про матеріали, принципи побудови композиції, правила поєднання кольорів, підходящий алгоритм створення вінка</p>
-          </div>
-        </div>
-
-        <div class="bg-white border border-[#E0E0E0] rounded-[20px] p-[20px] flex flex-col items-center text-center md:flex-row md:items-center md:text-left gap-[16px] md:gap-[20px] reveal">
-          <img src="/images/masterclass-vinok/audience-decor.webp" alt="Шанувальники декору"
-            width="800" height="800"
-            class="flex-shrink-0 w-[220px] h-[220px] md:w-[260px] md:h-[260px] object-contain"
-            loading="lazy" />
-          <div>
-            <h3 class="font-heading text-[#1a1a1a] text-[20px] md:text-[22px] leading-[1.3] mb-[8px]">Шанувальники декору</h3>
-            <p class="text-[#8a8a8a] text-[15px] leading-[24px] text-left">Ідеальний формат для тих, хто любить стильні деталі в інтер'єрі. Вінок зі стабілізованих рослин не потребує поливу та догляду, але при цьому має вигляд живого, дорогого та прикрашає кожен простір</p>
-          </div>
-        </div>
-
-        <div class="bg-white border border-[#E0E0E0] rounded-[20px] p-[20px] flex flex-col items-center text-center md:flex-row md:items-center md:text-left gap-[16px] md:gap-[20px] reveal">
-          <img src="/images/masterclass-vinok/audience-inspiration.webp" alt="Ті, хто шукає натхнення"
-            width="800" height="800"
-            class="flex-shrink-0 w-[220px] h-[220px] md:w-[260px] md:h-[260px] object-contain"
-            loading="lazy" />
-          <div>
-            <h3 class="font-heading text-[#1a1a1a] text-[20px] md:text-[22px] leading-[1.3] mb-[8px]">Ті, хто шукає натхнення</h3>
-            <p class="text-[#8a8a8a] text-[15px] leading-[24px] text-left">Майстер-клас стане простором для творчого перезавантаження. Робота з природними текстурами чудово знімає стрес, допомагає відволіктись та дає задоволення від створеного результату</p>
-          </div>
-        </div>
-
-        <div class="bg-white border border-[#E0E0E0] rounded-[20px] p-[20px] flex flex-col items-center text-center md:flex-row md:items-center md:text-left gap-[16px] md:gap-[20px] reveal">
-          <img src="/images/masterclass-vinok/audience-gifts.webp" alt="Любителі подарунків"
-            width="800" height="800"
-            class="flex-shrink-0 w-[220px] h-[220px] md:w-[260px] md:h-[260px] object-contain"
-            loading="lazy" />
-          <div>
-            <h3 class="font-heading text-[#1a1a1a] text-[20px] md:text-[22px] leading-[1.3] mb-[8px]">Любителі подарунків</h3>
-            <p class="text-[#8a8a8a] text-[15px] leading-[24px] text-left">Вінок, створений власноруч, — це особливий подарунок. Ви зможете зробити унікальну річ для близьких, створити декор на замовлення або подарувати собі новий творчий досвід</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  {/* ===== WHAT ARE STABILIZED PLANTS ===== */}
-  <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
-    <div class="max-w-[1280px] mx-auto relative z-10">
-
-      {/* Title image */}
-      <div class="flex justify-center mb-[16px] reveal">
-        <img
-          src="/images/masterclass-vinok/what-is-title.webp"
-          alt="Що таке стабілізовані рослини?"
-          width="1024"
-          height="482"
-          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
-          loading="lazy"
-        />
-      </div>
-
-      {/* Description with highlighted word */}
-      <div class="text-center mb-[24px] reveal">
-        <h2 class="font-heading text-[#003B1C] text-[22px] md:text-[26px] leading-[1.4]">
-          <span class="relative inline-block">Стабілізовані рослини
-            <svg class="absolute left-0 w-full highlight-path" style="bottom: 2px; height: 10px; z-index: -1;" viewBox="0 0 500 150" preserveAspectRatio="none">
-              <path d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0"
-                fill="none" stroke="#a5d100" stroke-width="90" stroke-linecap="round"/>
-            </svg>
-          </span>— це натуральні рослини, які пройшли спеціальну обробку та зберегли свою форму, текстуру і колір
-        </h2>
-      </div>
-
-      {/* Product image with hotspots */}
-      <div class="flex justify-center mb-[32px] reveal">
-        <div class="relative inline-block florarium-hotspot-container" style="width: 90%; max-width: 420px;">
-          <img
-            src="/images/masterclass-vinok/stabilized-product.webp"
-            alt="Вінок зі стабілізованих рослин з позначеними елементами"
-            width="900"
-            height="817"
-            class="w-full h-auto rounded-[20px]"
-            loading="lazy"
-          />
-          <button class="hotspot-btn" style="left: 83.5%; top: 20.8%;" aria-label="Дерев'яна основа">
-            <span class="text-white text-[16px] font-bold leading-none">+</span>
-            <span class="hotspot-tooltip">Дерев'яна основа</span>
-          </button>
-          <button class="hotspot-btn" style="left: 33.5%; top: 22.8%;" aria-label="Ягель зелений">
-            <span class="text-white text-[16px] font-bold leading-none">+</span>
-            <span class="hotspot-tooltip">Ягель зелений</span>
-          </button>
-          <button class="hotspot-btn" style="left: 69.5%; top: 45.8%;" aria-label="Коряга">
-            <span class="text-white text-[16px] font-bold leading-none">+</span>
-            <span class="hotspot-tooltip">Коряга</span>
-          </button>
-          <button class="hotspot-btn" style="left: 23.5%; top: 55.8%;" aria-label="Амарант">
-            <span class="text-white text-[16px] font-bold leading-none">+</span>
-            <span class="hotspot-tooltip">Амарант</span>
-          </button>
-          <button class="hotspot-btn" style="left: 60.5%; top: 77.8%;" aria-label="Плоский мох">
-            <span class="text-white text-[16px] font-bold leading-none">+</span>
-            <span class="hotspot-tooltip">Плоский мох</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Benefit list with checkmarks */}
-      <div class="reveal">
-        <ul class="space-y-[20px] px-[14px] md:px-0">
-          {[
-            "Не потребують догляду",
-            "Не в'януть",
-            "Не потребують світла",
-            "Зберігають вигляд роками",
-            "Поєднують натуральність та практичність",
-          ].map((item) => (
-            <li class="text-black text-[18px] leading-[28px] flex gap-[12px] items-center font-heading font-medium">
-              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Quote banner */}
-      <div class="mt-[24px] reveal">
-        <img
-          src="/images/masterclass-vinok/what-is-quote.webp"
-          alt="Стабілізовані рослини зберігають натуральність"
-          width="1024"
-          height="525"
-          class="w-full h-auto"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </section>
-
-  {/* ===== WHAT'S INCLUDED ===== */}
-  <section class="relative bg-white px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[72px] pb-[80px] overflow-hidden">
-    <div class="max-w-[1280px] mx-auto">
-
-      {/* Animated lightbulb */}
-      <div class="flex justify-start ml-[40px] md:ml-[60px] lg:justify-center mb-[-20px] reveal">
-        <svg width="44" height="56" viewBox="0 0 44 56" fill="none" xmlns="http://www.w3.org/2000/svg" class="bulb-glow">
-          <line x1="22" y1="2" x2="22" y2="6" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-          <line x1="8" y1="8" x2="11" y2="11" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-          <line x1="36" y1="8" x2="33" y2="11" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-          <line x1="4" y1="22" x2="8" y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-          <line x1="40" y1="22" x2="36" y2="22" stroke="#FFD700" stroke-width="2" stroke-linecap="round" class="bulb-ray"/>
-          <path d="M22 10C16.5 10 12 14.5 12 20c0 3.6 1.9 6.7 4.8 8.5V32c0 .6.4 1 1 1h8.4c.6 0 1-.4 1-1v-3.5C30.1 26.7 32 23.6 32 20c0-5.5-4.5-10-10-10z" fill="#FFD700" stroke="#E8B800" stroke-width="0.8"/>
-          <path d="M17 19c0-2.8 2.2-5 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
-          <rect x="16" y="34" width="12" height="1.5" rx="0.75" fill="#E8B800"/>
-          <rect x="17" y="37" width="10" height="1.5" rx="0.75" fill="#E8B800"/>
-          <path d="M19 40.5L22 43L25 40.5" stroke="#E8B800" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-
-      {/* Title image */}
-      <div class="flex justify-center mb-[24px] reveal">
-        <img
-          src="/images/masterclass-vinok/whats-included-title.webp"
-          alt="Що входить у майстер-клас"
-          width="1024"
-          height="460"
-          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
-          loading="lazy"
-        />
-      </div>
-
-      {/* List items with checkmarks */}
-      <div class="reveal">
-        <ul class="space-y-[20px] px-[14px] md:px-0 mb-[24px]">
-          {[
-            "Три покрокові відео-уроки",
-            "Повний список матеріалів із зазначенням, де їх купити (з посиланнями на магазини)",
-            "Рекомендації щодо вибору рослин та інструментів",
-            "Технологічна карта створення вінка",
-            "Рекомендації з догляду за стабілізованими рослинами",
-            "Приклади робіт для натхнення",
-          ].map((item) => (
-            <li class="text-black text-[18px] leading-[28px] flex gap-[12px] items-center font-heading font-medium">
-              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Product images — overlapping pattern with slide-in */}
-      <div class="relative" style="min-height: 380px;">
-        <img
-          src="/images/masterclass-vinok/included-img-1.webp"
-          alt="Картина зі стабілізованих рослин"
-          width="800"
-          height="800"
-          class="rounded-[30px] reveal included-slide-left"
-          style="width: 86%; display: block;"
-          loading="lazy"
-        />
-        <img
-          src="/images/masterclass-vinok/included-img-2.webp"
-          alt="Процес створення вінка"
-          width="800"
-          height="800"
-          class="rounded-[30px] absolute reveal included-slide-right"
-          style="width: 50%; bottom: -40px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </section>
-
-  {/* ===== PRICING ===== */}
   <PricingCta
     price="450 грн"
     originalPrice="1500 грн"
@@ -456,428 +280,40 @@ const faqs = [
     bannerImg="/images/masterclass-vinok/pricing-banner.webp"
   />
 
-  {/* ===== LEARNING OUTCOMES ===== */}
-  <section class="relative px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[72px] pb-[80px] overflow-hidden" style="background: #f8f8f8;">
-    <div class="max-w-[1280px] mx-auto">
+  <LearningOutcomes
+    titleImage="/images/masterclass-vinok/results-title.webp"
+    items={learningItems}
+    img1="/images/masterclass-vinok/results-interior-1.webp"
+    img1Alt="Вінок зі стабілізованих рослин в інтер'єрі"
+    img2="/images/masterclass-vinok/results-interior-2.webp"
+    img2Alt="Вінок на дверях — декор для дому"
+    decorImg="/images/masterclass-vinok/results-decor.webp"
+    decorStyle="width: 118px; z-index: 5; left: 39px; bottom: -20px;"
+  />
 
-      {/* Title image */}
-      <div class="flex justify-center mb-[24px] reveal">
-        <img
-          src="/images/masterclass-vinok/results-title.webp"
-          alt="Результати які ви отримаєте"
-          width="1024"
-          height="460"
-          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
-        <div class="reveal">
-          <ul class="space-y-[20px] px-[14px] md:px-0">
-            {[
-              "Створите власний стильний вінок зі стабілізованих рослин",
-              "Навчитеся працювати з текстурами та кольорами",
-              "Зрозумієте принципи гармонійної композиції",
-              "Додасте унікальний природний акцент у свій простір",
-              "Отримаєте нові творчі навички",
-            ].map((item) => (
-              <li class="text-[#7b7b7b] text-[18px] leading-[28px] flex gap-[12px] items-center font-heading">
-                <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Product images — overlapping pattern */}
-        <div class="mt-[24px] lg:mt-0 relative" style="min-height: 380px;">
-          <img
-            src="/images/masterclass-vinok/results-interior-1.webp"
-            alt="Вінок зі стабілізованих рослин в інтер'єрі"
-            width="800"
-            height="800"
-            class="rounded-[30px] reveal included-slide-left"
-            style="width: 86%; display: block;"
-            loading="lazy"
-          />
-          <img
-            src="/images/masterclass-vinok/results-interior-2.webp"
-            alt="Вінок на дверях — декор для дому"
-            width="800"
-            height="800"
-            class="rounded-[30px] absolute reveal included-slide-right"
-            style="width: 50%; bottom: -20px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
-            loading="lazy"
-          />
-          {/* Decorative wood branch */}
-          <img
-            src="/images/masterclass-vinok/results-decor.webp"
-            alt=""
-            width="200"
-            height="200"
-            class="absolute pointer-events-none reveal"
-            style="width: 118px; z-index: 5; left: 39px; bottom: -20px;"
-            loading="lazy"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  {/* ===== INSTRUCTOR ===== */}
   <InstructorSection />
 
-  {/* ===== VALUE PROPS ===== */}
   <ValueProps cards={valueCards} />
 
-  {/* ===== CURRICULUM ===== */}
-  <section class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
-    <div class="max-w-[1280px] mx-auto relative z-10">
+  <CurriculumSection
+    titleImage="/images/masterclass-vinok/curriculum-title.webp"
+    titleImageAlt="Програма майстер-класу"
+    lessons={curriculumLessons}
+    layout="stacked"
+    timelineClass="curriculum-timeline-k"
+  />
 
-      {/* Title image */}
-      <div class="flex justify-center mb-[24px] reveal">
-        <img
-          src="/images/masterclass-vinok/curriculum-title.webp"
-          alt="Програма майстер-класу"
-          width="1024"
-          height="460"
-          class="w-full max-w-[320px] md:max-w-[420px] lg:max-w-[460px] h-auto"
-          loading="lazy"
-        />
-      </div>
-
-      {/* Lessons container with vertical connecting line */}
-      <div class="curriculum-timeline-k relative">
-
-      {/* Lesson 1 */}
-      <div class="mb-[48px] md:mb-[64px] reveal lg:flex lg:items-start lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
-          <img src="/images/masterclass-vinok/curriculum-1.webp" alt="Підготовка та теоретичний блок" width="600" height="600" class="w-[380px] h-auto rounded-[20px]" loading="lazy"/>
-        </div>
-        <div class="px-[14px] md:px-0 lg:w-[60%]">
-          <div class="flex items-start gap-[12px] mb-[12px]">
-            <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">1</span>
-            <h3 class="font-heading text-black text-[26px] leading-[1.2]">
-              <span class="relative inline">
-                <span class="relative z-10">Підготовка та</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
-                  <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
-                </svg>
-              </span><br/>теоретичний блок
-            </h3>
-          </div>
-          <ul class="space-y-[16px] ml-[48px] mt-[8px]">
-            {["Що таке стабілізовані рослини та як вони зберігаються", "Особливості моху, квітів та декоративних елементів", "Часті помилки новачків", "Як поєднувати текстури", "Основи кольорових поєднань", "Баланс об'єму", "Візуальні акценти"].map((item) => (
-              <li class="text-[#4a4a4a] text-[16px] leading-[24px] flex gap-[10px] items-center font-heading">
-                <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      {/* Mobile-only image (hidden on lg where it's in the flex row) */}
-      <div class="flex justify-center mb-[48px] reveal lg:hidden">
-        <img src="/images/masterclass-vinok/curriculum-1.webp" alt="Підготовка та теоретичний блок" width="600" height="600" class="w-[280px] h-auto" loading="lazy"/>
-      </div>
-
-      {/* Lesson 2 */}
-      <div class="mb-[48px] md:mb-[64px] reveal lg:flex lg:items-start lg:gap-[48px]">
-        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
-          <img src="/images/masterclass-vinok/curriculum-2.webp" alt="Огляд матеріалів та побудова композиції" width="600" height="600" class="w-[380px] h-auto rounded-[20px]" loading="lazy"/>
-        </div>
-        <div class="px-[14px] md:px-0 lg:w-[60%]">
-          <div class="flex items-start gap-[12px] mb-[12px]">
-            <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">2</span>
-            <h3 class="font-heading text-black text-[26px] leading-[1.2]">
-              <span class="relative inline">
-                <span class="relative z-10">Огляд матеріалів</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
-                  <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
-                </svg>
-              </span><br/>та побудова композиції
-            </h3>
-          </div>
-          <ul class="space-y-[16px] ml-[48px] mt-[8px]">
-            {["Інструменти для роботи", "Варіанти основи для вінка", "Різновиди стабілізованих рослин", "Підготовка елементів до монтажу", "Техніка безпеки"].map((item) => (
-              <li class="text-[#4a4a4a] text-[16px] leading-[24px] flex gap-[10px] items-center font-heading">
-                <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div class="flex justify-center mb-[48px] reveal lg:hidden">
-        <img src="/images/masterclass-vinok/curriculum-2.webp" alt="Огляд матеріалів та побудова композиції" width="600" height="600" class="w-[280px] h-auto" loading="lazy"/>
-      </div>
-
-      {/* Lesson 3 */}
-      <div class="mb-[48px] md:mb-[64px] reveal lg:flex lg:items-start lg:gap-[48px] lg:mb-0">
-        <div class="hidden lg:flex lg:w-[40%] justify-center flex-shrink-0">
-          <img src="/images/masterclass-vinok/curriculum-3.webp" alt="Створення вінка" width="600" height="600" class="w-[380px] h-auto rounded-[20px]" loading="lazy"/>
-        </div>
-        <div class="px-[14px] md:px-0 lg:w-[60%]">
-          <div class="flex items-start gap-[12px] mb-[12px]">
-            <span class="flex-shrink-0 w-[36px] h-[36px] rounded-full flex items-center justify-center font-heading text-white text-[16px] font-bold" style="background: #7fac00;">3</span>
-            <h3 class="font-heading text-black text-[26px] leading-[1.2]">
-              <span class="relative inline">
-                <span class="relative z-10">Покрокове створення</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-[4px] left-0 w-full h-[14px] overflow-visible pointer-events-none" preserveAspectRatio="none">
-                  <path class="highlight-path" d="M14.4,111.6c0,0,202.9-33.7,471.2,0c0,0-194-8.9-397.3,24.7c0,0,141.9-5.9,309.2,0" fill="none" stroke="#a5d100" stroke-width="38" stroke-linecap="round"/>
-                </svg>
-              </span><br/>вінка та догляд
-            </h3>
-          </div>
-          <ul class="space-y-[16px] ml-[48px] mt-[8px]">
-            {["Покрокове створення вінка", "Надійне кріплення рослин", "Акуратність та довговічність", "Розміщення в інтер'єрі", "Умови зберігання"].map((item) => (
-              <li class="text-[#4a4a4a] text-[16px] leading-[24px] flex gap-[10px] items-center font-heading">
-                <span class="flex-shrink-0 w-[24px] h-[24px] rounded-full flex items-center justify-center" style="background: #7fac00;">
-                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div class="flex justify-center reveal lg:hidden">
-        <img src="/images/masterclass-vinok/curriculum-3.webp" alt="Створення вінка" width="600" height="600" class="w-[280px] h-auto" loading="lazy"/>
-      </div>
-
-      </div>{/* end curriculum-timeline-k */}
-    </div>
-  </section>
-
-  {/* ===== FAQ ===== */}
-  <section id="faq" class="relative bg-white px-[10px] py-[40px] md:px-8 md:py-[56px] lg:py-[72px] overflow-hidden">
-    <div class="max-w-[1280px] mx-auto">
-      <div class="flex justify-center mb-[20px] reveal">
-        <img
-          src="/images/masterclass-vinok/faq-title.webp"
-          alt="Питання та відповідь"
-          width="1024"
-          height="460"
-          class="w-full max-w-[280px] md:max-w-[380px] lg:max-w-[420px] h-auto"
-          loading="lazy"
-        />
-      </div>
-      <FaqAccordion faqs={faqs} />
-    </div>
-  </section>
+  <FaqSection
+    titleImage="/images/masterclass-vinok/faq-title.webp"
+    faqs={faqs}
+  />
 
 </MasterclassLayout>
 
 <style is:global>
-  /* ===== Stabilized plants illustration float ===== */
-  .stabilized-bob {
-    animation: stabilizedBob 4s ease-in-out infinite;
-    will-change: transform;
-  }
-  @keyframes stabilizedBob {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-14px); }
-  }
-
-  /* ===== Decorative botanical element animations ===== */
-  @keyframes decorFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-  @keyframes decorSway {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-7px) rotate(2deg); }
-    66% { transform: translateY(-11px) rotate(-1.5deg); }
-  }
-  @keyframes decorFloatMirror {
-    0%, 100% { transform: scaleX(-1) translateY(0px); }
-    50% { transform: scaleX(-1) translateY(-10px); }
-  }
-
-  .decor-anim {
-    animation: decorFloat var(--dur, 7s) ease-in-out var(--del, 0s) infinite;
-    will-change: transform;
-  }
-  .decor-sway {
-    animation: decorSway var(--dur, 7s) ease-in-out var(--del, 0s) infinite;
-    will-change: transform;
-  }
-  .decor-anim-mirror {
-    animation: decorFloatMirror var(--dur, 7s) ease-in-out var(--del, 0s) infinite;
-    will-change: transform;
-  }
-
-  /* ===== Curriculum image hover zoom ===== */
-  .curriculum-img {
-    transition: transform 0.4s ease;
-    will-change: transform;
-  }
-  .curriculum-img:hover {
-    transform: scale(1.04);
-  }
-
-  /* ===== Gallery image hover zoom ===== */
-  .gallery-img {
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    will-change: transform;
-  }
-  .gallery-item:hover .gallery-img {
-    transform: scale(1.07);
-    box-shadow: 0 16px 40px rgba(0, 59, 28, 0.22);
-  }
-  .gallery-overlay {
-    transition: background-color 0.4s ease;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .stabilized-bob,
-    .decor-anim, .decor-sway, .decor-anim-mirror {
-      animation: none !important;
-    }
-    .curriculum-img,
-    .gallery-img {
-      transition: none !important;
-    }
-    .gallery-overlay {
-      transition: none !important;
-    }
-  }
-
-  /* ===== Hero animations (matching florarium page) ===== */
-  @keyframes heroDecorSlideInK {
-    from {
-      opacity: 0;
-      transform: translate(var(--slide-x, 0), var(--slide-y, 0));
-    }
-    to {
-      opacity: 1;
-      transform: translate(0, 0);
-    }
-  }
-  .hero-decor-slide-k {
-    opacity: 0;
-    animation: heroDecorSlideInK 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  }
-  .hero-daria-slide-k {
-    opacity: 0;
-    animation: heroDecorSlideInK 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-    --slide-x: 0px;
-    --slide-y: 40px;
-  }
-  @keyframes heroTextFadeK {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero-text-fade-k {
-    opacity: 0;
-    animation: heroTextFadeK 0.8s ease-out forwards;
-  }
-
-  @keyframes kartiniPinkPulse {
-    0%, 100% { box-shadow: 0 8px 24px rgba(230, 51, 128, 0.35); }
-    50% { box-shadow: 0 14px 44px rgba(230, 51, 128, 0.65), 0 0 0 8px rgba(230, 51, 128, 0.1); }
-  }
-  .kartini-cta-btn {
-    animation: kartiniPinkPulse 2.4s ease-in-out infinite;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .kartini-cta-btn:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 18px 52px rgba(230, 51, 128, 0.75);
-    animation-play-state: paused;
-  }
-
-  /* ===== Hotspot buttons (pink pulsing circles with white +) ===== */
-  .florarium-hotspot-container { position: relative; }
-  .hotspot-btn {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #F3237D;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: transform 0.2s ease;
-  }
-  .hotspot-btn:hover { transform: translate(-50%, -50%) scale(1.15); }
-  .hotspot-btn::before,
-  .hotspot-btn::after {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    display: block;
-    border: 1px solid rgba(243, 35, 125, 0.5);
-    border-radius: 50%;
-    animation: hotspot-ripple 2.6s cubic-bezier(0.25, 0.9, 0.2, 1) infinite;
-  }
-  .hotspot-btn::before { width: 140%; height: 140%; border-color: rgba(243, 35, 125, 0.6); }
-  .hotspot-btn::after { width: 100%; height: 100%; border-color: rgba(243, 35, 125, 0.4); animation-delay: 0.4s; }
-  @keyframes hotspot-ripple {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.7); opacity: 0; }
-  }
-  .hotspot-btn .hotspot-tooltip {
-    position: absolute;
-    bottom: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%) scale(0.9);
-    background: #003B1C;
-    color: white;
-    font-family: 'Tenor Sans', serif;
-    font-size: 14px;
-    padding: 6px 14px;
-    border-radius: 8px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    z-index: 20;
-  }
-  .hotspot-btn .hotspot-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%; left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: #003B1C;
-  }
-  .hotspot-btn.active .hotspot-tooltip {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-    pointer-events: auto;
-  }
-
-  /* ===== Animated green highlight underline ===== */
-  .highlight-path {
-    stroke-dasharray: 1200;
-    stroke-dashoffset: 1200;
-    opacity: 0;
-    transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
-    transition-delay: 0.3s;
-  }
-  .revealed .highlight-path,
-  .reveal.revealed .highlight-path {
-    stroke-dashoffset: 0;
-    opacity: 1;
-  }
-
-  /* ===== Curriculum vertical timeline line ===== */
+  /* Curriculum vertical timeline line -- vinok-specific (stacked, 3 lessons with bullets) */
   .curriculum-timeline-k {
-    --timeline-bottom: 320px; /* stops at circle 3 */
+    --timeline-bottom: 320px;
   }
   .curriculum-timeline-k::before {
     content: '';
@@ -890,69 +326,9 @@ const faqs = [
     z-index: 0;
   }
   @media (min-width: 768px) {
-    .curriculum-timeline-k::before {
-      left: 18px;
-    }
+    .curriculum-timeline-k::before { left: 18px; }
   }
   @media (min-width: 1024px) {
-    .curriculum-timeline-k::before {
-      left: calc(40% + 48px + 18px);
-      --timeline-bottom: 120px;
-    }
-  }
-
-  /* ===== Animated lightbulb glow ===== */
-  .bulb-glow { filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4)); }
-  .bulb-ray { animation: bulbRayPulse 2s ease-in-out infinite; }
-  .bulb-ray:nth-child(2) { animation-delay: 0.15s; }
-  .bulb-ray:nth-child(3) { animation-delay: 0.3s; }
-  .bulb-ray:nth-child(4) { animation-delay: 0.45s; }
-  .bulb-ray:nth-child(5) { animation-delay: 0.6s; }
-  @keyframes bulbRayPulse {
-    0%, 100% { opacity: 0.3; transform: scale(0.85); }
-    50% { opacity: 1; transform: scale(1.15); }
-  }
-
-  /* ===== Slide-in animations for overlapping images ===== */
-  .included-slide-left {
-    opacity: 0;
-    transform: translateX(-60px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  .included-slide-left.revealed {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  .included-slide-right {
-    opacity: 0;
-    transform: translateX(60px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    transition-delay: 0.2s;
-  }
-  .included-slide-right.revealed {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hotspot-btn::before, .hotspot-btn::after { animation: none !important; }
-    .highlight-path { stroke-dashoffset: 0 !important; opacity: 1 !important; transition: none !important; }
-    .bulb-ray { animation: none !important; }
-    .included-slide-left, .included-slide-right { opacity: 1 !important; transform: none !important; }
+    .curriculum-timeline-k::before { left: calc(40% + 48px + 18px); --timeline-bottom: 120px; }
   }
 </style>
-
-<script>
-  // Hotspot tooltip toggle on click
-  document.querySelectorAll('.hotspot-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const wasActive = btn.classList.contains('active');
-      document.querySelectorAll('.hotspot-btn.active').forEach(b => b.classList.remove('active'));
-      if (!wasActive) btn.classList.add('active');
-    });
-  });
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.hotspot-btn.active').forEach(b => b.classList.remove('active'));
-  });
-</script>
