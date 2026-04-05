@@ -1,0 +1,17 @@
+---
+interface Props {
+  text?: string;
+  href?: string;
+}
+const { text = 'Придбати зараз', href = '#pricing' } = Astro.props;
+---
+
+<div class="flex justify-center py-[32px] bg-white reveal">
+  <a
+    href={href}
+    class="inline-flex items-center justify-center font-heading text-white font-medium hover:scale-[1.02] transition-transform"
+    style="padding: 16px 40px; background: #E63380; border-radius: 100px; font-size: 20px;"
+  >
+    {text}
+  </a>
+</div>
