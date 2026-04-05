@@ -26,4 +26,4 @@
 | 01   | Shared CSS + MasterclassHero, TargetAudienceSection, EducationalBlock extraction | Complete | 1 | 1 |
 | 02   | (pending) | Planned | 1 | 0 |
 | 03   | (pending) | Planned | 1 | 0 |
-| 04   | (pending) | Planned | 1 | 0 |
+| 04   | Rebuild vinok page with shared components | Complete | 1 | 1 |
