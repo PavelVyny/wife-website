@@ -31,3 +31,202 @@ const {
   </main>
   <Footer />
 </Layout>
+
+<style is:global>
+/* === Decorative botanical animations === */
+@keyframes decorFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes decorSway {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-7px) rotate(2deg); }
+  66% { transform: translateY(-11px) rotate(-1.5deg); }
+}
+@keyframes decorFloatMirror {
+  0%, 100% { transform: scaleX(-1) translateY(0px); }
+  50% { transform: scaleX(-1) translateY(-10px); }
+}
+.decor-anim {
+  animation: decorFloat var(--dur, 7s) ease-in-out var(--del, 0s) infinite;
+  will-change: transform;
+}
+.decor-sway {
+  animation: decorSway var(--dur, 7s) ease-in-out var(--del, 0s) infinite;
+  will-change: transform;
+}
+.decor-anim-mirror {
+  animation: decorFloatMirror var(--dur, 7s) ease-in-out var(--del, 0s) infinite;
+  will-change: transform;
+}
+
+/* === Slide-in for overlapping images === */
+.included-slide-left {
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.included-slide-left.revealed {
+  transform: translateX(0);
+}
+.included-slide-right {
+  transform: translateX(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition-delay: 0.15s;
+}
+.included-slide-right.revealed {
+  transform: translateX(0);
+}
+
+/* === Lightbulb glow === */
+.bulb-glow { filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4)); }
+.bulb-ray { animation: bulbRayPulse 2s ease-in-out infinite; }
+.bulb-ray:nth-child(2) { animation-delay: 0.15s; }
+.bulb-ray:nth-child(3) { animation-delay: 0.3s; }
+.bulb-ray:nth-child(4) { animation-delay: 0.45s; }
+.bulb-ray:nth-child(5) { animation-delay: 0.6s; }
+@keyframes bulbRayPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* === Hotspot buttons === */
+.florarium-hotspot-container { position: relative; }
+.hotspot-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #F3237D;
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+  transition: transform 0.2s ease;
+}
+.hotspot-btn:hover { transform: translate(-50%, -50%) scale(1.15); }
+.hotspot-btn::before, .hotspot-btn::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  display: block; border: 1px solid rgba(243, 35, 125, 0.5);
+  border-radius: 50%;
+  animation: hotspot-ripple 2.6s cubic-bezier(0.25, 0.9, 0.2, 1) infinite;
+}
+.hotspot-btn::before { width: 140%; height: 140%; border-color: rgba(243, 35, 125, 0.6); }
+.hotspot-btn::after { width: 100%; height: 100%; border-color: rgba(243, 35, 125, 0.4); animation-delay: 0.4s; }
+@keyframes hotspot-ripple {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.7); opacity: 0; }
+}
+.hotspot-btn .hotspot-tooltip {
+  position: absolute; bottom: calc(100% + 10px); left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: #003B1C; color: white;
+  font-family: 'Tenor Sans', serif; font-size: 14px;
+  padding: 6px 14px; border-radius: 8px; white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease; z-index: 20;
+}
+.hotspot-btn .hotspot-tooltip::after {
+  content: ''; position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%); border: 6px solid transparent; border-top-color: #003B1C;
+}
+.hotspot-btn.active .hotspot-tooltip {
+  opacity: 1; transform: translateX(-50%) scale(1); pointer-events: auto;
+}
+
+/* === Animated green highlight underline === */
+.highlight-path {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  opacity: 0;
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out;
+  transition-delay: 0.3s;
+}
+.revealed .highlight-path,
+.reveal.revealed .highlight-path {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+/* === Curriculum image hover zoom === */
+.curriculum-img {
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+.curriculum-img:hover {
+  transform: scale(1.04);
+}
+
+/* === Gallery (used on kartini/vinok) === */
+.gallery-img {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  will-change: transform;
+}
+.gallery-item:hover .gallery-img {
+  transform: scale(1.07);
+  box-shadow: 0 16px 40px rgba(0, 59, 28, 0.22);
+}
+.gallery-overlay {
+  transition: background-color 0.4s ease;
+}
+
+/* === Hero text/decor animations (florarium pattern — source of truth) === */
+.hero-text-fade {
+  opacity: 0;
+  animation: heroTextFadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes heroTextFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-zigzag-path {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  opacity: 0;
+  animation: heroZigzagDraw 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+}
+@keyframes heroZigzagDraw {
+  to { stroke-dashoffset: 0; opacity: 1; }
+}
+.hero-daria-slide {
+  opacity: 0;
+  animation: heroDecorSlideIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+  --slide-x: 0px;
+  --slide-y: 40px;
+}
+@keyframes heroDecorSlideIn {
+  from { opacity: 0; transform: translate(var(--slide-x, 0), var(--slide-y, 0)); }
+  to { opacity: 1; transform: translate(0, 0); }
+}
+.hero-decor-slide {
+  opacity: 0;
+  animation: heroDecorSlideIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* === CTA pulse animation === */
+@keyframes ctaPinkPulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(230, 51, 128, 0.35); }
+  50% { box-shadow: 0 14px 44px rgba(230, 51, 128, 0.65), 0 0 0 8px rgba(230, 51, 128, 0.1); }
+}
+.hero-cta-pulse {
+  animation: ctaPinkPulse 2.4s ease-in-out infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hero-cta-pulse:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 18px 52px rgba(230, 51, 128, 0.75);
+  animation-play-state: paused;
+}
+
+/* === Reduced motion === */
+@media (prefers-reduced-motion: reduce) {
+  .decor-anim, .decor-sway, .decor-anim-mirror { animation: none !important; }
+  .hotspot-btn::before, .hotspot-btn::after { animation: none !important; }
+  .highlight-path { stroke-dashoffset: 0 !important; opacity: 1 !important; transition: none !important; }
+  .bulb-ray { animation: none !important; }
+  .included-slide-left, .included-slide-right { opacity: 1 !important; transform: none !important; }
+  .curriculum-img, .gallery-img { transition: none !important; }
+  .gallery-overlay { transition: none !important; }
+  .hero-text-fade, .hero-daria-slide, .hero-decor-slide { animation: none !important; opacity: 1 !important; }
+  .hero-zigzag-path { animation: none !important; stroke-dashoffset: 0 !important; opacity: 1 !important; }
+  .hero-cta-pulse { animation: none !important; }
+}
+</style>
