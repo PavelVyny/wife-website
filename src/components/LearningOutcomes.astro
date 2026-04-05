@@ -1,0 +1,96 @@
+---
+interface Props {
+  titleImage: string;
+  titleImageAlt?: string;
+  items: string[];
+  img1: string;
+  img1Alt: string;
+  img2: string;
+  img2Alt: string;
+  decorImg?: string;
+  decorStyle?: string;
+  topDecorImage?: string;
+  topDecorStyle?: string;
+}
+const { titleImage, titleImageAlt = 'Результати які ви отримаєте', items, img1, img1Alt, img2, img2Alt, decorImg, decorStyle, topDecorImage, topDecorStyle } = Astro.props;
+---
+
+<section class="relative px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[48px] pb-[80px] overflow-hidden" style="background: #f8f8f8;">
+  {topDecorImage && (
+    <img src={topDecorImage} alt="" width="80" height="80"
+      class="hidden lg:block absolute pointer-events-none z-10"
+      style={topDecorStyle}
+      loading="lazy" />
+  )}
+  <div class="max-w-[1280px] mx-auto">
+
+    {/* Title — mobile/tablet only (centered above) */}
+    <div class="flex justify-center mb-[16px] lg:hidden reveal">
+      <img
+        src={titleImage}
+        alt={titleImageAlt}
+        width="1024"
+        height="460"
+        class="w-full max-w-[320px] md:max-w-[420px] h-auto"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="lg:grid lg:grid-cols-2 lg:gap-[48px] lg:items-center mt-[24px]">
+      {/* LEFT — images (on desktop) */}
+      <div class="mt-[24px] lg:mt-0 relative lg:order-1" style="min-height: 380px;">
+        <img
+          src={img1}
+          alt={img1Alt}
+          width="1024"
+          height="1024"
+          class="rounded-[30px] reveal included-slide-left"
+          style="width: 86%; display: block;"
+          loading="lazy"
+        />
+        <img
+          src={img2}
+          alt={img2Alt}
+          width="1024"
+          height="1024"
+          class="rounded-[30px] absolute reveal included-slide-right"
+          style="width: 50%; bottom: -20px; right: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.1);"
+          loading="lazy"
+        />
+        {decorImg && (
+          <img src={decorImg} alt="" width="200" height="200"
+            class="absolute pointer-events-none reveal"
+            style={decorStyle}
+            loading="lazy" />
+        )}
+      </div>
+
+      {/* RIGHT — title + bullet list (on desktop) */}
+      <div class="mt-[40px] lg:mt-0 lg:order-2 reveal">
+        {/* Title — desktop only (inside right column) */}
+        <div class="hidden lg:flex justify-center lg:justify-start mb-[24px]">
+          <img
+            src={titleImage}
+            alt={titleImageAlt}
+            width="1024"
+            height="460"
+            class="w-full max-w-[460px] h-auto"
+            loading="lazy"
+          />
+        </div>
+        <ul class="space-y-[20px] px-[14px] md:px-0">
+          {items.map((item) => (
+            <li class="text-[#333] text-[18px] leading-[28px] flex gap-[12px] items-center font-heading">
+              <span class="flex-shrink-0 w-[28px] h-[28px] rounded-full flex items-center justify-center" style="background: #7fac00;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 6l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
