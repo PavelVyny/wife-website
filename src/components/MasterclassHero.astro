@@ -18,6 +18,7 @@ interface Props {
   badgeText: string;
   titleLine1: string;
   titleLine2: string;
+  underlineWord?: string;
   subtitle: string;
   ctaText: string;
   ctaHref: string;
@@ -34,8 +35,33 @@ interface Props {
 const {
   heroId, bgMobile, bgDesktop, dariaImg, dariaAlt, dariaWidth, dariaHeight,
   badgeText, titleLine1, titleLine2, subtitle, ctaText, ctaHref, ctaPulse = false,
-  decorElements, bleedElement
+  underlineWord, decorElements, bleedElement
 } = Astro.props;
+
+// Determine which line has the underline and split if needed
+const underlineSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-1 left-0 w-full h-8 overflow-visible pointer-events-none" preserveAspectRatio="none" aria-hidden="true"><path class="hero-zigzag-path" d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9" fill="none" stroke="#7fac00" stroke-width="28" stroke-linecap="round"/></svg>`;
+
+// If underlineWord is set, find which line contains it and split
+let line1Parts: { before: string; word: string; after: string } | null = null;
+let line2Parts: { before: string; word: string; after: string } | null = null;
+
+if (underlineWord) {
+  if (titleLine1.includes(underlineWord)) {
+    const idx = titleLine1.indexOf(underlineWord);
+    line1Parts = {
+      before: titleLine1.slice(0, idx),
+      word: underlineWord,
+      after: titleLine1.slice(idx + underlineWord.length),
+    };
+  } else if (titleLine2.includes(underlineWord)) {
+    const idx = titleLine2.indexOf(underlineWord);
+    line2Parts = {
+      before: titleLine2.slice(0, idx),
+      word: underlineWord,
+      after: titleLine2.slice(idx + underlineWord.length),
+    };
+  }
+}
 
 const visibilityClasses: Record<DecorElement['visibility'], string> = {
   'mobile-only': 'md:hidden absolute pointer-events-none z-[5] hero-decor-slide',
@@ -97,27 +123,29 @@ const visibilityClasses: Record<DecorElement['visibility'], string> = {
       </div>
 
       {/* Title */}
+      {/* Title */}
       <h1 class="font-heading text-black uppercase mb-7 hero-text-fade" style="line-height: 1.08; letter-spacing: -0.36px; animation-delay: 0.1s;">
-        <span class="block text-[38px] md:text-[44px] lg:text-[68px] xl:text-[89px]">{titleLine1}</span>
-        <span class="relative inline-block text-[38px] md:text-[44px] lg:text-[68px] xl:text-[89px]">
-          {titleLine2}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 500 150"
-            class="absolute -bottom-1 left-0 w-full h-8 overflow-visible pointer-events-none"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              class="hero-zigzag-path"
-              d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9"
-              fill="none"
-              stroke="#7fac00"
-              stroke-width="28"
-              stroke-linecap="round"
-            />
-          </svg>
+        {/* Line 1 */}
+        <span class="block whitespace-nowrap text-[32px] md:text-[44px] lg:text-[68px] xl:text-[89px]">
+          {line1Parts ? (
+            <>{line1Parts.before}<span class="relative inline-block">{line1Parts.word}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-1 left-0 w-full h-8 overflow-visible pointer-events-none" preserveAspectRatio="none" aria-hidden="true"><path class="hero-zigzag-path" d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9" fill="none" stroke="#7fac00" stroke-width="28" stroke-linecap="round"/></svg></span>{line1Parts.after}</>
+          ) : titleLine1}
         </span>
+        {/* Line 2 */}
+        {line2Parts ? (
+          <span class="block text-[32px] md:text-[44px] lg:text-[68px] xl:text-[89px]">
+            {line2Parts.before}<span class="relative inline-block">{line2Parts.word}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-1 left-0 w-full h-8 overflow-visible pointer-events-none" preserveAspectRatio="none" aria-hidden="true"><path class="hero-zigzag-path" d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9" fill="none" stroke="#7fac00" stroke-width="28" stroke-linecap="round"/></svg></span>{line2Parts.after}
+          </span>
+        ) : !underlineWord ? (
+          <span class="relative inline-block text-[32px] md:text-[44px] lg:text-[68px] xl:text-[89px]">
+            {titleLine2}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150" class="absolute -bottom-1 left-0 w-full h-8 overflow-visible pointer-events-none" preserveAspectRatio="none" aria-hidden="true">
+              <path class="hero-zigzag-path" d="M9.3,127.3c49.3-3,150.7-7.6,199.7-7.4c121.9,0.4,189.9,0.4,282.3,7.2C380.1,129.6,181.2,130.6,70,139 c82.6-2.9,254.2-1,335.9,1.3c-56,1.4-137.2-0.3-197.1,9" fill="none" stroke="#7fac00" stroke-width="28" stroke-linecap="round"/>
+            </svg>
+          </span>
+        ) : (
+          <span class="block text-[32px] md:text-[44px] lg:text-[68px] xl:text-[89px]">{titleLine2}</span>
+        )}
       </h1>
 
       {/* Subtitle */}

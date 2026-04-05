@@ -11,8 +11,9 @@ interface Props {
   decorStyle?: string;
   topDecorImage?: string;
   topDecorStyle?: string;
+  img1Class?: string;
 }
-const { titleImage, titleImageAlt = 'Результати які ви отримаєте', items, img1, img1Alt, img2, img2Alt, decorImg, decorStyle, topDecorImage, topDecorStyle } = Astro.props;
+const { titleImage, titleImageAlt = 'Результати які ви отримаєте', items, img1, img1Alt, img2, img2Alt, decorImg, decorStyle, topDecorImage, topDecorStyle, img1Class } = Astro.props;
 ---
 
 <section class="relative px-[10px] md:px-8 py-[40px] md:py-[56px] lg:py-[48px] pb-[80px] overflow-hidden" style="background: #f8f8f8;">
@@ -44,7 +45,7 @@ const { titleImage, titleImageAlt = 'Результати які ви отрим
           alt={img1Alt}
           width="1024"
           height="1024"
-          class="rounded-[30px] reveal included-slide-left"
+          class:list={["rounded-[30px] reveal included-slide-left", img1Class]}
           style="width: 86%; display: block;"
           loading="lazy"
         />

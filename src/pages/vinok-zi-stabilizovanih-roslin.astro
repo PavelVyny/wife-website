@@ -9,9 +9,10 @@ import LearningOutcomes from '../components/LearningOutcomes.astro';
 import InstructorSection from '../components/InstructorSection.astro';
 import ValueProps from '../components/ValueProps.astro';
 import CurriculumSection from '../components/CurriculumSection.astro';
+import CtaButton from '../components/CtaButton.astro';
 import FaqSection from '../components/FaqSection.astro';
 
-const PURCHASE_URL = 'https://secure.wayforpay.com/payment/s9517959b27ff'; // TODO: update with real vinok payment URL
+const PURCHASE_URL = 'https://secure.wayforpay.com/payment/s9a66a008b60b';
 
 const valueCards = [
   {
@@ -94,11 +95,12 @@ const faqs = [
 ];
 
 const heroDecorElements = [
-  { src: "/images/masterclass-vinok/hero/decor-5.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 16%; left: 4%; width: 53px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" },
-  { src: "/images/masterclass-vinok/hero/decor-2.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 37%; left: 85%; width: 49px; height: auto; --slide-x: 80px; --slide-y: -20px; animation-delay: 0.35s;" },
-  { src: "/images/masterclass-vinok/hero/decor-3.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 55%; left: 12%; width: 59px; height: auto; --slide-x: -100px; --slide-y: 20px; animation-delay: 0.4s;" },
-  { src: "/images/masterclass-vinok/hero/decor-4.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 65%; left: 88%; width: 31px; height: auto; --slide-x: 60px; --slide-y: 10px; animation-delay: 0.5s;" },
-  { src: "/images/masterclass-vinok/hero/decor-6.webp", width: 200, height: 200, visibility: 'tablet-down' as const, style: "top: 53%; left: 64%; width: 159px; height: auto; --slide-x: 100px; --slide-y: 40px; animation-delay: 0.45s;" },
+  { src: "/images/masterclass/decor-branch-1.webp", width: 213, height: 215, visibility: "mobile-only" as const, style: "top: 10%; left: 2%; width: 42px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" },
+  { src: "/images/masterclass/hero/decor-cookie-3.webp", width: 200, height: 185, visibility: "tablet-down" as const, style: "top: 64%; right: 2%; width: 42px; height: auto; --slide-x: 80px; --slide-y: 20px; animation-delay: 0.6s;" },
+  { src: "/images/masterclass/hero/decor-plant-pot.webp", width: 280, height: 310, visibility: "mobile-only" as const, style: "top: 60%; left: 4%; width: 56px; height: auto; --slide-x: -60px; --slide-y: 80px; animation-delay: 0.4s;" },
+  { src: "/images/wood-1.webp", width: 200, height: 250, visibility: "tablet-down" as const, style: "top: 10%; right: 0%; width: 50px; height: auto; --slide-x: 100px; --slide-y: -60px; animation-delay: 0.35s;" },
+  { src: "/images/masterclass/hero/decor-succulent.webp", width: 213, height: 215, visibility: "desktop-only" as const, style: "top: 56%; right: 0%; width: 55px; height: auto; --slide-x: 100px; --slide-y: 20px; animation-delay: 0.3s;" },
+  { src: "/images/masterclass/hero/decor-green-3.webp", width: 162, height: 202, visibility: "desktop-only" as const, style: "top: 14%; right: 0%; width: 80px; height: auto; --slide-x: 100px; --slide-y: -40px; animation-delay: 0.3s;" },
 ];
 
 const audienceCards = [
@@ -109,31 +111,25 @@ const audienceCards = [
     description: "Ідеально підійде тим, хто ніколи не працював зі стабілізованими рослинами. Ви отримаєте базові знання про матеріали, принципи побудови композиції, правила поєднання кольорів, підходящий алгоритм створення вінка",
   },
   {
-    image: "/images/masterclass-vinok/audience-decor.webp",
-    imageAlt: "Шанувальники декору",
-    title: "Шанувальники декору",
-    description: "Ідеальний формат для тих, хто любить стильні деталі в інтер'єрі. Вінок зі стабілізованих рослин не потребує поливу та догляду, але при цьому має вигляд живого, дорогого та прикрашає кожен простір",
-  },
-  {
     image: "/images/masterclass-vinok/audience-inspiration.webp",
     imageAlt: "Ті, хто шукає натхнення",
     title: "Ті, хто шукає натхнення",
-    description: "Майстер-клас стане простором для творчого перезавантаження. Робота з природними текстурами чудово знімає стрес, допомагає відволіктись та дає задоволення від створеного результату",
+    description: "Майстер-клас стане простором для творчого перезавантаження. Робота з природними текстурами: знижує стрес, допомагає переключитись, дарує задоволення від процесу.",
   },
   {
     image: "/images/masterclass-vinok/audience-gifts.webp",
-    imageAlt: "Любителі подарунків",
-    title: "Любителі подарунків",
-    description: "Вінок, створений власноруч, — це особливий подарунок. Ви зможете зробити унікальну річ для близьких, створити декор на замовлення або подарувати собі новий творчий досвід",
+    imageAlt: "Шанувальники фітодекору",
+    title: "Шанувальники фітодекору",
+    description: "Ідеальний формат для тих, хто хоче створити стильний природний декор своїми руками. Вінок може стати особливим подарунком, прикрасою вашого дому або першим кроком до створення власних робіт на замовлення.",
   },
 ];
 
 const educationalHotspots = [
-  { label: "Дерев'яна основа", left: "83.5%", top: "20.8%" },
-  { label: "Ягель зелений", left: "33.5%", top: "22.8%" },
-  { label: "Коряга", left: "69.5%", top: "45.8%" },
-  { label: "Амарант", left: "23.5%", top: "55.8%" },
-  { label: "Плоский мох", left: "60.5%", top: "77.8%" },
+  { label: "Плоский мох", left: "28%", top: "75%" },
+  { label: "Бавовна", left: "77%", top: "22%" },
+  { label: "Колоски", left: "58%", top: "72%" },
+  { label: "Верба", left: "22%", top: "38%" },
+  { label: "Гілля", left: "82%", top: "48%" },
 ];
 
 const educationalBenefits = [
@@ -146,19 +142,17 @@ const educationalBenefits = [
 
 const includedItems = [
   "Три покрокові відео-уроки",
-  "Повний список матеріалів із зазначенням, де їх купити (з посиланнями на магазини)",
-  "Рекомендації щодо вибору рослин та інструментів",
-  "Технологічна карта створення вінка",
-  "Рекомендації з догляду за стабілізованими рослинами",
-  "Приклади робіт для натхнення",
+  "Повний список матеріалів та магазинів, з рекомендаціями де їх можна придбати",
+  "Технологічна карта створення вінка з майстер-класу",
+  "Добірка фото-референсів для натхнення",
 ];
 
 const learningItems = [
-  "Створите власний стильний вінок зі стабілізованих рослин",
-  "Навчитеся працювати з текстурами та кольорами",
-  "Зрозумієте принципи гармонійної композиції",
-  "Додасте унікальний природний акцент у свій простір",
-  "Отримаєте нові творчі навички",
+  "Створите свій перший вінок зі стабілізованих рослин",
+  "Навчитеся поєднувати текстури, кольори та декоративні елементи",
+  "Зрозумієте принципи створення гармонійної композиції",
+  "Зможете створювати вінки під будь-який сезон, свято або інтер'єр",
+  "Отримаєте навичку, яку зможете використовувати для себе, подарунків або на замовлення",
 ];
 
 const curriculumLessons = [
@@ -167,12 +161,12 @@ const curriculumLessons = [
     titleRest: "теоретичний блок",
     bullets: [
       "Що таке стабілізовані рослини та як вони зберігаються",
-      "Особливості моху, квітів та декоративних елементів",
-      "Часті помилки новачків",
-      "Як поєднувати текстури",
+      "Особливості роботи з мохом, сухоцвітами та декоративними елементами",
+      "Види вінків: настінні, настільні та сезонні композиції",
+      "Принципи побудови гармонійної композиції",
+      "Поєднання текстур і матеріалів",
       "Основи кольорових поєднань",
-      "Баланс об'єму",
-      "Візуальні акценти",
+      "Візуальні акценти та баланс у композиції",
     ],
     imageMobile: "/images/masterclass-vinok/curriculum-1.webp",
     imageDesktop: "/images/masterclass-vinok/curriculum-1.webp",
@@ -182,11 +176,11 @@ const curriculumLessons = [
     title: "Огляд матеріалів",
     titleRest: "та побудова композиції",
     bullets: [
-      "Інструменти для роботи",
-      "Варіанти основи для вінка",
-      "Різновиди стабілізованих рослин",
-      "Підготовка елементів до монтажу",
-      "Техніка безпеки",
+      "Різновиди стабілізованих рослин і сухоцвітів",
+      "Інструменти, необхідні для роботи",
+      "Види основ для вінків",
+      "Як обирати дизайн вінка залежно від сезону або свята",
+      "Техніка безпеки при роботі",
     ],
     imageMobile: "/images/masterclass-vinok/curriculum-2.webp",
     imageDesktop: "/images/masterclass-vinok/curriculum-2.webp",
@@ -227,12 +221,13 @@ const curriculumLessons = [
     badgeText="Онлайн майстер-клас"
     titleLine1="Вінок зі"
     titleLine2="стабілізованих рослин"
-    subtitle="Навчіться створювати стильний<br class='md:hidden' /> декоративний вінок для інтер'єру —<br class='md:hidden' /> без складних технік та досвіду"
+    underlineWord="Вінок"
+    subtitle="Навчіться створювати стильний декоративний вінок під будь який сезон та свято - без складних технік та досвіду"
     ctaText="Дізнатися більше"
     ctaHref="#pricing"
     ctaPulse={true}
     decorElements={heroDecorElements}
-    bleedElement={{ src: "/images/masterclass-vinok/hero/decor-1.webp", width: 200, height: 200, style: "bottom: -40px; left: 7%; width: 132px; height: auto; --slide-x: -60px; --slide-y: 80px; animation-delay: 0.55s;" }}
+    bleedElement={{ src: "/images/masterclass-vinok/hero/decor-1.webp", width: 200, height: 200, style: "bottom: -40px; left: 2%; height: auto; filter: brightness(100%) contrast(100%) saturate(75%) blur(5.3px) hue-rotate(0deg); --slide-x: -60px; --slide-y: 100px; animation-delay: 0.15s; width: 88px;" }}
   />
 
   <TargetAudienceSection
@@ -240,8 +235,6 @@ const curriculumLessons = [
     titleImageAlt="Для кого цей майстер-клас"
     subtitle="Цей майстер-клас для тих, хто хоче створити стильний природний декор своїми руками, додати затишку в інтер'єр і спробувати новий формат творчості без складнощів і спеціальної підготовки"
     cards={audienceCards}
-    decorLeftImage="/images/masterclass/decor-herb-cluster.webp"
-    decorRightImage="/images/masterclass/decor-right-plant.webp"
   />
 
   <EducationalBlock
@@ -255,17 +248,15 @@ const curriculumLessons = [
     productImageHeight={817}
     hotspots={educationalHotspots}
     benefits={educationalBenefits}
-    quoteImage="/images/masterclass-vinok/what-is-quote.webp"
-    quoteImageAlt="Стабілізовані рослини зберігають натуральність"
   />
 
   <WhatsIncludedSection
     titleImage="/images/masterclass-vinok/whats-included-title.webp"
     titleImageAlt="Що входить у майстер-клас"
     items={includedItems}
-    productImg1="/images/masterclass-vinok/included-img-1.webp"
+    productImg1="/images/wreth-2-max.webp"
     productImg1Alt="Вінок зі стабілізованих рослин"
-    productImg2="/images/masterclass-vinok/included-img-2.webp"
+    productImg2="/images/wreth-2-mini.webp"
     productImg2Alt="Процес створення вінка"
   />
 
@@ -275,20 +266,19 @@ const curriculumLessons = [
     ctaText="Придбати зараз"
     purchaseUrl={PURCHASE_URL}
     course="wreath"
-    productImg1="/images/masterclass-vinok/pricing-product-1.webp"
-    productImg2="/images/masterclass-vinok/pricing-product-2.webp"
+    productImg1="/images/werth-3-max.webp"
+    productImg2="/images/wreth-3-mini.webp"
     bannerImg="/images/masterclass-vinok/pricing-banner.webp"
   />
 
   <LearningOutcomes
-    titleImage="/images/masterclass-vinok/results-title.webp"
+    titleImage="/images/results-title.webp"
     items={learningItems}
-    img1="/images/masterclass-vinok/results-interior-1.webp"
+    img1="/images/wreth-results-max.webp"
     img1Alt="Вінок зі стабілізованих рослин в інтер'єрі"
-    img2="/images/masterclass-vinok/results-interior-2.webp"
+    img1Class="lg:!w-[69%]"
+    img2="/images/wreth-results-mini.webp"
     img2Alt="Вінок на дверях — декор для дому"
-    decorImg="/images/masterclass-vinok/results-decor.webp"
-    decorStyle="width: 118px; z-index: 5; left: 39px; bottom: -20px;"
   />
 
   <InstructorSection />
@@ -299,9 +289,11 @@ const curriculumLessons = [
     titleImage="/images/masterclass-vinok/curriculum-title.webp"
     titleImageAlt="Програма майстер-класу"
     lessons={curriculumLessons}
-    layout="stacked"
-    timelineClass="curriculum-timeline-k"
+    layout="zigzag"
+    timelineClass="curriculum-timeline"
   />
+
+  <CtaButton />
 
   <FaqSection
     titleImage="/images/masterclass-vinok/faq-title.webp"
@@ -310,25 +302,3 @@ const curriculumLessons = [
 
 </MasterclassLayout>
 
-<style is:global>
-  /* Curriculum vertical timeline line -- vinok-specific (stacked, 3 lessons with bullets) */
-  .curriculum-timeline-k {
-    --timeline-bottom: 320px;
-  }
-  .curriculum-timeline-k::before {
-    content: '';
-    position: absolute;
-    left: 32px;
-    top: 18px;
-    bottom: var(--timeline-bottom);
-    width: 1px;
-    background: #d9d9d9;
-    z-index: 0;
-  }
-  @media (min-width: 768px) {
-    .curriculum-timeline-k::before { left: 18px; }
-  }
-  @media (min-width: 1024px) {
-    .curriculum-timeline-k::before { left: calc(40% + 48px + 18px); --timeline-bottom: 120px; }
-  }
-</style>

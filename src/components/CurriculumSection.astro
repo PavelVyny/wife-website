@@ -100,3 +100,25 @@ const isZigzag = layout === 'zigzag';
     </div>{/* end timeline */}
   </div>
 </section>
+
+<style is:global>
+  .curriculum-timeline {
+    --timeline-bottom: 420px;
+  }
+  .curriculum-timeline::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 18px;
+    bottom: var(--timeline-bottom);
+    width: 1px;
+    background: #d9d9d9;
+    z-index: 0;
+  }
+  @media (min-width: 768px) {
+    .curriculum-timeline::before { left: 18px; }
+  }
+  @media (min-width: 1024px) {
+    .curriculum-timeline::before { left: 50%; --timeline-bottom: 120px; }
+  }
+</style>

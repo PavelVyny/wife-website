@@ -47,8 +47,8 @@ const { titleImage, titleImageAlt, subtitle, cards, decorLeftImage, decorLeftSty
 
     {/* 2x2 grid — image left, text right */}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-[16px] md:gap-[20px]">
-      {cards.map((card) => (
-        <div class="bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal">
+      {cards.map((card, i) => (
+        <div class:list={["bg-white rounded-[20px] p-[20px] flex flex-col items-center text-center lg:flex-row lg:items-start lg:text-left gap-[16px] lg:gap-[20px] reveal", cards.length % 2 === 1 && i === cards.length - 1 && "md:col-span-2 md:max-w-[50%] md:mx-auto"]}>
           <img src={card.image} alt={card.imageAlt}
             width="800" height="783"
             class="flex-shrink-0 w-[200px] h-[200px] md:w-[140px] md:h-[140px] lg:w-[160px] lg:h-[160px] object-contain"

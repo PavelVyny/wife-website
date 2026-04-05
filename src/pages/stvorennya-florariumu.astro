@@ -93,11 +93,10 @@ const faqs = [
 ];
 
 const heroDecorElements = [
-  { src: "/images/masterclass/hero/decor-cookie-1.webp", width: 213, height: 215, visibility: "mobile-only" as const, style: "top: 28%; left: 2%; width: 42px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" },
+  { src: "/images/masterclass/hero/decor-cookie-1.webp", width: 213, height: 215, visibility: "mobile-only" as const, style: "top: 10%; left: 2%; width: 42px; height: auto; --slide-x: -80px; --slide-y: -40px; animation-delay: 0.3s;" },
   { src: "/images/masterclass/hero/decor-cookie-3.webp", width: 200, height: 185, visibility: "tablet-down" as const, style: "top: 64%; right: 2%; width: 42px; height: auto; --slide-x: 80px; --slide-y: 20px; animation-delay: 0.6s;" },
   { src: "/images/masterclass/hero/decor-plant-pot.webp", width: 280, height: 310, visibility: "mobile-only" as const, style: "top: 60%; left: 4%; width: 56px; height: auto; --slide-x: -60px; --slide-y: 80px; animation-delay: 0.4s;" },
-  { src: "/images/masterclass/hero/decor-plant-pot.webp", width: 280, height: 310, visibility: "tablet-down" as const, style: "top: 16%; left: 1%; width: 84px; height: auto; --slide-x: -60px; --slide-y: -40px; animation-delay: 0.3s;" },
-  { src: "/images/masterclass/hero/decor-small-plant.webp", width: 200, height: 250, visibility: "tablet-down" as const, style: "top: 22%; right: 0%; width: 50px; height: auto; --slide-x: 100px; --slide-y: -60px; animation-delay: 0.35s;" },
+  { src: "/images/masterclass/hero/decor-small-plant.webp", width: 200, height: 250, visibility: "tablet-down" as const, style: "top: 10%; right: 0%; width: 50px; height: auto; --slide-x: 100px; --slide-y: -60px; animation-delay: 0.35s;" },
   { src: "/images/masterclass/hero/decor-succulent.webp", width: 213, height: 215, visibility: "desktop-only" as const, style: "top: 56%; right: 0%; width: 55px; height: auto; --slide-x: 100px; --slide-y: 20px; animation-delay: 0.3s;" },
   { src: "/images/masterclass/hero/decor-green-3.webp", width: 162, height: 202, visibility: "desktop-only" as const, style: "top: 14%; right: 0%; width: 80px; height: auto; --slide-x: 100px; --slide-y: -40px; animation-delay: 0.3s;" },
 ];
@@ -310,26 +309,7 @@ const curriculumLessons = [
     50% { transform: translateY(-14px); }
   }
 
-  /* Curriculum vertical timeline line — florarium-specific (zigzag, 4 lessons) */
-  .curriculum-timeline {
-    --timeline-bottom: 420px;
-  }
-  .curriculum-timeline::before {
-    content: '';
-    position: absolute;
-    left: 22px;
-    top: 18px;
-    bottom: var(--timeline-bottom);
-    width: 1px;
-    background: #d9d9d9;
-    z-index: 0;
-  }
-  @media (min-width: 768px) {
-    .curriculum-timeline::before { left: 18px; }
-  }
-  @media (min-width: 1024px) {
-    .curriculum-timeline::before { left: 50%; --timeline-bottom: 120px; }
-  }
+
 
   @media (prefers-reduced-motion: reduce) {
     .florarium-float { animation: none !important; }
