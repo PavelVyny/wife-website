@@ -26,6 +26,11 @@
 | 03    | 02   | ~2m      | 4     | 2     |
 | 03    | 03   | ~2m      | 3     | 2     |
 
+## Accumulated Context
+
+### Roadmap Evolution
+- Phase 4 added: Extract reusable masterclass section components and rebuild kartini/vinok pages
+
 ## Last Session
 - Stopped at: Completed 03-02-PLAN.md — InstructorSection image fix, build passes 3 pages
 - Date: 2026-03-18
