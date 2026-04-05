@@ -19,3 +19,9 @@
 | 01   | Shared masterclass components (InstructorSection, ValueProps, PricingCta) | Complete | 1 | 0 |
 | 02   | InstructorSection image fix + masterclass pages verification | Complete | 1 | 1 |
 | 03   | Masterclass detail pages (florarium + stabilized art) | Complete | 1 | 1 |
+
+## Phase 04: Extract Reusable Masterclass Section Components and Rebuild Pages
+| Plan | Name | Status | Plans | Summaries |
+|------|------|--------|-------|-----------|
+| 01   | Extract hero/audience/educational/pricing components | In Progress | 1 | 0 |
+| 02   | Extract WhatsIncluded/LearningOutcomes/Curriculum/FAQ/CTA | Complete | 1 | 1 |
