@@ -42,7 +42,27 @@ import tenorSansWoff2 from '@fontsource/tenor-sans/files/tenor-sans-latin-400-no
 		    gtag('config', 'G-KEFTVWTZV1');
 		  }
 		</script>
-		<!-- Microsoft Clarity — production only, TODO: replace ID -->
+		<!-- Event tracking — purchase button clicks -->
+		<script is:inline>
+		  document.addEventListener('click', function(e) {
+		    var btn = e.target.closest('[data-buy-now-cta]');
+		    if (btn && typeof gtag === 'function') {
+		      gtag('event', 'begin_checkout', {
+		        event_category: 'purchase',
+		        event_label: btn.dataset.course || 'unknown',
+		        value: 450
+		      });
+		    }
+		    var cta = e.target.closest('[data-cta-scroll]');
+		    if (cta && typeof gtag === 'function') {
+		      gtag('event', 'cta_click', {
+		        event_category: 'engagement',
+		        event_label: 'scroll_to_pricing'
+		      });
+		    }
+		  });
+		</script>
+		<!-- Microsoft Clarity — production only -->
 		<script is:inline type="text/javascript">
 		  if (window.location.hostname.endsWith('floralabeducation.com.ua')) {
 		    (function(c,l,a,r,i,t,y){
