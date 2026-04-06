@@ -42,23 +42,28 @@ import tenorSansWoff2 from '@fontsource/tenor-sans/files/tenor-sans-latin-400-no
 		    gtag('config', 'G-KEFTVWTZV1');
 		  }
 		</script>
-		<!-- Event tracking — purchase button clicks -->
+		<!-- Event tracking — all interactive elements -->
 		<script is:inline>
 		  document.addEventListener('click', function(e) {
-		    var btn = e.target.closest('[data-buy-now-cta]');
-		    if (btn && typeof gtag === 'function') {
-		      gtag('event', 'begin_checkout', {
-		        event_category: 'purchase',
-		        event_label: btn.dataset.course || 'unknown',
-		        value: 450
-		      });
+		    if (typeof gtag !== 'function') return;
+		    var el;
+		    if ((el = e.target.closest('[data-buy-now-cta]'))) {
+		      gtag('event', 'begin_checkout', { event_label: el.dataset.course || 'unknown' });
 		    }
-		    var cta = e.target.closest('[data-cta-scroll]');
-		    if (cta && typeof gtag === 'function') {
-		      gtag('event', 'cta_click', {
-		        event_category: 'engagement',
-		        event_label: 'scroll_to_pricing'
-		      });
+		    if ((el = e.target.closest('[data-hero-cta]'))) {
+		      gtag('event', 'hero_cta_click', { event_label: el.dataset.course || 'unknown' });
+		    }
+		    if ((el = e.target.closest('[data-cta-scroll]'))) {
+		      gtag('event', 'cta_scroll_to_pricing', { event_label: el.dataset.course || 'unknown' });
+		    }
+		    if ((el = e.target.closest('[data-home-cta]'))) {
+		      gtag('event', 'home_cta_click', { event_label: 'available_courses' });
+		    }
+		    if ((el = e.target.closest('[data-card-click]'))) {
+		      gtag('event', 'card_click', { event_label: el.dataset.course || 'unknown' });
+		    }
+		    if ((el = e.target.closest('header nav a, header #mobile-menu a'))) {
+		      gtag('event', 'nav_click', { event_label: el.textContent.trim() });
 		    }
 		  });
 		</script>

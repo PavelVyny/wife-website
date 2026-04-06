@@ -67,7 +67,7 @@ const comingSoonClass = isComingSoon ? "card-coming-soon" : "";
   }
 
   {/* Card body — overflow-hidden for rounded bg, entire card is clickable */}
-  <a href={isComingSoon ? undefined : link} class={`block rounded-[40px] overflow-hidden h-full cursor-pointer ${className}`}>
+  <a href={isComingSoon ? undefined : link} data-card-click data-course={link.replace(/\//g, '')} class={`block rounded-[40px] overflow-hidden h-full cursor-pointer ${className}`}>
     {/* Inner wrapper handles grayscale for coming soon */}
     <div class={`masterclass-card relative h-full ${comingSoonClass}`}>
       {/* Background image (no blur — matching original site) */}
